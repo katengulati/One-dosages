@@ -1,0 +1,56 @@
+{
+  "site": {
+    "name": "Dosis de Péptidos",
+    "tagline": "Tablas de dosificación, guías de reconstitución y protocolos de péptidos",
+    "researchOnly": "Solo para uso en investigación. No es consejo médico."
+  },
+  "nav": {
+    "home": "Inicio",
+    "dosages": "Dosis",
+    "calculator": "Calculadora",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "language": "Idioma",
+    "menu": "Menú"
+  },
+  "home": {
+    "title": "Tablas y protocolos de dosificación de péptidos",
+    "intro": "Tablas de dosificación, una calculadora de reconstitución y protocolos paso a paso para péptidos de investigación.",
+    "ctaCalculator": "Abrir la calculadora",
+    "ctaDosages": "Ver dosis",
+    "latest": "Páginas recientes"
+  },
+  "calculator": {
+    "title": "Calculadora de reconstitución de péptidos",
+    "intro": "Introduce el tamaño del vial, el agua bacteriostática que añades y la dosis que quieres. La calculadora muestra la concentración y hasta dónde cargar una jeringa de insulina U-100.",
+    "vialMg": "Péptido en el vial (mg)",
+    "waterMl": "Agua bacteriostática añadida (mL)",
+    "dose": "Dosis deseada",
+    "doseUnit": "Unidad de dosis",
+    "syringe": "Tamaño de la jeringa",
+    "concentration": "Concentración",
+    "drawVolume": "Volumen a cargar",
+    "drawUnits": "Unidades en una jeringa U-100",
+    "dosesPerVial": "Dosis por vial",
+    "overSyringe": "Esta dosis supera la capacidad de la jeringa. Usa una jeringa más grande o añade menos agua.",
+    "invalid": "Introduce números mayores que cero en todos los campos.",
+    "units": "unidades",
+    "perMl": "por mL"
+  },
+  "listing": {
+    "allDosages": "Todas las páginas de dosis",
+    "empty": "Todavía no hay páginas. Ejecuta la importación de WordPress para añadir contenido.",
+    "readMore": "Leer más"
+  },
+  "page": {
+    "updated": "Última actualización",
+    "notTranslated": "Esta página aún no está traducida. Se muestra la versión en inglés.",
+    "notFoundTitle": "Página no encontrada",
+    "notFoundBody": "La página que buscas no existe.",
+    "backHome": "Volver al inicio"
+  },
+  "footer": {
+    "disclaimer": "La información de este sitio tiene fines exclusivamente educativos y de investigación. No es consejo médico y no pretende diagnosticar, tratar ni prevenir ninguna afección.",
+    "rights": "Todos los derechos reservados."
+  }
+}

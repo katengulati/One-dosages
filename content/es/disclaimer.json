@@ -1,0 +1,8 @@
+{
+  "key": "disclaimer",
+  "slug": "aviso-legal",
+  "type": "page",
+  "title": "Aviso legal",
+  "description": "Página de ejemplo. Se reemplazará al importar la exportación de WordPress.",
+  "html": "<p>Esta es una página de ejemplo que muestra cómo funciona el contenido en ambos idiomas. Se reemplazará por la página real de Aviso legal cuando se importe la exportación de WordPress.</p><p>Toda la información de este sitio tiene fines exclusivamente educativos y de investigación y no constituye consejo médico.</p>"
+}

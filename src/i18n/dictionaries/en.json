@@ -1,0 +1,56 @@
+{
+  "site": {
+    "name": "Peptide Dosages",
+    "tagline": "Peptide dosage charts, reconstitution guides and protocols",
+    "researchOnly": "For research use only. Not medical advice."
+  },
+  "nav": {
+    "home": "Home",
+    "dosages": "Dosages",
+    "calculator": "Calculator",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Language",
+    "menu": "Menu"
+  },
+  "home": {
+    "title": "Peptide dosage charts & protocols",
+    "intro": "Dosing charts, a reconstitution calculator and step-by-step protocols for research peptides.",
+    "ctaCalculator": "Open the calculator",
+    "ctaDosages": "Browse dosages",
+    "latest": "Latest pages"
+  },
+  "calculator": {
+    "title": "Peptide reconstitution calculator",
+    "intro": "Enter the vial size, the bacteriostatic water you add and the dose you want. The calculator shows the concentration and how far to draw a U-100 insulin syringe.",
+    "vialMg": "Peptide in vial (mg)",
+    "waterMl": "Bacteriostatic water added (mL)",
+    "dose": "Desired dose",
+    "doseUnit": "Dose unit",
+    "syringe": "Syringe size",
+    "concentration": "Concentration",
+    "drawVolume": "Volume to draw",
+    "drawUnits": "Units on a U-100 syringe",
+    "dosesPerVial": "Doses per vial",
+    "overSyringe": "This dose is more than the syringe holds. Use a larger syringe or add less water.",
+    "invalid": "Enter numbers greater than zero in every field.",
+    "units": "units",
+    "perMl": "per mL"
+  },
+  "listing": {
+    "allDosages": "All dosage pages",
+    "empty": "No pages yet. Run the WordPress import to add content.",
+    "readMore": "Read more"
+  },
+  "page": {
+    "updated": "Last updated",
+    "notTranslated": "This page has not been translated yet. Showing the English version.",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for does not exist.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "disclaimer": "The information on this site is for educational and research purposes only. It is not medical advice and is not intended to diagnose, treat or prevent any condition.",
+    "rights": "All rights reserved."
+  }
+}
