@@ -1,0 +1,206 @@
+/* Styling only. The theme owns every original chart row, label, link,
+   search/filter/sort control, live announcement and mobile table label. */
+@property --pdchart-flare-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes pdchart-border-trace{to{--pdchart-flare-angle:360deg}}
+body.pdchart-studio{--pdchart-blue:#1676ae;--pdchart-ink:#183e59;--pdchart-muted:#496a82;--pdchart-border:#cee2f0}
+body.pdchart-studio #main-content{position:relative;isolation:isolate;background:#f3f8fc;color:#496a82;padding-bottom:1px}
+body.pdchart-studio #main-content *,body.pdchart-studio #main-content *:before,body.pdchart-studio #main-content *:after{box-sizing:border-box}
+body.pdchart-studio #main-content :is(h1,h2,h3){font-family:'Poppins',sans-serif;color:#183e59;letter-spacing:-.025em}
+body.pdchart-studio #main-content :is(a,button,select):focus-visible{outline:2px solid #1477b0!important;outline-offset:4px!important}
+body.pdchart-studio #main-content :is(a,button,input,select){-webkit-tap-highlight-color:transparent}
+/* Keep the original breadcrumb in the DOM and place it on the same artwork.
+   Natural static positioning follows either the desktop or mobile header. */
+body.pdchart-studio .site-breadcrumbs{position:absolute;inset-inline:0;top:auto;z-index:10;background:transparent;border:0;box-shadow:none;overflow:visible}
+body.pdchart-studio .site-breadcrumbs .breadcrumb-inner{display:block;max-width:1280px;margin:auto;padding:16px 20px 0;font-size:12px;line-height:1.6;color:#4e718a}
+body.pdchart-studio .site-breadcrumbs .breadcrumb-inner>span{display:flex;align-items:center;flex-wrap:wrap;gap:4px 6px}
+body.pdchart-studio .site-breadcrumbs .breadcrumb_last{max-width:none;white-space:normal;overflow:visible;line-height:inherit;vertical-align:baseline;overflow-wrap:anywhere}
+body.pdchart-studio .site-breadcrumbs .breadcrumb-separator{margin:0;line-height:inherit;vertical-align:baseline}
+body.pdchart-studio .pdh-hero{padding:78px 20px 38px;background:transparent;border:0;overflow:visible;isolation:isolate}
+body.pdchart-studio .pdh-hero:before{inset:0 0 auto;height:720px;width:100%;background:url("molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.58;mask-image:linear-gradient(90deg,transparent 22%,#000 84%),linear-gradient(180deg,#000 3%,#0009 43%,transparent 96%);mask-composite:intersect;z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-hero-content{max-width:1240px;text-align:left}
+body.pdchart-studio .pdh-hero-title{display:flex;align-items:center;gap:17px;max-width:1100px;font-size:44px;font-weight:700;line-height:1.22;margin:0 0 18px;text-shadow:none;animation:none;transform:none;text-wrap:pretty}
+body.pdchart-studio .pdh-hero-title:before{content:'';display:block;flex:0 0 48px;width:48px;height:52px;background:url("icons/chart.svg") center/contain no-repeat}
+body.pdchart-studio .pdh-hero-desc{max-width:865px;font-size:17px;line-height:1.8;color:#486b85;margin:0;animation:none;opacity:1;transform:none}
+body.pdchart-studio .pdh-hero-content:after{content:'';display:block;width:42px;height:3px;margin:24px 0 0;border-radius:3px;background:#ed4c40;box-shadow:51px 0 0 -1px #9bc7df}
+body.pdchart-studio .pdh-outer{max-width:1280px;padding:0 20px;margin:0 auto 68px}
+body.pdchart-studio .pdh-content{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+body.pdchart-studio .pdh-wrap{--pc:#1676ae;--sc:#183e59;--ac:#ed4c40;color:#496a82;font-family:inherit}
+body.pdchart-studio .pdh-intro{position:relative;isolation:isolate;margin:0 0 24px;padding:24px 27px;border:1px solid #cee2f0;border-radius:15px;background:linear-gradient(125deg,#fff,#f7fbfe);box-shadow:0 5px 18px #294d6907;font-size:15px;line-height:1.85;color:#47677f;overflow:hidden}
+body.pdchart-studio .pdh-intro:after{content:'';position:absolute;inset:0 0 0 72%;background:url("molecular-header-branch-v1.webp") right top/auto 140% no-repeat;opacity:.12;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-intro strong{color:#244e6c}
+body.pdchart-studio .pdh-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 26px}
+body.pdchart-studio .pdh-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:105px;padding:20px 14px;border:1px solid #cce2f0;border-radius:14px;background:linear-gradient(135deg,#fff,#f8fcff);box-shadow:0 8px 20px -13px #2f648433;text-align:center}
+body.pdchart-studio .pdh-stat .n{font-family:'Poppins',sans-serif;font-size:29px;font-weight:650;line-height:1.2;color:#1678ad;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+body.pdchart-studio .pdh-stat .l{font-size:11px;font-weight:600;line-height:1.5;letter-spacing:.05em;text-transform:uppercase;color:#58758b;margin:0}
+body.pdchart-studio .pdh-controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:0 0 18px;padding:17px 18px;border:1px solid #cee2f0;border-radius:14px;background:#ffffffdf;box-shadow:0 5px 18px #294d6907}
+body.pdchart-studio .pdh-search{flex:1 1 380px;min-width:0;min-height:48px;border:1px solid #c3ddeb;border-radius:10px;background:#f7fbfe;transition:border-color .2s,box-shadow .2s;overflow:hidden}
+body.pdchart-studio .pdh-search:focus-within{border-color:#1880b5;box-shadow:0 0 0 3px #278bc51c}
+body.pdchart-studio .pdh-search i{background:transparent;color:#1878ac;padding:0 0 0 15px;font-size:15px}
+body.pdchart-studio .pdh-search input{min-width:0;padding:12px 14px;font-family:inherit;font-size:15px;line-height:1.4;color:#183e59;caret-color:#1878ac;border:0!important;background:transparent!important;box-shadow:none!important;outline:none!important}
+body.pdchart-studio .pdh-search input::placeholder{color:#718a9b;opacity:1}
+body.pdchart-studio .pdh-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;flex:0 1 340px}
+body.pdchart-studio .pdh-filters button{position:relative;min-width:0;min-height:48px;padding:10px 12px;border:1px solid #c4deee;border-radius:9px;background:#f7fbfe;color:#285d80;font-family:inherit;font-size:13px;font-weight:650;line-height:1.4;box-shadow:none;transform:none;transition:background .2s,border-color .2s;color-scheme:light;cursor:pointer}
+body.pdchart-studio .pdh-filters button:hover{background:#eaf6ff;border-color:#96cbe7;color:#176c9c}
+body.pdchart-studio .pdh-filters button.active,body.pdchart-studio .pdh-filters button[aria-pressed="true"]{background:linear-gradient(125deg,#218bbf,#1474a6);border-color:#167caf;color:#fff;box-shadow:0 4px 10px #226c921c}
+body.pdchart-studio .pdh-tablewrap{border:1px solid #c6dfef;border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 8px 25px #294d690b}
+body.pdchart-studio .pdh-scroll{scrollbar-width:thin;scrollbar-color:#92bed9 #f4f9fc}
+body.pdchart-studio .pdh-scroll:focus-visible{outline:2px solid #1477b0!important;outline-offset:-4px!important}
+body.pdchart-studio table.pdh-table{margin:0;font-family:inherit;font-size:14px;line-height:1.65;border:0}
+body.pdchart-studio table.pdh-table thead th{background:#ecf6fd;color:#245878;border:0;border-bottom:1px solid #c4dfef;font-size:12px;font-weight:700;line-height:1.4}
+body.pdchart-studio .pdh-sort{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:74px;padding:17px 16px;border:0;border-radius:0;background:transparent;color:inherit;box-shadow:none;transform:none;font:inherit;cursor:pointer}
+body.pdchart-studio .pdh-sort:hover{background:#dff0fb;color:#165d87}
+body.pdchart-studio #main-content .pdh-sort:focus-visible{background:#dff0fb;outline:2px solid #1477b0!important;outline-offset:-4px!important}
+body.pdchart-studio table.pdh-table thead th .ar{flex:0 0 auto;opacity:.65;font-size:9px;letter-spacing:-2px;margin:0}
+body.pdchart-studio table.pdh-table th[aria-sort="ascending"],body.pdchart-studio table.pdh-table th[aria-sort="descending"]{background:#dceffa;color:#126b9e}
+body.pdchart-studio table.pdh-table th[aria-sort="ascending"] .ar,body.pdchart-studio table.pdh-table th[aria-sort="descending"] .ar{opacity:1;color:#d84b40}
+body.pdchart-studio table.pdh-table tbody td{padding:16px;border:0;border-top:1px solid #e1edf5;vertical-align:middle;color:#49677d;font-size:14px;line-height:1.65;overflow-wrap:anywhere}
+body.pdchart-studio table.pdh-table tbody tr:nth-child(even){background:#f7fbfe}
+body.pdchart-studio table.pdh-table tbody tr:hover,body.pdchart-studio table.pdh-table tbody tr:focus-within{background:#edf7fe}
+body.pdchart-studio .pdh-name a{color:#166f9f;font-weight:650;text-decoration:none;text-underline-offset:3px;line-height:1.65}
+body.pdchart-studio .pdh-name a:hover{text-decoration:underline;color:#115779}
+body.pdchart-studio table.pdh-table tbody .pdh-dose{color:#204d6c;font-weight:650;font-variant-numeric:tabular-nums}
+body.pdchart-studio .pdh-tag{font-size:10px;font-weight:700;line-height:1.4;letter-spacing:.035em;padding:5px 9px;border:1px solid #c5e1f1;border-radius:6px;background:#eaf6ff;color:#256c98;white-space:nowrap}
+body.pdchart-studio .pdh-peptide-blend-dosages{border-color:#f2d0c9;background:#fff2ef;color:#a64e41}
+body.pdchart-studio .pdh-peptide-stack-dosages{border-color:#c8deea;background:#edf5f9;color:#436b80}
+body.pdchart-studio .pdh-count{font-size:12px;color:#5d7b8f;line-height:1.6;margin:13px 3px 0;font-variant-numeric:tabular-nums}
+body.pdchart-studio table.pdh-table tbody tr.pdh-empty-row td{padding:32px 18px;color:#54758b;font-style:normal;text-align:center}
+body.pdchart-studio .pdh-cta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;margin:30px 0 0}
+body.pdchart-studio .pdh-cta a{position:relative;isolation:isolate;display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:center;gap:14px 13px;min-width:0;padding:23px;border:1px solid #c8e0ef;border-radius:15px;background:linear-gradient(145deg,#fff 60%,#f6fbfe);box-shadow:0 5px 18px #294d6910;transform:none;text-decoration:none;transition:border-color .2s,box-shadow .2s;overflow:hidden}
+body.pdchart-studio .pdh-cta a:hover{border-color:#a6cfe5;box-shadow:0 12px 26px -14px #21638c4d;transform:none}
+body.pdchart-studio .pdh-cta .t{font-family:'Poppins',sans-serif;font-weight:650;color:#204b69;font-size:17px;line-height:1.45;letter-spacing:-.015em}
+body.pdchart-studio .pdh-cta .s{grid-column:1/-1;align-self:start;font-size:14px;color:#56748a;line-height:1.75;margin:0}
+body.pdchart-studio .pdh-cta i{display:block;width:38px;height:42px;background:var(--pdchart-cta-icon) center/contain no-repeat;font-size:0;line-height:0}
+body.pdchart-studio .pdh-cta i:before{display:none}
+body.pdchart-studio .pdh-cta .fa-calculator{--pdchart-cta-icon:url("icons/calculator.svg")}
+body.pdchart-studio .pdh-cta .fa-vial{--pdchart-cta-icon:url("icons/vial.svg")}
+body.pdchart-studio .pdh-cta .fa-layer-group{--pdchart-cta-icon:url("icons/mechanism.svg")}
+body.pdchart-studio .pdh-how{margin:30px 0 0;border:1px solid #cee2f0;border-radius:15px;background:#fff;box-shadow:0 5px 18px #294d6907;padding:0 27px 12px;overflow:hidden}
+body.pdchart-studio .pdh-how h2{position:relative;isolation:isolate;display:flex;align-items:center;gap:14px;margin:0 -27px 22px;padding:23px 27px;background:linear-gradient(90deg,#f4fbff,#f8fcff);border-bottom:1px solid #d5e8f4;font-size:23px;font-weight:650;line-height:1.45;overflow:hidden;text-wrap:pretty}
+body.pdchart-studio .pdh-how h2:before{content:'';display:block;flex:0 0 34px;width:34px;height:37px;background:url("icons/quickguide.svg") center/contain no-repeat}
+body.pdchart-studio .pdh-how h2:after{content:'';position:absolute;inset:0 0 0 74%;background:url("molecular-header-branch-v1.webp") right center/auto 170% no-repeat;opacity:.15;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-how p{font-size:15px;line-height:1.85;color:#496a82;margin:0 0 16px}
+body.pdchart-studio .pdh-how a{color:#146d9f;text-decoration:underline;text-underline-offset:3px}
+body.pdchart-studio .pdh-disc{margin:26px 0 0;padding:21px 24px;border:1px solid #f0d8d0;border-left:3px solid #ec6a57;border-radius:12px;background:#fff8f5;font-size:13px;color:#805c54;line-height:1.8}
+/* A registered angle moves the highlight around only the border, not the card. */
+body.pdchart-studio :is(.pdh-filters button,.pdh-cta a):before{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;opacity:0;pointer-events:none;z-index:3;background:conic-gradient(from var(--pdchart-flare-angle),transparent 0deg 32deg,#ef493d 65deg,#ffb0a3 79deg,transparent 102deg 212deg,#1686ce 245deg,#a9eaff 259deg,transparent 282deg 360deg);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;transition:opacity .2s}
+body.pdchart-studio :is(.pdh-filters button,.pdh-cta a):focus-visible:before{opacity:1;animation:pdchart-border-trace 3.2s linear infinite}
+@media(hover:hover) and (pointer:fine){body.pdchart-studio :is(.pdh-filters button,.pdh-cta a):hover:before{opacity:1;animation:pdchart-border-trace 2.8s linear infinite}}
+@media(max-width:1050px){
+ body.pdchart-studio .pdh-hero-title{font-size:38px}
+ body.pdchart-studio .pdh-controls{gap:12px}
+ body.pdchart-studio .pdh-search{flex-basis:320px}
+ body.pdchart-studio .pdh-filters{flex-basis:300px}
+ body.pdchart-studio .pdh-sort{padding:15px 12px}
+ body.pdchart-studio table.pdh-table tbody td{padding:14px 12px;font-size:13px}
+ body.pdchart-studio .pdh-cta{gap:14px}
+ body.pdchart-studio .pdh-cta a{padding:20px;grid-template-columns:32px minmax(0,1fr);gap:12px}
+ body.pdchart-studio .pdh-cta i{width:32px;height:37px}
+ body.pdchart-studio .pdh-cta .t{font-size:15px}
+}
+@media(min-width:681px) and (max-width:850px){
+ body.pdchart-studio .pdh-controls{display:grid;grid-template-columns:minmax(0,1fr)}
+ body.pdchart-studio .pdh-scroll table{min-width:760px}
+ body.pdchart-studio .pdh-cta{grid-template-columns:minmax(0,1fr)}
+ body.pdchart-studio .pdh-cta a{grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto;gap:6px 14px}
+ body.pdchart-studio .pdh-cta i{grid-row:1/3}
+ body.pdchart-studio .pdh-cta .s{grid-column:2}
+}
+/* Keep the theme's 680px breakpoint exactly: its script changes sort-control
+   keyboard exposure and table labels at this same width. */
+@media(max-width:680px){
+ body.pdchart-studio .pdh-hero{padding:68px 16px 27px}
+ body.pdchart-studio .pdh-hero-title{font-size:29px;line-height:1.26;gap:12px;align-items:flex-start;margin-bottom:17px}
+ body.pdchart-studio .pdh-hero-title:before{width:37px;height:41px;flex-basis:37px;margin-top:0}
+ body.pdchart-studio .pdh-hero-desc{font-size:15px;line-height:1.8}
+ body.pdchart-studio .pdh-hero:before{height:580px;background-size:780px auto;background-position:right -50px top;opacity:.38;mask-image:linear-gradient(90deg,transparent 2%,#000 100%),linear-gradient(180deg,#000 5%,transparent 85%)}
+ body.pdchart-studio .pdh-hero-content:after{margin-top:21px}
+ body.pdchart-studio .site-breadcrumbs .breadcrumb-inner{padding:13px 16px 0;font-size:11px}
+ body.pdchart-studio .pdh-outer{margin:0 auto 42px;padding:0 16px}
+ body.pdchart-studio .pdh-intro{padding:20px;font-size:14px;line-height:1.85;margin:0 0 19px;border-radius:13px}
+ body.pdchart-studio .pdh-intro:after{display:none}
+ body.pdchart-studio .pdh-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 20px}
+ body.pdchart-studio .pdh-stat{min-height:88px;padding:15px 10px;border-radius:12px;gap:6px}
+ body.pdchart-studio .pdh-stat .n{font-size:25px}
+ body.pdchart-studio .pdh-stat .l{font-size:10px;letter-spacing:.035em}
+ body.pdchart-studio .pdh-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;padding:13px;border-radius:13px;margin-bottom:15px}
+ body.pdchart-studio .pdh-search{width:100%;min-height:48px}
+ body.pdchart-studio .pdh-search i{padding-left:12px;font-size:14px}
+ body.pdchart-studio .pdh-search input{font-size:16px;padding:12px 10px}
+ body.pdchart-studio .pdh-filters{gap:6px;width:100%}
+ body.pdchart-studio .pdh-filters button{min-height:45px;font-size:12px;padding:9px 3px;border-radius:8px}
+ body.pdchart-studio .pdh-mobile-sort{display:grid;grid-template-columns:auto minmax(0,1fr) 44px;gap:8px;align-items:center;width:100%;padding:10px 0 0;border:0;border-top:1px solid #dfebf3;border-radius:0;background:transparent}
+ body.pdchart-studio .pdh-mobile-sort label{font-size:12px;font-weight:650;color:#426880;white-space:nowrap}
+ body.pdchart-studio .pdh-mobile-sort select{min-width:0;min-height:44px;border:1px solid #c6deec;border-radius:8px;background:#f7fbfe;color:#204e6b;font-family:inherit;font-size:16px;font-weight:600;padding:10px 28px 10px 10px;box-shadow:none}
+ body.pdchart-studio .pdh-mobile-sort button{width:44px;height:44px;min-width:44px;padding:0;border:1px solid #1479ab;border-radius:8px;background:#187cad;color:#fff;font-size:19px;font-weight:600;box-shadow:none}
+ body.pdchart-studio .pdh-tablewrap{border:0;border-radius:0;overflow:visible;box-shadow:none;background:transparent}
+ body.pdchart-studio .pdh-scroll{overflow:visible}
+ body.pdchart-studio table.pdh-table{font-size:14px}
+ body.pdchart-studio table.pdh-table tbody{gap:13px}
+ body.pdchart-studio table.pdh-table tbody tr{gap:0 10px;padding:17px 18px 11px;border:1px solid #c7e0ef;border-radius:14px;background:#fff;box-shadow:0 5px 18px #294d690b}
+ body.pdchart-studio table.pdh-table tbody tr:nth-child(even){background:#fff}
+ body.pdchart-studio table.pdh-table tbody tr:hover,body.pdchart-studio table.pdh-table tbody tr:focus-within{background:#f8fcff}
+ body.pdchart-studio table.pdh-table tbody tr[hidden]{display:none!important}
+ body.pdchart-studio table.pdh-table tbody td{padding:10px 0;border:0;font-size:14px;line-height:1.65;word-break:normal;overflow-wrap:anywhere}
+ body.pdchart-studio table.pdh-table tbody td:first-child{padding:0 0 14px;font-size:16px}
+ body.pdchart-studio table.pdh-table tbody td:nth-child(3){padding:0 0 14px}
+ body.pdchart-studio table.pdh-table tbody td:nth-child(2),body.pdchart-studio table.pdh-table tbody td:nth-child(4),body.pdchart-studio table.pdh-table tbody td:nth-child(5),body.pdchart-studio table.pdh-table tbody td:nth-child(6){grid-template-columns:minmax(100px,43%) minmax(0,1fr);gap:10px;border-top:1px solid #e1edf5}
+ body.pdchart-studio table.pdh-table tbody td:nth-child(2):before,body.pdchart-studio table.pdh-table tbody td:nth-child(4):before,body.pdchart-studio table.pdh-table tbody td:nth-child(5):before,body.pdchart-studio table.pdh-table tbody td:nth-child(6):before{color:#5d7b8f;font-size:10px;font-weight:650;line-height:1.75;letter-spacing:.025em}
+ body.pdchart-studio .pdh-tag{font-size:9px;padding:5px 7px;line-height:1.5}
+ body.pdchart-studio table.pdh-table tbody tr.pdh-empty-row{padding:0}
+ body.pdchart-studio table.pdh-table tbody tr.pdh-empty-row td{font-size:14px;padding:27px 17px}
+ body.pdchart-studio .pdh-count{margin:12px 3px 0;font-size:12px}
+ body.pdchart-studio .pdh-cta{grid-template-columns:minmax(0,1fr);gap:13px;margin:25px 0 0}
+ body.pdchart-studio .pdh-cta a{padding:21px;grid-template-columns:37px minmax(0,1fr);gap:12px 14px}
+ body.pdchart-studio .pdh-cta i{width:37px;height:40px}
+ body.pdchart-studio .pdh-cta .t{font-size:17px}
+ body.pdchart-studio .pdh-cta .s{font-size:14px}
+ body.pdchart-studio .pdh-how{padding:0 20px 6px;margin-top:25px;border-radius:13px}
+ body.pdchart-studio .pdh-how h2{gap:11px;font-size:21px;line-height:1.4;padding:20px;margin:0 -20px 19px;align-items:flex-start}
+ body.pdchart-studio .pdh-how h2:before{width:31px;height:34px;flex-basis:31px}
+ body.pdchart-studio .pdh-how h2:after{opacity:.08}
+ body.pdchart-studio .pdh-how p{font-size:14px;line-height:1.85}
+ body.pdchart-studio .pdh-disc{margin:23px 0 0;padding:19px 20px;font-size:12px;line-height:1.85}
+}
+@media(max-width:600px){
+ body.pdchart-studio .site-breadcrumbs{display:none}
+ body.pdchart-studio .pdh-hero{padding-top:27px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.pdchart-studio #main-content *,body.pdchart-studio #main-content *:before{animation:none!important;transition:none!important}
+ body.pdchart-studio #main-content :is(.pdh-filters button,.pdh-cta a):focus-visible:before{animation:pdchart-border-trace 5.6s linear infinite!important}
+}
+@media(prefers-reduced-motion:reduce) and (hover:hover) and (pointer:fine){body.pdchart-studio #main-content :is(.pdh-filters button,.pdh-cta a):hover:before{animation:pdchart-border-trace 5.6s linear infinite!important}}
+@media(forced-colors:active){
+ body.pdchart-studio #main-content :is(.pdh-filters button,.pdh-cta a):is(:hover,:focus-visible):before{animation:none!important}
+ body.pdchart-studio :is(.pdh-hero:before,.pdh-hero-title:before,.pdh-hero-content:after,.pdh-intro:after,.pdh-how h2:before,.pdh-how h2:after){display:none}
+ body.pdchart-studio :is(.pdh-filters button,.pdh-cta a):before{display:none}
+ body.pdchart-studio :is(.pdh-intro,.pdh-stat,.pdh-controls,.pdh-tablewrap,.pdh-cta a,.pdh-how,.pdh-disc,.pdh-search,.pdh-tag){border:1px solid CanvasText}
+ body.pdchart-studio .pdh-filters button.active,body.pdchart-studio .pdh-filters button[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-4px}
+ body.pdchart-studio .pdh-cta i{background:none;font-size:25px;line-height:40px;color:LinkText}
+ body.pdchart-studio .pdh-cta i:before{display:inline}
+ body.pdchart-studio .pdh-search:focus-within{outline:2px solid Highlight}
+ body.pdchart-studio #main-content :is(a,button,select):focus-visible{outline:2px solid Highlight!important}
+}
+/* Print all visible rows as one semantic table, even when printing from a
+   narrow phone viewport. Do not reset the current filter or reveal hidden rows. */
+@media print{
+ body.pdchart-studio #main-content :is(.pdh-filters button,.pdh-cta a):is(:hover,:focus-visible):before{animation:none!important}
+ body.pdchart-studio #main-content{background:#fff;color:#000}
+ body.pdchart-studio #main-content *,body.pdchart-studio #main-content *:before{animation:none!important;transition:none!important;box-shadow:none!important}
+ body.pdchart-studio :is(.pdh-hero:before,.pdh-hero-title:before,.pdh-hero-content:after,.pdh-intro:after,.pdh-how h2:before,.pdh-how h2:after){display:none}
+ body.pdchart-studio :is(.pdh-filters button,.pdh-cta a):before{display:none}
+ body.pdchart-studio .site-breadcrumbs{position:static;display:block}
+ body.pdchart-studio .pdh-hero{padding:24px 0}
+ body.pdchart-studio .pdh-outer{max-width:none;margin:0;padding:0}
+ body.pdchart-studio :is(.pdh-tablewrap,.pdh-scroll){overflow:visible!important;max-width:none;border:0;border-radius:0}
+ body.pdchart-studio #main-content table.pdh-table{display:table;width:100%;min-width:0;max-width:100%;table-layout:fixed;border-collapse:collapse;font-size:10pt}
+ body.pdchart-studio #main-content table.pdh-table colgroup{display:table-column-group}
+ body.pdchart-studio #main-content table.pdh-table thead{display:table-header-group;position:static;width:auto;height:auto;margin:0;padding:0;overflow:visible;clip:auto;clip-path:none;white-space:normal}
+ body.pdchart-studio #main-content table.pdh-table tbody{display:table-row-group}
+ body.pdchart-studio #main-content table.pdh-table tr{display:table-row;break-inside:avoid;page-break-inside:avoid;padding:0;border-radius:0}
+ body.pdchart-studio #main-content table.pdh-table tbody tr[hidden]{display:none!important}
+ body.pdchart-studio #main-content table.pdh-table :is(th,td){display:table-cell;padding:7px 6px;border:1px solid #b8c9d4;text-align:left;font-size:10pt;line-height:1.45;vertical-align:top;white-space:normal;overflow-wrap:anywhere}
+ body.pdchart-studio #main-content table.pdh-table tbody td:before{display:none}
+ body.pdchart-studio #main-content .pdh-sort{display:block;min-height:0;padding:0;background:none;font-size:10pt;line-height:1.4}
+ body.pdchart-studio table.pdh-table .pdh-tag{font-size:8pt;white-space:normal}
+}

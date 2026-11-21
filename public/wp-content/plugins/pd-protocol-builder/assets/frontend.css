@@ -1,0 +1,60 @@
+.pdpb-protocol-v2 .pdpb-variant-switcher{display:flex;align-items:center;gap:14px;margin:18px 0;padding:12px 14px;background:#f8fbfe;border:1px solid #d9e7f1;border-radius:12px}
+.pdpb-protocol-v2 .pdpb-variant-label{flex:0 0 auto;font-weight:700;color:#2c3e50}
+.pdpb-protocol-v2 .pdpb-variant-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pdpb-protocol-v2 .pdpb-variant-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:7px 14px;border:1px solid #3498db;border-radius:999px;background:#fff;color:#247fba;font-weight:700;line-height:1;text-decoration:none!important;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.pdpb-protocol-v2 .pdpb-variant-pill:hover,.pdpb-protocol-v2 .pdpb-variant-pill:focus-visible{background:#eaf6fd;color:#1f6f9f}
+.pdpb-protocol-v2 .pdpb-variant-pill.is-current{background:#3498db;border-color:#3498db;color:#fff}
+.pdpb-protocol-v2 .dosage-chart-hero{margin:18px 0 30px;background:transparent}
+.pdpb-protocol-v2 .dch-head{background:#f8fbfe;border:1px solid #e1ecf4;border-left:5px solid #3498db;border-radius:12px;padding:22px 26px;margin-bottom:26px}
+.pdpb-protocol-v2 .dch-head>h2{margin:0 0 14px!important;font-size:1.5rem;color:#2c3e50;font-weight:600;border-bottom:0!important}
+.pdpb-protocol-v2 .dch-top{display:flex;gap:26px;align-items:flex-start}
+.pdpb-protocol-v2 .dch-text{flex:1 1 60%;min-width:0}
+.pdpb-protocol-v2 .dch-text p.dch-lead{margin:0 0 14px;font-size:inherit;line-height:inherit;color:#2c3e50}
+.pdpb-protocol-v2 .dch-text ul{margin:8px 0 0;padding-left:20px;line-height:1.6}
+.pdpb-protocol-v2 .pd-inline-context{margin:14px 0 0}
+.pdpb-protocol-v2 .dosage-chart-hero .dosing-recon-wrapper{margin-bottom:0}
+.pdpb-protocol-v2 #dosing-schedule .dr-container>header{margin-bottom:0!important;padding-bottom:0!important}
+.pdpb-protocol-v2 #dosing-schedule .dr-container>header *{margin-bottom:0!important}
+.pdpb-protocol-v2 #dosing-schedule .dr-container>header:before,.pdpb-protocol-v2 #dosing-schedule .dr-container>header:after{content:none!important;display:none!important}
+.pdpb-protocol-v2 #dosing-schedule .dr-container>section:first-of-type{margin-top:0!important;display:flow-root}
+.pdpb-protocol-v2 #dosing-schedule .dr-container>section:first-of-type h2:first-child{margin-top:0!important}
+.pdpb-protocol-v2 .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pdpb-protocol-v2 .table-responsive table{min-width:580px}
+.pdpb-protocol-v2 .pdpb-reconstitution{margin-top:0}
+.pdpb-protocol-v2 .related-peptides ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;list-style:none;padding-left:0}
+
+/* Legacy families: related links are a sibling section, not a card inside the
+   references card. Keep the useful link groups while removing the doubled
+   border, background, and shadow shown by the old composition. */
+.pdpb-legacy-variant-content>.pd-contextual-links{max-width:none!important;margin:34px 0 0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.pdpb-legacy-variant-content>.pd-contextual-links .pd-contextual-links__title{margin-top:0!important}
+.pdpb-legacy-variant-content+.pd-editorial-transparency{margin-top:28px}
+
+/* Research articles: one contextual, family-specific bridge to the published
+   protocol cluster. It sits before the bibliography instead of adding another
+   generic navigation block at the top of the article. */
+.pdpb-article-contextual-links{margin:34px 0;padding:24px 26px;background:#f8fbfe;border:1px solid #d9e7f1;border-left:5px solid #3498db;border-radius:12px;color:#2c3e50}
+.pdpb-article-contextual-links>h2{margin:0 0 10px!important;color:#2c3e50}
+.pdpb-article-contextual-links>p{margin:0 0 16px}
+.pdpb-article-contextual-links>h3{margin:20px 0 10px!important;font-size:1.05rem;color:#2c3e50}
+.pdpb-article-protocol-list,.pdpb-article-guide-list{display:flex;flex-wrap:wrap;gap:8px;margin:0!important;padding:0!important;list-style:none!important}
+.pdpb-article-protocol-list li,.pdpb-article-guide-list li{margin:0!important;padding:0!important}
+.pdpb-article-protocol-list a,.pdpb-article-guide-list a{display:inline-flex;align-items:center;min-height:38px;padding:8px 13px;border:1px solid #c7dfef;border-radius:8px;background:#fff;color:#1f78b4;font-weight:700;line-height:1.25;text-decoration:none!important}
+.pdpb-article-protocol-list a:hover,.pdpb-article-protocol-list a:focus-visible,.pdpb-article-guide-list a:hover,.pdpb-article-guide-list a:focus-visible{background:#eaf6fd;border-color:#3498db;color:#175f91}
+
+@media(max-width:640px){
+	.pdpb-protocol-v2 .pdpb-variant-switcher{align-items:center;flex-direction:column;gap:9px;margin:14px 0;padding:12px}
+	.pdpb-protocol-v2 .pdpb-variant-label{width:100%;text-align:center}
+	.pdpb-protocol-v2 .pdpb-variant-pills{justify-content:center;width:100%;gap:7px}
+	.pdpb-protocol-v2 .pdpb-variant-pill{min-height:40px;padding:8px 13px}
+	.pdpb-protocol-v2 .dch-head{padding:18px 16px}
+	.pdpb-protocol-v2 .dch-top{flex-direction:column;gap:14px}
+	.pdpb-protocol-v2 .dch-img{display:flex;justify-content:center;width:100%;flex:0 0 auto!important}
+	.pdpb-protocol-v2 .dch-img .intro-image{float:none!important;margin:0 auto 10px!important}
+	.pdpb-protocol-v2 .table-responsive{margin-left:-10px;margin-right:-10px;padding:0 10px}
+	.pdpb-legacy-variant-content .dch-img{display:flex!important;justify-content:center!important;width:100%!important;flex:0 0 auto!important}
+	.pdpb-legacy-variant-content .dch-img .intro-image{float:none!important;margin:0 auto 10px!important}
+	.pdpb-article-contextual-links{margin:28px 0;padding:20px 16px}
+	.pdpb-article-protocol-list,.pdpb-article-guide-list{display:grid;grid-template-columns:1fr}
+	.pdpb-article-protocol-list a,.pdpb-article-guide-list a{width:100%;justify-content:flex-start}
+}
