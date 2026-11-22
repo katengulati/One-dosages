@@ -1,9 +1,29 @@
 {
-  "http_200_pages": 276,
-  "page_titles_exact": 276,
-  "main_copy_exceptions": [
-    "/login/",
-    "/register/"
+  "baseline": {
+    "commit": "e9554688dc24b904259c3a76d88d712841e05af2",
+    "tag": "peptidedosages-baseline-2026-11-21",
+    "port": 4321,
+    "launch_agent": "com.oneaminos.peptidedosages-baseline",
+    "production_home_status": 200,
+    "bundle_verified": true
+  },
+  "redesign": {
+    "port": 4322,
+    "production_build": "passed",
+    "typecheck": "passed",
+    "source_page_files_unchanged": true,
+    "original_routes": 276,
+    "localized_routes": 516,
+    "themed_routes_http_200": 792,
+    "theme_assets_http_200": 5
+  },
+  "browser_checks": [
+    "Desktop homepage and quick search",
+    "390px mobile nav and seven representative inner routes",
+    "Master chart filters 7 of 141 after search",
+    "Calculator updates results from user input",
+    "Explorer loads 141 protocols and 686 topics",
+    "Simulator loads vial presets"
   ],
-  "missing_internal_refs": []
+  "published": false
 }

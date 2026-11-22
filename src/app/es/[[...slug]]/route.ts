@@ -1,5 +1,7 @@
 import { allPaths, findPage, renderPage } from "@/lib/site";
 
+import { applyOneAminosDesign } from "@/lib/one-aminos-design";
+
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
@@ -14,7 +16,7 @@ export async function GET(_request: Request, context: { params: Promise<{ slug?:
   const canonicalPath = [locale, ...slug].join("/");
   const key = findPage(locale, `/${canonicalPath}/`);
   if (!key) return new Response("Not found", { status: 404 });
-  return new Response(renderPage(locale, key), {
+  return new Response(applyOneAminosDesign(renderPage(locale, key)), {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
 }

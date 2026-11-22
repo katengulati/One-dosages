@@ -1,8 +1,8 @@
 /* Existing footer content, form and accordion behavior remain owned by the theme. */
 @property --pdfooter-trace{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes pdfooter-border-trace{to{--pdfooter-trace:360deg}}
-body.pdfooter-studio .site-footer{--footer-text:#eef7fc;--footer-hover:#9bd9fa;--footer-accent:#ff897e;--footer-border:#42637a;background:radial-gradient(ellipse at 92% 0%,#23577770,transparent 54%),linear-gradient(115deg,#102e47,#143d58);color:#eef7fc;isolation:isolate;overflow:hidden;margin-top:0;border-top:1px solid #739eb56b}
-body.pdfooter-studio .site-footer:before{content:'';position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,#f15b5077, #f15b50 16%,#75c9ed 48%,#75c9ed00 92%);pointer-events:none}
+body.pdfooter-studio .site-footer{--footer-text:#f5f5f5;--footer-hover:#cecece;--footer-accent:#a1a1a1;--footer-border:#5e5e5e;background:radial-gradient(ellipse at 92% 0%,#4e4e4e70,transparent 54%),linear-gradient(115deg,#292929,#363636);color:#f5f5f5;isolation:isolate;overflow:hidden;margin-top:0;border-top:1px solid #9797976b}
+body.pdfooter-studio .site-footer:before{content:'';position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,#7a7a7a77, #7a7a7a 16%,#bababa 48%,#bababa00 92%);pointer-events:none}
 body.pdfooter-studio .site-footer:after{content:'';position:absolute;right:0;top:0;width:min(65%,760px);height:400px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-footer/assets/molecular-header-branch-v1.webp") right top/cover no-repeat;mix-blend-mode:screen;opacity:.08;mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%);pointer-events:none;z-index:-1}
 body.pdfooter-studio .site-footer .footer-wave{display:none}
 body.pdfooter-studio .site-footer .footer-main{padding:54px 0 30px}
@@ -16,43 +16,43 @@ body.pdfooter-studio .site-footer .footer-logo>span{font-family:Poppins,sans-ser
 body.pdfooter-studio .site-footer .footer-logo>span>span{display:block;font:inherit;line-height:inherit}
 body.pdfooter-studio .site-footer .footer-logo .peptide{color:#fff;letter-spacing:.2em;margin-right:-.2em}
 body.pdfooter-studio .site-footer .footer-logo .dosages{color:#fff;letter-spacing:.06em;margin-right:-.06em}
-body.pdfooter-studio .site-footer .footer-about p{color:#bfd2df;font-size:14px;line-height:1.85;margin:0;max-width:38ch}
+body.pdfooter-studio .site-footer .footer-about p{color:#cfcfcf;font-size:14px;line-height:1.85;margin:0;max-width:38ch}
 body.pdfooter-studio .site-footer .footer-column h3{font-family:Poppins,sans-serif;color:#f4faff;font-size:16px;font-weight:600;line-height:1.5;letter-spacing:.005em;margin:0 0 14px;padding:0}
 body.pdfooter-studio .site-footer .footer-column h3:after{display:none}
 body.pdfooter-studio .site-footer .footer-accordion-trigger{padding:0;box-shadow:none;transform:none;font:inherit;line-height:inherit;color:inherit;border-radius:0;min-height:24px}
 body.pdfooter-studio .site-footer .footer-accordion-trigger:disabled{cursor:default;opacity:1}
 body.pdfooter-studio .site-footer .footer-links{margin:0;padding:0;list-style:none}
 body.pdfooter-studio .site-footer .footer-links li{margin:0 0 4px;padding:0}
-body.pdfooter-studio .site-footer .footer-links a{display:inline-flex;align-items:center;min-height:32px;max-width:100%;padding:3px 0;color:#bfd2df;font-size:14px;line-height:1.6;gap:0;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1px;transition:color .18s ease;transform:none}
+body.pdfooter-studio .site-footer .footer-links a{display:inline-flex;align-items:center;min-height:32px;max-width:100%;padding:3px 0;color:#cfcfcf;font-size:14px;line-height:1.6;gap:0;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1px;transition:color .18s ease;transform:none}
 body.pdfooter-studio .site-footer .footer-links a:before{display:none}
-body.pdfooter-studio .site-footer .footer-links a:hover{color:#fff;text-decoration:underline;text-decoration-color:#83caef;transform:none}
-body.pdfooter-studio .site-footer .footer-newsletter{position:relative;isolation:isolate;padding:22px;border:1px solid #7398af5e;border-radius:16px;background:linear-gradient(140deg,#ffffff0c,#54b2dc0a);box-shadow:0 8px 24px #071b2b1c;min-width:0}
-body.pdfooter-studio .site-footer .footer-newsletter:before{content:'';position:absolute;inset:-1px;padding:1px;border-radius:inherit;background:conic-gradient(from var(--pdfooter-trace),transparent 0deg 200deg,#70c5ed70 238deg,#d9f5ff 265deg,#f7837777 284deg,transparent 310deg);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .2s}
+body.pdfooter-studio .site-footer .footer-links a:hover{color:#fff;text-decoration:underline;text-decoration-color:#bebebe;transform:none}
+body.pdfooter-studio .site-footer .footer-newsletter{position:relative;isolation:isolate;padding:22px;border:1px solid #9292925e;border-radius:16px;background:linear-gradient(140deg,#ffffff0c,#a1a1a10a);box-shadow:0 8px 24px #1818181c;min-width:0}
+body.pdfooter-studio .site-footer .footer-newsletter:before{content:'';position:absolute;inset:-1px;padding:1px;border-radius:inherit;background:conic-gradient(from var(--pdfooter-trace),transparent 0deg 200deg,#b6b6b670 238deg,#f0f0f0 265deg,#9b9b9b77 284deg,transparent 310deg);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .2s}
 body.pdfooter-studio .site-footer .footer-newsletter h3{margin-bottom:9px}
-body.pdfooter-studio .site-footer .footer-newsletter>p{color:#c5d9e6!important;font-size:14px;line-height:1.75;margin:0 0 16px!important}
-body.pdfooter-studio .site-footer .footer-newsletter>p[role="status"]{color:#a4ebc5!important}
+body.pdfooter-studio .site-footer .footer-newsletter>p{color:#d6d6d6!important;font-size:14px;line-height:1.75;margin:0 0 16px!important}
+body.pdfooter-studio .site-footer .footer-newsletter>p[role="status"]{color:#d9d9d9!important}
 body.pdfooter-studio .site-footer .newsletter-form{display:flex;flex-direction:column;gap:10px;margin:0;min-width:0}
-body.pdfooter-studio .site-footer .newsletter-form input[type="email"]{width:100%;min-width:0;min-height:46px;margin:0;padding:11px 13px;border:1px solid #6f94aa88;border-radius:9px;background:#0b263c8c;color:#f4faff;caret-color:#98d9fc;font-family:inherit;font-size:16px;line-height:1.4;box-shadow:none;transition:background .18s,border-color .18s}
-body.pdfooter-studio .site-footer .newsletter-form input[type="email"]::placeholder{color:#b7cddd;opacity:1}
-body.pdfooter-studio .site-footer .newsletter-form input[type="email"]:focus{border-color:#9dd7f7;background:#0d2b43;box-shadow:none;outline:2px solid #9dd7f7;outline-offset:2px}
-body.pdfooter-studio .site-footer .newsletter-form button{width:100%;min-height:46px;margin:0;padding:11px 16px;border:1px solid #f06a5c;border-radius:9px;background:linear-gradient(135deg,#d33e32,#c9362c);color:#fff;font-family:inherit;font-size:14px;line-height:1.4;font-weight:700;box-shadow:0 4px 12px #0002;transform:none;transition:background .18s,border-color .18s,box-shadow .18s}
-body.pdfooter-studio .site-footer .newsletter-form button:hover{background:linear-gradient(135deg,#cf392e,#bc2f26);border-color:#ffab9f;box-shadow:0 4px 16px #ee5b4426;transform:none}
-body.pdfooter-studio .site-footer .footer-disclaimer{position:relative;padding:19px 22px;margin-top:28px;border:1px solid #718fa13d;border-left:3px solid #f583777a;border-radius:10px;background:#071f332b;text-align:left}
-body.pdfooter-studio .site-footer .footer-disclaimer p{max-width:none;margin:0;color:#c3d5e1;font-size:13px;line-height:1.8}
-body.pdfooter-studio .site-footer .footer-disclaimer strong{color:#ffd0c9;font-weight:700}
-body.pdfooter-studio .site-footer .footer-bottom{padding:18px 0 22px;border-top:1px solid #7193aa35;background:#08233633}
+body.pdfooter-studio .site-footer .newsletter-form input[type="email"]{width:100%;min-width:0;min-height:46px;margin:0;padding:11px 13px;border:1px solid #8e8e8e88;border-radius:9px;background:#2222228c;color:#f4faff;caret-color:#cecece;font-family:inherit;font-size:16px;line-height:1.4;box-shadow:none;transition:background .18s,border-color .18s}
+body.pdfooter-studio .site-footer .newsletter-form input[type="email"]::placeholder{color:#c9c9c9;opacity:1}
+body.pdfooter-studio .site-footer .newsletter-form input[type="email"]:focus{border-color:#cdcdcd;background:#262626;box-shadow:none;outline:2px solid #cdcdcd;outline-offset:2px}
+body.pdfooter-studio .site-footer .newsletter-form button{width:100%;min-height:46px;margin:0;padding:11px 16px;border:1px solid #858585;border-radius:9px;background:linear-gradient(135deg,#5d5d5d,#555555);color:#fff;font-family:inherit;font-size:14px;line-height:1.4;font-weight:700;box-shadow:0 4px 12px #0002;transform:none;transition:background .18s,border-color .18s,box-shadow .18s}
+body.pdfooter-studio .site-footer .newsletter-form button:hover{background:linear-gradient(135deg,#585858,#4c4c4c);border-color:#bcbcbc;box-shadow:0 4px 16px #79797926;transform:none}
+body.pdfooter-studio .site-footer .footer-disclaimer{position:relative;padding:19px 22px;margin-top:28px;border:1px solid #8a8a8a3d;border-left:3px solid #9a9a9a7a;border-radius:10px;background:#1b1b1b2b;text-align:left}
+body.pdfooter-studio .site-footer .footer-disclaimer p{max-width:none;margin:0;color:#d2d2d2;font-size:13px;line-height:1.8}
+body.pdfooter-studio .site-footer .footer-disclaimer strong{color:#d9d9d9;font-weight:700}
+body.pdfooter-studio .site-footer .footer-bottom{padding:18px 0 22px;border-top:1px solid #8d8d8d35;background:#1f1f1f33}
 body.pdfooter-studio .site-footer .footer-bottom-content{gap:12px 24px}
-body.pdfooter-studio .site-footer .footer-copyright{font-size:12px;line-height:1.6;color:#acc5d6}
+body.pdfooter-studio .site-footer .footer-copyright{font-size:12px;line-height:1.6;color:#c1c1c1}
 body.pdfooter-studio .site-footer .footer-legal-links{gap:8px 22px;flex-wrap:wrap}
-body.pdfooter-studio .site-footer .footer-legal-links a{display:inline-flex;align-items:center;min-height:32px;color:#acc5d6;font-size:12px;line-height:1.5;text-underline-offset:4px}
+body.pdfooter-studio .site-footer .footer-legal-links a{display:inline-flex;align-items:center;min-height:32px;color:#c1c1c1;font-size:12px;line-height:1.5;text-underline-offset:4px}
 body.pdfooter-studio .site-footer .footer-legal-links a:hover{color:#fff;text-decoration:underline}
-body.pdfooter-studio .site-footer :is(a,button):focus-visible{outline:2px solid #a4defd!important;outline-offset:4px!important}
-body.pdfooter-studio .site-footer .newsletter-form input[type="email"]:focus-visible{outline:2px solid #9dd7f7!important;outline-offset:2px!important}
+body.pdfooter-studio .site-footer :is(a,button):focus-visible{outline:2px solid #d4d4d4!important;outline-offset:4px!important}
+body.pdfooter-studio .site-footer .newsletter-form input[type="email"]:focus-visible{outline:2px solid #cdcdcd!important;outline-offset:2px!important}
 @media(hover:hover) and (pointer:fine){body.pdfooter-studio .site-footer .footer-newsletter:hover:before{opacity:1;animation:pdfooter-border-trace 5s linear infinite}}
 body.pdfooter-studio .site-footer .footer-newsletter:focus-within:before{opacity:.65}
 @media(max-width:1100px){
  body.pdfooter-studio .site-footer .footer-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 36px}
- body.pdfooter-studio .site-footer .footer-about{grid-column:1/-1;display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;align-items:start;padding-bottom:24px;border-bottom:1px solid #7193aa35}
+ body.pdfooter-studio .site-footer .footer-about{grid-column:1/-1;display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;align-items:start;padding-bottom:24px;border-bottom:1px solid #8d8d8d35}
  body.pdfooter-studio .site-footer .footer-logo{margin:0}
  body.pdfooter-studio .site-footer .footer-about p{max-width:65ch}
  body.pdfooter-studio .site-footer .footer-newsletter-col{grid-column:1/-1}
@@ -71,17 +71,17 @@ body.pdfooter-studio .site-footer .footer-newsletter:focus-within:before{opacity
  body.pdfooter-studio .site-footer .footer-about{display:block;grid-column:auto;padding:0 0 18px;margin-bottom:8px;border:0}
  body.pdfooter-studio .site-footer .footer-logo{margin:0 0 17px}
  body.pdfooter-studio .site-footer .footer-about p{max-width:60ch;font-size:14px;line-height:1.8}
- body.pdfooter-studio .site-footer .footer-accordion{border:1px solid #7597ad4d;border-radius:11px;background:#ffffff04;overflow:visible}
+ body.pdfooter-studio .site-footer .footer-accordion{border:1px solid #9191914d;border-radius:11px;background:#ffffff04;overflow:visible}
  body.pdfooter-studio .site-footer .footer-column .footer-accordion-heading{padding:0;margin:0}
  body.pdfooter-studio .site-footer .footer-accordion-trigger{min-height:54px;padding:0 16px;font-size:15px;font-weight:600;border-radius:10px;background:transparent;cursor:pointer}
- body.pdfooter-studio .site-footer .footer-accordion-trigger[aria-expanded="true"]{background:#84c8ec0b}
- body.pdfooter-studio .site-footer .footer-accordion-icon{width:8px;height:8px;border-color:#a1cae1;margin:0 3px 4px 10px}
+ body.pdfooter-studio .site-footer .footer-accordion-trigger[aria-expanded="true"]{background:#bcbcbc0b}
+ body.pdfooter-studio .site-footer .footer-accordion-icon{width:8px;height:8px;border-color:#c3c3c3;margin:0 3px 4px 10px}
  body.pdfooter-studio .site-footer .footer-accordion-trigger[aria-expanded="true"] .footer-accordion-icon{margin-bottom:-3px}
  body.pdfooter-studio .site-footer .footer-accordion-panel{padding:2px 10px 10px}
  body.pdfooter-studio .site-footer .footer-accordion-panel[hidden]{display:none}
  body.pdfooter-studio .site-footer .footer-links li{margin:0}
  body.pdfooter-studio .site-footer .footer-links a{display:flex;width:100%;min-height:44px;padding:9px 8px;border-radius:5px;font-size:14px;line-height:1.65}
- body.pdfooter-studio .site-footer .footer-links a:hover{background:#7cbede0a}
+ body.pdfooter-studio .site-footer .footer-links a:hover{background:#b2b2b20a}
  body.pdfooter-studio .site-footer .footer-newsletter-col{grid-column:auto;margin-top:14px}
  body.pdfooter-studio .site-footer .footer-newsletter{display:block;padding:20px;border-radius:14px}
  body.pdfooter-studio .site-footer .footer-newsletter h3{font-size:17px}

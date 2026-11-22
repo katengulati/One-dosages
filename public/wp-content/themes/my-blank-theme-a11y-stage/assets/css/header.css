@@ -1,14 +1,14 @@
 :root {
-  --primary-color: #3498db;
-  --primary-action: #3498db;
-  --secondary-color: #2c3e50;
-  --accent-color: #e74c3c;
-  --accent-action: #e74c3c;
+  --primary-color: #888888;
+  --primary-action: #888888;
+  --secondary-color: #3b3b3b;
+  --accent-color: #6c6c6c;
+  --accent-action: #6c6c6c;
   --text-color: #333333;
-  --text-muted: #64748b;
+  --text-muted: #727272;
   --bg-color: #f9f9f9;
   --card-bg: #ffffff;
-  --border-color: #e2e8f0;
+  --border-color: #e7e7e7;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-header-scrolled: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
   --shadow-dropdown: 0 20px 50px -12px rgba(0, 0, 0, 0.12), 0 8px 20px -8px rgba(0, 0, 0, 0.06);
@@ -94,7 +94,7 @@ button:focus-visible {
   z-index: 1100;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), #f39c12, var(--primary-color));
+  background: linear-gradient(90deg, var(--accent-color), #a5a5a5, var(--primary-color));
   background-size: 200% 100%;
   animation: progress-shimmer 3s linear infinite;
   transition: width 100ms linear;
@@ -111,7 +111,7 @@ button:focus-visible {
   z-index: 999;
   width: 100%;
   height: var(--header-height);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  border-bottom: 1px solid rgba(231, 231, 231, 0.5);
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -241,7 +241,7 @@ button:focus-visible {
 
 .main-nav-list > .nav-item > a:not(.btn):hover,
 .main-nav-list > .nav-item > a:not(.btn):focus-visible {
-  background: rgba(52, 152, 219, 0.06);
+  background: rgba(136, 136, 136, 0.06);
   color: var(--primary-action);
 }
 
@@ -325,7 +325,7 @@ button:focus-visible {
 
 .nav-caret:hover,
 .nav-caret:focus-visible {
-  background: rgba(52, 152, 219, 0.06);
+  background: rgba(136, 136, 136, 0.06);
   color: var(--primary-action);
 }
 
@@ -435,7 +435,7 @@ button:focus-visible {
 .peptide-family-toggle:hover,
 .peptide-family-toggle:focus-visible,
 .peptide-family-toggle.family-open {
-  background: rgba(52, 152, 219, 0.06);
+  background: rgba(136, 136, 136, 0.06);
   color: var(--primary-action);
 }
 
@@ -472,7 +472,7 @@ button:focus-visible {
 .peptide-variant-list {
   margin: 3px 6px 5px 14px;
   padding: 3px 0 3px 8px;
-  border-left: 2px solid rgba(52, 152, 219, 0.24);
+  border-left: 2px solid rgba(136, 136, 136, 0.24);
   list-style: none;
   animation: submenu-reveal var(--transition-base) both;
 }
@@ -498,7 +498,7 @@ button:focus-visible {
 .peptide-variant-list > li > a:hover,
 .peptide-variant-list > li > a:focus-visible {
   padding-left: 12px;
-  background: rgba(52, 152, 219, 0.06);
+  background: rgba(136, 136, 136, 0.06);
   color: var(--primary-action);
 }
 
@@ -533,7 +533,7 @@ button:focus-visible {
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus-visible {
   padding-left: 16px;
-  background: rgba(52, 152, 219, 0.06);
+  background: rgba(136, 136, 136, 0.06);
   color: var(--primary-action);
 }
 
@@ -621,7 +621,7 @@ button:focus-visible {
 
 .mega-menu-view-all:hover,
 .mega-menu-view-all:focus-visible {
-  background: rgba(52, 152, 219, 0.08);
+  background: rgba(136, 136, 136, 0.08);
   color: var(--primary-action);
 }
 
@@ -652,7 +652,7 @@ button:focus-visible {
 
 .mega-post-card:hover,
 .mega-post-card:focus-visible {
-  background: rgba(52, 152, 219, 0.04);
+  background: rgba(136, 136, 136, 0.04);
 }
 
 .mega-post-thumb {
@@ -662,7 +662,7 @@ button:focus-visible {
   overflow: hidden;
   border-radius: var(--radius-sm);
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  background: linear-gradient(135deg, #f1f5f9, #e7e7e7);
 }
 
 .mega-post-thumb img {
@@ -745,7 +745,7 @@ button:focus-visible {
   border: 0 !important;
   border-radius: var(--radius-full) !important;
   background: var(--accent-action) !important;
-  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.25), 0 1px 2px rgba(231, 76, 60, 0.15);
+  box-shadow: 0 2px 8px rgba(108, 108, 108, 0.25), 0 1px 2px rgba(108, 108, 108, 0.15);
   color: #fff !important;
   font-size: 0.86rem !important;
   font-weight: 600 !important;
@@ -757,14 +757,14 @@ button:focus-visible {
 
 .btn:hover,
 .btn:focus-visible {
-  background: #c0392b !important;
-  box-shadow: 0 6px 16px rgba(231, 76, 60, 0.3), 0 2px 4px rgba(231, 76, 60, 0.1) !important;
+  background: #555555 !important;
+  box-shadow: 0 6px 16px rgba(108, 108, 108, 0.3), 0 2px 4px rgba(108, 108, 108, 0.1) !important;
   transform: translateY(-1px);
 }
 
 .btn:active {
   transform: translateY(0);
-  box-shadow: 0 1px 4px rgba(231, 76, 60, 0.2) !important;
+  box-shadow: 0 1px 4px rgba(108, 108, 108, 0.2) !important;
 }
 
 .btn i {
@@ -823,7 +823,7 @@ button:focus-visible {
   inset: 0;
   z-index: 10000;
   display: none;
-  background: rgba(15, 23, 42, 0.25);
+  background: rgba(23, 23, 23, 0.25);
   opacity: 0;
   pointer-events: none;
   backdrop-filter: blur(4px);
@@ -923,7 +923,7 @@ button:focus-visible {
 .mobile-nav-search-field:focus-within {
   border-color: var(--primary-color);
   background: var(--card-bg);
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.13);
+  box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.13);
 }
 
 .mobile-nav-search-field > .fa-search {
@@ -1027,7 +1027,7 @@ button:focus-visible {
 .mobile-nav-list > li > a:focus-visible,
 .mobile-nav-row > a:hover,
 .mobile-nav-row > a:focus-visible {
-  background: rgba(52, 152, 219, 0.05);
+  background: rgba(136, 136, 136, 0.05);
   color: var(--primary-action);
 }
 
@@ -1049,7 +1049,7 @@ button:focus-visible {
 
 .mobile-caret:hover,
 .mobile-caret:focus-visible {
-  background: rgba(52, 152, 219, 0.05);
+  background: rgba(136, 136, 136, 0.05);
   color: var(--primary-action);
 }
 
@@ -1080,7 +1080,7 @@ button:focus-visible {
 
 .mobile-submenu > li > a:hover,
 .mobile-submenu > li > a:focus-visible {
-  background: rgba(52, 152, 219, 0.05);
+  background: rgba(136, 136, 136, 0.05);
   color: var(--primary-action);
 }
 
@@ -1165,19 +1165,19 @@ button:focus-visible {
 .header-auth-link:hover,
 .header-auth-link:focus-visible {
   border-color: var(--accent-action);
-  background: rgba(231, 76, 60, 0.05);
+  background: rgba(108, 108, 108, 0.05);
   color: var(--accent-action);
   transform: translateY(-1px);
 }
 
 .header-auth-link.logged-in {
-  border-color: #27ae60;
-  color: #27ae60;
+  border-color: #8c8c8c;
+  color: #8c8c8c;
 }
 
 .header-auth-link.logged-in:hover,
 .header-auth-link.logged-in:focus-visible {
-  background: rgba(39, 174, 96, 0.05);
+  background: rgba(140, 140, 140, 0.05);
 }
 
 .site-breadcrumbs {

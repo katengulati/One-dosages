@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { renderSearch } from '@/lib/search';
+import { applyOneAminosDesign } from '@/lib/one-aminos-design';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -25,7 +26,7 @@ const policy = [
 ].join('; ');
 
 function page(body: string) {
-  return new Response(body, {
+  return new Response(applyOneAminosDesign(body), {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
       'Content-Security-Policy': policy,

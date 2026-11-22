@@ -31,9 +31,9 @@ body.pd-prep-runtime:has(#ov-menu[hidden]) #app {
 body.pd-prep-runtime #ov-menu {
   padding: clamp(18px, 3.5vw, 38px);
   background:
-    radial-gradient(circle at 92% 14%, rgba(17, 140, 196, .16), transparent 32%),
-    radial-gradient(circle at 6% 88%, rgba(240, 75, 67, .1), transparent 28%),
-    rgba(239, 248, 253, .82);
+    radial-gradient(circle at 92% 14%, rgba(118, 118, 118, 0.16), transparent 32%),
+    radial-gradient(circle at 6% 88%, rgba(110, 110, 110, 0.1), transparent 28%),
+    rgba(246, 246, 246, 0.82);
 }
 
 body.pd-prep-runtime #ov-menu .card {
@@ -60,7 +60,7 @@ body.pd-prep-runtime #ov-menu .title {
   grid-row: 1;
   max-width: 9ch;
   margin: 0 0 16px;
-  color: #123e59;
+  color: #373737;
   font-size: clamp(42px, 5vw, 58px);
   font-weight: 800;
   font-stretch: normal;
@@ -165,14 +165,14 @@ body.pd-prep-mode-protocol #ov-menu .vlocked {
 }
 
 body.pd-prep-mode-protocol #ov-menu .vlocked-name {
-  color: #123e59;
+  color: #373737;
   font-size: 18px;
   font-weight: 800;
   line-height: 1.25;
 }
 
 body.pd-prep-mode-protocol #ov-menu .vlocked em {
-  color: #527086;
+  color: #6b6b6b;
   font-size: 11px;
   font-style: normal;
   font-weight: 700;
@@ -192,8 +192,8 @@ body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn {
   border: 0;
   border-radius: 14px;
   color: #fff;
-  background: linear-gradient(135deg, #f45149 0%, #e8433c 100%);
-  box-shadow: 0 14px 30px -18px rgba(217, 59, 53, .9);
+  background: linear-gradient(135deg, #737373 0%, #666666 100%);
+  box-shadow: 0 14px 30px -18px rgba(92, 92, 92, 0.9);
 }
 
 body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn b {
@@ -212,8 +212,8 @@ body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn:hover,
 body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn:focus-visible {
   border-color: transparent;
   color: #fff;
-  background: linear-gradient(135deg, #e8433c 0%, #d93b35 100%);
-  box-shadow: 0 17px 34px -18px rgba(217, 59, 53, .95);
+  background: linear-gradient(135deg, #666666 0%, #5c5c5c 100%);
+  box-shadow: 0 17px 34px -18px rgba(92, 92, 92, 0.95);
 }
 
 @media (min-width: 761px) {
@@ -223,22 +223,22 @@ body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn:focus-visible {
 body.pd-prep-runtime .vbtn {
   min-height: 60px;
   padding: 11px 13px;
-  border: 1px solid #b9daeb;
-  box-shadow: 0 7px 18px -15px rgba(18, 62, 89, .55);
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 7px 18px -15px rgba(55, 55, 55, 0.55);
 }
 
 body.pd-prep-runtime .vbtn:hover,
 body.pd-prep-runtime .vbtn:focus-visible {
-  border-color: #118cc4;
+  border-color: #767676;
   background: #f7fcff;
-  box-shadow: 0 10px 22px -16px rgba(17, 140, 196, .72);
+  box-shadow: 0 10px 22px -16px rgba(118, 118, 118, 0.72);
   outline: 0;
 }
 
 body.pd-prep-runtime #btn-sound[aria-pressed="true"] {
-  color: #d93b35;
-  background: #fff3f2;
-  box-shadow: inset 0 0 0 1px rgba(240, 75, 67, .35);
+  color: #5c5c5c;
+  background: #f5f5f5;
+  box-shadow: inset 0 0 0 1px rgba(110, 110, 110, 0.35);
 }
 
 @media (min-width: 761px) {
@@ -250,11 +250,11 @@ body.pd-prep-runtime #btn-sound[aria-pressed="true"] {
   body.pd-prep-runtime .sheet-panel {
     width: min(92%, 720px);
     max-height: min(82%, 720px);
-    border-bottom: 1px solid #c8e0ed;
+    border-bottom: 1px solid #dcdcdc;
     border-radius: 22px;
     padding: 24px;
     animation: pd-prep-modal .22s cubic-bezier(.2, .8, .2, 1);
-    box-shadow: 0 28px 70px -32px rgba(18, 62, 89, .85);
+    box-shadow: 0 28px 70px -32px rgba(55, 55, 55, 0.85);
   }
 }
 
@@ -374,9 +374,9 @@ body.pd-prep-mode-home #ov-menu.is-quick-launch {
   overflow: hidden;
   padding: clamp(20px, 5vw, 48px);
   background:
-    radial-gradient(circle at 88% 14%, rgba(17, 140, 196, .22), transparent 34%),
-    radial-gradient(circle at 8% 88%, rgba(240, 75, 67, .14), transparent 30%),
-    rgba(18, 62, 89, .42);
+    radial-gradient(circle at 88% 14%, rgba(118, 118, 118, 0.22), transparent 34%),
+    radial-gradient(circle at 8% 88%, rgba(110, 110, 110, 0.14), transparent 30%),
+    rgba(55, 55, 55, 0.42);
   -webkit-backdrop-filter: blur(7px) saturate(.86);
   backdrop-filter: blur(7px) saturate(.86);
 }
@@ -401,7 +401,7 @@ body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start {
   border: 1px solid rgba(255, 255, 255, .42);
   border-radius: 18px;
   text-align: center;
-  box-shadow: 0 20px 40px -18px rgba(56, 17, 15, .9), 0 0 0 6px rgba(255, 255, 255, .12);
+  box-shadow: 0 20px 40px -18px rgba(25, 25, 25, 0.9), 0 0 0 6px rgba(255, 255, 255, .12);
 }
 
 body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start svg {

@@ -1,0 +1,26 @@
+:root {
+  color-scheme: light;
+  --oa-embed-ink: #0a0a0a;
+  --oa-embed-paper: #fff;
+  --oa-embed-soft: #f2f2f4;
+  --oa-embed-line: #dddde1;
+}
+body, button, input, select, textarea, h1, h2, h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+body { background: var(--oa-embed-paper) !important; }
+h1, h2, h3 { color: var(--oa-embed-ink); letter-spacing: -.035em; }
+:is(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--oa-embed-ink);
+  outline-offset: 3px;
+}
+:is(.top, .topbar, .search-wrap, .browse-card, .details) {
+  border-color: var(--oa-embed-line) !important;
+  box-shadow: none !important;
+}
+.pd-prep-runtime .card {
+  background: var(--oa-embed-paper) !important;
+  border-color: var(--oa-embed-line) !important;
+  box-shadow: none !important;
+}
+.pd-prep-runtime :is(.eyebrow, .lede, .title) { color: var(--oa-embed-ink) !important; }

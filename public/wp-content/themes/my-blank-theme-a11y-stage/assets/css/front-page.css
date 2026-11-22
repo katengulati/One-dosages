@@ -1,8 +1,8 @@
 /* Homepage Variables */
   :root {
-    --home-primary: #3498db;
-    --home-secondary: #2c3e50;
-    --home-accent: #e74c3c;
+    --home-primary: #888888;
+    --home-secondary: #3b3b3b;
+    --home-accent: #6c6c6c;
     --home-gradient-start: #edf6f9;
     --home-gradient-end: #fdfcfa;
     --home-card-bg: #ffffff;
@@ -20,7 +20,7 @@
 
   /* MOBILE-FIRST HERO SECTION */
   .hero-section {
-    background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+    background: linear-gradient(135deg, #2c2c2c 0%, #acacac 100%);
     padding: 80px 15px 75px; /* Extra bottom padding for dots */
     position: relative;
     overflow-x: hidden; /* Only clip horizontal, not vertical */
@@ -105,9 +105,9 @@
   }
 
   .hero-buttons a.primary-cta {
-    background: linear-gradient(135deg, var(--home-accent), #c0392b);
+    background: linear-gradient(135deg, var(--home-accent), #555555);
     color: #ffffff;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    box-shadow: 0 4px 15px rgba(108, 108, 108, 0.3);
   }
 
   .hero-buttons a.secondary-cta {
@@ -224,7 +224,7 @@
     transform: translateX(-50%);
     border: 1px solid rgba(255,255,255,0.55);
     border-radius: 999px;
-    background: rgba(23,43,58,0.92);
+    background: rgba(40, 40, 40, 0.92);
     color: #fff;
     font: inherit;
     font-size: 0.78rem;
@@ -235,7 +235,7 @@
 
   .slide-toggle:hover,
   .slide-toggle:focus-visible {
-    background: rgba(23,43,58,1);
+    background: rgba(40, 40, 40, 1);
     border-color: rgba(255,255,255,0.85);
   }
 
@@ -254,7 +254,7 @@
     padding: 25px 20px; /* Less padding on mobile */
     margin-bottom: 25px;
     box-shadow: var(--home-shadow-md);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #e7e7e7;
     position: relative;
     overflow: hidden;
     animation: fadeInUp 0.8s ease both;
@@ -294,7 +294,7 @@
 
   .section-block > p {
     font-size: 1rem; /* Smaller on mobile */
-    color: #4a5568;
+    color: #545454;
     margin-bottom: 20px;
     line-height: 1.6;
   }
@@ -313,7 +313,7 @@
     padding: 20px;
     box-shadow: var(--home-shadow-sm);
     transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #e7e7e7;
     position: relative;
     overflow: hidden;
   }
@@ -339,7 +339,7 @@
   .home-card p {
     font-size: 0.95rem;
     line-height: 1.5;
-    color: #4a5568;
+    color: #545454;
     margin-bottom: 15px;
   }
 
@@ -372,8 +372,8 @@
     align-items: center;
     padding: 7px 14px;
     border-radius: 20px;
-    background: rgba(231, 76, 60, 0.08);
-    border: 1px solid rgba(231, 76, 60, 0.25);
+    background: rgba(108, 108, 108, 0.08);
+    border: 1px solid rgba(108, 108, 108, 0.25);
     color: var(--home-accent);
     font-weight: 600;
     font-size: 0.9rem;
@@ -412,7 +412,7 @@
     align-items: center;
     gap: 10px;
     font-size: 0.95rem;
-    color: #4a5568;
+    color: #545454;
   }
 
   .why-content li i {
@@ -474,7 +474,7 @@
     align-items: flex-start;
     gap: 8px;
     font-size: 0.9rem;
-    color: #4a5568;
+    color: #545454;
   }
 
   .calc-intro-section li i {
@@ -489,7 +489,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: var(--home-shadow-md);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #e7e7e7;
     width: 100%; /* Ensure full width */
     max-width: 100%; /* Prevent overflow */
   }
@@ -502,7 +502,7 @@
 
   #peptide-calculator p {
     font-size: 0.9rem;
-    color: #718096;
+    color: #7e7e7e;
     margin-bottom: 15px;
   }
 
@@ -519,7 +519,7 @@
   #peptide-calculator select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #e7e7e7;
     border-radius: 6px;
     font-size: 16px; /* Prevents zoom on iOS */
     transition: all 0.3s ease;
@@ -546,11 +546,11 @@
   #peptide-calculator select:focus {
     outline: none;
     border-color: var(--home-primary);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.1);
   }
 
   #peptide-calculator button {
-    background: linear-gradient(135deg, var(--home-accent), #c0392b);
+    background: linear-gradient(135deg, var(--home-accent), #555555);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -571,7 +571,7 @@
     padding: 15px;
     background: white;
     border-radius: 6px;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #e7e7e7;
     font-size: 0.95rem;
   }
 
@@ -604,7 +604,7 @@
     background: var(--home-primary);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 6px 20px rgba(136, 136, 136, 0.3);
   }
 
   .calc-full-cta i {
@@ -613,7 +613,7 @@
 
   /* Mobile-first CTA Section */
   .extra-cta-section {
-    background: linear-gradient(135deg, var(--home-primary), #5ba3e0);
+    background: linear-gradient(135deg, var(--home-primary), #989898);
     border-radius: 12px;
     padding: 35px 20px; /* Less padding on mobile */
     text-align: center;
@@ -742,7 +742,7 @@
       transform: translateX(-50%);
       border: 1px solid rgba(255,255,255,0.55);
       border-radius: 999px;
-      background: rgba(23,43,58,0.92);
+      background: rgba(40, 40, 40, 0.92);
       color: #fff;
       font: inherit;
       font-size: 0.78rem;
@@ -1015,7 +1015,7 @@
 /* CTA button hovers */
 .hero-buttons a.primary-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.45);
+  box-shadow: 0 8px 25px rgba(108, 108, 108, 0.45);
   filter: brightness(1.08);
 }
 
@@ -1026,7 +1026,7 @@
 
 /* Extra CTA section button hover */
 .extra-cta-section a:hover {
-  background: #f0f4ff;
+  background: #f4f4f4;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }

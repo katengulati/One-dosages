@@ -1,13 +1,13 @@
-# Peptide Dosages local replica
+# Peptide Dosages with the One Aminos design
 
-This worktree of `katengulati/One-dosages` serves the original public page paths, copy, layouts, and browser tools captured from peptidedosages.com on November 21, 2026. The existing bilingual site remains available under `/en/` and `/es/`.
+This worktree of `katengulati/One-dosages` uses the One Aminos design system for the public pages and browser tools captured from peptidedosages.com on November 21, 2026. The original page paths and editorial content are retained. The existing bilingual site remains available under `/en/` and `/es/`.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open http://localhost:4321/. To run the production build locally, use `npm run build` followed by `npm run start`. Both launch commands bind to loopback.
+Open http://localhost:4322/. To run the production build locally, use `npm run build` followed by `npm run start`. Both launch commands bind to loopback. Read `DESIGN.md` for the storefront measurements, tokens, page patterns, and file map. The archived baseline is tagged `peptidedosages-baseline-2026-11-21` and runs on http://localhost:4321/ as a macOS user LaunchAgent.
 
 | Where | What it contains |
 | --- | --- |
