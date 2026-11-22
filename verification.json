@@ -41,5 +41,24 @@
       "Rotating outline moves to selected vial size",
       "Guide link opens reconstitution video page"
     ]
+  },
+  "automatic_demo_revision": {
+    "build": "passed",
+    "typecheck": "passed",
+    "authoring_scope": "local redesign",
+    "breadcrumb_free_routes": 781,
+    "branded_article_covers": 6,
+    "article_links_verified_across_home_routes": 18,
+    "chart_guide_checks": 4,
+    "demo_stages": 9,
+    "demo_duration_seconds": 38.8,
+    "demo_pages_verified": 4,
+    "playback_checks": [
+      "Browser autoplay reached completion",
+      "Browser replay and pause",
+      "Reduced motion waits for Play",
+      "Offscreen playback pauses"
+    ],
+    "baseline_port_4321_http_status": 200
   }
 }

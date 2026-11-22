@@ -45,7 +45,7 @@ Use Helvetica Neue, Helvetica, Arial, sans-serif. Display headings use weight 70
 
 ## Shared shell
 
-The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
+The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. Breadcrumb bars are omitted throughout the library. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
 
 The footer uses a silver background with dark type and the same brand lockup. Existing newsletter, guide, source and policy links remain reachable. No retail prices, cart destinations or storefront offers belong in this library.
 
@@ -53,7 +53,7 @@ The footer uses a silver background with dark type and the same brand lockup. Ex
 
 ### Home
 
-Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes without baked-in text, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution video, chart guide, calculator, and FAQ follow the article grid.
+Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes made with One Aminos vial photography, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution demo, chart guide, calculator, and FAQ follow the article grid.
 
 ### Protocol directories and search
 
@@ -67,11 +67,11 @@ Center the protocol title, intro and share actions, followed by the original con
 
 Center the title and lead with a controlled maximum width, followed by the original article body. Preserve citations, callouts, figures, table of contents, author and dates. Use ink links with underlines in reading copy and a neutral background for informational cards. Native disclosure elements retain their expand/collapse states. Constrain illustrations to their content column.
 
-### Calculator and reconstitution video
+### Calculator and reconstitution demo
 
 Separate calculator inputs and outputs. Inputs are white, selected choices are silver with an ink outline, and result areas use a soft gray surface. Keep numerical precision, print and share controls, and explicit error states.
 
-The homepage and legacy reconstitution URLs host a 24-second video with One Aminos vial photography, a plain language introduction, native playback controls, and captions. Existing protocol sections point to the video. Explorer and game destinations are retired. The footer shows the One Aminos wordmark.
+The homepage and legacy reconstitution URLs run the original nine-stage bench animation with One Aminos vial labels. It starts in view, supports pausing and replay, and offers manual playback with reduced motion enabled. Each scene has a short caption. Protocol sections link to the demo. Explorer and game destinations are retired. The footer shows the One Aminos wordmark.
 
 
 ## Interaction and responsive acceptance
@@ -79,9 +79,9 @@ The homepage and legacy reconstitution URLs host a 24-second video with One Amin
 - The hero button and current vial strength use the moving outline. The outline holds still with reduced motion.
 - Use 44 px targets for the main touch controls. Provide an obvious keyboard focus ring and preserve focus within the existing menu or dialog.
 - At 1280 px the frame follows the desktop header and card rhythm. At 390 px navigation collapses, titles wrap, inputs stay readable and only table regions scroll horizontally.
-- Compare the home, directory, a protocol, a blog article, the master chart, calculator and reconstitution video with the baseline. Content parity means page text, protocol links, forms and numeric behavior remain present.
+- Compare the home, directory, a protocol, a blog article, the master chart, calculator and reconstitution demo with the baseline. Content parity means page text, protocol links, forms and numeric behavior remain present.
 - Check home and inner pages in both language variants. The original unprefixed routes remain the default during this project.
 
 ## Implementation map
 
-`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. Generated homepage covers are in `public/one-aminos/article-covers/`. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. `src/lib/learning-features.ts` updates the featured copy, video sections, navigation, and retired routes. Search and calculator code retain their existing behavior.
+`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. Branded homepage covers are in `public/one-aminos/article-covers/`. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. `src/lib/learning-features.ts` updates the featured copy, chart guide, demo sections, navigation, and retired routes. Search and calculator code retain their existing behavior.

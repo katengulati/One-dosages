@@ -13,7 +13,7 @@ Open http://localhost:4322/. To run the production build locally, use `npm run b
 | --- | --- |
 | `site/replica/` | 276 captured page documents organized by original URL |
 | `public/wp-content/` | Styles, images, and page interaction scripts |
-| `public/one-aminos/` | Shared styles, wordmark, article covers and reconstitution video |
+| `public/one-aminos/` | Shared styles, wordmark, article covers and reconstitution demo |
 | `public/data/` | Search suggestions |
 | `src/app/` | Next.js routes for the replica, bilingual pages, and preview forms |
 | `search-template.html` and `search-corpus.json` | Preview search results layout and index |

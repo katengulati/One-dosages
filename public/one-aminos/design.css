@@ -737,18 +737,18 @@
   font-size: clamp(16px, 2vw, 19px);
 }
 
-.oa-library .oa-reconstitution video {
+.oa-library .oa-reconstitution-demo {
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  width: min(100%, 540px);
+  height: clamp(505px, 112vw, 600px);
+  margin-inline: auto;
   background: var(--oa-paper);
   border: 1px solid var(--oa-line);
   border-radius: 10px;
 }
 
-.oa-library .oa-protocol-video .section-head { justify-content: center; text-align: center; }
-.oa-library .oa-protocol-video .section-body { text-align: center; }
+.oa-library .oa-protocol-demo .section-head { justify-content: center; text-align: center; }
+.oa-library .oa-protocol-demo .section-body { text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
   .oa-library :is(#pdms-pilot .strengths a[aria-current="page"], .pdpb-variant-pill.is-current, #featured-protocols .dose-links a:hover, #featured-protocols .dose-links a:focus-visible)::before {

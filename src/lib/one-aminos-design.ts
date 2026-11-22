@@ -65,6 +65,7 @@ export function applyOneAminosDesign(html: string) {
 
   return applyLearningFeatures(html, spanish)
     .replace('</head>', () => presentation + '</head>')
+    .replace(/<nav\b[^>]*\bclass="(?:site-breadcrumbs|breadcrumb)"[^>]*>[\s\S]*?<\/nav>/gi, '')
     .replace(/<body\b([^>]*)>/i, (tag, attributes: string) => {
       if (/\bclass="/.test(attributes)) return tag.replace('class="', 'class="oa-library ');
       return `<body class="oa-library"${attributes}>`;

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Reconstitution Demo | One Aminos</title>
+  <link rel="stylesheet" href="./demo.css">
+  <script type="module" src="./demo.js"></script>
+</head>
+<body>
+  <main id="player" class="player" data-playback="waiting">
+    <div class="caption" role="status" aria-atomic="true">
+      <span id="step-count"></span>
+      <strong id="step-title"></strong>
+      <span id="step-detail"></span>
+    </div>
+    <div class="stage">
+      <canvas id="board" aria-hidden="true"></canvas>
+      <section class="reference" id="reference" hidden>
+        <h2></h2>
+        <p id="product"></p>
+        <dl>
+          <div><dt id="volume-key"></dt><dd id="volume-value"></dd></div>
+          <div><dt id="concentration-key"></dt><dd id="concentration-value"></dd></div>
+        </dl>
+      </section>
+    </div>
+    <progress id="progress" value="0" max="1" aria-label="Playback progress"></progress>
+    <div class="controls">
+      <button type="button" id="toggle" disabled>Play</button>
+      <button type="button" id="replay" disabled>Replay</button>
+    </div>
+    <p class="note" id="note"></p>
+  </main>
+</body>
+</html>
