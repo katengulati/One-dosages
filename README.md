@@ -1,47 +1,24 @@
-# One Dosages
+# Peptide Dosages local replica
 
-A Next.js site in **English and Spanish**.
+This worktree of `katengulati/One-dosages` serves the original public page paths, copy, layouts, and browser tools captured from peptidedosages.com on November 21, 2026. The existing bilingual site remains available under `/en/` and `/es/`.
 
-```bash
-npm install
-npm run dev        # http://localhost:3000
-npm run build
+```sh
+npm ci
+npm run dev
 ```
 
-## Languages
+Open http://localhost:4321/. To run the production build locally, use `npm run build` followed by `npm run start`. Both launch commands bind to loopback.
 
-- Every page exists at `/en/...` and `/es/...`. Spanish pages can have Spanish slugs, e.g. `/en/calculator/` ↔ `/es/calculadora/`.
-- Visiting `/` sends people to their saved language (the `NEXT_LOCALE` cookie), otherwise to their browser language, otherwise English (`src/middleware.ts`).
-- The language switcher in the header goes to the same page in the other language and remembers the choice.
-- Each page outputs `canonical` and `hreflang` links. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
-- If a page has no Spanish version yet, `/es/` shows the English text with a notice.
-
-| What | Where |
+| Where | What it contains |
 | --- | --- |
-| Language list, default language | `src/i18n/config.ts` |
-| Interface text (menus, calculator, footer) | `src/i18n/dictionaries/en.json`, `es.json`. The build fails if `es.json` is missing a key. |
-| Built-in page slugs (calculator, dosages, blog) | `builtinRoutes` in `src/lib/content.ts` |
-| Page content | `content/en/<key>.json`, `content/es/<key>.json` |
+| `site/replica/` | 276 captured page documents organized by original URL |
+| `public/wp-content/` | Styles, images, and page interaction scripts |
+| `public/preview/` | Simulator and Explorer documents and local form handler |
+| `public/data/` | Search suggestions and simulator presets |
+| `src/app/` | Next.js routes for the replica, bilingual pages, and preview forms |
+| `search-template.html` and `search-corpus.json` | Preview search results layout and index |
+| `capture.json` and `verification.json` | Page inventory and verification results |
 
-## Content files
+The public replica uses a local search index and local test submissions for contact and newsletter forms. Test submissions stay in `.preview-data/`. Sign-in, registration, and the three Break Room games use the live service. Feed and reference links also point to their original destinations. A complete standalone migration of the WordPress services would require the site's backend source and configuration.
 
-```json
-{
-  "key": "disclaimer",
-  "slug": "aviso-legal",
-  "type": "page",
-  "title": "Aviso legal",
-  "description": "…",
-  "html": "<p>…</p>"
-}
-```
-
-`key` is the same in both languages and links the two versions. `slug` is the URL for that language.
-
-## Importing the WordPress site
-
-1. In WordPress admin go to **Tools → Export → All content** and save the `.xml` file in `wordpress-export/`. That folder is git-ignored.
-2. Run `npm run import:wordpress -- wordpress-export/<file>.xml`. This writes `content/en/*.json` with the original URL paths.
-3. Copy `wp-content/uploads/` into `public/wp-content/uploads/` so images load.
-4. Run `npm run i18n:status` to list pages that still need a Spanish file in `content/es/`.
-5. To make the design match the original, port the theme's CSS from `wp-content/themes/<theme>/` into `src/app/globals.css`.
+The bilingual pages use the repository's existing `site/manifest.json`, `site/en/`, `site/es/`, `translations/`, and `scripts/clone/` files. The path without a language prefix serves the original public replica.

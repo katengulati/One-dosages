@@ -3,8 +3,8 @@
 @keyframes pdmcalc-border-trace{to{--pdmcalc-flare-angle:360deg}}
 body.pdmcalc-studio{--page-primary:#177aaf;--page-secondary:#183e59;--page-accent:#ed4c40;--page-bg:#f3f8fc;--page-text:#45627a;--page-heading:#183e59;--page-border:#cee2f0;--page-card:#fff}
 body.pdmcalc-studio #main-content{position:relative;isolation:isolate;background:#f3f8fc;color:#45627a;padding-bottom:1px;overflow:clip}
-body.pdmcalc-studio #main-content:before,body.pdmcalc-studio #main-content:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("molecular-gutter-left-v1.svg") left -120px top/520px 8400px repeat-y;opacity:.28}
-body.pdmcalc-studio #main-content:after{background-image:url("molecular-gutter-right-v1.svg");background-position:right -120px top}
+body.pdmcalc-studio #main-content:before,body.pdmcalc-studio #main-content:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/molecular-gutter-left-v1.svg") left -120px top/520px 8400px repeat-y;opacity:.28}
+body.pdmcalc-studio #main-content:after{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/molecular-gutter-right-v1.svg");background-position:right -120px top}
 body.pdmcalc-studio #main-content :is(h1,h2,h3,h4){font-family:'Poppins',sans-serif;color:#183e59;letter-spacing:-.025em;overflow-wrap:anywhere;text-wrap:pretty;scroll-margin-top:calc(var(--pd-admin-bar-offset,0px) + var(--header-height,82px) + 20px)!important}
 body.pdmcalc-studio #main-content :is(h1,h2,h3,h4):focus:not(:focus-visible){outline:none!important;box-shadow:none!important}
 body.pdmcalc-studio :is(#main-content,.site-breadcrumbs) :is(a,button,input,select,[tabindex="0"]):focus-visible{outline:2px solid #1477b0!important;outline-offset:4px!important}
@@ -15,10 +15,10 @@ body.pdmcalc-studio .site-breadcrumbs .breadcrumb-inner>span{display:flex;align-
 body.pdmcalc-studio .site-breadcrumbs .breadcrumb_last{max-width:none;white-space:normal;overflow:visible;line-height:inherit;vertical-align:baseline;overflow-wrap:anywhere}
 body.pdmcalc-studio .site-breadcrumbs .breadcrumb-separator{margin:0;line-height:inherit;vertical-align:baseline}
 body.pdmcalc-studio .page-hero{padding:79px 20px 37px;background:transparent;border:0;overflow:visible;isolation:isolate}
-body.pdmcalc-studio .page-hero:before{inset:0 0 auto;width:100%;height:760px;z-index:-1;background:url("molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.6;mask-image:linear-gradient(90deg,transparent 20%,#000 80%),linear-gradient(180deg,#000 5%,#0009 45%,transparent 96%);mask-composite:intersect;pointer-events:none}
+body.pdmcalc-studio .page-hero:before{inset:0 0 auto;width:100%;height:760px;z-index:-1;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.6;mask-image:linear-gradient(90deg,transparent 20%,#000 80%),linear-gradient(180deg,#000 5%,#0009 45%,transparent 96%);mask-composite:intersect;pointer-events:none}
 body.pdmcalc-studio .page-hero-content{max-width:1280px;padding:0}
 body.pdmcalc-studio .page-title{display:flex;align-items:center;gap:18px;font-size:44px;line-height:1.25;font-weight:700;text-align:left;max-width:1180px;margin:0;padding:0;text-shadow:none;animation:none;transform:none}
-body.pdmcalc-studio .page-title:before{content:'';flex:0 0 50px;width:50px;height:57px;background:url("icons/calculator.svg") center/contain no-repeat}
+body.pdmcalc-studio .page-title:before{content:'';flex:0 0 50px;width:50px;height:57px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/calculator.svg") center/contain no-repeat}
 body.pdmcalc-studio .page-layout{display:grid;grid-template-columns:224px minmax(0,1fr);gap:26px;align-items:start;max-width:1320px;padding:0 20px;margin:0 auto 66px;z-index:2}
 body.pdmcalc-studio .page-content{min-width:0;max-width:100%;padding:0;margin:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
 body.pdmcalc-studio .page-content:before{display:none}
@@ -32,7 +32,7 @@ body.pdmcalc-studio .page-content a:hover{color:#0b507c}
 body.pdmcalc-studio .toc-container{display:flex;flex-direction:column;min-width:0;min-height:0;width:100%;max-height:calc(100dvh - var(--pd-admin-bar-offset,0px) - var(--header-height,82px) - 32px);top:calc(var(--pd-admin-bar-offset,0px) + var(--header-height,82px) + 16px);padding:0;border:1px solid #c8e0ef;border-radius:14px;background:#fafdff;box-shadow:0 8px 22px -15px #2e628444;overflow:hidden;transition:none}
 body.pdmcalc-studio .toc-container[hidden]{display:none}
 body.pdmcalc-studio .toc-title{display:flex;align-items:center;flex:0 0 auto;gap:9px;position:relative;top:auto;z-index:2;margin:0;padding:18px 15px;border-bottom:1px solid #d4e7f2;background:#f1f8fe;color:#214f70;font-size:13px;font-weight:750;line-height:1.5;letter-spacing:.025em;text-transform:uppercase}
-body.pdmcalc-studio .toc-title>i{display:block;flex:0 0 23px;width:23px;height:27px;background:url("icons/overview.svg") center/contain no-repeat;font-size:0}
+body.pdmcalc-studio .toc-title>i{display:block;flex:0 0 23px;width:23px;height:27px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg") center/contain no-repeat;font-size:0}
 body.pdmcalc-studio .toc-title>i:before{display:none}
 body.pdmcalc-studio .toc-container .nav-list{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:9px 5px 9px 8px;margin:0 6px 8px 0;list-style:none;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#91bcd6 #eef6fb;scrollbar-gutter:stable}
 body.pdmcalc-studio .toc-container .nav-list::-webkit-scrollbar{width:6px}
@@ -44,40 +44,40 @@ body.pdmcalc-studio .toc-container .nav-list::-webkit-scrollbar-button{display:n
 body.pdmcalc-studio .toc-container .nav-list li{margin:0 0 3px}
 body.pdmcalc-studio .toc-container .nav-list a{display:flex;align-items:center;gap:8px;min-height:46px;padding:9px 9px;border:0;border-radius:8px;color:#416680;font-size:12px;line-height:1.55;text-decoration:none;transition:background .15s,color .15s;overflow:visible}
 body.pdmcalc-studio .toc-container .nav-list a:before{display:none}
-body.pdmcalc-studio .toc-container .nav-list a>i{display:block;flex:0 0 25px;width:25px;height:28px;margin:0;background:var(--pdmcalc-toc-icon,url("icons/overview.svg")) center/contain no-repeat;font-size:0;line-height:0;opacity:1}
+body.pdmcalc-studio .toc-container .nav-list a>i{display:block;flex:0 0 25px;width:25px;height:28px;margin:0;background:var(--pdmcalc-toc-icon,url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg")) center/contain no-repeat;font-size:0;line-height:0;opacity:1}
 body.pdmcalc-studio .toc-container .nav-list a>i:before{display:none}
-body.pdmcalc-studio .toc-container .nav-list a[href="#1-reconstitution"]{--pdmcalc-toc-icon:url("icons/vial.svg")}
-body.pdmcalc-studio .toc-container .nav-list a:is([href="#2-your-dose"],[href="#reading-the-syringe-units-draw-volume-and-barrel-size"],[href="#what-syringe-size-is-best-for-peptides"]){--pdmcalc-toc-icon:url("icons/syringe.svg")}
-body.pdmcalc-studio .toc-container .nav-list a:is([href="#pdc-results-title"],[href="#understanding-concentration-mcg-mg-and-ml"],[href="#how-do-i-calculate-a-peptide-dose-in-units"],[href="#how-do-i-convert-mcg-to-ml"]){--pdmcalc-toc-icon:url("icons/calculator.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-use-the-peptide-calculator"]{--pdmcalc-toc-icon:url("icons/quickguide.svg")}
-body.pdmcalc-studio .toc-container .nav-list a:is([href="#what-is-peptide-reconstitution"],[href="#how-much-bacteriostatic-water-should-you-use"],[href="#how-much-bacteriostatic-water-should-i-add-to-a-peptide-vial"],[href="#can-i-use-sterile-water-instead-of-bacteriostatic-water"]){--pdmcalc-toc-icon:url("icons/drop.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#worked-example-reconstituting-a-5-mg-vial"]{--pdmcalc-toc-icon:url("icons/chart.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#why-accurate-dosage-calculation-matters"]{--pdmcalc-toc-icon:url("icons/shield.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#frequently-asked-questions"]{--pdmcalc-toc-icon:url("icons/notes.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-long-does-a-reconstituted-peptide-vial-last"]{--pdmcalc-toc-icon:url("icons/calendar.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#references"]{--pdmcalc-toc-icon:url("icons/document.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#1-reconstitution"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/vial.svg")}
+body.pdmcalc-studio .toc-container .nav-list a:is([href="#2-your-dose"],[href="#reading-the-syringe-units-draw-volume-and-barrel-size"],[href="#what-syringe-size-is-best-for-peptides"]){--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/syringe.svg")}
+body.pdmcalc-studio .toc-container .nav-list a:is([href="#pdc-results-title"],[href="#understanding-concentration-mcg-mg-and-ml"],[href="#how-do-i-calculate-a-peptide-dose-in-units"],[href="#how-do-i-convert-mcg-to-ml"]){--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/calculator.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-use-the-peptide-calculator"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/quickguide.svg")}
+body.pdmcalc-studio .toc-container .nav-list a:is([href="#what-is-peptide-reconstitution"],[href="#how-much-bacteriostatic-water-should-you-use"],[href="#how-much-bacteriostatic-water-should-i-add-to-a-peptide-vial"],[href="#can-i-use-sterile-water-instead-of-bacteriostatic-water"]){--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/drop.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#worked-example-reconstituting-a-5-mg-vial"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/chart.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#why-accurate-dosage-calculation-matters"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/shield.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#frequently-asked-questions"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/notes.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-long-does-a-reconstituted-peptide-vial-last"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/calendar.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#references"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/document.svg")}
 /* The optimized calculator has a longer TOC. Give every current entry its own
    semantic instrument icon instead of allowing new headings to inherit the
    generic overview icon. Generic guide icons are shared from the canonical
    theme asset library to avoid duplicate SVG files. */
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-the-peptide-calculator-works"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/mechanism.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-use-the-free-peptide-calculator"]{--pdmcalc-toc-icon:url("icons/quickguide.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-reconstitution-calculator-from-powder-to-concentration"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/mix.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#bacteriostatic-water-volume-and-concentration"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/water.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-calculate-peptide-dosage"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/measurement.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-calculator-results-syringe-units-and-barrel-size"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/plunger.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#worked-example-5-mg-vial-reconstituted-with-2-ml"]{--pdmcalc-toc-icon:url("icons/chart.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#accuracy-limits-for-small-syringe-draws"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/inspect.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-frequently-asked-questions"]{--pdmcalc-toc-icon:url("icons/notes.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#what-information-do-i-need-to-use-a-peptide-calculator"]{--pdmcalc-toc-icon:url("icons/overview.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-do-i-calculate-peptide-dosage-in-syringe-units"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/scale.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#does-adding-more-water-change-the-peptide-dose"]{--pdmcalc-toc-icon:url("icons/drop.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-much-bacteriostatic-water-should-i-add-to-a-peptide-vial"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/bubbles.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#are-u-100-syringe-units-the-same-as-peptide-iu"]{--pdmcalc-toc-icon:url("icons/shield.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#what-syringe-size-is-best-for-a-small-calculated-draw"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/gauge.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-should-a-reconstituted-peptide-be-stored"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/storage.svg")}
-body.pdmcalc-studio .toc-container .nav-list a:is([href="#can-sterile-water-replace-bacteriostatic-water-in-the-calculatio"],[href="#can-sterile-water-replace-bacteriostatic-water-in-the-calculation"]){--pdmcalc-toc-icon:url("../../../guides/assets/icons/layers.svg")}
-body.pdmcalc-studio .toc-container .nav-list a[href="#how-do-i-convert-mcg-to-ml"]{--pdmcalc-toc-icon:url("../../../guides/assets/icons/weight.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-the-peptide-calculator-works"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/mechanism.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-use-the-free-peptide-calculator"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/quickguide.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-reconstitution-calculator-from-powder-to-concentration"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/mix.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#bacteriostatic-water-volume-and-concentration"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/water.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-to-calculate-peptide-dosage"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/measurement.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-calculator-results-syringe-units-and-barrel-size"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/plunger.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#worked-example-5-mg-vial-reconstituted-with-2-ml"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/chart.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#accuracy-limits-for-small-syringe-draws"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/inspect.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#peptide-frequently-asked-questions"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/notes.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#what-information-do-i-need-to-use-a-peptide-calculator"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-do-i-calculate-peptide-dosage-in-syringe-units"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/scale.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#does-adding-more-water-change-the-peptide-dose"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/drop.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-much-bacteriostatic-water-should-i-add-to-a-peptide-vial"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/bubbles.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#are-u-100-syringe-units-the-same-as-peptide-iu"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/shield.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#what-syringe-size-is-best-for-a-small-calculated-draw"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/gauge.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-should-a-reconstituted-peptide-be-stored"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/storage.svg")}
+body.pdmcalc-studio .toc-container .nav-list a:is([href="#can-sterile-water-replace-bacteriostatic-water-in-the-calculatio"],[href="#can-sterile-water-replace-bacteriostatic-water-in-the-calculation"]){--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/layers.svg")}
+body.pdmcalc-studio .toc-container .nav-list a[href="#how-do-i-convert-mcg-to-ml"]{--pdmcalc-toc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/weight.svg")}
 body.pdmcalc-studio .toc-container .nav-list a:hover{padding:9px 9px;background:#edf7fd;color:#176e9d;transform:none}
 body.pdmcalc-studio #main-content .toc-container .nav-list a:focus-visible{outline-offset:-3px!important}
 body.pdmcalc-studio .toc-container .nav-list a.active{background:#e0f1fc;color:#205c82;box-shadow:inset 3px 0 #23a0d9;font-weight:700}
@@ -89,9 +89,9 @@ body.pdmcalc-studio :is(.pdc-card,.pdc-results)>h2:after{display:none}
 body.pdmcalc-studio .pdc-step{position:absolute;top:-1px;left:-1px;width:31px;height:42px;border-radius:15px 0 13px 0;background:linear-gradient(135deg,#ff7160,#ee483c);color:#fff;font-size:13px;font-weight:750;box-shadow:0 2px 5px #ba41371a}
 body.pdmcalc-studio :is(.pdc-card,.pdc-results)>h2>i{display:block;flex:0 0 30px;width:30px;height:34px;margin:0;background:var(--pdmcalc-icon) center/contain no-repeat;font-size:0;line-height:0}
 body.pdmcalc-studio :is(.pdc-card,.pdc-results)>h2>i:before{display:none}
-body.pdmcalc-studio .fa-flask{--pdmcalc-icon:url("icons/vial.svg")}
-body.pdmcalc-studio .fa-syringe{--pdmcalc-icon:url("icons/syringe.svg")}
-body.pdmcalc-studio .fa-bullseye{--pdmcalc-icon:url("icons/calculator.svg")}
+body.pdmcalc-studio .fa-flask{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/vial.svg")}
+body.pdmcalc-studio .fa-syringe{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/syringe.svg")}
+body.pdmcalc-studio .fa-bullseye{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/calculator.svg")}
 body.pdmcalc-studio .pdc-card .pdc-hint{margin:0 0 23px;font-size:13px;line-height:1.75;color:#547188}
 body.pdmcalc-studio .pdc-field{margin-bottom:20px}
 body.pdmcalc-studio .pdc-field label{font-size:13px;line-height:1.7;font-weight:650;gap:7px;margin-bottom:9px;color:#244e6a;flex-wrap:wrap}
@@ -148,16 +148,16 @@ body.pdmcalc-studio .pdc-validation{border-radius:10px;border:1px solid #f1baaf;
 body.pdmcalc-studio .pdc-article{margin-top:30px;padding:28px 30px;border:1px solid #cce2ef;border-radius:16px;background:#fff;box-shadow:0 6px 18px #294d6908;overflow:hidden}
 body.pdmcalc-studio .pdc-article .pdc-keybox{padding:20px 22px;margin:0 0 28px;border:1px solid #c9e1f0;border-left:3px solid #2b91c2;border-radius:11px;background:#f2faff;color:#3a637e;font-size:14px;line-height:1.85}
 body.pdmcalc-studio .pdc-article>h2{position:relative;isolation:isolate;display:block;min-height:76px;margin:34px -30px 26px;padding:22px 30px 22px 77px;border:0;border-top:1px solid #dcebf4;border-bottom:1px solid #d6e7f2;border-radius:0;background:linear-gradient(90deg,#f3faff,#fbfdff);font-size:22px;font-weight:700;line-height:1.45;overflow:hidden}
-body.pdmcalc-studio .pdc-article>h2:before{content:'';position:absolute;left:29px;top:50%;width:31px;height:34px;transform:translateY(-50%);background:var(--pdmcalc-reading-icon,url("icons/overview.svg")) center/contain no-repeat}
-body.pdmcalc-studio .pdc-article>h2:after{content:'';position:absolute;inset:0 0 0 auto;width:205px;height:auto;border-radius:0;background:linear-gradient(90deg,#fafdff 0%,#fafdffcf 63%,#fafdff99 100%),url("molecular-header-branch-v1.webp") right center/auto 165% no-repeat;z-index:-1;pointer-events:none}
+body.pdmcalc-studio .pdc-article>h2:before{content:'';position:absolute;left:29px;top:50%;width:31px;height:34px;transform:translateY(-50%);background:var(--pdmcalc-reading-icon,url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg")) center/contain no-repeat}
+body.pdmcalc-studio .pdc-article>h2:after{content:'';position:absolute;inset:0 0 0 auto;width:205px;height:auto;border-radius:0;background:linear-gradient(90deg,#fafdff 0%,#fafdffcf 63%,#fafdff99 100%),url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/molecular-header-branch-v1.webp") right center/auto 165% no-repeat;z-index:-1;pointer-events:none}
 /* Inset focus stays visible inside the full-width reading panel's clipped edge. */
 body.pdmcalc-studio .pdc-article>h2:focus-visible{outline:2px solid #1477b0!important;outline-offset:-4px!important}
-body.pdmcalc-studio .pdc-article>h2:nth-of-type(2){--pdmcalc-reading-icon:url("icons/quickguide.svg")}
-body.pdmcalc-studio .pdc-article>h2:nth-of-type(3),body.pdmcalc-studio .pdc-article>h2:nth-of-type(4){--pdmcalc-reading-icon:url("icons/drop.svg")}
-body.pdmcalc-studio .pdc-article>h2:nth-of-type(5),body.pdmcalc-studio .pdc-article>h2:nth-of-type(7){--pdmcalc-reading-icon:url("icons/calculator.svg")}
-body.pdmcalc-studio .pdc-article>h2:nth-of-type(6){--pdmcalc-reading-icon:url("icons/syringe.svg")}
-body.pdmcalc-studio .pdc-article>h2:nth-of-type(8){--pdmcalc-reading-icon:url("icons/shield.svg")}
-body.pdmcalc-studio .pdc-article>h2:last-of-type{--pdmcalc-reading-icon:url("icons/document.svg")}
+body.pdmcalc-studio .pdc-article>h2:nth-of-type(2){--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/quickguide.svg")}
+body.pdmcalc-studio .pdc-article>h2:nth-of-type(3),body.pdmcalc-studio .pdc-article>h2:nth-of-type(4){--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/drop.svg")}
+body.pdmcalc-studio .pdc-article>h2:nth-of-type(5),body.pdmcalc-studio .pdc-article>h2:nth-of-type(7){--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/calculator.svg")}
+body.pdmcalc-studio .pdc-article>h2:nth-of-type(6){--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/syringe.svg")}
+body.pdmcalc-studio .pdc-article>h2:nth-of-type(8){--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/shield.svg")}
+body.pdmcalc-studio .pdc-article>h2:last-of-type{--pdmcalc-reading-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/document.svg")}
 body.pdmcalc-studio .pdc-article>h3{display:block;margin:26px 0 12px;font-size:17px;font-weight:700;line-height:1.55;color:#204a67}
 body.pdmcalc-studio .pdc-article>p{font-size:15px;line-height:1.9;margin:0 0 22px}
 body.pdmcalc-studio .pdc-article ol.pdc-steps{gap:11px;margin:22px 0}
@@ -176,13 +176,13 @@ body.pdmcalc-studio .pdc-foot-links{display:grid;grid-template-columns:repeat(2,
 body.pdmcalc-studio .pdc-foot-links a{position:relative;display:flex;align-items:center;gap:12px;min-width:0;min-height:78px;padding:18px;border:1px solid #c6dfef;border-radius:12px;background:linear-gradient(135deg,#fff,#f7fcff);color:#225f84;font-size:13px;font-weight:650;line-height:1.65;text-decoration:none;box-shadow:0 5px 15px #294d6908;overflow:hidden;isolation:isolate}
 body.pdmcalc-studio .pdc-foot-links a:last-child:nth-child(odd){grid-column:1/-1}
 body.pdmcalc-studio .pdc-foot-links a:hover{border-color:#8fc6e2;background:#f3faff;color:#165a82;transform:none;box-shadow:0 7px 19px #294d6913}
-body.pdmcalc-studio .pdc-foot-links a>i{display:block;flex:0 0 28px;width:28px;height:31px;margin:0;font-size:0;background:var(--pdmcalc-icon,url("icons/overview.svg")) center/contain no-repeat}
+body.pdmcalc-studio .pdc-foot-links a>i{display:block;flex:0 0 28px;width:28px;height:31px;margin:0;font-size:0;background:var(--pdmcalc-icon,url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg")) center/contain no-repeat}
 body.pdmcalc-studio .pdc-foot-links a>i:before{display:none}
-body.pdmcalc-studio .fa-book-open{--pdmcalc-icon:url("icons/overview.svg")}
-body.pdmcalc-studio .fa-ruler{--pdmcalc-icon:url("icons/syringe.svg")}
-body.pdmcalc-studio .fa-snowflake{--pdmcalc-icon:url("icons/vial.svg")}
-body.pdmcalc-studio .fa-list{--pdmcalc-icon:url("icons/quickguide.svg")}
-body.pdmcalc-studio .fa-table{--pdmcalc-icon:url("icons/chart.svg")}
+body.pdmcalc-studio .fa-book-open{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/overview.svg")}
+body.pdmcalc-studio .fa-ruler{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/syringe.svg")}
+body.pdmcalc-studio .fa-snowflake{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/vial.svg")}
+body.pdmcalc-studio .fa-list{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/quickguide.svg")}
+body.pdmcalc-studio .fa-table{--pdmcalc-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-calculator/assets/icons/chart.svg")}
 /* A masked, rotating border never overlays controls or intercepts a click. */
 body.pdmcalc-studio :is(.pdc-card,.pdc-copy,.pdc-foot-links a):before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:2px;background:conic-gradient(from var(--pdmcalc-flare-angle),transparent 0deg,transparent 255deg,#4aaada55 284deg,#c4efff 305deg,#fff 318deg,#ef827233 332deg,transparent 352deg);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .2s;z-index:3}
 body.pdmcalc-studio :is(.pdc-card,.pdc-copy,.pdc-foot-links a):focus-within:before{opacity:1;animation:pdmcalc-border-trace 5.6s linear infinite}

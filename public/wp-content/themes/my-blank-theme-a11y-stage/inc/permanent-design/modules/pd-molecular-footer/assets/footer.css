@@ -3,7 +3,7 @@
 @keyframes pdfooter-border-trace{to{--pdfooter-trace:360deg}}
 body.pdfooter-studio .site-footer{--footer-text:#eef7fc;--footer-hover:#9bd9fa;--footer-accent:#ff897e;--footer-border:#42637a;background:radial-gradient(ellipse at 92% 0%,#23577770,transparent 54%),linear-gradient(115deg,#102e47,#143d58);color:#eef7fc;isolation:isolate;overflow:hidden;margin-top:0;border-top:1px solid #739eb56b}
 body.pdfooter-studio .site-footer:before{content:'';position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,#f15b5077, #f15b50 16%,#75c9ed 48%,#75c9ed00 92%);pointer-events:none}
-body.pdfooter-studio .site-footer:after{content:'';position:absolute;right:0;top:0;width:min(65%,760px);height:400px;background:url("molecular-header-branch-v1.webp") right top/cover no-repeat;mix-blend-mode:screen;opacity:.08;mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%);pointer-events:none;z-index:-1}
+body.pdfooter-studio .site-footer:after{content:'';position:absolute;right:0;top:0;width:min(65%,760px);height:400px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-footer/assets/molecular-header-branch-v1.webp") right top/cover no-repeat;mix-blend-mode:screen;opacity:.08;mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%);pointer-events:none;z-index:-1}
 body.pdfooter-studio .site-footer .footer-wave{display:none}
 body.pdfooter-studio .site-footer .footer-main{padding:54px 0 30px}
 body.pdfooter-studio .site-footer .footer-container{width:100%;max-width:1304px;padding-inline:32px}
@@ -11,7 +11,7 @@ body.pdfooter-studio .site-footer .footer-grid{grid-template-columns:minmax(0,1.
 body.pdfooter-studio .site-footer .footer-column{min-width:0}
 body.pdfooter-studio .site-footer .footer-logo{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;min-height:44px;margin:0 0 20px;padding:0;text-decoration:none;border-radius:5px}
 body.pdfooter-studio .site-footer .footer-logo img{display:none}
-body.pdfooter-studio .site-footer .footer-logo:before{content:'';display:block;flex:0 0 33px;width:33px;height:42px;background:url("pd-droplet-selected-v1.webp") center/contain no-repeat}
+body.pdfooter-studio .site-footer .footer-logo:before{content:'';display:block;flex:0 0 33px;width:33px;height:42px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-footer/assets/pd-droplet-selected-v1.webp") center/contain no-repeat}
 body.pdfooter-studio .site-footer .footer-logo>span{font-family:Poppins,sans-serif;font-size:20px;font-weight:700;line-height:1.02;text-transform:uppercase;white-space:nowrap}
 body.pdfooter-studio .site-footer .footer-logo>span>span{display:block;font:inherit;line-height:inherit}
 body.pdfooter-studio .site-footer .footer-logo .peptide{color:#fff;letter-spacing:.2em;margin-right:-.2em}

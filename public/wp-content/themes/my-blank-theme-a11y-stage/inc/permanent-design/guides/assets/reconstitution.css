@@ -1,8 +1,8 @@
 /* Page 1354 only. The beginner guide remains visually unchanged. */
-body.pdmg-guide-1354 .page-title:before{background-image:url("icons/drop.svg")}
+body.pdmg-guide-1354 .page-title:before{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/drop.svg")}
 body.pdmg-guide-1354 .page-content h3{display:block;padding-left:38px;min-height:31px}
 body.pdmg-guide-1354 .page-content h3>i{position:absolute;left:0;top:0}
-body.pdmg-guide-1354 .page-content h3:not(:has(>i)):before{content:"";position:absolute;left:0;top:0;width:27px;height:31px;background:var(--pdmg-icon,url("icons/overview.svg")) center/contain no-repeat}
+body.pdmg-guide-1354 .page-content h3:not(:has(>i)):before{content:"";position:absolute;left:0;top:0;width:27px;height:31px;background:var(--pdmg-icon,url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/guides/assets/icons/overview.svg")) center/contain no-repeat}
 body.pdmg-guide-1354 [data-pdmg-section="5"] h3{padding:15px 18px 15px 55px;border:1px solid #d3e7f2;border-radius:11px;background:#f1f8fe;margin-top:28px}
 body.pdmg-guide-1354 [data-pdmg-section="5"] h3:not(:has(>i)):before{left:15px;top:13px}
 body.pdmg-guide-1354 .pdmg-prep-section .pdmg-section-content{padding:26px 24px 28px}

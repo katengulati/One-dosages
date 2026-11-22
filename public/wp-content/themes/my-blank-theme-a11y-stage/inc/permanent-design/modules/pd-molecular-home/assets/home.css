@@ -8,7 +8,7 @@ body.pdhome-studio #main-content :is(h1,h2,h3){font-family:'Poppins',sans-serif;
 body.pdhome-studio #main-content :is(a,button,input,select):focus-visible{outline:2px solid #1477b0;outline-offset:4px}
 body.pdhome-studio #main-content :is(a,button){-webkit-tap-highlight-color:transparent}
 body.pdhome-studio .hero-section{padding:72px 32px 76px;background:linear-gradient(115deg,#f7fbff 10%,#edf7ff 62%,#e1f1fc 100%);border-bottom:1px solid #dcebf5;overflow:hidden;isolation:isolate}
-body.pdhome-studio .hero-section:before{inset:0;background:url("molecular-strands-v1.webp") right 38%/auto 120% no-repeat;opacity:.4;mask-image:linear-gradient(90deg,transparent 35%,#0004 63%,#000 100%);z-index:-1}
+body.pdhome-studio .hero-section:before{inset:0;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/molecular-strands-v1.webp") right 38%/auto 120% no-repeat;opacity:.4;mask-image:linear-gradient(90deg,transparent 35%,#0004 63%,#000 100%);z-index:-1}
 body.pdhome-studio .hero-section:after{content:'';position:absolute;width:500px;height:500px;right:-190px;top:-220px;border:1px solid #a4d6ee88;border-radius:50%;box-shadow:0 0 0 52px #b9ddf11c,0 0 0 104px #b9ddf111;pointer-events:none;z-index:-1}
 body.pdhome-studio .hero-container{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);max-width:1240px;gap:64px;align-items:center;overflow:visible}
 body.pdhome-studio .hero-text{min-width:0;text-align:left;margin:0;animation:none}
@@ -46,7 +46,7 @@ body.pdhome-studio .section-block h2{font-size:31px;font-weight:700;line-height:
 body.pdhome-studio .section-block>p{font-size:16px;line-height:1.75;color:#526f86;margin:0 0 26px}
 body.pdhome-studio .home-card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:26px}
 body.pdhome-studio .home-card{display:flex;flex-direction:column;min-width:0;padding:28px;border:1px solid #cee2f0;border-radius:16px;background:linear-gradient(150deg,#fff 35%,#f7fbff);box-shadow:0 5px 18px #294d6910;overflow:visible;isolation:isolate;transition:transform .25s,box-shadow .25s,border-color .25s}
-body.pdhome-studio .home-card:after{content:'';position:absolute;top:1px;right:1px;width:48%;height:130px;background:url("molecular-header-branch-v1.webp") right top/cover no-repeat;opacity:.18;mask-image:linear-gradient(90deg,transparent,#000);border-radius:0 15px 0 0;pointer-events:none;z-index:-1}
+body.pdhome-studio .home-card:after{content:'';position:absolute;top:1px;right:1px;width:48%;height:130px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/molecular-header-branch-v1.webp") right top/cover no-repeat;opacity:.18;mask-image:linear-gradient(90deg,transparent,#000);border-radius:0 15px 0 0;pointer-events:none;z-index:-1}
 body.pdhome-studio .home-card h3{display:block;font-size:22px;font-weight:650;line-height:1.35;margin:0 0 14px;color:#173f5b;min-height:132px}
 body.pdhome-studio .home-card h3 i{display:block;width:48px;height:48px;margin:0 0 19px}
 body.pdhome-studio .home-card p{font-size:15px;line-height:1.8;color:#526b7e;margin:0 0 24px}
@@ -113,7 +113,7 @@ body.pdhome-studio .pdhome-faq details[open] summary:after{content:'−'}
 body.pdhome-studio .pdhome-faq details p{margin:0;padding:17px 18px 19px;color:#526b7e;font-size:14px;line-height:1.8}
 body.pdhome-studio .pdhome-faq details a{color:#126fa6;font-weight:700}
 body.pdhome-studio .extra-cta-section{padding:48px 36px;border:1px solid #1d5271;border-radius:20px;color:#fff;background:linear-gradient(115deg,#153b58,#174f72 70%,#236a91);box-shadow:0 14px 30px -18px #164c7880;animation:none;isolation:isolate}
-body.pdhome-studio .extra-cta-section:before{inset:0 0 0 50%;width:auto;height:auto;transform:none;animation:none;background:url("molecular-strands-v1.webp") right center/auto 165% no-repeat;opacity:.13;mask-image:linear-gradient(90deg,transparent 5%,#000 85%);z-index:-1}
+body.pdhome-studio .extra-cta-section:before{inset:0 0 0 50%;width:auto;height:auto;transform:none;animation:none;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/molecular-strands-v1.webp") right center/auto 165% no-repeat;opacity:.13;mask-image:linear-gradient(90deg,transparent 5%,#000 85%);z-index:-1}
 body.pdhome-studio #main-content .extra-cta-section h2{color:#fff;font-size:33px;line-height:1.3;margin:0 0 16px}
 body.pdhome-studio .extra-cta-section p{font-size:16px;line-height:1.8;color:#e0edf7;opacity:1;margin:0 auto 28px;max-width:800px!important}
 body.pdhome-studio .extra-cta-buttons{max-width:1020px;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
@@ -127,29 +127,29 @@ body.pdhome-studio .home-content :is(h2,h3,li)>i:before{content:none!important}
 body.pdhome-studio .home-content h2>i{width:40px;height:42px}
 body.pdhome-studio .home-content .home-card h3>i{display:block;width:48px;height:48px}
 body.pdhome-studio .calc-intro-section h3>i{width:28px;height:29px}
-body.pdhome-studio .home-content .fa-syringe{--pdhome-icon:url("icons/syringe.svg")}
-body.pdhome-studio .home-content .fa-flask{--pdhome-icon:url("icons/research.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-healing-stack{--pdhome-icon:url("icons/healing-stack.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-metabolic-weight{--pdhome-icon:url("icons/metabolic-weight.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-lean-muscle{--pdhome-icon:url("icons/lean-muscle.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-glow{--pdhome-icon:url("icons/glow.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-klow{--pdhome-icon:url("icons/klow.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-mots-c{--pdhome-icon:url("icons/mitochondria.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-tesamorelin{--pdhome-icon:url("icons/visceral-target.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-nad{--pdhome-icon:url("icons/cellular-energy.svg")}
-body.pdhome-studio #featured-protocols .pdhome-icon-ghk-cu{--pdhome-icon:url("icons/copper-peptide.svg")}
-body.pdhome-studio .home-content .fa-info-circle{--pdhome-icon:url("icons/evidence.svg")}
-body.pdhome-studio .home-content .fa-graduation-cap{--pdhome-icon:url("icons/overview.svg")}
-body.pdhome-studio .home-content .fa-book-open{--pdhome-icon:url("icons/overview.svg")}
-body.pdhome-studio .home-content .fa-tint{--pdhome-icon:url("icons/drop.svg")}
-body.pdhome-studio .home-content .fa-calculator{--pdhome-icon:url("icons/calculator.svg")}
-body.pdhome-studio .home-content .fa-list-ol{--pdhome-icon:url("icons/chart.svg")}
-body.pdhome-studio .home-content .fa-edit{--pdhome-icon:url("icons/notes.svg")}
-body.pdhome-studio .home-content .fa-check-circle{--pdhome-icon:url("icons/shield.svg")}
-body.pdhome-studio .home-content .fa-sync-alt{--pdhome-icon:url("icons/calendar.svg")}
-body.pdhome-studio .why-content li:nth-child(2)>i{--pdhome-icon:url("icons/document.svg")}
-body.pdhome-studio .why-content li:nth-child(3)>i{--pdhome-icon:url("icons/drop.svg")}
-body.pdhome-studio .why-content li:nth-child(4)>i{--pdhome-icon:url("icons/chart.svg")}
+body.pdhome-studio .home-content .fa-syringe{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/syringe.svg")}
+body.pdhome-studio .home-content .fa-flask{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/research.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-healing-stack{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/healing-stack.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-metabolic-weight{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/metabolic-weight.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-lean-muscle{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/lean-muscle.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-glow{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/glow.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-klow{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/klow.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-mots-c{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/mitochondria.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-tesamorelin{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/visceral-target.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-nad{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/cellular-energy.svg")}
+body.pdhome-studio #featured-protocols .pdhome-icon-ghk-cu{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/copper-peptide.svg")}
+body.pdhome-studio .home-content .fa-info-circle{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/evidence.svg")}
+body.pdhome-studio .home-content .fa-graduation-cap{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/overview.svg")}
+body.pdhome-studio .home-content .fa-book-open{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/overview.svg")}
+body.pdhome-studio .home-content .fa-tint{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/drop.svg")}
+body.pdhome-studio .home-content .fa-calculator{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/calculator.svg")}
+body.pdhome-studio .home-content .fa-list-ol{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/chart.svg")}
+body.pdhome-studio .home-content .fa-edit{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/notes.svg")}
+body.pdhome-studio .home-content .fa-check-circle{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/shield.svg")}
+body.pdhome-studio .home-content .fa-sync-alt{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/calendar.svg")}
+body.pdhome-studio .why-content li:nth-child(2)>i{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/document.svg")}
+body.pdhome-studio .why-content li:nth-child(3)>i{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/drop.svg")}
+body.pdhome-studio .why-content li:nth-child(4)>i{--pdhome-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/icons/chart.svg")}
 /* Two contrasting light flares orbit only the border of the hovered/focused object. */
 body.pdhome-studio :is(.home-card,.hero-buttons a,.dose-links a,.calc-full-cta,#peptide-calculator button,.extra-cta-buttons a){position:relative;isolation:isolate}
 body.pdhome-studio :is(.home-card,.hero-buttons a,.dose-links a,.calc-full-cta,#peptide-calculator button,.extra-cta-buttons a):before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:2px;opacity:0;pointer-events:none;z-index:2;background:conic-gradient(from var(--pdhome-flare-angle),transparent 0deg 32deg,#ef493d 65deg,#ffb0a3 79deg,transparent 102deg 212deg,#1686ce 245deg,#a9eaff 259deg,transparent 282deg 360deg);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;transition:opacity .2s}
@@ -320,7 +320,7 @@ body.pdhome-studio .pdhome-game-section:before{
  opacity:.15;
  background:
   linear-gradient(90deg,rgba(6,31,47,.82),rgba(6,31,47,.18) 72%),
-  url("molecular-strands-v1.webp") right center/auto 155% no-repeat;
+  url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-home/assets/molecular-strands-v1.webp") right center/auto 155% no-repeat;
 }
 body.pdhome-studio .pdhome-game-copy{min-width:0;max-width:590px}
 body.pdhome-studio .pdhome-game-eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 17px;color:#cceeff;font-size:12px;font-weight:750;line-height:1.2;letter-spacing:.085em;text-transform:uppercase}

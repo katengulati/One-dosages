@@ -1,12 +1,12 @@
 /* Scoped to the existing Contact Us page. Its form and inbox remain in PD Submissions. */
 body.pdmc-contact{background:#f3f9fd;color:#41647c}
 body.pdmc-contact #main-content{position:relative;isolation:isolate;background:transparent;padding-bottom:64px}
-body.pdmc-contact #main-content:before{content:"";position:absolute;inset:0 0 auto auto;width:min(72%,1050px);height:650px;background:url("molecular-strands-v1.webp") right top/cover no-repeat;opacity:.28;mask-image:linear-gradient(to bottom,#000 24%,transparent 94%);pointer-events:none;z-index:-1}
+body.pdmc-contact #main-content:before{content:"";position:absolute;inset:0 0 auto auto;width:min(72%,1050px);height:650px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-contact/assets/molecular-strands-v1.webp") right top/cover no-repeat;opacity:.28;mask-image:linear-gradient(to bottom,#000 24%,transparent 94%);pointer-events:none;z-index:-1}
 body.pdmc-contact .site-breadcrumbs{position:absolute;inset-inline:0;top:auto;z-index:10;background:transparent;border:0;box-shadow:none;overflow:visible}
 body.pdmc-contact .page-hero{padding:74px 20px 27px;background:none;overflow:visible}
 body.pdmc-contact .page-hero:before{display:none}
 body.pdmc-contact .page-title{display:flex;align-items:center;justify-content:center;gap:16px;margin:0;color:#143f5b;text-shadow:none;font-size:clamp(30px,3.2vw,43px);line-height:1.2;letter-spacing:-1px}
-body.pdmc-contact .page-title:before{content:"";display:block;flex:0 0 45px;width:45px;height:45px;background:url("contact.svg") center/contain no-repeat}
+body.pdmc-contact .page-title:before{content:"";display:block;flex:0 0 45px;width:45px;height:45px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-contact/assets/contact.svg") center/contain no-repeat}
 body.pdmc-contact .page-layout{display:block;width:100%;max-width:800px;padding:0 24px;margin:0 auto}
 body.pdmc-contact .page-content{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
 body.pdmc-contact .page-content:before{display:none}

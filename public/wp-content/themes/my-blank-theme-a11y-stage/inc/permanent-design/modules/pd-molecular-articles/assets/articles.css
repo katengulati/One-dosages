@@ -1,11 +1,11 @@
 /* Styling only. The existing single template and reading tools own all content. */
 @property --pdarticle-flare-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes pdarticle-border-trace{to{--pdarticle-flare-angle:360deg}}
-body.pdarticle-studio{--post-primary:#177aaf;--post-secondary:#183e59;--post-accent:#ed4c40;--post-bg:#f3f8fc;--post-card:#fff;--post-text:#45627a;--post-heading:#183e59;--post-border:#cee2f0;--post-link:#116b9d;--post-link-hover:#0b507c;--post-shadow-sm:0 3px 10px #294d690a;--post-shadow-md:0 6px 18px #294d6910;--post-shadow-lg:0 12px 26px -18px #294d6945;--pdarticle-section-icon:url("icons/overview.svg")}
+body.pdarticle-studio{--post-primary:#177aaf;--post-secondary:#183e59;--post-accent:#ed4c40;--post-bg:#f3f8fc;--post-card:#fff;--post-text:#45627a;--post-heading:#183e59;--post-border:#cee2f0;--post-link:#116b9d;--post-link-hover:#0b507c;--post-shadow-sm:0 3px 10px #294d690a;--post-shadow-md:0 6px 18px #294d6910;--post-shadow-lg:0 12px 26px -18px #294d6945;--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/overview.svg")}
 body.pdarticle-studio #main-content{position:relative;isolation:isolate;overflow:clip;background:#f3f8fc;color:#45627a;padding-bottom:1px}
 /* Three approved molecular shapes, six varied placements, and a long staggered cycle. */
-body.pdarticle-studio #main-content:before,body.pdarticle-studio #main-content:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("molecular-gutter-left-v1.svg") left -120px top/520px 8400px repeat-y;opacity:.38}
-body.pdarticle-studio #main-content:after{background-image:url("molecular-gutter-right-v1.svg");background-position:right -120px top}
+body.pdarticle-studio #main-content:before,body.pdarticle-studio #main-content:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/molecular-gutter-left-v1.svg") left -120px top/520px 8400px repeat-y;opacity:.38}
+body.pdarticle-studio #main-content:after{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/molecular-gutter-right-v1.svg");background-position:right -120px top}
 body.pdarticle-studio :is(#main-content,.site-breadcrumbs) :is(a,button,input,[tabindex="0"]):focus-visible{outline:2px solid #1477b0!important;outline-offset:4px!important}
 body.pdarticle-studio #main-content :is(h1,h2,h3,h4,h5,h6):focus:not(:focus-visible){outline:none!important;box-shadow:none!important}
 body.pdarticle-studio #main-content :is(h1,h2,h3,h4){font-family:'Poppins',sans-serif;letter-spacing:-.025em;color:#183e59;overflow-wrap:anywhere;text-wrap:pretty}
@@ -17,7 +17,7 @@ body.pdarticle-studio .breadcrumb-inner>span>span{flex:0 0 auto}
 body.pdarticle-studio .breadcrumb-inner>span>.breadcrumb_last{flex:0 1 auto;min-width:0;max-width:none;line-height:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:baseline}
 body.pdarticle-studio .breadcrumb-separator{margin:0;vertical-align:baseline;line-height:inherit}
 body.pdarticle-studio .post-hero{padding:78px 20px 77px;margin:0;background:transparent;border-bottom:0;overflow:visible;isolation:isolate}
-body.pdarticle-studio .post-hero:before{inset:0 0 auto;width:100%;height:760px;z-index:-1;background:url("molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.6;mask-image:linear-gradient(90deg,transparent 20%,#000 80%),linear-gradient(180deg,#000 5%,#0009 45%,transparent 96%);mask-composite:intersect;pointer-events:none}
+body.pdarticle-studio .post-hero:before{inset:0 0 auto;width:100%;height:760px;z-index:-1;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.6;mask-image:linear-gradient(90deg,transparent 20%,#000 80%),linear-gradient(180deg,#000 5%,#0009 45%,transparent 96%);mask-composite:intersect;pointer-events:none}
 body.pdarticle-studio .post-hero-content{max-width:1240px;padding:0;text-align:left}
 body.pdarticle-studio .post-title{font-size:44px;line-height:1.22;font-weight:700;text-align:left;max-width:1120px;margin:0 0 25px;padding:0;text-shadow:none;animation:none;transform:none;hyphens:none}
 body.pdarticle-studio .post-hero-content:after{content:'';display:block;width:42px;height:3px;margin:23px 0 0;border-radius:3px;background:#ed4c40;box-shadow:51px 0 0 -1px #9bc7df}
@@ -27,7 +27,7 @@ body.pdarticle-studio .post-hero .pd-content-meta__item a{color:#176a99!importan
 body.pdarticle-studio .post-hero a.pd-content-meta__item{color:#176a99!important;font-weight:650}
 body.pdarticle-studio .post-hero a.pd-content-meta__item:hover{background:#eaf6fd;transform:none}
 body.pdarticle-studio .post-hero .pd-content-meta__item i{width:17px;text-align:center;color:#227eae;font-size:13px}
-body.pdarticle-studio .pd-content-meta__item i.fa-calendar-alt{height:19px;background:url("icons/calendar.svg") center/contain no-repeat;font-size:0}
+body.pdarticle-studio .pd-content-meta__item i.fa-calendar-alt{height:19px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/calendar.svg") center/contain no-repeat;font-size:0}
 body.pdarticle-studio .pd-content-meta__item i.fa-calendar-alt:before{display:none}
 body.pdarticle-studio .single-post-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:28px;align-items:start;max-width:1280px;margin:-32px auto 64px;padding:0 20px}
 body.pdarticle-studio .toc-container{display:flex;flex-direction:column;min-width:0;width:100%;max-height:calc(100dvh - var(--pd-admin-bar-offset,0px) - var(--header-height,82px) - 32px);top:calc(var(--pd-admin-bar-offset,0px) + var(--header-height,82px) + 16px);border:1px solid #c7e0ef;border-radius:14px;background:#fafdff;box-shadow:0 8px 22px -15px #2e628444;overflow:hidden;z-index:90}
@@ -35,7 +35,7 @@ body.pdarticle-studio .toc-container[hidden]{display:none}
 body.pdarticle-studio .toc-container:hover{box-shadow:0 8px 22px -15px #2e628444}
 body.pdarticle-studio .toc-title{position:relative;top:auto;flex:0 0 auto;min-height:67px;margin:0;padding:17px 18px;border-bottom:1px solid #d1e6f3;background:#f0f8fe;border-radius:13px 13px 0 0;font-size:15px;line-height:1.5;font-weight:750;color:#214e6e}
 body.pdarticle-studio .toc-title>span{display:flex;align-items:center;gap:11px}
-body.pdarticle-studio .toc-title .fa-bookmark{display:inline-block;width:27px;height:30px;flex:0 0 27px;margin:0;background:url("icons/quickguide.svg") center/contain no-repeat;font-size:0}
+body.pdarticle-studio .toc-title .fa-bookmark{display:inline-block;width:27px;height:30px;flex:0 0 27px;margin:0;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/quickguide.svg") center/contain no-repeat;font-size:0}
 body.pdarticle-studio .toc-title .fa-bookmark:before{display:none}
 body.pdarticle-studio .nav-list-wrapper{min-height:0;scrollbar-width:thin;scrollbar-color:#8bbfda transparent;overscroll-behavior:contain}
 body.pdarticle-studio .nav-list-wrapper::-webkit-scrollbar{width:5px}
@@ -59,16 +59,16 @@ body.pdarticle-studio .post-content{min-width:0;padding:33px 38px 18px;overflow-
 body.pdarticle-studio .post-content :is(p,ul,ol,blockquote,h3,h4,h5,h6){max-width:760px;margin-left:auto;margin-right:auto}
 body.pdarticle-studio .post-content p{font-size:17px;line-height:1.85;margin-top:0;margin-bottom:22px;color:#45627a}
 body.pdarticle-studio .post-content :is(strong,b){color:#234d69;font-weight:700}
-body.pdarticle-studio .post-content :is(h1,h2){display:flex;align-items:center;gap:13px;max-width:none!important;margin:41px -38px 24px;padding:22px 38px;border:0;border-top:1px solid #d9eaf5;border-bottom:1px solid #d9eaf5;background:linear-gradient(90deg,#f4faff 0%,#f3faffec 70%,#f3faffd1),url("molecular-header-branch-v1.webp") right center/auto 165% no-repeat,#f3f9fe;font-size:25px;line-height:1.4;font-weight:650;isolation:isolate}
+body.pdarticle-studio .post-content :is(h1,h2){display:flex;align-items:center;gap:13px;max-width:none!important;margin:41px -38px 24px;padding:22px 38px;border:0;border-top:1px solid #d9eaf5;border-bottom:1px solid #d9eaf5;background:linear-gradient(90deg,#f4faff 0%,#f3faffec 70%,#f3faffd1),url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/molecular-header-branch-v1.webp") right center/auto 165% no-repeat,#f3f9fe;font-size:25px;line-height:1.4;font-weight:650;isolation:isolate}
 body.pdarticle-studio .post-content :is(h1,h2):after{display:none}
 body.pdarticle-studio .post-content :is(h1,h2):before{content:'';display:block;flex:0 0 32px;width:32px;height:36px;background:var(--pdarticle-section-icon) center/contain no-repeat}
 body.pdarticle-studio .post-content :is(h1,h2):has(>i):before{display:none}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="work"],body.pdarticle-studio .post-content :is(h1,h2)[id*="mechanism"],body.pdarticle-studio .post-content :is(h1,h2)[id*="biology"]{--pdarticle-section-icon:url("icons/mechanism.svg")}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="research"],body.pdarticle-studio .post-content :is(h1,h2)[id*="evidence"]{--pdarticle-section-icon:url("icons/research.svg")}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="safety"],body.pdarticle-studio .post-content :is(h1,h2)[id*="side-effect"],body.pdarticle-studio .post-content :is(h1,h2)[id*="contraindication"]{--pdarticle-section-icon:url("icons/shield.svg")}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="dosage"],body.pdarticle-studio .post-content :is(h1,h2)[id*="dose"]{--pdarticle-section-icon:url("icons/chart.svg")}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="reference"]{--pdarticle-section-icon:url("icons/document.svg")}
-body.pdarticle-studio .post-content :is(h1,h2)[id*="fast-answer"],body.pdarticle-studio .post-content :is(h1,h2)[id*="faq"]{--pdarticle-section-icon:url("icons/quickguide.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="work"],body.pdarticle-studio .post-content :is(h1,h2)[id*="mechanism"],body.pdarticle-studio .post-content :is(h1,h2)[id*="biology"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/mechanism.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="research"],body.pdarticle-studio .post-content :is(h1,h2)[id*="evidence"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/research.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="safety"],body.pdarticle-studio .post-content :is(h1,h2)[id*="side-effect"],body.pdarticle-studio .post-content :is(h1,h2)[id*="contraindication"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/shield.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="dosage"],body.pdarticle-studio .post-content :is(h1,h2)[id*="dose"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/chart.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="reference"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/document.svg")}
+body.pdarticle-studio .post-content :is(h1,h2)[id*="fast-answer"],body.pdarticle-studio .post-content :is(h1,h2)[id*="faq"]{--pdarticle-section-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/quickguide.svg")}
 body.pdarticle-studio .post-content h3{margin-top:31px;margin-bottom:16px;padding-left:0;font-size:20px;line-height:1.5;font-weight:650}
 body.pdarticle-studio .post-content h3:before{display:none}
 body.pdarticle-studio .post-content h4{font-size:18px;line-height:1.5;font-weight:650}
@@ -114,9 +114,9 @@ body.pdarticle-studio .auto-reference-item:not([id]){padding-left:20px}
 body.pdarticle-studio .auto-reference-item:not([id]) .auto-reference-right{flex-direction:column;align-items:flex-end;max-width:240px}
 body.pdarticle-studio .auto-reference-item:not([id]) .auto-reference-numbers{position:static;max-width:100%;min-width:30px;white-space:normal;overflow-wrap:anywhere}
 body.pdarticle-studio .single-post-content>.auto-references-section{margin:36px 38px 30px}
-body.pdarticle-studio .single-post-content>.auto-references-section>h2{display:flex;align-items:center;gap:13px;max-width:none;margin:0 -38px 24px;padding:22px 38px;border:0;border-top:1px solid #d9eaf5;border-bottom:1px solid #d9eaf5;background:linear-gradient(90deg,#f4faff 0%,#f3faffec 70%,#f3faffd1),url("molecular-header-branch-v1.webp") right center/auto 165% no-repeat,#f3f9fe;font-size:25px;line-height:1.4;font-weight:650}
+body.pdarticle-studio .single-post-content>.auto-references-section>h2{display:flex;align-items:center;gap:13px;max-width:none;margin:0 -38px 24px;padding:22px 38px;border:0;border-top:1px solid #d9eaf5;border-bottom:1px solid #d9eaf5;background:linear-gradient(90deg,#f4faff 0%,#f3faffec 70%,#f3faffd1),url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/molecular-header-branch-v1.webp") right center/auto 165% no-repeat,#f3f9fe;font-size:25px;line-height:1.4;font-weight:650}
 body.pdarticle-studio .single-post-content>.auto-references-section>h2:after{display:none}
-body.pdarticle-studio .auto-references-section>h2>i{display:block;width:32px;height:36px;flex:0 0 32px;margin:0;background:url("icons/document.svg") center/contain no-repeat;font-size:0}
+body.pdarticle-studio .auto-references-section>h2>i{display:block;width:32px;height:36px;flex:0 0 32px;margin:0;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-articles/assets/icons/document.svg") center/contain no-repeat;font-size:0}
 body.pdarticle-studio .auto-references-section>h2>i:before{display:none}
 body.pdarticle-studio .works-cited-section ol li{padding:18px 18px 18px 61px!important;border-color:#cfe4f1!important;border-radius:10px!important;box-shadow:none!important;color:#45647c!important}
 body.pdarticle-studio .works-cited-section ol li:before{top:18px!important;left:15px!important;bottom:auto!important;width:29px!important;height:29px!important;border:1px solid #c3e2f2!important;border-radius:7px!important;background:#e7f5fd!important;color:#1a76a8!important}

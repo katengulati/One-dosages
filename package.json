@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Bilingual (English/Spanish) peptide dosage site built with Next.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1 --port 4321",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --hostname 127.0.0.1 --port 4321",
     "lint": "tsc --noEmit",
-    "clone:build": "python3 scripts/clone/build.py"
+    "clone:build": "python3 scripts/clone/build.py",
+    "check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

@@ -131,10 +131,10 @@ body.pdmh-stage{--header-height:66px;--header-height-desktop:82px}
 /* Shared mobile quick navigation: approved Molecular Studio artwork, unchanged links and states. */
 body.pdmh-stage .mobile-app-nav__item>i{display:block;flex:0 0 26px;width:26px;height:26px;background-position:center;background-repeat:no-repeat;background-size:contain;font-size:0;line-height:1;font-style:normal}
 body.pdmh-stage .mobile-app-nav__item>i::before{display:none}
-body.pdmh-stage .mobile-app-nav__item>.fa-flask{background-image:url("icons/research.svg")}
-body.pdmh-stage .mobile-app-nav__item>.fa-table-list{background-image:url("icons/chart.svg")}
-body.pdmh-stage .mobile-app-nav__item>.fa-calculator{background-image:url("icons/calculator.svg")}
-body.pdmh-stage .mobile-app-nav__item>.fa-newspaper{background-image:url("icons/overview.svg")}
+body.pdmh-stage .mobile-app-nav__item>.fa-flask{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-header/assets/icons/research.svg")}
+body.pdmh-stage .mobile-app-nav__item>.fa-table-list{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-header/assets/icons/chart.svg")}
+body.pdmh-stage .mobile-app-nav__item>.fa-calculator{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-header/assets/icons/calculator.svg")}
+body.pdmh-stage .mobile-app-nav__item>.fa-newspaper{background-image:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-header/assets/icons/overview.svg")}
 @media(forced-colors:active){
  body.pdmh-stage .mobile-app-nav__item>i.fas{background-image:none;font-size:1.05rem;line-height:26px;color:ButtonText}
  body.pdmh-stage .mobile-app-nav__item>i::before{display:inline}
@@ -176,7 +176,7 @@ body.pdmh-stage #mobileNavPanel .pdmh-resources-menu{padding:4px 8px 10px}
  #siteHeader.pdmh-header .main-nav-list>.pdmh-resources-item>.pdmh-resources-trigger{font-size:13px;padding-inline:6px;gap:7px}
 }
 #siteHeader.pdmh-header{isolation:isolate}
-#siteHeader.pdmh-header:before{content:"";position:absolute;inset:0 0 0 auto;width:min(58%,760px);background:url("molecular-header-branch-v1.webp") right 47%/cover no-repeat;mix-blend-mode:multiply;opacity:.18;mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none;z-index:0}
+#siteHeader.pdmh-header:before{content:"";position:absolute;inset:0 0 0 auto;width:min(58%,760px);background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-header/assets/molecular-header-branch-v1.webp") right 47%/cover no-repeat;mix-blend-mode:multiply;opacity:.18;mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none;z-index:0}
 #siteHeader.pdmh-header .header-inner{position:relative;z-index:1}
 @media(max-width:1024px){#siteHeader.pdmh-header:before{opacity:.13}}
 @media(forced-colors:active){#siteHeader.pdmh-header:before{display:none}}

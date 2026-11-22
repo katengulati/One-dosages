@@ -1,0 +1,456 @@
+/* The active theme owns the simulator presentation; the Protocol Builder owns its data and behavior. */
+body.pd-prep-runtime #app {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  padding: 12px 14px 14px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, .72);
+  box-shadow: none;
+}
+
+body.pd-prep-runtime .stage {
+  border-radius: 16px;
+}
+
+/* The intro is already framed by the rounded stage. Avoid a second rule that
+   visually joins the iframe edge and makes the top corners look square. */
+body.pd-prep-runtime:has(#ov-menu:not([hidden])) .top {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Preserve the simulator's portrait workbench proportions during play. */
+body.pd-prep-runtime:has(#ov-menu[hidden]) #app {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+body.pd-prep-runtime #ov-menu {
+  padding: clamp(18px, 3.5vw, 38px);
+  background:
+    radial-gradient(circle at 92% 14%, rgba(17, 140, 196, .16), transparent 32%),
+    radial-gradient(circle at 6% 88%, rgba(240, 75, 67, .1), transparent 28%),
+    rgba(239, 248, 253, .82);
+}
+
+body.pd-prep-runtime #ov-menu .card {
+  display: grid;
+  grid-template-columns: minmax(220px, .78fr) minmax(320px, 1.22fr);
+  grid-template-rows: auto auto 1fr auto auto;
+  column-gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+  width: min(100%, 1010px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.pd-prep-runtime #ov-menu .title,
+body.pd-prep-runtime #ov-menu .lede {
+  grid-column: 1;
+}
+
+body.pd-prep-runtime #ov-menu .game-kicker { display: none; }
+body.pd-prep-runtime #ov-menu .title {
+  grid-row: 1;
+  max-width: 9ch;
+  margin: 0 0 16px;
+  color: #123e59;
+  font-size: clamp(42px, 5vw, 58px);
+  font-weight: 800;
+  font-stretch: normal;
+  letter-spacing: -.045em;
+  line-height: 1.02;
+}
+body.pd-prep-runtime #ov-menu .lede { grid-row: 2 / span 3; max-width: 35ch; }
+body.pd-prep-runtime #ov-menu .pick { grid-column: 2; grid-row: 1; margin-top: 4px; }
+body.pd-prep-runtime #ov-menu .vgrid { grid-column: 2; grid-row: 2 / span 2; }
+body.pd-prep-runtime #ov-menu .meta { grid-column: 2; grid-row: 4; }
+body.pd-prep-runtime #ov-menu .text-btn { grid-column: 2; grid-row: 5; justify-self: start; }
+body.pd-prep-runtime #ov-menu .text-btn.more { grid-row: 6; }
+
+body.pd-prep-mode-home #ov-menu .vgrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.pd-prep-mode-catalog #ov-menu .vgrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* The full catalog is one reading sequence: introduce the activity, offer the
+   no-decision random start, then present the complete vial list. The generic
+   two-column intro is still used by the curated homepage and protocol modes. */
+@media (min-width: 761px) {
+  body.pd-prep-mode-catalog #ov-menu .card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 0;
+  }
+
+  body.pd-prep-mode-catalog #ov-menu .title,
+  body.pd-prep-mode-catalog #ov-menu .lede,
+  body.pd-prep-mode-catalog #ov-menu .quick-start,
+  body.pd-prep-mode-catalog #ov-menu .pick,
+  body.pd-prep-mode-catalog #ov-menu .vgrid,
+  body.pd-prep-mode-catalog #ov-menu .meta,
+  body.pd-prep-mode-catalog #ov-menu .text-btn,
+  body.pd-prep-mode-catalog #ov-menu .text-btn.more {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  body.pd-prep-mode-catalog #ov-menu .title {
+    max-width: none;
+    margin-bottom: 10px;
+  }
+
+  body.pd-prep-mode-catalog #ov-menu .lede {
+    max-width: 62ch;
+    margin-bottom: 18px;
+  }
+
+  body.pd-prep-mode-catalog #ov-menu .quick-start {
+    width: min(100%, 520px);
+    margin-bottom: 28px;
+  }
+
+  body.pd-prep-mode-catalog #ov-menu .pick {
+    margin: 0 0 10px;
+  }
+}
+
+body.pd-prep-mode-protocol #ov-menu .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 620px);
+  text-align: center;
+}
+
+body.pd-prep-mode-protocol #ov-menu .title {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(42px, 5.5vw, 58px);
+}
+body.pd-prep-mode-protocol #ov-menu .lede {
+  max-width: 470px;
+  margin: 14px auto 24px;
+  font-size: 16px;
+}
+body.pd-prep-mode-protocol #ov-menu .pick { display: none; }
+body.pd-prep-mode-protocol #ov-menu .meta {
+  max-width: 470px;
+  margin: 18px auto 0;
+}
+body.pd-prep-mode-protocol #ov-menu .text-btn {
+  align-self: center;
+  margin-top: 12px;
+}
+
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked {
+  width: min(100%, 420px);
+}
+
+body.pd-prep-mode-protocol #ov-menu .vlocked {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+body.pd-prep-mode-protocol #ov-menu .vlocked-name {
+  color: #123e59;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+body.pd-prep-mode-protocol #ov-menu .vlocked em {
+  color: #527086;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* A locked protocol has one action, so present it as the primary CTA rather
+   than as a small choice card. The Protocol Builder still owns the action. */
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(100%, 300px);
+  min-height: 58px;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #f45149 0%, #e8433c 100%);
+  box-shadow: 0 14px 30px -18px rgba(217, 59, 53, .9);
+}
+
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn b {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn span {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn:hover,
+body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn:focus-visible {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, #e8433c 0%, #d93b35 100%);
+  box-shadow: 0 17px 34px -18px rgba(217, 59, 53, .95);
+}
+
+@media (min-width: 761px) {
+  body.pd-prep-mode-protocol #ov-menu { place-items: center; }
+}
+
+body.pd-prep-runtime .vbtn {
+  min-height: 60px;
+  padding: 11px 13px;
+  border: 1px solid #b9daeb;
+  box-shadow: 0 7px 18px -15px rgba(18, 62, 89, .55);
+}
+
+body.pd-prep-runtime .vbtn:hover,
+body.pd-prep-runtime .vbtn:focus-visible {
+  border-color: #118cc4;
+  background: #f7fcff;
+  box-shadow: 0 10px 22px -16px rgba(17, 140, 196, .72);
+  outline: 0;
+}
+
+body.pd-prep-runtime #btn-sound[aria-pressed="true"] {
+  color: #d93b35;
+  background: #fff3f2;
+  box-shadow: inset 0 0 0 1px rgba(240, 75, 67, .35);
+}
+
+@media (min-width: 761px) {
+  body.pd-prep-runtime .sheet {
+    align-items: center;
+    padding: 24px;
+  }
+
+  body.pd-prep-runtime .sheet-panel {
+    width: min(92%, 720px);
+    max-height: min(82%, 720px);
+    border-bottom: 1px solid #c8e0ed;
+    border-radius: 22px;
+    padding: 24px;
+    animation: pd-prep-modal .22s cubic-bezier(.2, .8, .2, 1);
+    box-shadow: 0 28px 70px -32px rgba(18, 62, 89, .85);
+  }
+}
+
+@keyframes pd-prep-modal {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 760px) {
+  body.pd-prep-runtime #app {
+    padding: max(8px, env(safe-area-inset-top)) 10px max(8px, env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .64);
+  }
+
+  body.pd-prep-runtime #ov-menu {
+    padding: 16px;
+  }
+
+  body.pd-prep-runtime #ov-menu .card {
+    display: block;
+    width: min(100%, 520px);
+  }
+
+  body.pd-prep-mode-protocol #ov-menu .card {
+    display: flex;
+    width: min(100%, 520px);
+  }
+
+  body.pd-prep-runtime #ov-menu .lede {
+    max-width: none;
+  }
+
+  body.pd-prep-runtime #ov-menu .vgrid,
+  body.pd-prep-mode-home #ov-menu .vgrid,
+  body.pd-prep-mode-catalog #ov-menu .vgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked {
+    display: block;
+  }
+
+  body.pd-prep-mode-protocol #ov-menu .vgrid.is-locked .vbtn {
+    min-height: 58px;
+  }
+
+  body.pd-prep-runtime .whybox {
+    left: auto !important;
+    right: 10px;
+    top: auto !important;
+    bottom: 12px;
+    width: min(46%, 178px);
+    padding: 8px 10px;
+    font-size: 11.5px;
+    line-height: 1.32;
+  }
+
+  body.pd-prep-runtime .whybox strong {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  body.pd-prep-runtime #ov-menu { padding: 12px; }
+  body.pd-prep-runtime #ov-menu .title { font-size: 40px; }
+  body.pd-prep-runtime #ov-menu .lede { font-size: 13.5px; line-height: 1.48; }
+  body.pd-prep-runtime #ov-menu .vbtn { min-height: 54px; padding: 9px 10px; }
+  body.pd-prep-runtime #ov-menu .vbtn b { font-size: 14px; }
+}
+
+body.pd-prep-runtime.pd-prep-immersive #app {
+  height: 100dvh;
+  padding-top: max(58px, env(safe-area-inset-top));
+}
+
+/* The curated mobile launcher is a compact reading sequence. The host fits
+   its frame to this content; choices and qualifications are never clipped. */
+@media (max-width: 760px) {
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .title {
+    max-width: none;
+    font-size: 32px;
+    line-height: 1.06;
+    margin-bottom: 10px;
+  }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .lede {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .quick-start {
+    min-height: 54px;
+    grid-template-columns: 26px minmax(0, 1fr) auto;
+    gap: 9px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .quick-start svg { width: 26px; height: 26px; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .quick-start b { font-size: 15px; line-height: 1.2; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .quick-start > span > span { display: none; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .pick { margin: 0 0 8px; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .vgrid { gap: 7px; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .vbtn {
+    min-width: 0;
+    min-height: 48px;
+    padding: 9px 10px;
+    justify-content: center;
+  }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .vbtn b { font-size: 14px; line-height: 1.2; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .vbtn > span { display: none; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .meta { font-size: 12px; line-height: 1.45; margin-top: 12px; }
+  body.pd-prep-mode-home.pd-prep-home-mobile #ov-menu .text-btn { min-height: 32px; margin-top: 5px; }
+}
+
+/* Homepage quick start: one decision, with the idle workbench still visible. */
+body.pd-prep-mode-home #ov-menu.is-quick-launch {
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(20px, 5vw, 48px);
+  background:
+    radial-gradient(circle at 88% 14%, rgba(17, 140, 196, .22), transparent 34%),
+    radial-gradient(circle at 8% 88%, rgba(240, 75, 67, .14), transparent 30%),
+    rgba(18, 62, 89, .42);
+  -webkit-backdrop-filter: blur(7px) saturate(.86);
+  backdrop-filter: blur(7px) saturate(.86);
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 420px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start {
+  grid-template-columns: minmax(0, 1fr) auto;
+  width: min(100%, 360px);
+  min-height: 72px;
+  margin: 0;
+  padding: 16px 22px;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 20px 40px -18px rgba(56, 17, 15, .9), 0 0 0 6px rgba(255, 255, 255, .12);
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start svg {
+  display: none;
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start > span:not(.quick-arrow) {
+  text-align: center;
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start > span > span {
+  display: none;
+}
+
+body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start b {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  body.pd-prep-mode-home #ov-menu.is-quick-launch {
+    padding: 18px;
+  }
+
+  body.pd-prep-mode-home #ov-menu.is-quick-launch .card {
+    display: flex;
+  }
+
+  body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start {
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: min(100%, 320px);
+    min-height: 64px;
+    margin: 0;
+    padding: 14px 18px;
+  }
+
+  body.pd-prep-mode-home #ov-menu.is-quick-launch .quick-start b {
+    font-size: 17px;
+  }
+}
+
+body.pd-prep-runtime.pd-prep-immersive .top {
+  height: 44px;
+}
+
+body.pd-prep-runtime.pd-prep-immersive .stage {
+  border-radius: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.pd-prep-runtime .vbtn { transition: none; }
+}

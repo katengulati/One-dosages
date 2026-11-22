@@ -16,17 +16,17 @@ body.pdchart-studio .site-breadcrumbs .breadcrumb-inner>span{display:flex;align-
 body.pdchart-studio .site-breadcrumbs .breadcrumb_last{max-width:none;white-space:normal;overflow:visible;line-height:inherit;vertical-align:baseline;overflow-wrap:anywhere}
 body.pdchart-studio .site-breadcrumbs .breadcrumb-separator{margin:0;line-height:inherit;vertical-align:baseline}
 body.pdchart-studio .pdh-hero{padding:78px 20px 38px;background:transparent;border:0;overflow:visible;isolation:isolate}
-body.pdchart-studio .pdh-hero:before{inset:0 0 auto;height:720px;width:100%;background:url("molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.58;mask-image:linear-gradient(90deg,transparent 22%,#000 84%),linear-gradient(180deg,#000 3%,#0009 43%,transparent 96%);mask-composite:intersect;z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-hero:before{inset:0 0 auto;height:720px;width:100%;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/molecular-strands-v1.webp") right top/max(1440px,100%) auto no-repeat;opacity:.58;mask-image:linear-gradient(90deg,transparent 22%,#000 84%),linear-gradient(180deg,#000 3%,#0009 43%,transparent 96%);mask-composite:intersect;z-index:-1;pointer-events:none}
 body.pdchart-studio .pdh-hero-content{max-width:1240px;text-align:left}
 body.pdchart-studio .pdh-hero-title{display:flex;align-items:center;gap:17px;max-width:1100px;font-size:44px;font-weight:700;line-height:1.22;margin:0 0 18px;text-shadow:none;animation:none;transform:none;text-wrap:pretty}
-body.pdchart-studio .pdh-hero-title:before{content:'';display:block;flex:0 0 48px;width:48px;height:52px;background:url("icons/chart.svg") center/contain no-repeat}
+body.pdchart-studio .pdh-hero-title:before{content:'';display:block;flex:0 0 48px;width:48px;height:52px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/icons/chart.svg") center/contain no-repeat}
 body.pdchart-studio .pdh-hero-desc{max-width:865px;font-size:17px;line-height:1.8;color:#486b85;margin:0;animation:none;opacity:1;transform:none}
 body.pdchart-studio .pdh-hero-content:after{content:'';display:block;width:42px;height:3px;margin:24px 0 0;border-radius:3px;background:#ed4c40;box-shadow:51px 0 0 -1px #9bc7df}
 body.pdchart-studio .pdh-outer{max-width:1280px;padding:0 20px;margin:0 auto 68px}
 body.pdchart-studio .pdh-content{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
 body.pdchart-studio .pdh-wrap{--pc:#1676ae;--sc:#183e59;--ac:#ed4c40;color:#496a82;font-family:inherit}
 body.pdchart-studio .pdh-intro{position:relative;isolation:isolate;margin:0 0 24px;padding:24px 27px;border:1px solid #cee2f0;border-radius:15px;background:linear-gradient(125deg,#fff,#f7fbfe);box-shadow:0 5px 18px #294d6907;font-size:15px;line-height:1.85;color:#47677f;overflow:hidden}
-body.pdchart-studio .pdh-intro:after{content:'';position:absolute;inset:0 0 0 72%;background:url("molecular-header-branch-v1.webp") right top/auto 140% no-repeat;opacity:.12;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-intro:after{content:'';position:absolute;inset:0 0 0 72%;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/molecular-header-branch-v1.webp") right top/auto 140% no-repeat;opacity:.12;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
 body.pdchart-studio .pdh-intro strong{color:#244e6c}
 body.pdchart-studio .pdh-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 26px}
 body.pdchart-studio .pdh-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:105px;padding:20px 14px;border:1px solid #cce2f0;border-radius:14px;background:linear-gradient(135deg,#fff,#f8fcff);box-shadow:0 8px 20px -13px #2f648433;text-align:center}
@@ -71,13 +71,13 @@ body.pdchart-studio .pdh-cta .t{font-family:'Poppins',sans-serif;font-weight:650
 body.pdchart-studio .pdh-cta .s{grid-column:1/-1;align-self:start;font-size:14px;color:#56748a;line-height:1.75;margin:0}
 body.pdchart-studio .pdh-cta i{display:block;width:38px;height:42px;background:var(--pdchart-cta-icon) center/contain no-repeat;font-size:0;line-height:0}
 body.pdchart-studio .pdh-cta i:before{display:none}
-body.pdchart-studio .pdh-cta .fa-calculator{--pdchart-cta-icon:url("icons/calculator.svg")}
-body.pdchart-studio .pdh-cta .fa-vial{--pdchart-cta-icon:url("icons/vial.svg")}
-body.pdchart-studio .pdh-cta .fa-layer-group{--pdchart-cta-icon:url("icons/mechanism.svg")}
+body.pdchart-studio .pdh-cta .fa-calculator{--pdchart-cta-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/icons/calculator.svg")}
+body.pdchart-studio .pdh-cta .fa-vial{--pdchart-cta-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/icons/vial.svg")}
+body.pdchart-studio .pdh-cta .fa-layer-group{--pdchart-cta-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/icons/mechanism.svg")}
 body.pdchart-studio .pdh-how{margin:30px 0 0;border:1px solid #cee2f0;border-radius:15px;background:#fff;box-shadow:0 5px 18px #294d6907;padding:0 27px 12px;overflow:hidden}
 body.pdchart-studio .pdh-how h2{position:relative;isolation:isolate;display:flex;align-items:center;gap:14px;margin:0 -27px 22px;padding:23px 27px;background:linear-gradient(90deg,#f4fbff,#f8fcff);border-bottom:1px solid #d5e8f4;font-size:23px;font-weight:650;line-height:1.45;overflow:hidden;text-wrap:pretty}
-body.pdchart-studio .pdh-how h2:before{content:'';display:block;flex:0 0 34px;width:34px;height:37px;background:url("icons/quickguide.svg") center/contain no-repeat}
-body.pdchart-studio .pdh-how h2:after{content:'';position:absolute;inset:0 0 0 74%;background:url("molecular-header-branch-v1.webp") right center/auto 170% no-repeat;opacity:.15;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+body.pdchart-studio .pdh-how h2:before{content:'';display:block;flex:0 0 34px;width:34px;height:37px;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/icons/quickguide.svg") center/contain no-repeat}
+body.pdchart-studio .pdh-how h2:after{content:'';position:absolute;inset:0 0 0 74%;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-chart/assets/molecular-header-branch-v1.webp") right center/auto 170% no-repeat;opacity:.15;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
 body.pdchart-studio .pdh-how p{font-size:15px;line-height:1.85;color:#496a82;margin:0 0 16px}
 body.pdchart-studio .pdh-how a{color:#146d9f;text-decoration:underline;text-underline-offset:3px}
 body.pdchart-studio .pdh-disc{margin:26px 0 0;padding:21px 24px;border:1px solid #f0d8d0;border-left:3px solid #ec6a57;border-radius:12px;background:#fff8f5;font-size:13px;color:#805c54;line-height:1.8}

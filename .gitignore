@@ -8,3 +8,6 @@ next-env.d.ts
 # raw WordPress exports (may be large / contain private data)
 wordpress-export/
 __pycache__/
+
+# Local test submissions
+.preview-data/

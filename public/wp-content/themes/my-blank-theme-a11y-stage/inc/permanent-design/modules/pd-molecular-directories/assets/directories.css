@@ -3,10 +3,10 @@
 @property --pddir-counter-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes pddir-border-trace{to{--pddir-flare-angle:360deg}}
 @keyframes pddir-border-counter{to{--pddir-counter-angle:-720deg}}
-body.pddir-studio{--catalog-primary:#1676ae;--catalog-secondary:#183e59;--catalog-accent:#ed4c40;--catalog-bg:#f3f8fc;--catalog-card:#fff;--catalog-text:#45627a;--catalog-heading:#183e59;--catalog-border:#cee2f0;--pddir-hero-icon:url("icons/quickguide.svg")}
-body.pddir-single{--pddir-hero-icon:url("icons/vial.svg")}
-body.pddir-blends{--pddir-hero-icon:url("icons/mechanism.svg")}
-body.pddir-stacks{--pddir-hero-icon:url("icons/links.svg")}
+body.pddir-studio{--catalog-primary:#1676ae;--catalog-secondary:#183e59;--catalog-accent:#ed4c40;--catalog-bg:#f3f8fc;--catalog-card:#fff;--catalog-text:#45627a;--catalog-heading:#183e59;--catalog-border:#cee2f0;--pddir-hero-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/quickguide.svg")}
+body.pddir-single{--pddir-hero-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/vial.svg")}
+body.pddir-blends{--pddir-hero-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/mechanism.svg")}
+body.pddir-stacks{--pddir-hero-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/links.svg")}
 body.pddir-studio #main-content{background:linear-gradient(180deg,#f5faff,#f3f8fc 70%,#edf6fc);color:#45627a;padding-bottom:1px}
 body.pddir-studio #main-content :is(h1,h2,h3){font-family:'Poppins',sans-serif;color:#183e59;letter-spacing:-.025em}
 body.pddir-studio #main-content :is(a,button):focus-visible{outline:2px solid #1477b0!important;outline-offset:4px!important}
@@ -19,7 +19,7 @@ body.pddir-studio .site-breadcrumbs .breadcrumb-inner>span{display:flex;align-it
 body.pddir-studio .site-breadcrumbs .breadcrumb_last{max-width:none;white-space:normal;overflow:visible;line-height:inherit;vertical-align:baseline;overflow-wrap:anywhere}
 body.pddir-studio .site-breadcrumbs .breadcrumb-separator{margin:0;line-height:inherit;vertical-align:baseline}
 body.pddir-studio .catalog-hero{padding:78px 20px 76px;background:linear-gradient(110deg,#f5faff 10%,#edf7ff 74%,#e0f1fb);border-bottom:1px solid #dcebf5;isolation:isolate}
-body.pddir-studio .catalog-hero:before{inset:0;background:url("molecular-strands-v1.webp") right 42%/auto 175% no-repeat;opacity:.4;mask-image:linear-gradient(90deg,transparent 30%,#000 100%);z-index:-1}
+body.pddir-studio .catalog-hero:before{inset:0;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/molecular-strands-v1.webp") right 42%/auto 175% no-repeat;opacity:.4;mask-image:linear-gradient(90deg,transparent 30%,#000 100%);z-index:-1}
 body.pddir-studio .catalog-hero-content{max-width:1240px;text-align:left}
 body.pddir-studio .catalog-title{display:flex;align-items:center;gap:18px;max-width:1100px;font-size:44px;font-weight:700;line-height:1.2;margin:0 0 18px;text-shadow:none;animation:none;transform:none;text-wrap:pretty}
 body.pddir-studio .catalog-title:before{content:'';display:block;flex:0 0 54px;width:54px;height:58px;background:var(--pddir-hero-icon) center/contain no-repeat}
@@ -32,7 +32,7 @@ body.pddir-studio .stat-item{display:flex;flex-direction:column;align-items:cent
 body.pddir-studio .stat-number{display:block;max-width:100%;font-family:'Poppins',sans-serif;font-size:28px;font-weight:650;line-height:1.2;color:#1678ad;letter-spacing:-.035em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 body.pddir-studio .stat-label{display:block;font-size:11px;font-weight:600;line-height:1.5;letter-spacing:.055em;text-transform:uppercase;color:#58758b}
 body.pddir-studio .catalog-intro{position:relative;isolation:isolate;margin:0 0 24px;padding:25px 28px;background:linear-gradient(125deg,#fff,#f6fbff);border:1px solid #d0e4f1;border-radius:15px;box-shadow:0 5px 18px #294d6907;overflow:hidden}
-body.pddir-studio .catalog-intro:after{content:'';position:absolute;inset:0 0 0 72%;background:url("molecular-header-branch-v1.webp") right top/auto 140% no-repeat;opacity:.13;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+body.pddir-studio .catalog-intro:after{content:'';position:absolute;inset:0 0 0 72%;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/molecular-header-branch-v1.webp") right top/auto 140% no-repeat;opacity:.13;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
 body.pddir-studio .catalog-intro p{max-width:none;font-size:15px;line-height:1.85;color:#47677f;margin:0}
 body.pddir-studio .catalog-intro strong{color:#244e6c}
 body.pddir-studio .catalog-intro a{color:#126b9e;font-weight:650;text-decoration:none;text-underline-offset:3px}
@@ -45,9 +45,9 @@ body.pddir-studio :is(.toggle-btn:hover,.toggle-btn.active:hover,a.dosage-type-n
 body.pddir-studio :is(.toggle-btn:not(.active):hover,a.dosage-type-nav__item:hover){background:#edf8ff;color:#176e9e}
 body.pddir-studio :is(.toggle-btn,.dosage-type-nav__item)>i{display:block;flex:0 0 32px;width:32px;height:34px;margin:0;background:var(--pddir-tab-icon) center/contain no-repeat;font-size:0;line-height:0}
 body.pddir-studio :is(.toggle-btn,.dosage-type-nav__item)>i:before{display:none}
-body.pddir-studio .fa-vial{--pddir-tab-icon:url("icons/vial.svg")}
-body.pddir-studio .fa-flask{--pddir-tab-icon:url("icons/mechanism.svg")}
-body.pddir-studio .fa-layer-group{--pddir-tab-icon:url("icons/links.svg")}
+body.pddir-studio .fa-vial{--pddir-tab-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/vial.svg")}
+body.pddir-studio .fa-flask{--pddir-tab-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/mechanism.svg")}
+body.pddir-studio .fa-layer-group{--pddir-tab-icon:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/links.svg")}
 body.pddir-studio :is(.toggle-btn.active,.dosage-type-nav__item.is-active)>i{background-color:transparent;border-radius:0;filter:drop-shadow(0 0 1px #fff) drop-shadow(0 1px 1px #17496533)}
 body.pddir-studio .catalog-azindex{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 27px;padding:13px;background:#eaf5fcd4;border:1px solid #cde2f0;border-radius:12px;box-shadow:none;scrollbar-width:thin;scrollbar-color:#a9cfe4 transparent}
 body.pddir-studio .catalog-azindex:empty{display:none}
@@ -63,7 +63,7 @@ body.pddir-studio .catalog-card-image{width:calc(100% - 24px);height:236px;flex:
 body.pddir-studio .catalog-card-image img{display:block;width:100%;height:100%;padding:10px;object-fit:contain;object-position:center;transform:none;transition:none;image-rendering:auto}
 body.pddir-studio .catalog-card:hover .catalog-card-image img{transform:none}
 body.pddir-studio .catalog-card-image.no-image{background:linear-gradient(135deg,#f7fcff,#eaf5fd);color:#1b79ab}
-body.pddir-studio .catalog-card-image.no-image i{width:72px;height:78px;display:block;background:url("icons/research.svg") center/contain no-repeat;font-size:0;opacity:1}
+body.pddir-studio .catalog-card-image.no-image i{width:72px;height:78px;display:block;background:url("/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-directories/assets/icons/research.svg") center/contain no-repeat;font-size:0;opacity:1}
 body.pddir-studio .catalog-card-image.no-image i:before{display:none}
 body.pddir-studio .catalog-card-content{display:flex;flex-direction:column;flex:1;min-width:0;padding:22px 23px 24px}
 body.pddir-studio .catalog-card h2{margin:0 0 13px;font-size:21px;font-weight:650;line-height:1.4;overflow-wrap:anywhere;text-wrap:pretty}
