@@ -6,7 +6,7 @@ November 21, 2026. This specification describes how the Peptide Dosages replica 
 
 | Reference | Observed pattern | Application |
 | --- | --- | --- |
-| [One Aminos home](https://oneaminos.com/) | White masthead, left wordmark, centered navigation, silver announcement band, centered vial and headline, wide silver primary button | Research masthead, center composition, vial hero, one emphasized action |
+| [One Aminos home](https://oneaminos.com/) | White masthead, left wordmark, centered navigation, silver announcement band, centered vial and headline, wide silver primary button | Research masthead, center composition, one emphasized action |
 | [One Aminos catalog](https://oneaminos.com/shop) | Centered 48 px title, pill rail, four square cards, black image frames, 28 px horizontal spacing | Protocol directories, blog lists, category and search filters |
 | [One Aminos product page](https://oneaminos.com/products/retatrutide) | Clean white canvas, strong center title, restrained metric chips, thin borders, wide primary action | Protocol introductions, quick-reference numbers, calculator controls and results |
 | Claude's local One Aminos library design | Helvetica Neue, calm reading layouts, silver cards, 18 px phone gutters, one coherent button hierarchy | Educational shell and article, guide and tool components |
@@ -45,7 +45,7 @@ Use Helvetica Neue, Helvetica, Arial, sans-serif. Display headings use weight 70
 
 ## Shared shell
 
-The masthead pairs the One Aminos wordmark with the Peptide Dosages name, so the reader can identify this library and the brand. A silver research-use bar establishes the purpose. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
+The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
 
 The footer uses a silver background with dark type and the same brand lockup. Existing newsletter, guide, source and policy links remain reachable. No retail prices, cart destinations or storefront offers belong in this library.
 
@@ -53,7 +53,7 @@ The footer uses a silver background with dark type and the same brand lockup. Ex
 
 ### Home
 
-Use one centered product-style focal image with restrained particles, the original heading and description, and the existing browse, article and simulator actions. The primary action is wider and silver with a traveling outline. A steady vial image appears immediately and remains visible when motion is reduced. The original research highlights carousel follows the hero as a secondary visual, with its navigation controls intact. Featured protocols and guides use recurring silver or white tiles and carry their original content. The calculator, Explorer, game entry and FAQ retain their own controls and headings.
+Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes without baked-in text, presented in 8:5 frames above HTML titles. Featured protocols, the calculator, Explorer, game entry and FAQ follow the article grid.
 
 ### Protocol directories and search
 
@@ -73,7 +73,7 @@ Use a clear boundary between inputs, current selection and outputs. Input fields
 
 ## Interaction and responsive acceptance
 
-- A primary silver button receives the moving outline only on the home hero. Running animation stops with reduced motion. The decorative vial particles stop offscreen and when the browser tab is hidden.
+- A primary silver button receives the moving outline only on the home hero. The outline holds still with reduced motion.
 - Use 44 px targets for the main touch controls. Provide an obvious keyboard focus ring and preserve focus within the existing menu or dialog.
 - At 1280 px the frame follows the desktop header and card rhythm. At 390 px navigation collapses, titles wrap, inputs stay readable and only table regions scroll horizontally.
 - Compare the home, directory, a protocol, a blog article, the master chart, calculator and iframe tools with the baseline. Content parity means page text, protocol links, forms and numeric behavior remain present.
@@ -81,4 +81,4 @@ Use a clear boundary between inputs, current selection and outputs. Input fields
 
 ## Implementation map
 
-`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. `public/one-aminos/tools.css` applies the same palette in embedded documents. `public/one-aminos/hero.js` manages the decorative hero motion. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. Source page copy and the simulation, search and calculator logic remain in their current files.
+`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. `public/one-aminos/tools.css` applies the same palette in embedded documents. Generated homepage covers are in `public/one-aminos/article-covers/`. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. Source page copy and the simulation, search and calculator logic remain in their current files.
