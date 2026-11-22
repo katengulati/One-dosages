@@ -1,0 +1,9 @@
+{
+  "_comment": "Hand-tuned translations that win over translations/es/units/*.json (keyed by unit id). Shorter labels keep the desktop menu on one line.",
+  "e0bbc7982d5b32f6": "Péptidos",
+  "45c68d932444470d": "<t1>Péptidos</t1>",
+  "249f056b552dcec0": "Stacks",
+  "61360b2dc858be21": "Guías",
+  "269327c2cb7ec5e4": "<t1>Guías</t1><t2>NUEVO</t2>",
+  "53d6193898b02829": "Solicitar"
+}

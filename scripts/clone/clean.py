@@ -22,6 +22,8 @@ REMOVE_PATTERNS = [
     r"<link[^>]*(?:oembed|EditURI|shortlink|api\.w\.org|wp-json/wp/v2)[^>]*/?>",
     r"<link[^>]*href=['\"][^'\"]*pd-audience-security[^'\"]*['\"][^>]*/?>",
     r"<script type=\"speculationrules\">.*?</script>",
+    # Cloudflare bot-check injected by the original host
+    r"<script>(?:(?!</script>).)*?cdn-cgi/challenge-platform(?:(?!</script>).)*</script>",
 ]
 
 

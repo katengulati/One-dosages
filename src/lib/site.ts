@@ -40,16 +40,26 @@ function header(locale: Locale): string {
   return headerCache[locale]!;
 }
 
+const remember = (l: Locale) =>
+  `document.cookie='${LOCALE_COOKIE}=${l};path=/;max-age=31536000;samesite=lax'`;
+
+const GLOBE =
+  '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+
 function switcher(locale: Locale, alts: Record<Locale, string>, mobile: boolean): string {
   const label = locale === "es" ? "Idioma" : "Language";
+  if (!mobile) {
+    // Desktop: one compact button that goes to the other language.
+    const other = locales.find((l) => l !== locale)!;
+    return `<a class="pd-lang-toggle" href="${alts[other]}" hreflang="${other}" lang="${other}" title="${localeNames[other]}" aria-label="${label}: ${localeNames[other]}" onclick="${remember(other)}">${GLOBE}<span>${other.toUpperCase()}</span></a>`;
+  }
   const links = locales
     .map((l) => {
       const current = l === locale ? ' aria-current="true"' : "";
-      const remember = `document.cookie='${LOCALE_COOKIE}=${l};path=/;max-age=31536000;samesite=lax'`;
-      return `<a class="pd-lang-opt" href="${alts[l]}" hreflang="${l}" lang="${l}" title="${localeNames[l]}" onclick="${remember}"${current}>${l.toUpperCase()}</a>`;
+      return `<a class="pd-lang-opt" href="${alts[l]}" hreflang="${l}" lang="${l}" onclick="${remember(l)}"${current}>${localeNames[l]}</a>`;
     })
     .join("");
-  return `<nav class="pd-lang${mobile ? " pd-lang-mobile" : ""}" aria-label="${label}">${links}</nav>`;
+  return `<nav class="pd-lang pd-lang-mobile" aria-label="${label}">${GLOBE}${links}</nav>`;
 }
 
 export function renderPage(locale: Locale, key: string): string {

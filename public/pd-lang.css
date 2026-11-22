@@ -1,49 +1,56 @@
-/* Language switcher (EN | ES) added to the original header. */
-.pd-lang {
+/* Language switcher added to the original header. */
+
+/* Desktop: compact toggle at the end of the primary nav. */
+.pdmh-header .main-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pd-lang-toggle {
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 3px;
-  margin: 0 10px 0 0;
-  border: 1px solid rgba(127, 127, 127, 0.35);
+  gap: 4px;
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 9px;
+  border: 1px solid rgba(15, 45, 80, 0.16);
   border-radius: 999px;
+  color: inherit;
   font: 600 12px/1 inherit;
   letter-spacing: 0.04em;
-  flex-shrink: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.15s, background-color 0.15s;
 }
-.pd-lang-opt {
-  display: inline-block;
-  padding: 6px 9px;
+.pd-lang-toggle:hover,
+.pd-lang-toggle:focus-visible {
+  border-color: currentColor;
+  background: rgba(15, 45, 80, 0.05);
+}
+
+/* Mobile menu panel: both languages. */
+.pd-lang-mobile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 16px 4px;
+  font: 600 14px/1 inherit;
+}
+.pd-lang-mobile .pd-lang-opt {
+  padding: 8px 12px;
+  border: 1px solid rgba(15, 45, 80, 0.16);
   border-radius: 999px;
   color: inherit;
   text-decoration: none;
-  opacity: 0.7;
 }
-.pd-lang-opt:hover,
-.pd-lang-opt:focus-visible {
-  opacity: 1;
+.pd-lang-mobile .pd-lang-opt[aria-current="true"] {
+  border-color: currentColor;
+  background: rgba(15, 45, 80, 0.06);
 }
-.pd-lang-opt[aria-current="true"] {
-  background: currentColor;
-  opacity: 1;
-}
-.pd-lang-opt[aria-current="true"] {
-  /* readable text on the filled pill */
-  color: inherit;
-  background: rgba(127, 127, 127, 0.22);
-}
-.pd-lang-mobile {
-  margin: 12px 16px;
-  align-self: flex-start;
-}
-/* Desktop switcher sits in the header bar; on small screens it lives in the menu panel. */
+
 @media (max-width: 1024px) {
-  .site-header .pd-lang:not(.pd-lang-mobile) {
-    display: none;
-  }
-}
-@media (min-width: 1025px) {
-  .pd-lang-mobile {
+  .pd-lang-toggle {
     display: none;
   }
 }

@@ -30,8 +30,11 @@ KNOWN = set(SLUGS)
 
 def load_translations() -> dict:
     tr = {}
-    for f in sorted(glob.glob(os.path.join(ROOT, "translations/es/units/*.json"))):
+    for f in sorted(glob.glob(os.path.join(ROOT, "translations/es/units/batch-[0-9][0-9][0-9].json"))):
         tr.update(json.load(open(f, encoding="utf8")))
+    overrides = os.path.join(ROOT, "translations/es/overrides.json")
+    if os.path.exists(overrides):
+        tr.update({k: v for k, v in json.load(open(overrides, encoding="utf8")).items() if not k.startswith("_")})
     return tr
 
 
@@ -150,7 +153,11 @@ def finish(doc: str, locale: str, path: str) -> str:
     # Language switcher: in the desktop header next to search, and in the mobile panel.
     # The server fills these markers with links to this page in each language,
     # so the header stays identical on every page and is stored once.
-    doc = re.sub(r'(<div class="pdmh-search-wrap")', r"<!--@lang-->\1", doc, count=1)
+    # Desktop toggle goes at the end of the primary nav (the header is a fixed grid).
+    nav = doc.find('<nav class="main-nav"')
+    if nav >= 0:
+        end = doc.find("</nav>", nav)
+        doc = doc[:end] + "<!--@lang-->" + doc[end:]
     doc = re.sub(r'(<nav\s+class="mobile-nav-panel"[^>]*>)', r"\1<!--@lang-mobile-->", doc, count=1)
     if locale == "es":
         # Scripts and the protocol-builder iframe that have a Spanish copy
