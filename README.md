@@ -13,12 +13,12 @@ Open http://localhost:4322/. To run the production build locally, use `npm run b
 | --- | --- |
 | `site/replica/` | 276 captured page documents organized by original URL |
 | `public/wp-content/` | Styles, images, and page interaction scripts |
-| `public/preview/` | Simulator and Explorer documents and local form handler |
-| `public/data/` | Search suggestions and simulator presets |
+| `public/one-aminos/` | Shared styles, wordmark, article covers and reconstitution video |
+| `public/data/` | Search suggestions |
 | `src/app/` | Next.js routes for the replica, bilingual pages, and preview forms |
 | `search-template.html` and `search-corpus.json` | Preview search results layout and index |
 | `capture.json` and `verification.json` | Page inventory and verification results |
 
-The public replica uses a local search index and local test submissions for contact and newsletter forms. Test submissions stay in `.preview-data/`. Sign-in, registration, and the three Break Room games use the live service. Feed and reference links also point to their original destinations. A complete standalone migration of the WordPress services would require the site's backend source and configuration.
+The public replica uses a local search index and local test submissions for contact and newsletter forms. Test submissions stay in `.preview-data/`. Sign-in and registration use the live service. Feed and reference links also point to their original destinations. A complete standalone migration of the WordPress services would require the site's backend source and configuration.
 
 The bilingual pages use the repository's existing `site/manifest.json`, `site/en/`, `site/es/`, `translations/`, and `scripts/clone/` files. The path without a language prefix serves the original public replica.

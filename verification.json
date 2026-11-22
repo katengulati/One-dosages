@@ -25,5 +25,21 @@
     "Explorer loads 141 protocols and 686 topics",
     "Simulator loads vial presets"
   ],
-  "published": false
+  "published": false,
+  "learning_revision": {
+    "checked_active_routes": 780,
+    "retired_pages_and_player_assets_return_404": true,
+    "video_seconds": 24,
+    "video_languages": [
+      "English",
+      "Spanish"
+    ],
+    "browser_checks": [
+      "Centered headings and gray cards at desktop and mobile widths",
+      "One Aminos wordmark visible in footer",
+      "Playback and caption track on reconstitution page",
+      "Rotating outline moves to selected vial size",
+      "Guide link opens reconstitution video page"
+    ]
+  }
 }

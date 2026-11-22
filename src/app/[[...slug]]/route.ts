@@ -2,13 +2,14 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { renderSearch } from '@/lib/search';
 import { applyOneAminosDesign } from '@/lib/one-aminos-design';
+import { isRetiredLearningPage } from '@/lib/learning-features';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const site = join(process.cwd(), 'site', 'replica');
 const liveSite = 'https://peptidedosages.com';
-const liveRoutes = new Set(['peptide-drop', 'peptide-slice', 'peptide-sort', 'account', 'wp-login.php']);
+const liveRoutes = new Set(['account', 'wp-login.php']);
 const policy = [
   "default-src 'self'",
   "form-action 'self'",
@@ -44,6 +45,7 @@ export async function GET(request: Request, context: { params: Promise<{ slug?: 
     return page(await renderSearch(query, Math.max(1, Math.min(100, requestedPage || 1))));
   }
   const [route] = slug;
+  if (isRetiredLearningPage(url.pathname)) return new Response('Page not found', { status: 404 });
   if (slug.length === 1 && liveRoutes.has(route)) {
     return Response.redirect(liveSite + url.pathname + url.search, 302);
   }

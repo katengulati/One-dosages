@@ -532,3 +532,238 @@
   .oa-library .oa-home-hero h1 { font-size: clamp(34px, 9vw, 43px); }
   .oa-library .oa-browse-button { min-height: 54px; font-size: 17px; }
 }
+
+/* Decorative illustrations yield to the text. Control icons still carry meaning. */
+.oa-library main :is(h1, h2, h3, h4, h5) > :is(i, svg[aria-hidden="true"], img[alt=""]),
+.oa-library :is(.pdmh-resource-item, .pdmh-resources-heading) img[alt=""],
+.oa-library main :is(.section-icon, .pdh-section-icon, .pdhome-guide-step__number),
+.oa-library .calc-intro-section li > i,
+.oa-library .mobile-app-nav__item > i,
+.oa-library main :is(.page-title, .pdh-hero-title)::before {
+  display: none !important;
+}
+
+.oa-library main :is(h1, h2, h3, h4, h5) { color: var(--oa-ink) !important; }
+.oa-library .mobile-app-nav__item { justify-content: center; }
+
+.oa-library.pdfooter-studio .site-footer .footer-logo::before {
+  content: none !important;
+  display: none !important;
+}
+.oa-library.pdfooter-studio .site-footer .footer-logo img {
+  display: block !important;
+  width: 108px;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.oa-library .site-footer .footer-logo { min-height: 49px; }
+
+.oa-library.pdhome-studio #featured-protocols > :is(h2, p),
+.oa-library.pdhome-studio .pdhome-chart-guide > :is(h2, p),
+.oa-library.pdhome-studio .calc-intro-section > :is(h2, h3, p),
+.oa-library.pdhome-studio .calc-calculator-section :is(h3, p),
+.oa-library.pdhome-studio .home-card > :is(h3, p) {
+  color: var(--oa-ink) !important;
+  margin-inline: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.oa-library.pdhome-studio :is(#featured-protocols, .pdhome-chart-guide, .calc-container) {
+  text-align: center;
+}
+
+.oa-library.pdhome-studio #featured-protocols .home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(18px, 3vw, 32px);
+  background: var(--oa-soft) !important;
+  border-color: var(--oa-line) !important;
+}
+
+.oa-library.pdhome-studio #featured-protocols .home-card::after { display: none; }
+
+.oa-library.pdhome-studio #featured-protocols .home-card h3 {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.oa-library.pdhome-studio #featured-protocols .home-card p {
+  margin: 0 auto;
+  max-width: 44ch;
+}
+
+.oa-library.pdhome-studio :is(.home-card .dose-links, .pdhome-inline-actions) {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 9px;
+  margin-inline: auto;
+}
+
+.oa-library.pdhome-studio #featured-protocols .home-card .dose-links { margin-top: 0; }
+
+.oa-library.pdhome-studio .home-card .dose-links a,
+.oa-library.pdhome-studio .pdhome-inline-actions a,
+.oa-library.pdhome-studio .calc-calculator-section :is(button, .calc-link),
+.oa-library .oa-solid-link {
+  min-height: 44px;
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--oa-line);
+  border-radius: 8px;
+  background: var(--oa-silver) !important;
+  color: var(--oa-ink) !important;
+  font: 650 15px/1.25 var(--oa-font);
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.oa-library.pdhome-studio .home-card .dose-links a:hover,
+.oa-library.pdhome-studio .pdhome-inline-actions a:hover,
+.oa-library .oa-solid-link:hover { border-color: var(--oa-ink); }
+
+.oa-library :is(
+  #pdms-pilot .strengths a[aria-current="page"],
+  .pdpb-variant-pill.is-current,
+  #featured-protocols .dose-links a:hover,
+  #featured-protocols .dose-links a:focus-visible
+) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: var(--oa-line) !important;
+  background: var(--oa-silver) !important;
+  color: var(--oa-ink) !important;
+  box-shadow: none;
+}
+
+.oa-library :is(
+  #pdms-pilot .strengths a[aria-current="page"],
+  .pdpb-variant-pill.is-current,
+  #featured-protocols .dose-links a:hover,
+  #featured-protocols .dose-links a:focus-visible
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--oa-angle), var(--oa-silver) 0 67%, #171717 78% 85%, var(--oa-silver) 95%);
+  animation: oa-orbit 5s linear infinite;
+}
+
+.oa-library :is(
+  #pdms-pilot .strengths a[aria-current="page"],
+  .pdpb-variant-pill.is-current,
+  #featured-protocols .dose-links a:hover,
+  #featured-protocols .dose-links a:focus-visible
+)::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  border-radius: 6px;
+  background: var(--oa-silver);
+}
+
+.oa-library.pdhome-studio .pdhome-guide-step {
+  display: block;
+  text-align: center;
+  color: var(--oa-ink);
+  background: var(--oa-soft);
+}
+
+.oa-library.pdhome-studio :is(.pdhome-guide-step p, .calc-intro-section li) { color: var(--oa-ink); }
+
+.oa-library.pdhome-studio .calc-container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+  padding: clamp(26px, 4vw, 50px) !important;
+  background: var(--oa-soft) !important;
+  border-radius: 14px;
+}
+
+.oa-library.pdhome-studio :is(.calc-intro-section, .calc-calculator-section) {
+  width: min(100%, 760px);
+  min-width: 0;
+}
+
+.oa-library.pdhome-studio .calc-intro-section ul { padding-inline: 0; }
+.oa-library.pdhome-studio .calc-intro-section li { display: block; text-align: center; }
+.oa-library.pdhome-studio #peptide-calculator { margin-inline: auto; }
+.oa-library.pdhome-studio #peptide-calculator label { display: block; text-align: center; color: var(--oa-ink); }
+
+.oa-library .oa-reconstitution {
+  box-sizing: border-box;
+  width: min(100%, 1000px);
+  margin-inline: auto;
+  padding: clamp(32px, 4.5vw, 56px) var(--oa-gutter);
+  text-align: center;
+  color: var(--oa-ink);
+}
+
+.oa-library #peptide-prep-simulator {
+  margin: 0 auto 54px;
+  background: var(--oa-soft);
+  border: 1px solid var(--oa-line);
+  border-radius: 14px;
+}
+
+.oa-library .oa-reconstitution :is(h1, h2) {
+  margin: 0 auto 10px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.oa-library .oa-reconstitution p {
+  margin: 0 auto 24px;
+  color: var(--oa-ink);
+  font-size: clamp(16px, 2vw, 19px);
+}
+
+.oa-library .oa-reconstitution video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--oa-paper);
+  border: 1px solid var(--oa-line);
+  border-radius: 10px;
+}
+
+.oa-library .oa-protocol-video .section-head { justify-content: center; text-align: center; }
+.oa-library .oa-protocol-video .section-body { text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .oa-library :is(#pdms-pilot .strengths a[aria-current="page"], .pdpb-variant-pill.is-current, #featured-protocols .dose-links a:hover, #featured-protocols .dose-links a:focus-visible)::before {
+    animation: none;
+    background: #8d8d93;
+  }
+}
+
+.oa-library main :is(.pdh-jumpnav, .pdh-cta, .pdpb-variant-pill, .catalog-card-content, .pdh-controls, .toc-container) :is(i[aria-hidden="true"], svg[aria-hidden="true"]) {
+  display: none !important;
+}
+
+.oa-library.pdchart-studio .pdh-cta a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

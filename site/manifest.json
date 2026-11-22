@@ -51,10 +51,6 @@
   "en": "/en/bpc-157-tb-500-blend/",
   "es": "/es/mezcla-bpc-157-tb-500/"
  },
- "break-room": {
-  "en": "/en/break-room/",
-  "es": "/es/sala-de-descanso/"
- },
  "bronchogen-peptide": {
   "en": "/en/bronchogen-peptide/",
   "es": "/es/peptido-bronchogen/"
@@ -343,14 +339,6 @@
   "en": "/en/peptide-dosage-chart/",
   "es": "/es/tabla-dosificacion-peptidos/"
  },
- "peptide-drop": {
-  "en": "/en/peptide-drop/",
-  "es": "/es/peptide-drop/"
- },
- "peptide-explorer": {
-  "en": "/en/peptide-explorer/",
-  "es": "/es/explorador-peptidos/"
- },
  "peptide-prep-2": {
   "en": "/en/peptide-prep-2/",
   "es": "/es/preparacion-peptidos-2/"
@@ -358,14 +346,6 @@
  "peptide-prep": {
   "en": "/en/peptide-prep/",
   "es": "/es/preparacion-peptidos/"
- },
- "peptide-slice": {
-  "en": "/en/peptide-slice/",
-  "es": "/es/peptide-slice/"
- },
- "peptide-sort": {
-  "en": "/en/peptide-sort/",
-  "es": "/es/peptide-sort/"
  },
  "peptide-stack-dosages": {
   "en": "/en/peptide-stack-dosages/",

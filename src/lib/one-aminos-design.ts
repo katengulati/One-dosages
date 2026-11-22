@@ -1,3 +1,5 @@
+import { applyLearningFeatures } from './learning-features';
+
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
 
 const articles = [
@@ -61,7 +63,7 @@ export function applyOneAminosDesign(html: string) {
   const homeLabel = spanish ? 'Inicio de One Aminos' : 'One Aminos home';
   const strip = `<div class="oa-research-band">${researchUse}</div>`;
 
-  return html
+  return applyLearningFeatures(html, spanish)
     .replace('</head>', () => presentation + '</head>')
     .replace(/<body\b([^>]*)>/i, (tag, attributes: string) => {
       if (/\bclass="/.test(attributes)) return tag.replace('class="', 'class="oa-library ');
@@ -70,6 +72,9 @@ export function applyOneAminosDesign(html: string) {
     .replace(/<header\b[^>]*\bid="siteHeader"/i, (header) => strip + header)
     .replace(/(<a\b[^>]*\bclass="header-logo"[^>]*>)[\s\S]*?<\/a>/i, (_, opening: string) =>
       opening.replace(/aria-label="[^"]*"/i, `aria-label="${homeLabel}"`) + '</a>')
+    .replace(/(<a\b[^>]*\bclass="footer-logo"[^>]*>)[\s\S]*?<\/a>/gi, (_, opening: string) =>
+      opening.replace(/aria-label="[^"]*"/i, `aria-label="${homeLabel}"`) +
+      '<img src="/one-aminos/wordmark.png" width="108" height="49" loading="lazy" alt=""></a>')
     .replace(/<section class="hero-section">[\s\S]*?<\/section>/i, (hero) => {
       const heading = hero.match(/<h1>([\s\S]*?)<\/h1>/i)?.[1];
       const browseHref = hero.match(/<a\b(?=[^>]*\bclass="primary-cta")[^>]*\bhref="([^"]+)"/i)?.[1];

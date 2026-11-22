@@ -1,3 +1,4 @@
+import { isRetiredLearningPage } from './learning-features';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -18,7 +19,7 @@ function loadSearch() {
     readFile(join(process.cwd(), 'search-corpus.json'), 'utf8')
   ]).then(([template, corpus]) => ({
     template,
-    pages: (JSON.parse(corpus) as SearchPage[]).map((page) => ({ ...page, body: page.body.toLowerCase() }))
+    pages: (JSON.parse(corpus) as SearchPage[]).filter((page) => !isRetiredLearningPage(page.path)).map((page) => ({ ...page, body: page.body.toLowerCase() }))
   }));
   return searchData;
 }

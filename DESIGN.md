@@ -28,7 +28,7 @@ The live visual reference was reviewed at 1280 px. Its masthead begins with a 34
 | `--oa-reading` | `740px` | Single-column reading measure |
 | `--oa-gutter` | `34px` desktop, `18px` phone | Repeat on content and page chrome |
 
-Clinical warnings use an outlined or soft surface, an explicit heading and text. Calculator errors and simulator states retain meaningful labels and visible state cues. Color cannot be the only indicator.
+Clinical warnings use an outlined or soft surface, an explicit heading and text. Calculator errors retain meaningful labels and visible state cues. Color cannot be the only indicator.
 
 ### Type
 
@@ -53,7 +53,7 @@ The footer uses a silver background with dark type and the same brand lockup. Ex
 
 ### Home
 
-Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes without baked-in text, presented in 8:5 frames above HTML titles. Featured protocols, the calculator, Explorer, game entry and FAQ follow the article grid.
+Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes without baked-in text, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution video, chart guide, calculator, and FAQ follow the article grid.
 
 ### Protocol directories and search
 
@@ -67,18 +67,21 @@ Center the protocol title, intro and share actions, followed by the original con
 
 Center the title and lead with a controlled maximum width, followed by the original article body. Preserve citations, callouts, figures, table of contents, author and dates. Use ink links with underlines in reading copy and a neutral background for informational cards. Native disclosure elements retain their expand/collapse states. Constrain illustrations to their content column.
 
-### Calculator, simulator and Explorer
+### Calculator and reconstitution video
 
-Use a clear boundary between inputs, current selection and outputs. Input fields are white with visible hairlines, selected chips are silver or outlined, and result areas use a quiet gray surface. Keep print/share behavior, numeric precision, keyboard behavior, guide steps, touch interactions and error states. The simulator keeps its working apparatus and the Explorer keeps its graph. Their document surfaces, menus and controls use the same palette while preserving diagram states and selected-region visibility. Break Room previews and member access keep their connection to the original site.
+Separate calculator inputs and outputs. Inputs are white, selected choices are silver with an ink outline, and result areas use a soft gray surface. Keep numerical precision, print and share controls, and explicit error states.
+
+The homepage and legacy reconstitution URLs host a 24-second video with One Aminos vial photography, a plain language introduction, native playback controls, and captions. Existing protocol sections point to the video. Explorer and game destinations are retired. The footer shows the One Aminos wordmark.
+
 
 ## Interaction and responsive acceptance
 
-- A primary silver button receives the moving outline only on the home hero. The outline holds still with reduced motion.
+- The hero button and current vial strength use the moving outline. The outline holds still with reduced motion.
 - Use 44 px targets for the main touch controls. Provide an obvious keyboard focus ring and preserve focus within the existing menu or dialog.
 - At 1280 px the frame follows the desktop header and card rhythm. At 390 px navigation collapses, titles wrap, inputs stay readable and only table regions scroll horizontally.
-- Compare the home, directory, a protocol, a blog article, the master chart, calculator and iframe tools with the baseline. Content parity means page text, protocol links, forms and numeric behavior remain present.
+- Compare the home, directory, a protocol, a blog article, the master chart, calculator and reconstitution video with the baseline. Content parity means page text, protocol links, forms and numeric behavior remain present.
 - Check home and inner pages in both language variants. The original unprefixed routes remain the default during this project.
 
 ## Implementation map
 
-`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. `public/one-aminos/tools.css` applies the same palette in embedded documents. Generated homepage covers are in `public/one-aminos/article-covers/`. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. Source page copy and the simulation, search and calculator logic remain in their current files.
+`public/one-aminos/design.css` defines the shell, typographic scale, controls and layout rules. Generated homepage covers are in `public/one-aminos/article-covers/`. `src/lib/one-aminos-design.ts` adds the common presentation to captured HTML and the two existing localization routes. `src/lib/learning-features.ts` updates the featured copy, video sections, navigation, and retired routes. Search and calculator code retain their existing behavior.
