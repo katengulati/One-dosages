@@ -11,6 +11,9 @@ export async function POST(request: Request, context: { params: Promise<{ kind: 
   if (kind !== 'newsletter' && kind !== 'contact') {
     return new Response('Page not found', { status: 404 });
   }
+  if (process.env.VERCEL === '1') {
+    return new Response('Form submissions are available in the local preview only.', { status: 403 });
+  }
   const origin = request.headers.get('origin');
   const host = request.headers.get('host');
   if (origin && origin !== `http://${host}`) {
