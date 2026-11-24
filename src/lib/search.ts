@@ -1,4 +1,6 @@
 import { isRetiredLearningPage } from './learning-features';
+import { isArchivedCatalogPage } from './catalog';
+import { lipoReferenceTitles } from './lipo-references';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -19,7 +21,15 @@ function loadSearch() {
     readFile(join(process.cwd(), 'search-corpus.json'), 'utf8')
   ]).then(([template, corpus]) => ({
     template,
-    pages: (JSON.parse(corpus) as SearchPage[]).filter((page) => !isRetiredLearningPage(page.path)).map((page) => ({ ...page, body: page.body.toLowerCase() }))
+    pages: [
+      ...(JSON.parse(corpus) as SearchPage[]),
+      ...Object.entries(lipoReferenceTitles).map(([slug, title]) => ({
+        path: `/${slug}/`, title, body: title, kind: 'Article',
+        summary: 'One Aminos Lipo C reference.'
+      }))
+    ]
+      .filter((page) => !isRetiredLearningPage(page.path) && !isArchivedCatalogPage(page.path))
+      .map((page) => ({ ...page, body: page.body.toLowerCase() }))
   }));
   return searchData;
 }

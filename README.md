@@ -22,3 +22,5 @@ Open http://localhost:4322/. To run the production build locally, use `npm run b
 The public replica uses a local search index and local test submissions for contact and newsletter forms. Test submissions stay in `.preview-data/`. Sign-in and registration use the live service. Feed and reference links also point to their original destinations. A complete standalone migration of the WordPress services would require the site's backend source and configuration.
 
 The bilingual pages use the repository's existing `site/manifest.json`, `site/en/`, `site/es/`, `translations/`, and `scripts/clone/` files. The path without a language prefix serves the original public replica.
+
+`site/catalog-policy.json` records the storefront match and archived pages. The learning site serves product protocols for the vial strengths and blends verified on One Aminos, plus the requested research exceptions. Captured articles and protocols remain in the repository for restoration. The public search indexes and preset lists include the active records. Lipo C entries are catalog references for the two listed formulations.

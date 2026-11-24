@@ -1,4 +1,6 @@
 import { applyLearningFeatures } from './learning-features';
+import { applyCatalog } from './catalog';
+import { applySharePreview } from './share-preview';
 
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
 
@@ -57,13 +59,13 @@ function renderHomeIntro(heading: string, browseHref: string, spanish: boolean) 
   </section>`;
 }
 
-export function applyOneAminosDesign(html: string) {
+export function applyOneAminosDesign(html: string, pathname: string, origin: string) {
   const spanish = /<html\b[^>]*\blang="es(?:-[^"]+)?"/i.test(html);
   const researchUse = spanish ? 'Solo para investigación y educación' : 'For research and education';
   const homeLabel = spanish ? 'Inicio de One Aminos' : 'One Aminos home';
   const strip = `<div class="oa-research-band">${researchUse}</div>`;
 
-  return applyLearningFeatures(html, spanish)
+  const themed = applyLearningFeatures(html, spanish)
     .replace('</head>', () => presentation + '</head>')
     .replace(/<nav\b[^>]*\bclass="(?:site-breadcrumbs|breadcrumb)"[^>]*>[\s\S]*?<\/nav>/gi, '')
     .replace(/<body\b([^>]*)>/i, (tag, attributes: string) => {
@@ -84,4 +86,5 @@ export function applyOneAminosDesign(html: string) {
     })
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
+  return applySharePreview(applyCatalog(themed, pathname), pathname, origin);
 }

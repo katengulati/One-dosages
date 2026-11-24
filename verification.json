@@ -60,5 +60,17 @@
       "Offscreen playback pauses"
     ],
     "baseline_port_4321_http_status": 200
+  },
+  "catalog_and_share_revision": {
+    "checked": "2026-11-23",
+    "storefront_source": "https://oneaminos.com/shop",
+    "storefront_product_pages_checked": 42,
+    "learning_site_protocols_retained": 43,
+    "protocols_archived": 98,
+    "product_articles_archived": 45,
+    "route_responses_checked": 792,
+    "search_indexes_checked": 3,
+    "share_title": "One Aminos Peptide Dosages",
+    "share_image": "/one-aminos/share-card.jpg"
   }
 }

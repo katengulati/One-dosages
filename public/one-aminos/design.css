@@ -767,3 +767,21 @@
   align-items: center;
   text-align: center;
 }
+
+.oa-library .oa-lipo-reference {
+  width: min(100%, 760px);
+  margin-inline: auto;
+  padding: 56px var(--oa-gutter) 80px;
+  text-align: center;
+}
+
+.oa-library .oa-lipo-reference h1 { margin: 0 0 12px; }
+.oa-library .oa-lipo-reference header p { margin: 0; }
+.oa-library .oa-lipo-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.oa-library .oa-product-link { margin: 16px auto 0; }

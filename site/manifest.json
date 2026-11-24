@@ -243,6 +243,18 @@
   "en": "/en/kpv-peptide/",
   "es": "/es/peptido-kpv/"
  },
+ "lipo-c": {
+  "en": "/en/lipo-c/",
+  "es": "/es/lipo-c/"
+ },
+ "lipo-c-b12": {
+  "en": "/en/lipo-c-b12/",
+  "es": "/es/lipo-c-b12/"
+ },
+ "lipo-c-fat-blaster": {
+  "en": "/en/lipo-c-fat-blaster/",
+  "es": "/es/lipo-c-fat-blaster/"
+ },
  "livagen-peptide": {
   "en": "/en/livagen-peptide/",
   "es": "/es/peptido-livagen/"
@@ -339,13 +351,13 @@
   "en": "/en/peptide-dosage-chart/",
   "es": "/es/tabla-dosificacion-peptidos/"
  },
- "peptide-prep-2": {
-  "en": "/en/peptide-prep-2/",
-  "es": "/es/preparacion-peptidos-2/"
- },
  "peptide-prep": {
   "en": "/en/peptide-prep/",
   "es": "/es/preparacion-peptidos/"
+ },
+ "peptide-prep-2": {
+  "en": "/en/peptide-prep-2/",
+  "es": "/es/preparacion-peptidos-2/"
  },
  "peptide-stack-dosages": {
   "en": "/en/peptide-stack-dosages/",
