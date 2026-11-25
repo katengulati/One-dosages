@@ -136,6 +136,10 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
   const $ = load(themed);
+  $('head link[rel~="icon"], head link[rel="apple-touch-icon"], head meta[name="msapplication-TileImage"]').remove();
+  $('head').append(`<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`);
   // One header-level language switch on every page, replacing the older pill switchers.
   $('#siteHeader .pd-lang, .pd-lang-mobile').remove();
   // Right-hand header group (search icon + EN / ES) so the nav can sit in the true center.
