@@ -622,6 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (tocList && headings.length) {
+    tocList.replaceChildren();
     assignUniqueHeadingIds(headings);
     headings.forEach(function(heading) {
       var item = document.createElement('li');

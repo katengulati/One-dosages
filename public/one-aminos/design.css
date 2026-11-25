@@ -1720,9 +1720,6 @@ body.oa-library .oa-coa-cover b { font-size: clamp(13px, 1.6vw, 24px); letter-sp
   body.oa-library #main-content :is(nav.toc,nav.toc-container) :is(.toc-scroll,.nav-list-wrapper) { overflow-y: auto; max-height: 42dvh; }
 }
 
-.oa-coa-jumps { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 20px auto 0; max-width: 920px; }
-body.oa-library .oa-coa-jumps a { text-decoration: none; border: 1px solid #d2d2d2; border-radius: 7px; background: #f3f3f3; color: #171717; padding: 9px 13px; font-weight: 600; font-size: .91rem; }
-body.oa-library .oa-coa-jumps a:hover { background: #e6e6e6; }
 body.oa-library a.oa-coa-library { color: white; background: #111; text-decoration: none; border-color: #111; }
 body.oa-library .blog-sidebar .sidebar-widget { background: #fff; border-color: #d8d8d8; color: #181818; }
 body.oa-library .blog-sidebar .widget-title::before { display: none; }
@@ -1807,3 +1804,16 @@ body.oa-library.pdarticle-studio #main-content::after { content: none; }
   }
   body.oa-library #main-content .toc-toggle[aria-expanded="true"]::after { transform: rotate(225deg); }
 }
+
+body.oa-library #main-content :is(.post-hero-content, .catalog-hero-content, .pdh-hero-content)::after,
+body.oa-library #main-content .hero-accent-line { display: none; content: none; }
+body.oa-library #main-content .single-post-content > .post-content:first-child {
+  padding-top: clamp(18px, 2vw, 26px);
+}
+body.oa-library #main-content .single-post-content > .post-content:first-child > :is(h2, h3):first-child {
+  margin-block-start: 0;
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+body.oa-library #main-content .post-hero-content .molecular-title-row:only-child,
+body.oa-library #main-content .post-hero-content .molecular-title-row:only-child h1 { margin-bottom: 0; }

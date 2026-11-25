@@ -115,6 +115,18 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   applyHomePresentation($, pathname);
   applyGuideArticleLayout($, pathname);
   applyArticlePresentation($);
+  $('main .jump-links').each((_, element) => {
+    const jumps = $(element);
+    const sidebar = jumps.closest('main').find('nav.toc, nav.toc-container').first();
+    if (!sidebar.length) return;
+    const targets = new Set(sidebar.find('a').map((_, a) => $(a).attr('href')).get());
+    jumps.find('a').filter((_, a) => targets.has($(a).attr('href') || '')).remove();
+    if (!jumps.find('a').length) {
+      const parent = jumps.parent();
+      jumps.remove();
+      if (parent.hasClass('pa-head-details') && !parent.children().length) parent.remove();
+    }
+  });
   if ($('iframe.oa-reconstitution-demo, nav.toc, nav.toc-container').length) {
     $('body').append('<script defer src="/one-aminos/reading-layout.js"></script>');
   }
