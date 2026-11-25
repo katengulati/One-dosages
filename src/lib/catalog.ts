@@ -335,7 +335,7 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
     else $('main h1, #main-content h1').first().after(productLink);
   }
 
-  if (key && products.has(key)) improveProtocolReading($, key);
+  if (key && products.has(key)) improveProtocolReading($, key, handle, spanish);
   if (key && directoryPages.has(key)) applyCatalogDirectory($, key, spanish, pathname);
   if (key === 'blog') applyBlogDirectory($, spanish, pathname);
   populateBlogMenu($, spanish, pathname);
