@@ -1,4 +1,4 @@
-import { load } from 'cheerio/slim';
+import type { CheerioAPI } from 'cheerio/slim';
 import policy from '../../site/catalog-policy.json';
 import locales from '../../site/manifest.json';
 
@@ -73,8 +73,7 @@ const linkedLegacyProducts = new Map(Object.entries({
 const formerSupplier = /(?:purelabpeptides\.com|(?:^|[/.])amazon\.com(?:[/:]|$)|(?:^|\/)a\.co(?:[/:]|$))/i;
 const archivedCard = 'tr[data-protocol-id], article.catalog-card, article.post-card, .blog-post-card, .mega-post-card, li, .pdh-related-card';
 
-export function applyCatalog(html: string, pathname: string) {
-  const $ = load(html);
+export function applyCatalog($: CheerioAPI, pathname: string) {
   const spanish = $('html').attr('lang')?.startsWith('es') === true;
   const key = pageKey(pathname);
   const handle = key && products.get(key);
@@ -115,7 +114,7 @@ export function applyCatalog(html: string, pathname: string) {
       ? `${count} tamaños`
       : `${count} ${count === 1 ? 'strength' : 'strengths'}`);
   });
-  $('.home-card').each((_, card) => {
+  $('#featured-protocols .home-card').each((_, card) => {
     if (!$(card).find('.dose-links a[href]').length) $(card).remove();
   });
   // The original citations occasionally contain a commercial URL as a separate image.
@@ -165,5 +164,4 @@ export function applyCatalog(html: string, pathname: string) {
       spanish ? 'Ver referencias de Lipo C' : 'View Lipo C references'
     ));
   }
-  return $.html();
 }

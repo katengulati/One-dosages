@@ -20,10 +20,10 @@ The live visual reference was reviewed at 1280 px. Its masthead begins with a 34
 | `--oa-paper` | `#fff` | Page, cards and text inputs |
 | `--oa-ink` | `#0a0a0a` | Headlines, icons, focused controls and primary borders |
 | `--oa-secondary` | `#505050` | Reading copy and descriptions |
-| `--oa-muted` | `#686868` | Dates, explanations, hints and secondary labels |
+| `--oa-muted` | `#6b6b6b` | Dates, explanations, hints and secondary labels |
 | `--oa-soft` | `#f2f2f4` | Quiet panels, inactive rows and result groupings |
-| `--oa-silver` | `#d6d6dc` | Primary buttons, active tabs and callouts |
-| `--oa-line` | `#dddde1` | Hairlines, table rules and input edges |
+| `--oa-silver` | `#d6d6dc` | Primary buttons, active tabs, callouts and the footer |
+| `--oa-line` | `rgb(0 0 0 / 18%)` | Hairlines, table rules and input edges |
 | `--oa-width` | `1248px` | Outer content maximum |
 | `--oa-reading` | `740px` | Single-column reading measure |
 | `--oa-gutter` | `34px` desktop, `18px` phone | Repeat on content and page chrome |
@@ -47,7 +47,7 @@ Use Helvetica Neue, Helvetica, Arial, sans-serif. Display headings use weight 70
 
 The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. Breadcrumb bars are omitted throughout the library. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
 
-The footer uses a silver background with dark type and the same brand lockup. Existing newsletter, guide, source and policy links remain reachable. No retail prices, cart destinations or storefront offers belong in this library.
+The footer uses the storefront’s silver background and black text. The One Aminos wordmark and newsletter share the first column, followed by Protocols, Learn, and Company. A thin rule separates the copyright and policy links. The footer link groups become accordions on phones. Page-level Google and Share controls are removed.
 
 ## Page patterns
 
@@ -55,17 +55,21 @@ The footer uses a silver background with dark type and the same brand lockup. Ex
 
 Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes made with One Aminos vial photography, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution demo, chart guide, calculator, and FAQ follow the article grid.
 
+The featured row starts with BPC-157 + TB-500, Tirzepatide (GLP2-TZ), and Retatrutide (GLP3-RT). Short captions sit above a row of vial-size links. Use the same gray surface, title spacing, and button height throughout the grid.
+
 ### Protocol directories and search
 
 Center the page heading and lead. Place tabs and search before a grid or results list. Tabs and strength choices use clear selected styling, independent of hover. Protocol cards use clean white surfaces and simple boundaries. Preserve titles, strength labels and taxonomy. Search suggestions remain visually distinct from the full result list. Page search and directory filters preserve the original result order or the baseline's local search ranking as applicable.
 
 ### Protocol detail and dosage chart
 
-Center the protocol title, intro and share actions, followed by the original content and table of contents. Present vial-level evidence and numbers in their existing order. Use quiet metrics, clearly differentiated headings and contained chart regions. The master chart keeps its filter controls, protocol types and precision in hits. Tool tables scroll inside their own region at narrow widths to keep all columns available. Share and citation links remain discoverable.
+Center the protocol title and intro, followed by the original content and table of contents. Present vial-level evidence and numbers in their existing order. Use quiet metrics, clearly differentiated headings and contained chart regions. The master chart keeps its filter controls, protocol types and precision in hits. Tool tables scroll inside their own region at narrow widths to keep all columns available.
 
 ### Articles and guides
 
 Center the title and lead with a controlled maximum width, followed by the original article body. Preserve citations, callouts, figures, table of contents, author and dates. Use ink links with underlines in reading copy and a neutral background for informational cards. Native disclosure elements retain their expand/collapse states. Constrain illustrations to their content column.
+
+The four core guides use a centered reading column with gray panels and black type. The Beginner’s Guide uses five short sections, a linked contents row, and a diagram of an amino-acid chain. The reconstitution and lab-workspace illustrations use One Aminos labels and neutral studio backgrounds.
 
 ### Calculator and reconstitution demo
 

@@ -1,6 +1,8 @@
-import { applyLearningFeatures } from './learning-features';
+import { load } from 'cheerio/slim';
+import { applyHomePresentation, applyLearningFeatures } from './learning-features';
 import { applyCatalog } from './catalog';
 import { applySharePreview } from './share-preview';
+import { applyGuidePresentation } from './guide-presentation';
 
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
 
@@ -86,5 +88,20 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     })
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
-  return applySharePreview(applyCatalog(themed, pathname), pathname, origin);
+  const $ = load(themed);
+  $(':is(.pa-actual-controls, .pa-action-dock, .pa-actual-footer, .pa-return-card, .pa-dialog-host, .pa-share-dialog, .pa-share-trigger, .pa-google-button), [data-pd-google-source], #pd-page-actions-contexts, #pd-page-actions-js, a[href*="google.com/preferences/source"]').remove();
+  $('.pa-meta-empty').remove();
+  $('.pa-head-details').filter((_, element) => !$(element).children().length).remove();
+  $('.site-footer :is(.footer-disclaimer, .footer-about p)').remove();
+  const newsletterColumn = $('.site-footer .footer-newsletter-col');
+  $('.site-footer .footer-about').append(newsletterColumn.children());
+  newsletterColumn.remove();
+  $('.site-footer .footer-copyright').each((_, element) => {
+    const copyright = $(element);
+    copyright.html(copyright.html()?.replace('Peptide Dosages', 'One Aminos') ?? '');
+  });
+  applyGuidePresentation($, pathname);
+  applyCatalog($, pathname);
+  applyHomePresentation($, pathname);
+  return applySharePreview($.html(), pathname, origin);
 }
