@@ -162,6 +162,21 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   if ($('iframe.oa-reconstitution-demo, nav.toc, nav.toc-container').length) {
     $('body').append('<script defer src="/one-aminos/reading-layout.js"></script>');
   }
+  // Owner direction (Nov 25): links that stand alone in a paragraph or block are
+  // actions, so they use the silver storefront button instead of an underline.
+  $('main a[href]').each((_, element) => {
+    const link = $(element);
+    if (link.attr('class')) return;
+    if (link.closest('nav, .toc, .toc-container, .oa-guide-sidebar, table, sup, figure, header, li, .dose-links, .pdh-cta').length) return;
+    if (link.find('h1, h2, h3, h4, h5, h6, p, div, img, strong').length) return;
+    const parent = link.parent();
+    if (!parent.is('p, div')) return;
+    const other = parent.contents().filter((_, node) =>
+      node.type === 'text' ? (node.data ?? '').trim() !== '' : !(node.type === 'tag' && node.name === 'a'));
+    if (other.length) return;
+    parent.addClass('oa-link-row');
+    link.addClass('oa-link-button');
+  });
   const branded = $.html()
     .replace(/[a-z0-9._%+-]+@(?:www\.)?peptidedosages\.com\b/gi, 'support@oneaminos.com')
     .replace(/https?:\\?\/\\?\/(?:www\.)?peptidedosages\.com\b/gi, origin)

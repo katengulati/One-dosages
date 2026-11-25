@@ -30,7 +30,6 @@ const beginnerCopy = {
     diagram: ['Separate amino acids', 'Linked amino acids', 'Joining amino acids makes a peptide chain.'],
     states: ['Dry powder', 'Dissolved in liquid'],
     photoAlt: ['Two One Aminos sample vials showing dry powder and a clear solution.', 'One Aminos vials beside sealed laboratory supplies on a clean bench.'],
-    supplies: 'Example of a labeled laboratory workspace.',
     units: [['mg or mcg', 'Amount of peptide'], ['mL', 'Liquid volume'], ['mg/mL', 'Amount per milliliter']],
     links: ['Reconstitution guide', 'Syringe and measurement guide', 'Storage guide', 'Dosage chart', 'Calculator']
   },
@@ -47,7 +46,6 @@ const beginnerCopy = {
     diagram: ['Aminoácidos separados', 'Aminoácidos unidos', 'Al unir aminoácidos se forma una cadena peptídica.'],
     states: ['Polvo seco', 'Disuelto en líquido'],
     photoAlt: ['Dos viales One Aminos con polvo seco y una solución transparente.', 'Viales One Aminos junto a material de laboratorio sellado sobre una mesa limpia.'],
-    supplies: 'Ejemplo de un espacio de laboratorio con material etiquetado.',
     units: [['mg o mcg', 'Cantidad de péptido'], ['mL', 'Volumen de líquido'], ['mg/mL', 'Cantidad por mililitro']],
     links: ['Guía de reconstitución', 'Guía de jeringas y medición', 'Guía de almacenamiento', 'Tabla de dosificación', 'Calculadora']
   }
@@ -73,7 +71,6 @@ function powderFigure(copy: GuideCopy) {
 function workspaceFigure(copy: GuideCopy) {
   return `<figure class="oa-guide-figure">
     <img src="/one-aminos/guide-art/lab-supplies.webp" alt="${copy.photoAlt[1]}" width="1040" height="693" loading="lazy" decoding="async">
-    <figcaption>${copy.supplies}</figcaption>
   </figure>`;
 }
 

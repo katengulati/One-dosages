@@ -2001,3 +2001,96 @@ body.oa-library #main-content .oa-guide-spread .oa-guide-panel + .oa-guide-panel
 /* The contents sidebar already collapses into an "On this page" toggle on phones,
    so the legacy details element would be a second copy of the same links. */
 body.oa-library main:has(nav.toc, .toc-container) details.mobile-toc { display: none !important; }
+
+/* Supplies Needed (all protocol pages): one card per supply, auto-fitting
+   columns, and phase rows without nested bullets or indents. */
+body.oa-library #pdms-pilot .supplies-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+  gap: 14px !important;
+  margin: 18px 0 24px !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body.oa-library #pdms-pilot .supplies-list > li {
+  position: relative;
+  margin: 0 !important;
+  padding: 18px 18px 14px !important;
+  border: 1px solid var(--oa-line) !important;
+  border-radius: 12px;
+  background: var(--oa-soft);
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+}
+
+body.oa-library #pdms-pilot .supplies-list > li > .supply-icon {
+  position: static !important;
+  display: inline-block;
+  width: 24px !important;
+  height: 24px !important;
+  margin: 0 8px 0 0;
+  vertical-align: -6px;
+}
+
+body.oa-library #pdms-pilot .supplies-list > li > strong { font-size: 16px; color: var(--oa-ink); }
+
+body.oa-library #pdms-pilot .supplies-list > li > ul {
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  font-size: 15px !important;
+  color: var(--oa-secondary);
+}
+
+body.oa-library #pdms-pilot .supplies-list > li > ul > li {
+  margin: 0 !important;
+  padding: 9px 0 !important;
+  border-top: 1px solid var(--oa-line);
+  line-height: 1.35 !important;
+}
+
+body.oa-library #pdms-pilot .supplies-list > li > ul > li::marker { content: none; }
+
+/* The leading "Phase 2, 12 weeks:" becomes a small label above its amount. */
+body.oa-library #pdms-pilot .supplies-list > li > ul > li > strong:first-child {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--oa-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+body.oa-library #pdms-pilot .supplies-list > li { display: grid !important; grid-template-columns: 24px minmax(0, 1fr); column-gap: 10px; align-items: start; }
+body.oa-library #pdms-pilot .supplies-list > li > .supply-icon { grid-column: 1; margin: 0 !important; vertical-align: 0; }
+body.oa-library #pdms-pilot .supplies-list > li > strong { grid-column: 2; display: block !important; align-self: center; }
+body.oa-library #pdms-pilot .supplies-list > li > ul { grid-column: 1 / -1; }
+
+/* Standalone links rendered as storefront silver buttons (tagged in one-aminos-design.ts). */
+body.oa-library #main-content .oa-link-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+body.oa-library #main-content a.oa-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--oa-silver);
+  color: var(--oa-ink) !important;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none !important;
+  transition: background-color .2s ease;
+}
+
+body.oa-library #main-content a.oa-link-button:hover { background: #c7c7cf; }
