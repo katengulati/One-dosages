@@ -1,6 +1,7 @@
 import type { CheerioAPI } from 'cheerio/slim';
 import policy from '../../site/catalog-policy.json';
 import locales from '../../site/manifest.json';
+import { isLipoReference } from './lipo-references';
 
 const oldOrigin = 'https://peptidedosages.com';
 const productOrigin = 'https://oneaminos.com';
@@ -73,11 +74,28 @@ const linkedLegacyProducts = new Map(Object.entries({
 const formerSupplier = /(?:purelabpeptides\.com|(?:^|[/.])amazon\.com(?:[/:]|$)|(?:^|\/)a\.co(?:[/:]|$))/i;
 const archivedCard = 'tr[data-protocol-id], article.catalog-card, article.post-card, .blog-post-card, .mega-post-card, li, .pdh-related-card';
 
+function simplifyCatalogHero($: CheerioAPI) {
+  const hero = $('#main-content :is(#pdms-pilot > .hero-band, .page-hero, .post-hero, .oa-lipo-reference > header)').first();
+  if (!hero.length) return;
+  hero.addClass('oa-catalog-hero');
+  hero.find(':is(.eyebrow, .article-meta, .pa-public-meta, .lede, .page-intro, .post-excerpt, .molecular-title-art, .jump-new, .jump-links svg[aria-hidden="true"])').remove();
+  hero.find('.pa-head-details').filter((_, element) => !$(element).children().length).remove();
+  if (hero.parent().is('.oa-lipo-reference')) hero.after(hero.children('p'));
+}
+
 export function applyCatalog($: CheerioAPI, pathname: string) {
   const spanish = $('html').attr('lang')?.startsWith('es') === true;
   const key = pageKey(pathname);
   const handle = key && products.get(key);
   const cta = spanish ? 'Ver producto en One Aminos' : 'View product at One Aminos';
+  if (key && (products.has(key) || isLipoReference(key))) simplifyCatalogHero($);
+  if (handle === 'wolverine') {
+    $('title, .oa-catalog-hero h1').each((_, element) => {
+      const heading = $(element);
+      heading.text(heading.text().replace(/BPC-157 (?:\+|and) TB-500(?: \((20 mg Blend)\))?/, (_, strength?: string) =>
+        `BPC-157 + TB-500 (Wolverine)${strength ? ` · ${strength}` : ''}`));
+    });
+  }
 
   $('a[href]').each((_, element) => {
     const a = $(element);

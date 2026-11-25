@@ -18,6 +18,7 @@ export function isRetiredLearningPage(path: string) {
 const featuredProtocols = [
   {
     name: 'BPC-157 + TB-500',
+    alias: 'Wolverine',
     caption: { en: 'Research reference for the 20 mg blend.', es: 'Referencia de investigación para la mezcla de 20 mg.' },
     strengths: [[20, 'peptide-blend-dosages__bpc-157-tb-500-20mg-blend-dosage-protocol']]
   },
@@ -69,7 +70,7 @@ export function applyHomePresentation($: CheerioAPI, pathname: string) {
     });
   });
   const cards = featuredProtocols.map((protocol) => {
-    const title = 'alias' in protocol ? `${protocol.name} (${protocol.alias})` : protocol.name;
+    const title = `${protocol.name} (${protocol.alias})`;
     const links = protocol.strengths.map(([mg, key]) => {
       const localized = locales[key][lang];
       return $('<a></a>').attr({

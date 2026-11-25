@@ -55,7 +55,7 @@ The footer uses the storefront’s silver background and black text. The One Ami
 
 Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes made with One Aminos vial photography, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution demo, chart guide, calculator, and FAQ follow the article grid.
 
-The featured row starts with BPC-157 + TB-500, Tirzepatide (GLP2-TZ), and Retatrutide (GLP3-RT). Short captions sit above a row of vial-size links. Use the same gray surface, title spacing, and button height throughout the grid.
+The featured row starts with BPC-157 + TB-500 (Wolverine), Tirzepatide (GLP2-TZ), and Retatrutide (GLP3-RT). Short captions sit above a row of vial-size links. Use the same gray surface, title spacing, and button height throughout the grid.
 
 ### Protocol directories and search
 
@@ -63,7 +63,7 @@ Center the page heading and lead. Place tabs and search before a grid or results
 
 ### Protocol detail and dosage chart
 
-Center the protocol title and intro, followed by the original content and table of contents. Present vial-level evidence and numbers in their existing order. Use quiet metrics, clearly differentiated headings and contained chart regions. The master chart keeps its filter controls, protocol types and precision in hits. Tool tables scroll inside their own region at narrow widths to keep all columns available.
+Center the product reference title, quick links and vial choices on flat light gray. Omit the eyebrow, byline, dates and introductory paragraph in these headers. Present vial-level evidence and numbers in their existing order. Use quiet metrics, clearly differentiated headings and contained chart regions. The master chart keeps its filter controls, protocol types and precision in hits. Tool tables scroll inside their own region at narrow widths to keep all columns available.
 
 ### Articles and guides
 

@@ -866,6 +866,81 @@
 }
 .oa-library .oa-product-link { margin: 16px auto 0; }
 
+body.oa-library #main-content .oa-catalog-hero {
+  background: var(--oa-soft) !important;
+  box-shadow: none;
+  text-align: center;
+}
+
+body.oa-library #main-content .oa-catalog-hero::before,
+body.oa-library #main-content .oa-catalog-hero::after,
+body.oa-library #main-content .oa-catalog-hero :is(.molecular-title-row, .page-hero-content, .post-hero-content)::before,
+body.oa-library #main-content .oa-catalog-hero :is(.molecular-title-row, .page-hero-content, .post-hero-content)::after { display: none; }
+
+body.oa-library #main-content .oa-catalog-hero .page-head {
+  padding: clamp(28px, 5vw, 64px) var(--oa-gutter);
+}
+
+body.oa-library #main-content .oa-catalog-hero :is(.molecular-title-row, .page-hero-content, .post-hero-content) {
+  display: block;
+  margin: 0 auto;
+  min-height: 0;
+  background: transparent;
+}
+
+body.oa-library #main-content .oa-catalog-hero h1 {
+  max-width: 840px;
+  margin: 0 auto;
+  color: var(--oa-ink);
+  text-align: center;
+}
+
+body.oa-library #pdms-pilot .oa-catalog-hero .jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  margin: clamp(18px, 3vw, 28px) auto 0;
+}
+
+body.oa-library #pdms-pilot .oa-catalog-hero .jump-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--oa-line);
+  border-radius: 8px;
+  background: var(--oa-paper);
+  color: var(--oa-ink);
+  font-size: clamp(13px, 1.3vw, 15px);
+  text-align: center;
+  box-shadow: none;
+}
+
+body.oa-library #pdms-pilot .oa-catalog-hero .jump-links a:hover {
+  border-color: var(--oa-ink);
+  background: var(--oa-silver);
+}
+
+body.oa-library #pdms-pilot .oa-catalog-hero :is(.pa-protocol-tools, .pdpb-variant-switcher, .pdpb-variant-pills, .strengths) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  max-width: none;
+}
+
+body.oa-library #pdms-pilot .oa-catalog-hero :is(.pdpb-variant-pills, .strengths) { width: auto; }
+body.oa-library #pdms-pilot .oa-catalog-hero .pdpb-variant-pill { width: auto; min-width: 54px; }
+
+body.oa-library .oa-lipo-reference .oa-catalog-hero {
+  padding: clamp(20px, 4vw, 40px);
+  border-radius: 12px;
+}
+
 /* One Aminos paper and silver surfaces across the learning site. */
 body.oa-library #main-content {
   --page-bg: var(--oa-paper);
