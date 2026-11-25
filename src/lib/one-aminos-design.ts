@@ -100,7 +100,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     const copy = $(element).text().trim();
     return /^(?:Important:\s*All information on PeptideDosages\.com|Educational scope:\s*This page explains research calculations and general handling concepts)/i.test(copy);
   }).remove();
-  $('.site-footer :is(.footer-disclaimer, .footer-about p)').remove();
+  $('.mobile-app-nav, .site-footer :is(.footer-disclaimer, .footer-about p)').remove();
   const newsletterColumn = $('.site-footer .footer-newsletter-col');
   $('.site-footer .footer-about').append(newsletterColumn.children());
   newsletterColumn.remove();

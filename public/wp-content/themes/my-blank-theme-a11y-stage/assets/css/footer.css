@@ -342,14 +342,6 @@
   }
 
   @media (max-width: 768px) {
-    html {
-      scroll-padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
-    }
-
-    body {
-      padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-    }
-
     .site-footer {
       margin-top: 40px;
     }

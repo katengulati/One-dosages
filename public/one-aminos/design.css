@@ -458,7 +458,6 @@
 }
 
 .oa-library #siteHeader :is(.header-actions, .pdmh-utilities) img,
-.oa-library .mobile-app-nav__item > i,
 .oa-library main :is(.pdh-section-icon, .page-title, .pdh-hero-title, .pdc-card) :is(i, img),
 .oa-library main :is(.page-title, .pdh-hero-title)::before,
 .oa-library main .toc-container i { filter: grayscale(1); }
@@ -537,13 +536,11 @@
 .oa-library :is(.pdmh-resource-item, .pdmh-resources-heading) img[alt=""],
 .oa-library main :is(.section-icon, .pdh-section-icon, .pdhome-guide-step__number),
 .oa-library .calc-intro-section li > i,
-.oa-library .mobile-app-nav__item > i,
 .oa-library main :is(.page-title, .pdh-hero-title)::before {
   display: none !important;
 }
 
 .oa-library main :is(h1, h2, h3, h4, h5) { color: var(--oa-ink) !important; }
-.oa-library .mobile-app-nav__item { justify-content: center; }
 
 .oa-library.pdfooter-studio .site-footer .footer-logo::before {
   content: none !important;
@@ -1776,3 +1773,37 @@ body.oa-library #main-content .post-content h2::before { content:none !important
  .oa-guide-sidebar .toc-title:has(button) p,.oa-guide-sidebar:has(button):not(.oa-mobile-open) .toc-scroll { display:none; }
 }
 body.oa-library #main-content.oa-catalog-directory .dosage-type-nav__item { min-height:46px; padding:10px 16px; }
+
+body.oa-library.pdarticle-studio #main-content::before,
+body.oa-library.pdarticle-studio #main-content::after { content: none; }
+
+@media (max-width: 1024px) {
+  body.oa-library #main-content .toc-title:has(.toc-toggle) {
+    position: relative;
+    justify-content: center;
+    padding-inline: 42px;
+    min-height: 48px;
+  }
+  body.oa-library #main-content .toc-title > .toc-toggle {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 18px;
+    justify-content: flex-end;
+    background: transparent;
+    border: 0;
+    color: var(--oa-ink);
+  }
+  body.oa-library #main-content .toc-toggle > i { display: none; }
+  body.oa-library #main-content .toc-toggle::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  body.oa-library #main-content .toc-toggle[aria-expanded="true"]::after { transform: rotate(225deg); }
+}

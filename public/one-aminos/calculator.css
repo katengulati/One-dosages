@@ -35,11 +35,11 @@
   border: 1px solid var(--oa-line); border-radius: 14px; box-shadow: none;
 }
 .pdmcalc-studio #main-content :is(.pdc-card, .pdc-results) > h2 {
-  display: flex; align-items: center; gap: 10px; padding: 0; margin: 0 0 12px;
+  display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0; margin: 0 0 12px;
   border: 0; font-size: clamp(22px, 2vw, 26px); line-height: 1.2;
 }
 .pdmcalc-studio #main-content :is(.pdc-card, .pdc-results) p { color: var(--oa-ink); }
-.pdmcalc-studio #main-content .pdc-step { background: var(--oa-ink); color: white; }
+.pdmcalc-studio #main-content .pdc-step { display: none; }
 .pdmcalc-studio #main-content .pdc-input { background: white; border-color: #b7b7b7; }
 .pdmcalc-studio #main-content .pdc-input :is(input, select) { min-height: 46px; font-size: 16px; }
 .pdmcalc-studio #main-content .pdc-input :is(.pdc-unit, #d-doseunit) {
