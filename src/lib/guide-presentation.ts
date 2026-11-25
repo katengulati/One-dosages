@@ -223,3 +223,27 @@ export function applyGuidePresentation($: CheerioAPI, pathname: string) {
   });
   addReadingSummary($, guide, language, false);
 }
+
+export function applyGuideArticleLayout($: CheerioAPI, pathname: string) {
+  const spanish = pathname.startsWith('/es/');
+  const tabs = $('nav.oa-guide-contents').first();
+  if (!tabs.length) return;
+  const layout = $('main .page-layout, main .single-post-layout').first();
+  const article = layout.children('article').first();
+  if (!article.length) return;
+  const covers = { 'beginners-guide-peptides':'new-to-peptides', 'reconstitution-guide-peptides':'reconstitution',
+    'syringe-measurement-guide':'measurements', 'peptide-storage-guide':'storage' } as const;
+  const guide = guidePaths.get(pathname);
+  const cover = guide ? covers[guide] : featuredArticlePaths.get(pathname) === 'ghk-cu-peptide' ? 'ghk-cu' : 'retatrutide';
+  const nav = $('<nav class="toc oa-guide-sidebar"><div class="toc-title"><p></p></div><div class="toc-scroll"><ol></ol></div></nav>');
+  const contents = spanish ? 'Contenido' : 'Contents';
+  nav.attr('aria-label', contents).find('p').text(contents);
+  nav.find('ol').append(tabs.find('li'));
+  tabs.remove();
+  layout.prepend(nav).addClass('oa-guide-spread single-post-layout');
+  article.addClass('single-post-content');
+  if (!article.children('.featured-image').length) {
+    article.prepend($('<div class="featured-image"></div>').append($('<img alt="" decoding="async">')
+      .attr('src', '/one-aminos/article-covers/' + cover + '.webp')));
+  }
+}

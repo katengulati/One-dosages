@@ -1,5 +1,13 @@
 (() => {
   const frames = Array.from(document.querySelectorAll('iframe.oa-reconstitution-demo'));
+  const requested = new URLSearchParams(location.search).get('product');
+  if (requested && /^[a-z0-9-]+$/.test(requested)) {
+    for (const frame of frames) {
+      const src = new URL(frame.src);
+      src.searchParams.set('product', requested);
+      frame.src = src.href;
+    }
+  }
   if (frames.length) window.addEventListener('message', event => {
     if (event.origin !== location.origin || event.data?.type !== 'oa-demo-height') return;
     const frame = frames.find(item => item.contentWindow === event.source);
@@ -33,6 +41,25 @@
       button.addEventListener('click', () => expand(!sidebar.classList.contains('oa-mobile-open')));
       list.addEventListener('click', event => { if (event.target.closest('a')) expand(false); });
     }
+  }
+  if (sidebar.matches('.oa-guide-sidebar')) {
+    const links = Array.from(sidebar.querySelectorAll('.toc-scroll a'));
+    const targets = links.map(link => document.getElementById(link.hash.slice(1)));
+    let scheduled = false;
+    const markSection = () => {
+      scheduled = false;
+      const top = (header.offsetHeight || 0) + 75;
+      let index = 0;
+      targets.forEach((target, i) => { if (target && target.getBoundingClientRect().top <= top) index = i; });
+      links.forEach((link, i) => {
+        if (i === index && !link.hasAttribute('aria-current')) link.setAttribute('aria-current', 'location');
+        else if (i !== index && link.hasAttribute('aria-current')) link.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', () => {
+      if (!scheduled) { scheduled = true; requestAnimationFrame(markSection); }
+    }, {passive:true});
+    markSection();
   }
   const scroller = sidebar.querySelector('.nav-list-wrapper,.toc-scroll');
   if (!scroller) return;

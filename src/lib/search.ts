@@ -22,6 +22,8 @@ function loadSearch() {
   ]).then(([template, corpus]) => ({
     template,
     pages: [
+      { path: '/peptide-categories/', title: 'Peptide Categories', kind:'Guide',
+        summary:'Browse compounds by research topic.', body:'peptides categories fat loss recovery focus skin sleep aging hormone signaling' },
       { path: '/how-to-read-a-coa/', title: 'How to Read a Certificate of Analysis (COA)', kind: 'Article',
         summary: 'Verify the batch and read identity, purity and net content in a real report.', body: 'COA batch lot purity verification net peptide content laboratory' },
       ...(JSON.parse(corpus) as SearchPage[]),

@@ -5,6 +5,9 @@ const referenceHeading = /^(references|referencias|bibliograf[ií]a|works cited|
 const importantNote = /^(important (note|notice)|nota importante|aviso importante)$/i;
 
 export function applyArticlePresentation($: CheerioAPI) {
+  $('.blog-sidebar .sidebar-widget').filter((_, el) =>
+    $(el).is('.newsletter-widget') || $(el).find('.recent-posts-list, form.search-form').length > 0).remove();
+  $('.blog-sidebar').filter((_, el) => !$(el).children().length).remove();
   $('main li').filter((_, el) => {
     const item = $(el);
     return legacySupplier.test(item.text()) && (item.find('.ref-line').length > 0 ||

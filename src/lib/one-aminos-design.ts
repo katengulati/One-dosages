@@ -4,7 +4,7 @@ import { applyCatalog } from './catalog';
 import { applySharePreview } from './share-preview';
 import { applyArticlePresentation } from './article-presentation';
 import { applyCalculatorPresentation } from './calculator-presentation';
-import { applyGuidePresentation } from './guide-presentation';
+import { applyGuideArticleLayout, applyGuidePresentation } from './guide-presentation';
 
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
 
@@ -113,6 +113,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   applyGuidePresentation($, pathname);
   applyCatalog($, pathname);
   applyHomePresentation($, pathname);
+  applyGuideArticleLayout($, pathname);
   applyArticlePresentation($);
   if ($('iframe.oa-reconstitution-demo, nav.toc, nav.toc-container').length) {
     $('body').append('<script defer src="/one-aminos/reading-layout.js"></script>');

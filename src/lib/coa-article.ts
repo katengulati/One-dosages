@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/config';
 
+export const coaShell = 'bpc-157-tb-500-blend';
 export const coaKey = 'how-to-read-a-coa';
 const example = 'https://oneaminos.com/lab-reports/ILS-COA-2026-99YUVC.pdf';
 
@@ -22,12 +23,19 @@ export function renderCoaArticle(shell: string, locale: Locale) {
     ['Check which other tests were run', 'Look for individual rows for metals, endotoxins or microbial testing. Read “not detected” alongside the method and its detection limit. A missing test leaves that question open. The findings apply to the sample tested. A COA alone cannot establish safety for human use.']
   ];
   const links = sections.map(([heading], i) => `<a href="#coa-${i + 1}">${heading}</a>`).join('');
-  const body = sections.map(([heading, text], i) => `<section id="coa-${i + 1}"><h2>${heading}</h2><p>${text}</p></section>`).join('');
+  const contents = spanish ? 'Contenido' : 'Contents';
+  const body = sections.map(([heading, text], i) => `<h2 id="coa-${i + 1}">${heading}</h2><p>${text}</p>`).join('');
   return shell.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`)
     .replace(/<meta\b[^>]*name="description"[^>]*>|<script\b[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<main\b[^>]*>[\s\S]*?<\/main>/i, `<main id="main-content" class="oa-coa-article">
-      <article><h1>${title}</h1><nav aria-label="${spanish ? 'Contenido' : 'On this page'}">${links}</nav>${body}
+    .replace(/<main\b[^>]*>[\s\S]*?<\/main>/i, `<main id="main-content">
+      <div class="post-hero"><div class="post-hero-content"><div class="molecular-title-row"><h1 class="post-title">${title}</h1></div>
+      <nav class="oa-coa-jumps" aria-label="${contents}">${links}</nav></div></div>
+      <div class="single-post-layout">
+      <nav class="toc-container" aria-labelledby="post-toc-title"><div class="toc-title"><span id="post-toc-title">${contents}</span>
+      <button class="toc-toggle" type="button" aria-label="${contents}" aria-expanded="false" aria-controls="post-toc-panel">⌄</button></div>
+      <div class="nav-list-wrapper" id="post-toc-panel"><ul class="nav-list" id="toc"></ul></div></nav>
+      <article class="single-post-content"><div class="post-content">${body}
       <p><a href="${example}">${spanish ? 'Consultar el informe del ejemplo (PDF)' : 'Read the example laboratory report (PDF)'}</a></p>
-      <a class="oa-solid-link" href="https://oneaminos.com/coa">${spanish ? 'Abrir la biblioteca de COA de One Aminos' : 'Open the One Aminos COA Library'}</a>
-      </article></main>`);
+      <a class="oa-solid-link oa-coa-library" href="https://oneaminos.com/coa">${spanish ? 'Abrir la biblioteca de COA de One Aminos' : 'Open the One Aminos COA Library'}</a>
+      </div></article></div></main>`);
 }

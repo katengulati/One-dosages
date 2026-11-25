@@ -118,7 +118,13 @@ function drawBottle(g, o) {
   const labelHeight = (G.bot - labelTop) * (o.see ? 0.56 : 0.72);
   g.fillStyle = '#f8f8f8';
   g.fillRect(-G.hw - 1, labelTop, G.hw * 2 + 2, labelHeight);
-  if (label.complete && label.naturalWidth) {
+  if ((o.kind === 'pep' && V.P.name !== 'GHK-Cu') || (o.kind === 'pep' && V.P.mg !== 50) || (o.kind === 'bac' && V.target > 3)) {
+    g.fillStyle = '#151515'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    setFont(g, 700, 8, 'normal');
+    g.fillText(o.kind === 'pep' ? V.P.name : 'BAC WATER', 0, labelTop + labelHeight * .45, G.hw * 1.8);
+    setFont(g, 600, 6, 'normal');
+    g.fillText(o.kind === 'pep' ? V.P.mg + ' mg' : '10 mL', 0, labelTop + labelHeight * .68, G.hw * 1.8);
+  } else if (label.complete && label.naturalWidth) {
     // The label turns with an inverted vial and rolls with its rotation.
     const offset = o.roll ? Math.sin(o.roll) * G.hw * 0.13 : 0;
     g.drawImage(label, -G.hw * 0.93 + offset, labelTop + 1, G.hw * 1.86, labelHeight - 2);
@@ -463,12 +469,12 @@ const copy = new URLSearchParams(location.search).get('lang') === 'es' ? {
   complete: 'Demostración completa', ready: 'Lista para reproducir',
   error: 'No se pudo cargar la demostración.',
   zoom: 'Ampliación', sharps: 'PUNZOCORTANTES', dissolved: 'Disuelto', mixed: 'Mezclado', water: 'de agua',
-  reference: 'Referencia rápida', volume: 'Volumen final', concentration: 'Concentración',
+  reference: 'Referencia rápida', volume: 'AGUA BACTERIOSTÁTICA A AÑADIR', concentration: 'CONCENTRACIÓN',
   note: 'Demostración de laboratorio con tiempo acelerado',
   count: (index, total) => `Paso ${index} de ${total}`,
   captions: [
     ['Prepara el espacio', 'Revisa las etiquetas y reúne el material.'],
-    ['Consulta el protocolo', 'Busca el volumen final indicado para el vial.'],
+    ['Consulta el protocolo', 'Comprueba el agua y la concentración del vial seleccionado.'],
     ['Limpia los tapones', 'Retira las tapas, limpia los tapones y deja secar.'],
     ['Mide el agua', 'Observa cómo sube el líquido en la jeringa.'],
     ['Añade el agua', 'Observa cómo baja el líquido por la pared del vial.'],
@@ -482,12 +488,12 @@ const copy = new URLSearchParams(location.search).get('lang') === 'es' ? {
   complete: 'Demo complete', ready: 'Ready to play',
   error: 'The demo couldn’t load.',
   zoom: 'Zoom', sharps: 'SHARPS', dissolved: 'Dissolved', mixed: 'Mixed', water: 'BAC water',
-  reference: 'Quick reference', volume: 'Final volume', concentration: 'Concentration',
+  reference: 'Quick reference', volume: 'BAC WATER TO ADD', concentration: 'CONCENTRATION',
   note: 'Time-lapse lab demonstration',
   count: (index, total) => `Step ${index} of ${total}`,
   captions: [
     ['Set up the workspace', 'Check the vial labels and lay out the supplies.'],
-    ['Check the protocol', 'Find the final volume listed for the vial.'],
+    ['Check the protocol', 'Check the water amount and concentration for the selected vial.'],
     ['Clean the stoppers', 'Remove the caps, wipe the stoppers, and let them dry.'],
     ['Measure the water', 'Watch the liquid rise in the syringe.'],
     ['Add the water', 'Watch the liquid run down the inside wall of the vial.'],
@@ -615,7 +621,33 @@ function poseScene() {
   }
 }
 
+const choice = document.querySelector('#vial-choice');
+const opening = document.querySelector('.opening-photo');
+const sceneStill = document.querySelector('#scene-still');
+let selected;
+
+function sceneImage(step) {
+  const photo = selected.photo ? '../product-photos/' + selected.photo : '';
+  const original = selected.name === 'GHK-Cu' && selected.mg === 50;
+  if (step === 'prep' || step === 'find') return original ? '../article-covers/reconstitution.webp' : photo;
+  if (step === 'clean') return '../protocol-art/swabs.webp';
+  if (step === 'inject') return '../product-photos/bacteriostatic-water-10ml.webp';
+  if (step === 'draw' && selected.ml > 3) return '../product-photos/bacteriostatic-water-10ml.webp';
+  if (['mix','store'].includes(step) && !original) return photo;
+  return './scenes/' + step + '.webp';
+}
+
+function updatePhotos(step) {
+  const src = sceneImage(step);
+  for (const image of [opening,sceneStill]) {
+    image.hidden = !src;
+    if (src && image.getAttribute('src') !== src) image.src = src;
+  }
+  player.dataset.packshot = String(src.includes('product-photos'));
+}
+
 function setScene(index) {
+  updatePhotos(STEPS[index].key);
   V.step = index;
   V.elapsed = 0;
   player.dataset.step = STEPS[index].key;
@@ -745,24 +777,44 @@ async function boot() {
   labels.bac.src = './water-label.webp';
 
   try {
-    const response = await fetch('/data/replica/presets/protocol-924.json');
-    if (!response.ok) throw new Error('Demo preset is unavailable');
-    const { records: [preset] } = await response.json();
-    const target = Number(preset.ml);
-    const vial = Number(preset.vial_ml);
-    const syringe = Number(preset.syringe_ml);
-    if (![target, vial, syringe].every((value) => Number.isFinite(value) && value > 0)) {
-      throw new Error('Invalid demo preset');
-    }
+    const response = await fetch('/api/demo-products/');
+    if (!response.ok) throw new Error('Product list unavailable');
+    const products = await response.json();
+    const requested = new URLSearchParams(location.search).get('product');
+    selected = products.find(product => product.slug === requested) ||
+      products.find(product => product.name === 'GHK-Cu' && product.mg === 50);
+    for (const product of products) choice.add(new Option(product.name + ' · ' + product.mg + ' mg', product.slug));
+    choice.value = selected.slug;
+    choice.disabled = false;
+    document.querySelector('#choice-title').textContent = spanish ? 'Péptido y cantidad por vial' : 'Peptide and vial strength';
     V = {
-      P: { name: preset.name, mg: preset.mg, conc: preset.conc, powder: '#a4a4a4', solution: '#7c7c7c' },
-      target, drawn: target, vial, syringe,
+      P: {},
       specks: Array.from({ length: 34 }, () => ({
         x: Math.random() * 1.7 - 0.85, y: 0.15 + Math.random() * 0.8,
         r: 0.5 + Math.random() * 0.9, th: Math.random(), angle: Math.random() * TAU,
         rad: 0.15 + Math.random() * 0.8
       }))
     };
+    const applySelection = () => {
+      V.P = {name: selected.name, mg: selected.mg, conc: selected.conc, powder: '#999', solution: '#777'};
+      V.target = V.drawn = selected.ml;
+      V.syringe = selected.syringe_ml;
+      V.vial = selected.vial_ml;
+      document.querySelector('#product').textContent = selected.name + ' ' + selected.mg + ' mg';
+      document.querySelector('#volume-value').textContent = fmtMl(selected.ml) + ' mL';
+      document.querySelector('#concentration-value').textContent = selected.conc;
+      download.textContent = spanish ? 'Vídeo de ejemplo · GHK-Cu 50 mg (MP4)' : 'Example video · GHK-Cu 50 mg (MP4)';
+    };
+    applySelection();
+    choice.addEventListener('change', () => {
+      selected = products.find(product => product.slug === choice.value);
+      applySelection();
+      const url = new URL(location.href);
+      url.searchParams.set('product', selected.slug);
+      history.replaceState(null, '', url);
+      seek(phaseStarts[1]);
+      setPlayback('paused');
+    });
     await Promise.allSettled(Object.values(labels).map((label) => label.decode()));
   } catch (error) {
     count.textContent = copy.error;
@@ -815,7 +867,7 @@ async function boot() {
   new IntersectionObserver(([entry]) => {
     inView = entry.intersectionRatio >= 0.42;
     syncVisibility();
-  }, { threshold: [0.42] }).observe(board);
+  }, { threshold: [0.42] }).observe(document.querySelector('.stage'));
   document.addEventListener('visibilitychange', syncVisibility);
   toggle.addEventListener('click', () => {
     if (playback === 'complete' || playback === 'waiting') restart();

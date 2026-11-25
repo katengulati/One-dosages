@@ -28,7 +28,7 @@ const terms: [RegExp, string, string][] = [
   [/\bbioavailability\b/i, 'Bioavailability', 'The fraction of a substance that reaches the circulation after it is given.']
 ];
 
-const introductions: Record<string, [string, string]> = {
+export const introductions: Record<string, [string, string]> = {
   "5-amino-1mq": [
     "5-Amino-1MQ blocks an enzyme called NNMT. Researchers study how that changes the way cells use energy.",
     "5-Amino-1MQ bloquea una enzima llamada NNMT. Se estudia cómo este cambio afecta al uso de energía por las células."

@@ -1,3 +1,5 @@
+import { demoProducts } from './demo-products';
+import { normalizeProtocolLayout } from './protocol-layout';
 import type { CheerioAPI } from 'cheerio/slim';
 import policy from '../../site/catalog-policy.json';
 import locales from '../../site/manifest.json';
@@ -339,7 +341,56 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
   if (key && directoryPages.has(key)) applyCatalogDirectory($, key, spanish, pathname);
   if (key === 'blog') applyBlogDirectory($, spanish, pathname);
   populateBlogMenu($, spanish, pathname);
+  const categoriesHref = spanish ? '/es/categorias-de-peptidos/' : pathname.startsWith('/en/') ? '/en/peptide-categories/' : '/peptide-categories/';
+  $('.pdmh-resources-menu .pdmh-resources-heading--guides').each((_,el) => {
+    $(el).after($('<li class="pdmh-resource-item pdmh-resource-item--guides"></li>').append($('<a></a>')
+      .attr('href',categoriesHref).text(spanish ? 'Categorías de péptidos' : 'Peptide Categories')));
+  });
+  $('ul.peptide-family-menu').each((_, el) => {
+    const menu = $(el);
+    const href = menu.parent().find('> a[href], > .mobile-nav-row > a[href]').first().attr('href');
+    if (!href || pageKey(href) !== 'single-peptide-dosages') return;
+    menu.prepend($('<li class="oa-all-peptides"></li>').append($('<a></a>').attr('href', href)
+      .text(spanish ? 'Ver todos los péptidos' : 'View All Peptides')));
+  });
   applyStorePhotos($, key, handle, cta);
+  if (key?.includes('__') && products.has(key)) {
+    normalizeProtocolLayout($, spanish);
+    const demo = demoProducts.find(row => row.key === key);
+    const target = spanish ? '/es/preparacion-peptidos/' : pathname.startsWith('/en/') ? '/en/peptide-prep/' : '/peptide-prep/';
+    if (demo) {
+      const facts = $('main .quick-body .facts').first();
+      if (facts.length) {
+        const concentration = facts.children('div').filter((_, el) => /^(final )?(concentration|concentración)$/i.test($(el).find('dt').text().trim()));
+        if (concentration.length) concentration.find('dt').text(spanish ? 'CONCENTRACIÓN' : 'CONCENTRATION');
+        const water = $('<div><dt></dt><dd></dd></div>');
+        water.find('dt').text(spanish ? 'AGUA BACTERIOSTÁTICA A AÑADIR' : 'BAC WATER TO ADD');
+        water.find('dd').text(demo.ml + ' mL');
+        facts.prepend(water, concentration);
+      }
+      const address = target + '?product=' + encodeURIComponent(demo.slug);
+      const link = $('main .oa-protocol-demo a, main a[href="' + target + '"]').attr('href', address);
+      if (!link.length && $('.oa-migrated-protocol').length) {
+        const label = spanish ? 'Demostración de reconstitución' : 'Peptide Reconstitution Demo';
+        $('#supplies-needed').after($('<section class="section oa-protocol-demo" id="peptide-prep"><header class="section-head"></header><div class="section-body"></div></section>'));
+        $('#peptide-prep .section-head').append($('<h2></h2>').text(label));
+        $('#peptide-prep .section-body').append($('<a class="oa-solid-link"></a>').attr('href',address).text(label));
+        $('.jump-links').append($('<a href="#peptide-prep"></a>').text(label));
+      }
+    } else {
+      // Intranasal actuator and topical formulation references have distinct preparation instructions.
+      $('main .oa-protocol-demo, main a[href="#peptide-prep"]').remove();
+    }
+    $('main .product img, main .product-card img').each((_, el) => {
+      const image = $(el);
+      const description = (image.attr('alt') || '') + ' ' + (image.attr('src') || '');
+      const asset = /swab|alcohol|easytouch.*pad|toallita/i.test(description) ? 'swabs'
+        : /insulin|syringe|jeringa/i.test(description) ? 'syringes' : '';
+      if (asset) image.attr({ src: '/one-aminos/protocol-art/' + asset + '.webp',
+        alt: asset === 'swabs' ? (spanish ? 'Toallitas con alcohol' : 'Alcohol swabs') : (spanish ? 'Jeringas U-100' : 'U-100 Syringes') })
+        .removeAttr('srcset sizes style data-src data-srcset').addClass('oa-supply-image');
+    });
+  }
   $('img[src*="bpc-tb-evidence"]').closest('figure').remove();
   brandBlogIllustrations($);
   for (const [id, value] of [

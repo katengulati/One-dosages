@@ -10,6 +10,7 @@
 </head>
 <body>
   <main id="player" class="player" data-playback="waiting">
+    <label class="vial-choice"><span id="choice-title">Peptide and vial strength</span><select id="vial-choice" disabled></select></label>
     <div class="caption" role="status" aria-atomic="true">
       <span id="step-count"></span>
       <strong id="step-title"></strong>
@@ -35,7 +36,7 @@
       <button type="button" id="replay" disabled>Replay</button>
     </div>
     </div>
-    <nav id="chapters"><h2 id="chapter-title">Chapters</h2><ol></ol><a id="film-download" href="./reconstitution-en.mp4" download>Download video</a></nav>
+    <nav id="chapters"><img id="scene-still" alt="" decoding="async"><h2 id="chapter-title">Chapters</h2><ol></ol><a id="film-download" href="./reconstitution-en.mp4" download>Download video</a></nav>
   </main>
 </body>
 </html>
