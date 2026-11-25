@@ -902,6 +902,8 @@ body.oa-library.pdhome-studio #main-content :is(.section-block, .extra-cta-secti
 
 .oa-library .oa-protocol-demo .section-head { justify-content: center; text-align: center; }
 .oa-library .oa-protocol-demo .section-body { text-align: center; }
+.oa-library .oa-demo-row { margin: 24px 0 0; }
+.oa-library .oa-demo-row .oa-solid-link { text-decoration: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .oa-library :is(#pdms-pilot .strengths a[aria-current="page"], .pdpb-variant-pill.is-current, #featured-protocols .dose-links a:hover, #featured-protocols .dose-links a:focus-visible)::before {

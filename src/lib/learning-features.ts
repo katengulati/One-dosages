@@ -178,6 +178,10 @@ export function applyLearningFeatures(html: string, spanish: boolean) {
         <header class="section-head"><h2>${demoTitle(spanish)}</h2></header>
         <div class="section-body"><a class="oa-solid-link" href="${demoHref}">${watch}</a></div>
       </section>`)
+    // Owner direction (Nov 25): the vial-family note under Reconstitution Steps
+    // becomes a button to the reconstitution demo.
+    .replace(/(<section class="pdpb-reconstitution">[\s\S]*?<\/section>\s*)<footer>\s*<p>\s*<em>[\s\S]*?<\/em>\s*<\/p>\s*<\/footer>/gi,
+      (_, steps: string) => `${steps}<p class="oa-demo-row"><a class="oa-solid-link" href="${demoHref}">${watch}</a></p>`)
     .replace(/<p class="pdmg-prep-section__intro">[\s\S]*?<\/p>/gi, '')
     .replace(/<div\b[^>]*\bclass="pd-prep-embed"[^>]*>\s*<iframe\b[\s\S]*?<\/iframe>[\s\S]*?<\/div>/gi, () =>
       `<a class="oa-solid-link" href="${demoHref}">${watch}</a>`)
