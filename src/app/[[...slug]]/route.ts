@@ -28,12 +28,17 @@ const policy = [
   "media-src 'self' data: blob:"
 ].join('; ');
 
+// Pages only change when a new deployment ships (each deployment starts with an empty
+// CDN cache), so let Vercel's edge serve them instead of re-rendering on every visit.
+// Search results depend on the query and stay uncached.
+const cachedPage = 'public, max-age=0, s-maxage=31536000, stale-while-revalidate=86400';
+
 function page(body: string, url: URL) {
   return new Response(applyOneAminosDesign(body, url.pathname, url.origin), {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
       'Content-Security-Policy': policy,
-      'Cache-Control': 'no-cache'
+      'Cache-Control': url.searchParams.has('s') ? 'no-cache' : cachedPage
     }
   });
 }
@@ -44,7 +49,7 @@ export async function GET(request: Request, context: { params: Promise<{ slug?: 
   if (slug.length === 0 && url.searchParams.has('s')) {
     const query = (url.searchParams.get('s') ?? '').trim().slice(0, 160);
     const requestedPage = Number.parseInt(url.searchParams.get('page') ?? '1', 10);
-    return page(await renderSearch(query, Math.max(1, Math.min(100, requestedPage || 1))), url);
+    return page(await renderSearch(query, Math.max(1, Math.min(100, requestedPage || 1)), url.searchParams.get('type') ?? 'all'), url);
   }
   const [route] = slug;
   if (isRetiredLearningPage(url.pathname) || isArchivedCatalogPage(url.pathname)) {

@@ -35,6 +35,15 @@ function pageKey(href: string) {
   }
 }
 
+/** Thumbnail for a search result: the matching store photo, the COA tile, or a guide cover. */
+export function searchCover(href: string): { kind: 'photo' | 'coa' | 'cover'; src: string } {
+  const key = pageKey(href);
+  if (key === 'how-to-read-a-coa') return { kind: 'coa', src: '/one-aminos/wordmark.png' };
+  const photo = key ? photos.get(key) : undefined;
+  if (photo) return { kind: 'photo', src: `/one-aminos/product-photos/${photo}` };
+  return { kind: 'cover', src: '/one-aminos/article-covers/new-to-peptides.webp' };
+}
+
 export function isArchivedCatalogPage(href: string) {
   const key = pageKey(href);
   return key !== undefined && archived.has(key);
@@ -196,7 +205,7 @@ function applyStorePhotos($: CheerioAPI, key: string | undefined, handle: string
     const image = card.find('img').first();
     if (!image.length) return;
     if (reference === 'how-to-read-a-coa') {
-      image.replaceWith('<span aria-hidden="true" class="oa-coa-cover"><img alt="" src="/one-aminos/wordmark.png"><b>COA</b></span>');
+      image.replaceWith('<span aria-hidden="true" class="oa-coa-cover"><img alt="" src="/one-aminos/wordmark.png"><b>COA</b><small>Certificate of Analysis</small></span>');
       return;
     }
     if (photo) replaceImage(image, photo);

@@ -7,7 +7,26 @@ import { applyArticlePresentation } from './article-presentation';
 import { applyCalculatorPresentation } from './calculator-presentation';
 import { applyGuideArticleLayout, applyGuidePresentation } from './guide-presentation';
 
-const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
+const assetVersion = process.env.OA_ASSET_VERSION ?? 'dev';
+const presentation = `<link rel="stylesheet" href="/one-aminos/design.css?v=${assetVersion}">`;
+
+/** Desktop search starts as an icon; the first click opens the field instead of submitting. */
+const searchToggleScript = `<script>(function(){
+  var wrap = document.querySelector('#siteHeader .pdmh-search-wrap');
+  if (!wrap) return;
+  var input = wrap.querySelector('input[type=search]');
+  var button = wrap.querySelector('form button[type=submit]');
+  if (!input || !button) return;
+  function open() { wrap.classList.add('oa-search-open'); input.focus(); }
+  function close() { if (!input.value.trim()) wrap.classList.remove('oa-search-open'); }
+  button.addEventListener('click', function (event) {
+    if (!wrap.classList.contains('oa-search-open') || !input.value.trim()) { event.preventDefault(); open(); }
+  });
+  input.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { input.value = ''; close(); button.focus(); }
+  });
+  document.addEventListener('pointerdown', function (event) { if (!wrap.contains(event.target)) close(); });
+})();</script>`;
 
 const localePaths = new Map(Object.values(locales as Record<string, { en: string; es: string }>)
   .flatMap((paths) => [[paths.en, paths], [paths.es, paths]] as const));
@@ -118,7 +137,12 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   const $ = load(themed);
   // One header-level language switch on every page, replacing the older pill switchers.
   $('#siteHeader .pd-lang, .pd-lang-mobile').remove();
-  $('#siteHeader .header-inner').first().append(renderLanguageSwitch(pathname, spanish));
+  // Right-hand header group (search icon + EN / ES) so the nav can sit in the true center.
+  const headerInner = $('#siteHeader .header-inner').first();
+  const actions = $('<div class="oa-header-actions"></div>');
+  actions.append(headerInner.children('.pdmh-search-wrap'), renderLanguageSwitch(pathname, spanish));
+  headerInner.append(actions);
+  if (actions.find('.pdmh-search-wrap').length) $('body').append(searchToggleScript);
   // The slide-out menu keeps its own brand row: use the One Aminos wordmark and repeat the switch there.
   $('.mobile-nav-brand').attr('aria-label', homeLabel)
     .html('<img class="oa-menu-wordmark" src="/one-aminos/wordmark.png" width="108" height="49" alt="">');
@@ -160,7 +184,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     }
   });
   if ($('iframe.oa-reconstitution-demo, nav.toc, nav.toc-container').length) {
-    $('body').append('<script defer src="/one-aminos/reading-layout.js"></script>');
+    $('body').append(`<script defer src="/one-aminos/reading-layout.js?v=${assetVersion}"></script>`);
   }
   // Owner direction (Nov 25): links that stand alone in a paragraph or block are
   // actions, so they use the silver storefront button instead of an underline.
