@@ -1,4 +1,5 @@
 import { load } from 'cheerio/slim';
+import locales from '../../site/manifest.json';
 import { applyHomePresentation, applyLearningFeatures } from './learning-features';
 import { applyCatalog } from './catalog';
 import { applySharePreview } from './share-preview';
@@ -7,6 +8,26 @@ import { applyCalculatorPresentation } from './calculator-presentation';
 import { applyGuideArticleLayout, applyGuidePresentation } from './guide-presentation';
 
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
+
+const localePaths = new Map(Object.values(locales as Record<string, { en: string; es: string }>)
+  .flatMap((paths) => [[paths.en, paths], [paths.es, paths]] as const));
+
+/** Storefront-style "EN / ES" switch. Unprefixed English pages stay unprefixed. */
+function renderLanguageSwitch(pathname: string, spanish: boolean) {
+  const path = pathname.replace(/\/?$/, '/');
+  const unprefixed = !/^\/(?:en|es)\//.test(path);
+  const paths = localePaths.get(unprefixed ? `/en${path}` : path);
+  const english = unprefixed ? path : paths?.en ?? '/en/';
+  const spanishHref = paths?.es ?? '/es/';
+  const option = (href: string, code: 'en' | 'es', name: string, current: boolean) =>
+    `<a class="oa-lang__opt" href="${href}" hreflang="${code}" lang="${code}" title="${name}"` +
+    ` onclick="document.cookie='NEXT_LOCALE=${code};path=/;max-age=31536000;samesite=lax'"` +
+    `${current ? ' aria-current="true"' : ''}>${code.toUpperCase()}</a>`;
+  return `<nav class="oa-lang" aria-label="${spanish ? 'Idioma' : 'Language'}">` +
+    option(english, 'en', 'English', !spanish) +
+    '<span class="oa-lang__sep" aria-hidden="true">/</span>' +
+    option(spanishHref, 'es', 'Español', spanish) + '</nav>';
+}
 
 const articles = [
   {
@@ -43,19 +64,23 @@ const articles = [
 
 function renderHomeIntro(heading: string, browseHref: string, spanish: boolean) {
   const prefix = spanish ? '/es/' : browseHref.startsWith('/en/') ? '/en/' : '/';
-  const cards = articles.map((article) => {
+  const readLabel = spanish ? 'Leer la guía' : 'Read guide';
+  const cards = articles.map((article, index) => {
     const { path, title } = article[spanish ? 'es' : 'en'];
+    // The first row is above the fold on desktop and phones, so it should not wait for lazy loading.
+    const loading = index < 3 ? 'eager' : 'lazy';
     return `<li>
       <a class="oa-guide-card" href="${prefix}${path}/">
-        <img src="/one-aminos/article-covers/${article.image}.webp" width="960" height="600" alt="" loading="lazy" decoding="async">
+        <img src="/one-aminos/article-covers/${article.image}.webp" width="960" height="600" alt="" loading="${loading}" decoding="async">
         <h3>${title.replaceAll('&', '&amp;')}</h3>
+        <span class="oa-guide-card__action" aria-hidden="true">${readLabel}</span>
       </a>
     </li>`;
   }).join('\n');
 
   return `<section class="oa-home-hero" aria-labelledby="oa-home-title">
     <h1 id="oa-home-title">${heading}</h1>
-    <a class="oa-browse-button" href="${browseHref}">${spanish ? 'Explorar protocolos' : 'Browse Protocols'}</a>
+    <a class="oa-browse-button" href="${browseHref}"><span>${spanish ? 'Explorar protocolos' : 'Browse Protocols'}</span><span class="oa-browse-button__arrow" aria-hidden="true">→</span></a>
   </section>
   <section class="oa-home-guides" aria-labelledby="oa-home-guides-title">
     <h2 id="oa-home-guides-title">${spanish ? 'Guías y artículos' : 'Guides and Articles'}</h2>
@@ -91,6 +116,13 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
   const $ = load(themed);
+  // One header-level language switch on every page, replacing the older pill switchers.
+  $('#siteHeader .pd-lang, .pd-lang-mobile').remove();
+  $('#siteHeader .header-inner').first().append(renderLanguageSwitch(pathname, spanish));
+  // The slide-out menu keeps its own brand row: use the One Aminos wordmark and repeat the switch there.
+  $('.mobile-nav-brand').attr('aria-label', homeLabel)
+    .html('<img class="oa-menu-wordmark" src="/one-aminos/wordmark.png" width="108" height="49" alt="">');
+  $('.mobile-nav-header .mobile-close-btn').first().before(renderLanguageSwitch(pathname, spanish));
   $('link[href="/vendor/google-fonts.css"]').remove();
   $('script:not([src])').filter((_, element) => $(element).text().trim().startsWith('window.pdAuth=')).remove();
   $(':is(.pa-actual-controls, .pa-action-dock, .pa-actual-footer, .pa-return-card, .pa-dialog-host, .pa-share-dialog, .pa-share-trigger, .pa-google-button), [data-pd-google-source], #pd-page-actions-contexts, #pd-page-actions-js, a[href*="google.com/preferences/source"]').remove();

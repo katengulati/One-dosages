@@ -120,6 +120,25 @@ function calculatePeptide() {
     document.getElementById('desiredDose')
   ];
 
+  // The home page ships in English and Spanish; results follow the document language.
+  const spanish = /^es\b/i.test(document.documentElement.lang || '');
+  const copy = spanish ? {
+    invalid: 'Introduce números válidos en todos los campos.',
+    volume: 'Volumen necesario:', perDose: 'por dosis',
+    syringe: 'En una jeringa de 100 unidades:', units: 'unidades',
+    total: 'Dosis totales en el vial:', doses: 'dosis',
+    format: function(n, d) { return n.toFixed(d).replace('.', ','); }
+  } : {
+    invalid: 'Please enter valid numbers in all fields.',
+    volume: 'Volume needed:', perDose: 'per dose',
+    syringe: 'On a 100-unit syringe:', units: 'units',
+    total: 'Total doses in vial:', doses: 'doses',
+    format: function(n, d) { return n.toFixed(d); }
+  };
+  // One Aminos palette: ink for values, the brand error red only for errors.
+  const ink = '#0a0a0a';
+  const error = '#8a1212';
+
   if (vialAmount <= 0 || totalML <= 0 || desiredDoseVal <= 0) {
     numericFields.forEach(function(field) {
       field.setAttribute('aria-invalid', String(!(parseFloat(field.value) > 0)));
@@ -127,7 +146,7 @@ function calculatePeptide() {
     resultDiv.setAttribute('role', 'alert');
     resultDiv.setAttribute('aria-live', 'assertive');
     resultDiv.style.display = 'block';
-    resultDiv.innerHTML = "<p style='color:#e74c3c;font-weight:700;'>Please enter valid numbers in all fields.</p>";
+    resultDiv.innerHTML = "<p style='color:" + error + ";font-weight:700;'>" + copy.invalid + "</p>";
     return;
   }
 
@@ -143,24 +162,19 @@ function calculatePeptide() {
   const totalDoses = mgInVial / mgDose;
   const insulinUnits = doseVolume * 100;
 
+  const value = `color:${ink}; font-weight:700; font-variant-numeric:tabular-nums;`;
   const message = `
     <p style="margin-bottom:10px; line-height:1.6;">
-      <strong>Dose Volume Required:</strong>
-      <span style="color:#e74c3c; font-weight:600;">
-        ${doseVolume.toFixed(3)} mL
-      </span> per injection
+      <strong>${copy.volume}</strong>
+      <span style="${value}">${copy.format(doseVolume, 3)} mL</span> ${copy.perDose}
     </p>
     <p style="margin-bottom:10px; line-height:1.6;">
-      <strong>On a 100-unit Insulin Syringe:</strong>
-      <span style="color:#e74c3c; font-weight:600;">
-        ${insulinUnits.toFixed(1)} units
-      </span> per injection
+      <strong>${copy.syringe}</strong>
+      <span style="${value}">${copy.format(insulinUnits, 1)} ${copy.units}</span> ${copy.perDose}
     </p>
     <p style="margin-bottom:0; line-height:1.6;">
-      <strong>Total Doses in Vial:</strong>
-      <span style="color:#e74c3c; font-weight:600;">
-        ${totalDoses.toFixed(1)} doses
-      </span>
+      <strong>${copy.total}</strong>
+      <span style="${value}">${copy.format(totalDoses, 1)} ${copy.doses}</span>
     </p>
   `;
 

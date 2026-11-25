@@ -84,12 +84,18 @@
   background: url("/one-aminos/wordmark.png") center / contain no-repeat;
 }
 
-.oa-library #siteHeader .main-nav-list > .nav-item > :is(a, button) {
+/* header.css targets #siteHeader.pdmh-header ... a.nav-split-link, so match that
+   specificity or the storefront nav treatment never reaches the links. */
+body.oa-library #siteHeader.pdmh-header .main-nav-list > .nav-item > :is(a.nav-split-link, a, button) {
   color: var(--oa-ink) !important;
-  font-size: 13px;
-  font-weight: 680;
-  letter-spacing: -.015em;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.01em;
   text-transform: uppercase;
+}
+
+@media (max-width: 1180px) {
+  body.oa-library #siteHeader.pdmh-header .main-nav-list > .nav-item > :is(a.nav-split-link, a, button) { font-size: 14px; }
 }
 
 .oa-library #siteHeader :is(.dropdown-menu, .pdmh-quick-search, .pdmh-search-panel) {
@@ -120,13 +126,15 @@
 
 .oa-home-hero { padding-block: clamp(62px, 8vw, 108px) clamp(57px, 7vw, 88px); }
 
-.oa-library .oa-home-hero h1 {
+/* The legacy home.css styles #main-content headings with an ID selector, so the
+   home headings need the same specificity to keep the storefront's tight tracking. */
+body.oa-library #main-content .oa-home-hero h1 {
   max-width: 820px;
   margin: 0 auto clamp(28px, 4vw, 40px);
   color: var(--oa-ink) !important;
   font-size: clamp(38px, 5.6vw, 68px);
   font-weight: 700;
-  line-height: .99;
+  line-height: .95;
   letter-spacing: -.055em;
   text-wrap: balance;
 }
@@ -139,18 +147,31 @@
   z-index: 0;
   isolation: isolate;
   overflow: hidden;
-  width: min(100%, 420px);
-  min-height: 58px;
-  padding: 12px 22px;
+  width: min(100%, 680px);
+  min-height: 62px;
+  padding: 20px 24px;
   border: 0;
   border-radius: 8px;
   color: var(--oa-ink);
   background: var(--oa-silver);
   text-align: center;
   text-decoration: none;
-  font: 700 18px/1.2 var(--oa-font);
-  letter-spacing: -.015em;
+  font: 400 18px/1.2 var(--oa-font);
+  letter-spacing: 0;
 }
+
+/* Storefront "Shop Now" pattern: centered label, arrow pinned to the right edge. */
+.oa-library .oa-browse-button__arrow {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.oa-library .oa-browse-button:hover .oa-browse-button__arrow { transform: translate(4px, -50%); }
 
 .oa-browse-button::before,
 .oa-browse-button::after {
@@ -177,12 +198,12 @@
 
 .oa-home-guides { padding-bottom: clamp(48px, 6vw, 82px); }
 
-.oa-library .oa-home-guides h2 {
-  margin: 0 0 28px;
-  font-size: clamp(28px, 3.5vw, 44px);
-  line-height: 1.05;
+body.oa-library #main-content .oa-home-guides h2 {
+  margin: 0 0 clamp(22px, 3vw, 34px);
+  font-size: clamp(34px, 5.4vw, 69px);
+  line-height: .92;
   font-weight: 700;
-  letter-spacing: -.045em;
+  letter-spacing: -.05em;
 }
 
 .oa-guide-grid {
@@ -194,25 +215,46 @@
   list-style: none;
 }
 
+/* Matches the storefront's Featured Products cards: square black frame,
+   image over a hairline, bold name, then a full-width silver action. */
+.oa-guide-grid { gap: 0 !important; border: 1px solid var(--oa-ink); }
+.oa-guide-grid > li { display: flex; min-width: 0; }
+.oa-guide-grid > li + li { border-left: 1px solid var(--oa-ink); }
+.oa-guide-grid > li:nth-child(n + 4) { border-top: 1px solid var(--oa-ink); }
+.oa-guide-grid > li:nth-child(3n + 1) { border-left: 0; }
+
 .oa-guide-card {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
   height: 100%;
   overflow: hidden;
+  padding-bottom: 16px;
   background: var(--oa-paper);
-  border: 1px solid var(--oa-line);
-  border-radius: 12px;
   color: var(--oa-ink);
   text-decoration: none;
-  transition: border-color .2s ease, background-color .2s ease;
+  transition: background-color .2s ease;
 }
 
 .oa-guide-card:hover {
-  background: var(--oa-soft);
-  border-color: var(--oa-ink);
+  background: #fafafb;
   color: var(--oa-ink);
   text-decoration: none;
 }
+
+.oa-guide-card__action {
+  display: block;
+  margin: 0 16px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  background: var(--oa-silver);
+  color: var(--oa-ink);
+  font-size: 15px;
+  line-height: 1.2;
+  transition: background-color .2s ease;
+}
+
+.oa-guide-card:hover .oa-guide-card__action { background: #c7c7cf; }
 
 .oa-guide-card img {
   display: block;
@@ -224,21 +266,26 @@
   border-bottom: 1px solid var(--oa-line);
 }
 
-.oa-library .oa-guide-card h3 {
+body.oa-library #main-content .oa-guide-card h3 {
   display: grid;
   align-content: center;
   margin: 0;
   min-height: 58px;
-  padding: 14px 8px;
-  font-size: clamp(15px, 1.8vw, 21px);
-  line-height: 1.2;
+  padding: 16px 12px 12px;
+  font-size: clamp(17px, 2vw, 26px);
+  line-height: 1.05;
   font-weight: 700;
-  letter-spacing: -.028em;
+  letter-spacing: -.04em;
 }
 
 @media (max-width: 700px) {
   .oa-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .oa-library .oa-home-guides h2 { margin-bottom: 20px; }
+  .oa-guide-grid > li:nth-child(3n + 1) { border-left: 1px solid var(--oa-ink); }
+  .oa-guide-grid > li:nth-child(2n + 1) { border-left: 0; }
+  .oa-guide-grid > li:nth-child(n + 3) { border-top: 1px solid var(--oa-ink); }
+  body.oa-library #main-content .oa-home-guides h2 { margin-bottom: 20px; }
+  .oa-guide-card { padding-bottom: 12px; }
+  .oa-guide-card__action { margin: 0 10px; padding: 9px 8px; font-size: 13px; }
 }
 
 .oa-library.pdhome-studio :is(.home-content,.pdhome-explorer) {
@@ -254,12 +301,13 @@
   margin-block: 0 54px;
 }
 
-.oa-library.pdhome-studio :is(.section-block, .extra-cta-section) > h2 {
+body.oa-library.pdhome-studio #main-content :is(.section-block, .extra-cta-section) > h2 {
   max-width: 820px;
   margin-inline: auto;
   text-align: center;
   font-size: clamp(30px, 3.4vw, 46px);
-  line-height: 1.05;
+  line-height: 1.02;
+  letter-spacing: -.045em;
 }
 
 .oa-library.pdhome-studio :is(.section-block, .extra-cta-section) > p {
@@ -527,8 +575,8 @@
 .oa-library .site-footer .footer-logo img { display: none; }
 
 @media (max-width: 560px) {
-  .oa-library .oa-home-hero h1 { font-size: clamp(34px, 9vw, 43px); }
-  .oa-library .oa-browse-button { min-height: 54px; font-size: 17px; }
+  body.oa-library #main-content .oa-home-hero h1 { font-size: clamp(34px, 9vw, 43px); }
+  .oa-library .oa-browse-button { min-height: 56px; padding-block: 16px; font-size: 17px; }
 }
 
 /* Decorative illustrations yield to the text. Control icons still carry meaning. */
@@ -1448,9 +1496,17 @@ body.oa-library #main-content .pdpb-protocol-v2 .pdpb-variant-pill:hover {
 
 body.oa-library #main-content .page-numbers { color: var(--oa-ink); }
 
+/* Storefront product-card frame: white card, square corners, 1px ink outline. */
 body.oa-library .oa-catalog-directory .catalog-card {
-  background: var(--oa-soft) !important;
-  border: 1px solid var(--oa-line) !important;
+  background: var(--oa-paper) !important;
+  border: 1px solid var(--oa-ink) !important;
+  border-radius: 0 !important;
+}
+
+body.oa-library .oa-catalog-directory .catalog-card .catalog-card-image {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--oa-line) !important;
 }
 
 body.oa-library #main-content .oa-full-reference {
@@ -1681,7 +1737,9 @@ body.oa-library #main-content .toc-title p { margin-inline: auto; }
 body.oa-library #main-content.oa-catalog-directory .toggle-buttons { gap: 12px; margin: 22px auto; }
 body.oa-library #main-content.oa-catalog-directory .catalog-card-image,
 body.oa-library #main-content.oa-catalog-directory .catalog-card-image img { border: 0 !important; outline: 0; box-shadow: none !important; }
-body.oa-library #main-content.oa-catalog-directory .catalog-btn { display: flex; justify-content: center; background: #080808 !important; color: white !important; border: 0; box-shadow: none !important; }
+/* Storefront "View product" treatment: silver fill, ink label, 8px corners. */
+body.oa-library #main-content.oa-catalog-directory .catalog-btn { display: flex; justify-content: center; background: var(--oa-silver) !important; color: var(--oa-ink) !important; border: 0; box-shadow: none !important; font-weight: 400; }
+body.oa-library #main-content.oa-catalog-directory .catalog-btn:hover { background: #c7c7cf !important; color: var(--oa-ink) !important; }
 body.oa-library #main-content.oa-catalog-directory :is(.catalog-card-image,.catalog-btn)::before,
 body.oa-library #main-content.oa-catalog-directory :is(.catalog-card-image,.catalog-btn)::after { content: none !important; }
 body.oa-library .oa-term-definition { border-inline-start: 2px solid #ccc; padding-inline-start: 14px; }
@@ -1817,3 +1875,128 @@ body.oa-library #main-content .single-post-content > .post-content:first-child >
 }
 body.oa-library #main-content .post-hero-content .molecular-title-row:only-child,
 body.oa-library #main-content .post-hero-content .molecular-title-row:only-child h1 { margin-bottom: 0; }
+
+/* Storefront header pattern (November 25): wordmark left; "EN / ES" text switch
+   and the menu icon on the right; the slide-out menu repeats both. */
+.oa-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  font: 600 14px/1 var(--oa-font);
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+
+.oa-lang__opt {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 2px;
+  color: #8d8d93 !important;
+  text-decoration: none !important;
+}
+
+.oa-lang__opt:hover { color: var(--oa-ink) !important; }
+.oa-lang__opt[aria-current="true"] { color: var(--oa-ink) !important; font-weight: 700; }
+.oa-lang__sep { color: #8d8d93; }
+
+@media (min-width: 1025px) {
+  /* Logo | centered nav | search | EN / ES, on one row. */
+  body.oa-library #siteHeader.pdmh-header .header-inner {
+    grid-template-columns: auto minmax(0, 1fr) minmax(170px, 210px) auto !important;
+  }
+  body.oa-library #siteHeader.pdmh-header .header-inner > .oa-lang { grid-row: 1; grid-column: 4; }
+}
+
+@media (max-width: 1024px) {
+  body.oa-library #siteHeader.pdmh-header .header-inner {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 0 18px !important;
+  }
+
+  body.oa-library #siteHeader.pdmh-header .header-inner > .header-logo { order: 1; margin: 0 auto 0 0 !important; justify-self: start; }
+  body.oa-library #siteHeader.pdmh-header .header-inner > .oa-lang { order: 2; }
+  body.oa-library #siteHeader.pdmh-header .header-inner > .hamburger-btn { order: 3; margin-right: -10px; }
+  body.oa-library #siteHeader.pdmh-header .header-inner > :not(.header-logo, .oa-lang, .hamburger-btn) { display: none !important; }
+
+  /* Plain icon like the storefront's header icons: no box, three equal ink lines. */
+  body.oa-library #siteHeader .hamburger-btn {
+    border: 0 !important;
+    border-radius: 8px;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.oa-library #siteHeader .hamburger-btn:hover,
+  body.oa-library #siteHeader .hamburger-btn:focus-visible { background: var(--oa-soft) !important; }
+
+  body.oa-library #siteHeader .hamburger-lines { width: 22px; height: 15px; }
+  body.oa-library #siteHeader .hamburger-lines span { width: 100% !important; background: var(--oa-ink) !important; }
+}
+
+/* Slide-out menu brand row. */
+body.oa-library .mobile-nav-header { display: flex; align-items: center; gap: 12px; }
+body.oa-library .mobile-nav-header .mobile-nav-brand { display: inline-flex; align-items: center; margin-right: auto; }
+body.oa-library .mobile-nav-header .mobile-nav-brand::before,
+body.oa-library .mobile-nav-header .mobile-nav-brand::after { content: none !important; display: none !important; }
+body.oa-library .oa-menu-wordmark { display: block; width: 88px; height: auto; }
+body.oa-library .mobile-nav-header .oa-lang { order: 0; }
+
+/* Slide-out menu: storefront nav type, silver search, plain close icon. */
+body.oa-library #mobileNavPanel .mobile-nav-list > li > .mobile-nav-row > :is(a, button:not(.mobile-caret)),
+body.oa-library #mobileNavPanel .mobile-nav-list > li > :is(a, button:not(.mobile-caret)) {
+  color: var(--oa-ink) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+}
+
+body.oa-library #mobileNavPanel .mobile-nav-list > li > .mobile-nav-row :is(span, strong) { font: inherit; }
+
+body.oa-library #mobileNavPanel .mobile-nav-search-field {
+  background: var(--oa-soft) !important;
+  border-color: var(--oa-line) !important;
+  border-radius: 8px !important;
+}
+
+body.oa-library #mobileNavPanel .mobile-nav-search-field input { background: transparent !important; }
+
+body.oa-library #mobileNavPanel .mobile-close-btn {
+  width: 44px;
+  height: 44px;
+  border: 0 !important;
+  border-radius: 8px;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--oa-ink) !important;
+  font-size: 20px;
+}
+
+body.oa-library #mobileNavPanel .mobile-close-btn:hover { background: var(--oa-soft) !important; }
+
+/* Keep the open-state icon a centered X with equal-length bars. */
+body.oa-library #siteHeader .hamburger-lines span { transform-origin: center; }
+body.oa-library #siteHeader .hamburger-btn.active .hamburger-lines span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.oa-library #siteHeader .hamburger-btn.active .hamburger-lines span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+body.oa-library #mobileNavPanel .pdmh-resources-trigger-label {
+  color: var(--oa-ink) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+}
+
+/* Guide sections sit on a silver panel, so the copy needs inner gutters. */
+body.oa-library #main-content .oa-guide-spread .oa-guide-panel:not(.oa-reading-summary-content > *) {
+  padding: clamp(20px, 3vw, 32px) clamp(18px, 3.2vw, 36px) !important;
+  border-radius: 12px;
+}
+body.oa-library #main-content .oa-guide-spread .oa-guide-panel + .oa-guide-panel { margin-top: 16px; }
+
+/* The contents sidebar already collapses into an "On this page" toggle on phones,
+   so the legacy details element would be a second copy of the same links. */
+body.oa-library main:has(nav.toc, .toc-container) details.mobile-toc { display: none !important; }
