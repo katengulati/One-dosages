@@ -1762,8 +1762,9 @@ body.oa-library .oa-coa-cover b { font-size: clamp(13px, 1.6vw, 24px); letter-sp
   body.oa-library #main-content:has(nav.toc,nav.toc-container),
   body.oa-library #main-content :is(.single-post-layout,.page-layout,.page-surround,#pdms-pilot):has(nav.toc,nav.toc-container) { overflow: visible !important; }
   body.oa-library #main-content :is(.page-layout,.single-post-layout) > :is(nav.toc,nav.toc-container):not([hidden]) {
-    position: sticky !important; top: var(--oa-sticky-top,72px) !important; z-index: 5; align-self: start;
-    max-height: 54dvh !important; background: white; margin-bottom: 12px;
+    /* Owner direction (Nov 25): the phone contents toggle scrolls with the page. */
+    position: static !important; top: auto !important; z-index: auto; align-self: start;
+    max-height: none !important; background: white; margin-bottom: 12px;
   }
   body.oa-library #pdms-pilot .page-layout > .toc:has(.oa-contents-toggle) { display: block; }
   body.oa-library #pdms-pilot .toc:has(.oa-contents-toggle) .toc-title { padding: 0; }
