@@ -1,10 +1,12 @@
 (() => {
   const frames = Array.from(document.querySelectorAll('iframe.oa-reconstitution-demo'));
   const requested = new URLSearchParams(location.search).get('product');
-  if (requested && /^[a-z0-9-]+$/.test(requested)) {
+  const englishPrefix = location.pathname.startsWith('/en/');
+  if (englishPrefix || (requested && /^[a-z0-9-]+$/.test(requested))) {
     for (const frame of frames) {
       const src = new URL(frame.src);
-      src.searchParams.set('product', requested);
+      if (requested && /^[a-z0-9-]+$/.test(requested)) src.searchParams.set('product', requested);
+      if (englishPrefix) src.searchParams.set('locale', 'en');
       frame.src = src.href;
     }
   }

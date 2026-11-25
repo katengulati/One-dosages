@@ -251,6 +251,13 @@
     }
   });
 
+  // The simulator passes its selected vial and liquid volume to this calculator.
+  var mixture = new URLSearchParams(window.location.search);
+  [['mg', 'r-pep'], ['water', 'r-water']].forEach(function(pair) {
+    var value = Number(mixture.get(pair[0]));
+    if (Number.isFinite(value) && value > 0) el(pair[1]).value = String(value);
+  });
+
   /* ── Wire inputs ── */
   ['r-pep','r-water','d-dose','d-doseunit','d-freq'].forEach(function(id){
     var n = el(id);
