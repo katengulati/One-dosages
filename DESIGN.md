@@ -69,7 +69,7 @@ Center the product reference title, quick links and vial choices on flat light g
 
 Center the title and lead with a controlled maximum width, followed by the original article body. Preserve citations, callouts, figures, table of contents, author and dates. Use ink links with underlines in reading copy and a neutral background for informational cards. Native disclosure elements retain their expand/collapse states. Constrain illustrations to their content column.
 
-The six homepage guides and articles use a centered reading column with gray panels and black type. The navigation appears as gray links directly under the title. The Beginner’s Guide uses five short sections and a diagram of an amino-acid chain. The other featured pages introduce the essentials and keep detailed explanations and citations in an expandable full reference.
+The six homepage guides and articles use a centered reading column with gray panels and black type. The navigation appears as gray links directly under the title. The Beginner’s Guide uses five short sections and a diagram of an amino-acid chain. The other featured pages show four summary cards in a row on desktop, wrapping on smaller screens. The full reference and citations follow immediately and stay open.
 
 The blog index brings the active articles together under a centered heading. Use matching storefront photos for product covers, monochrome One Aminos art for other covers, and a gray wordmark treatment for supporting diagrams.
 
@@ -77,7 +77,7 @@ The blog index brings the active articles together under a centered heading. Use
 
 Separate calculator inputs and outputs. Inputs are white, selected choices are silver with an ink outline, and result areas use a soft gray surface. Keep numerical precision, print and share controls, and explicit error states.
 
-The homepage and legacy reconstitution URLs run the original nine-stage bench animation with One Aminos vial labels. It starts in view, supports pausing and replay, and offers manual playback with reduced motion enabled. Each scene has a short caption. Protocol sections link to the demo. Explorer and game destinations are retired. The footer shows the One Aminos wordmark.
+The homepage and legacy reconstitution URLs run the original nine-stage bench animation with One Aminos vial labels. The player pairs a product photograph with nine illustrated chapters, synchronized captions, a seek bar, a speed selector, and English and Spanish MP4 downloads. The chapter list sits beside the film on desktop and below the controls on phones. Reduced motion requires explicit playback. Protocol sections link to the demo. Explorer and game destinations are retired. The footer shows the One Aminos wordmark.
 
 
 ## Interaction and responsive acceptance

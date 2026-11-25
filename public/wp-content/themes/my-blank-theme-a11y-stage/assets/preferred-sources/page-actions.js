@@ -28,7 +28,7 @@
     if (!c || typeof c.url !== 'string' || typeof c.title !== 'string') return false;
     try {
       var u = new URL(c.url);
-      return u.protocol === 'https:' && u.hostname === 'peptidedosages.com' && !u.username && !u.password && !u.port && !u.search && !u.hash;
+      return u.protocol === 'https:' && u.origin === window.location.origin && !u.username && !u.password && !u.port && !u.search && !u.hash;
     } catch (_) { return false; }
   }
   function message(text) { status.textContent = text; }

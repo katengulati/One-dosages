@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     if (!worksCitedHeading) return false;
 
-    var refList = worksCitedHeading.nextElementSibling;
+    var disclosure = worksCitedHeading.closest('details.oa-citations');
+    var refList = disclosure ? disclosure.querySelector('ol') : worksCitedHeading.nextElementSibling;
     while (refList && refList.tagName !== 'OL') { refList = refList.nextElementSibling; }
     if (!refList) return false;
 
@@ -110,9 +111,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     cardsHtml += '</div></div>';
 
-    worksCitedHeading.insertAdjacentHTML('beforebegin', cardsHtml);
+    if (disclosure) {
+      refList.insertAdjacentHTML('beforebegin', cardsHtml);
+      disclosure.querySelector('.auto-references-section > h2').remove();
+    } else {
+      worksCitedHeading.insertAdjacentHTML('beforebegin', cardsHtml);
+      worksCitedHeading.remove();
+    }
     refList.remove();
-    worksCitedHeading.remove();
     return true;
   }
 
@@ -496,6 +502,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // 5. Convert plain <span> number citations to scrollable superscripts (Format A)
   try { convertInlineCitations(); } catch(e) { console.warn('convertInlineCitations error:', e); }
 
+  document.querySelectorAll('.auto-references-section').forEach(function (section) {
+    if (section.closest('details')) return;
+    var heading = section.querySelector('h2');
+    if (!heading) return;
+    var details = document.createElement('details');
+    details.className = 'oa-citations';
+    var summary = document.createElement('summary');
+    section.before(details);
+    details.append(summary, section);
+    summary.append(heading);
+  });
+
   // 6. Follow editorial sources while retaining legitimate user-generated link labels.
   try {
     document.querySelectorAll('.post-content a[href^="http"], .auto-references-section a[href^="http"], .works-cited-section a[href^="http"]').forEach(function(link) {
@@ -532,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var article = document.querySelector('.single-post-content');
   var headings = postContent ? Array.prototype.slice.call(postContent.querySelectorAll('h1, h2, h3')) : [];
   var tocLinks = new Map();
-  var desktopToc = window.matchMedia('(min-width: 1440px)');
+  var desktopToc = window.matchMedia('(min-width: 1025px)');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var viewportTicking = false;
 

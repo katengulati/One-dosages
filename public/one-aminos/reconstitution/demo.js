@@ -23,16 +23,12 @@ function offscreenW(w, h) {
 }
 function buildBg() {
   const o = offscreenW(W, Hw), g = o.g;
-  g.fillStyle = '#f0f0f1'; g.fillRect(0, 0, W, Hw);
-  // absorbent bench pad with a quilted diamond pattern
-  const px = 14, py = 10, pw = W - 28, ph = Hw - 20;
-  g.save(); g.beginPath(); rrect(g, px, py, pw, ph, 18); g.clip();
-  const pad = g.createLinearGradient(0, py, 0, py + ph); pad.addColorStop(0, '#fdfdfd'); pad.addColorStop(1, '#eaeaea');
-  g.fillStyle = pad; g.fillRect(px, py, pw, ph);
-  g.strokeStyle = 'rgba(40,40,40,.045)'; g.lineWidth = 1;
-  for (let d = -Hw; d < W + Hw; d += 26) { g.beginPath(); g.moveTo(d, 0); g.lineTo(d + Hw, Hw); g.stroke(); g.beginPath(); g.moveTo(d, Hw); g.lineTo(d + Hw, 0); g.stroke(); }
-  g.restore();
-  g.beginPath(); rrect(g, px + 0.5, py + 0.5, pw - 1, ph - 1, 18); g.strokeStyle = 'rgba(40,40,40,.14)'; g.lineWidth = 1; g.stroke();
+  const light = g.createRadialGradient(W * 0.46, Hw * 0.30, 0, W / 2, Hw / 2, Math.max(W, Hw) * 0.86);
+  light.addColorStop(0, '#ffffff');
+  light.addColorStop(0.76, '#f2f2f2');
+  light.addColorStop(1, '#e8e8e8');
+  g.fillStyle = light;
+  g.fillRect(0, 0, W, Hw);
   bg = o;
 }
 
@@ -271,7 +267,7 @@ function storeGeo() {
 /* step 1: clean */
 function cleanGeo() {
   const h = Hw - top, sB = clamp(h / 430 * 2.1, 1.3, 2.5), sP = sB * 1.1, y = top + h * 0.56;
-  return [{ kind: 'bac', x: W * 0.3, y, s: sB }, { kind: 'pep', x: W * 0.72, y: y + GEO.bac.bot * sB - GEO.pep.bot * sP, s: sP }];
+  return [{ kind: 'bac', x: W * 0.71, y, s: sB }, { kind: 'pep', x: W * 0.30, y: y + GEO.bac.bot * sB - GEO.pep.bot * sP, s: sP }];
 }
 /* step 3: draw */
 function drawGeo() {
@@ -325,6 +321,13 @@ function draw() {
   const bacCap = '#118CC4';
   if (key === 'clean' || key === 'find' || key === 'prep') {
     const [b0, b1] = cleanGeo();
+    if (key === 'clean') {
+      const zoom = 1 + 0.27 * ease(progressIn(V.elapsed, 0.2, 1.15));
+      const pivotY = Math.max(42, b0.y + GEO.bac.crimp * b0.s);
+      c.translate(W / 2, pivotY);
+      c.scale(zoom, zoom);
+      c.translate(-W / 2, -pivotY);
+    }
     const cl = key === 'clean' ? st : key === 'prep' ? { caps: [0, 0], clean: [0, 0], phase: 'idle' } : { caps: [0, 0], clean: [1, 1], phase: 'idle' };
     const wet = (i) => cl.phase === 'dry' ? clamp(cl.dryT / 1.4, 0, 1) : cl.clean[i] >= 1 ? 1 : cl.clean[i] * 0.8;
     c.save();
@@ -340,11 +343,8 @@ function draw() {
       c.globalAlpha = 1;
     }
     if (key === 'clean') {
-      const pulse = 0.5 + 0.5 * Math.sin(S.real * 6);
       [b0, b1].forEach((b, i) => {
         const G = GEO[b.kind], hy = b.y + (cl.phase === 'caps' ? (G.cap + G.crimp) / 2 : G.crimp) * b.s;
-        const need = cl.phase === 'caps' ? !st.flip[i] : cl.phase === 'swab' && st.clean[i] < 1;
-        if (need) { c.beginPath(); c.arc(b.x, hy, 22 * b.s * 0.9 + pulse * 4, 0, TAU); c.strokeStyle = `rgba(240,75,67,${0.42 + pulse * 0.4})`; c.lineWidth = 2.8; c.stroke(); }
         if (cl.phase === 'swab' && st.clean[i] > 0 && st.clean[i] < 1) {
           c.beginPath(); c.arc(b.x, b.y + G.bot * b.s + 16, 9, -Math.PI / 2, -Math.PI / 2 + TAU * st.clean[i]); c.strokeStyle = '#118CC4'; c.lineWidth = 3; c.stroke();
         }
@@ -404,7 +404,7 @@ function draw() {
     c.fillStyle = 'rgba(255,255,255,.9)'; c.beginPath(); rrect(c, bx - 10, by - 8, bw + 20, 34, 12); c.fill();
     c.fillStyle = '#E3ECEF'; c.beginPath(); rrect(c, bx, by + 12, bw, 7, 4); c.fill();
     c.fillStyle = '#118CC4'; c.beginPath(); rrect(c, bx, by + 12, Math.max(7, bw * st.prog), 7, 4); c.fill();
-    setFont(c, 700, 10.5, 'normal'); c.fillStyle = '#123E59'; c.textAlign = 'left'; c.textBaseline = 'top'; c.fillText(`${copy.dissolved} ${Math.round(st.prog * 100)}%`, bx, by - 3);
+    setFont(c, 700, 10.5, 'normal'); c.fillStyle = '#123E59'; c.textAlign = 'left'; c.textBaseline = 'top'; c.fillText((st.prog < 1 ? (copy.lang === 'es' ? 'El polvo se disuelve' : 'Powder dissolving') : copy.dissolved), bx, by - 3);
   }
   else if (key === 'dispose') {
     const g = dispGeo(), u = g.u;
@@ -499,14 +499,14 @@ const copy = new URLSearchParams(location.search).get('lang') === 'es' ? {
 };
 
 const STEPS = [
-  { key: 'prep', duration: 2.7 },
-  { key: 'find', duration: 3.2 },
-  { key: 'clean', duration: 5.3 },
+  { key: 'prep', duration: 5 },
+  { key: 'find', duration: 6 },
+  { key: 'clean', duration: 6.8 },
   { key: 'draw', duration: 4.6 },
   { key: 'inject', duration: 7.7 },
-  { key: 'dispose', duration: 2.8 },
+  { key: 'dispose', duration: 4.5 },
   { key: 'mix', duration: 5.2 },
-  { key: 'inspect', duration: 2.8 },
+  { key: 'inspect', duration: 4.5 },
   { key: 'store', duration: 4.5 }
 ];
 const totalTime = STEPS.reduce((total, step) => total + step.duration, 0);
@@ -531,6 +531,11 @@ const reference = document.querySelector('#reference');
 const progress = document.querySelector('#progress');
 const toggle = document.querySelector('#toggle');
 const replay = document.querySelector('#replay');
+const chapterList = document.querySelector('#chapters ol');
+const clock = document.querySelector('#clock');
+const speed = document.querySelector('#speed');
+const phaseStarts = STEPS.map((_, i) => STEPS.slice(0, i).reduce((sum, step) => sum + step.duration, 0));
+const stamp = time => Math.floor(time / 60) + ':' + String(Math.floor(time % 60)).padStart(2, '0');
 const labels = { pep: new Image(), bac: new Image() };
 
 function animateClean(time) {
@@ -540,11 +545,14 @@ function animateClean(time) {
   let pad = null;
   if (phase === 'swab') {
     const [water, peptide] = cleanGeo();
-    const transfer = ease(progressIn(time, 2.67, 0.28));
-    const stopperY = (bottle) => bottle.y + GEO[bottle.kind].crimp * bottle.s;
+    // A new swab enters the frame for the second vial.
+    const bottle = time < 2.82 ? water : peptide;
+    const localTime = time - (time < 2.82 ? 1.5 : 2.82);
+    const enter = ease(progressIn(localTime, 0, 0.17));
+    const leave = ease(progressIn(localTime, 1.05, 0.18));
     pad = {
-      x: lerp(water.x, peptide.x, transfer) + Math.sin(time * 26) * 11,
-      y: lerp(stopperY(water), stopperY(peptide), transfer) - 3
+      x: bottle.x + Math.sin(localTime * 18) * 8,
+      y: bottle.y + GEO[bottle.kind].crimp * bottle.s - 4 - 55 * (1 - enter + leave)
     };
   }
   V.c = { caps, clean, phase, pad, flip: caps.map(Boolean), dryT: Math.max(0, 5.25 - time) };
@@ -611,6 +619,8 @@ function setScene(index) {
   V.step = index;
   V.elapsed = 0;
   player.dataset.step = STEPS[index].key;
+  chapterList.querySelector('[aria-current]')?.removeAttribute('aria-current');
+  chapterList.children[index]?.firstElementChild.setAttribute('aria-current', 'step');
   count.textContent = copy.count(index + 1, STEPS.length);
   heading.textContent = copy.captions[index][0];
   detail.textContent = copy.captions[index][1];
@@ -619,18 +629,29 @@ function setScene(index) {
   poseScene();
 }
 
+const cleanCues = copy.lang === 'es'
+  ? ['Retira las tapas para ver los tapones.', 'Limpia el primer tapón.', 'Usa una toallita nueva para el segundo tapón.', 'Deja secar ambos tapones al aire.']
+  : ['Remove the caps to expose the stoppers.', 'Wipe the first stopper.', 'Use a fresh swab for the second stopper.', 'Let both stoppers air-dry.'];
+
 function update() {
   poseScene();
   if (STEPS[V.step].key === 'find') reference.classList.toggle('emphasize', V.elapsed > 0.85);
-  progress.value = S.real;
+  if (STEPS[V.step].key === 'clean') {
+    const line = cleanCues[V.elapsed < 1.5 ? 0 : V.elapsed < 2.82 ? 1 : V.elapsed < 4.05 ? 2 : 3];
+    if (detail.textContent !== line) detail.textContent = line;
+  }
+  progress.value = String(S.real);
+  clock.textContent = stamp(S.real) + ' / ' + stamp(totalTime);
+  progress.setAttribute('aria-valuetext', stamp(S.real) + ' — ' + heading.textContent);
 }
 
 function frame(now) {
   frameId = null;
   const dt = last === undefined ? 0 : Math.min((now - last) / 1000, 0.1);
   last = now;
-  S.real += dt;
-  V.elapsed += dt;
+  const advance = dt * Number(speed.value);
+  S.real += advance;
+  V.elapsed += advance;
 
   if (V.elapsed >= STEPS[V.step].duration) {
     if (V.step === STEPS.length - 1) {
@@ -706,7 +727,14 @@ function layout() {
 async function boot() {
   document.documentElement.lang = copy.lang;
   document.title = copy.lang === 'es' ? 'Demostración de reconstitución | One Aminos' : 'Reconstitution Demo | One Aminos';
-  document.querySelector('#note').textContent = copy.note;
+  const spanish = copy.lang === 'es';
+  document.querySelector('#speed-label').textContent = spanish ? 'Velocidad' : 'Speed';
+  const download = document.querySelector('#film-download');
+  download.href = './reconstitution-' + copy.lang + '.mp4';
+  download.textContent = spanish ? 'Descargar vídeo (MP4)' : 'Download video (MP4)';
+  const chaptersTitle = spanish ? 'Capítulos' : 'Chapters';
+  document.querySelector('#chapter-title').textContent = chaptersTitle;
+  document.querySelector('#chapters').setAttribute('aria-label', chaptersTitle);
   progress.setAttribute('aria-label', copy.lang === 'es' ? 'Progreso' : 'Playback progress');
   progress.max = totalTime;
   toggle.textContent = copy.play;
@@ -748,10 +776,41 @@ async function boot() {
   document.querySelector('#concentration-value').textContent = V.P.conc;
   reference.querySelector('h2').textContent = copy.reference;
 
+  function seek(time) {
+    stopFrame();
+    S.real = clamp(time, 0, totalTime);
+    const index = phaseStarts.findLastIndex(start => start <= S.real);
+    setScene(index);
+    V.elapsed = S.real - phaseStarts[index];
+    update();
+    draw();
+    if (S.real >= totalTime) setPlayback('complete');
+    else if (playback === 'complete' || playback === 'waiting') setPlayback('paused');
+    else scheduleFrame();
+  }
+  copy.captions.forEach(([title], index) => {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = title;
+    const time = document.createElement('span');
+    time.textContent = stamp(phaseStarts[index]);
+    button.append(time);
+    button.addEventListener('click', () => seek(phaseStarts[index]));
+    item.append(button);
+    chapterList.append(item);
+  });
+  progress.addEventListener('input', () => seek(Number(progress.value)));
   toggle.disabled = replay.disabled = false;
   setScene(0);
+  update();
   layout();
   new ResizeObserver(layout).observe(board);
+  if (window.parent !== window) {
+    new ResizeObserver(() => {
+      window.parent.postMessage({ type: 'oa-demo-height', height: player.offsetHeight }, location.origin);
+    }).observe(player);
+  }
   // IntersectionObserver also clips the target against the containing iframe and page.
   new IntersectionObserver(([entry]) => {
     inView = entry.intersectionRatio >= 0.42;

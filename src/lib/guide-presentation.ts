@@ -19,8 +19,6 @@ const featuredArticlePaths = new Map((['ghk-cu-peptide', 'retatrutide-peptide'] 
 const beginnerCopy = {
   en: {
     title: 'Beginner’s Guide to Peptides',
-    lead: 'Learn what peptides are, what vial labels mean, and how to read a research chart.',
-    purpose: 'For laboratory research and education only.',
     contents: 'On this page',
     sections: [
       ['What are peptides?', 'Peptides are short chains of amino acids, the same building blocks that make up proteins. Some peptides act as signals that tell cells how to respond.'],
@@ -38,8 +36,6 @@ const beginnerCopy = {
   },
   es: {
     title: 'Guía de péptidos para principiantes',
-    lead: 'Aprende qué son los péptidos, qué significan las etiquetas de los viales y cómo leer una tabla de investigación.',
-    purpose: 'Solo para investigación de laboratorio y educación.',
     contents: 'En esta página',
     sections: [
       ['¿Qué son los péptidos?', 'Los péptidos son cadenas cortas de aminoácidos, los mismos componentes que forman las proteínas. Algunos péptidos actúan como señales que indican a las células cómo responder.'],
@@ -126,7 +122,6 @@ function renderBeginner(copy: GuideCopy, language: 'en' | 'es', prefixed: boolea
   return `<div class="page-layout">
     <nav class="oa-guide-contents" aria-label="${copy.contents}"><ul>${nav}</ul></nav>
     <article class="page-content">
-      <div class="oa-guide-intro"><p>${copy.lead}</p><p>${copy.purpose}</p></div>
       ${chapters.join('')}
     </article></div>`;
 }
@@ -164,22 +159,27 @@ function addReadingSummary($: CheerioAPI, key: keyof typeof readingSummaries, la
       $('<h2></h2>').attr('id', id).text(heading), $('<p></p>').text(text)
     ));
   });
-  list.append($('<li></li>').append($('<a href="#full-reference" onclick="document.getElementById(\'full-reference\').open = true"></a>').text(label)));
+  list.append($('<li></li>').append($('<a href="#full-reference"></a>').text(label)));
   const navigation = $('<nav class="oa-guide-contents"></nav>').attr('aria-label', beginnerCopy[language].contents).append(list);
-  const details = $('<details class="oa-full-reference" id="full-reference"></details>')
-    .append($('<summary></summary>').text(label));
+  const reference = $('<section class="oa-full-reference" id="full-reference" aria-labelledby="full-reference-title"></section>')
+    .append($('<h2 id="full-reference-title"></h2>').text(label));
 
   if (article) {
     $('.single-post-layout > .toc-container').remove();
     $('.post-hero-content').append(navigation);
     const content = $('.single-post-content > .post-content');
-    content.before(summary, details);
-    details.append(content);
+    content.before(summary, reference);
+    reference.append(content);
   } else {
     $('.page-layout > .toc-container').replaceWith(navigation);
     const content = $('.page-content').first();
-    details.append(content.contents());
-    content.append(summary, details);
+    if (key === 'syringe-measurement-guide') {
+      content.children('.pdmg-intro').remove();
+      // Preserve links to the chart check now included in the fourth card.
+      summary.children().last().prepend('<span id="summary-5" class="oa-guide-anchor"></span>');
+    }
+    reference.append(content.contents());
+    content.append(summary, reference);
   }
 }
 

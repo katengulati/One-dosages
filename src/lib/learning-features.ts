@@ -134,7 +134,7 @@ function chartGuide(spanish: boolean, local: string) {
       ['Encuentra tu vial', 'Busca en la tabla el mismo péptido y la cantidad en mg de la etiqueta.', '/es/tabla-dosificacion-peptidos/', 'Abrir la tabla'],
       ['Revisa la concentración', 'Los mg/mL indican cuánto péptido hay en cada mL de líquido.', '/es/guia-reconstitucion-peptidos/', 'Guía de reconstitución'],
       ['Lee las unidades', 'Los mg y mcg indican la cantidad de péptido. Los mL indican el volumen de líquido.', '/es/guia-medicion-jeringa/', 'Guía de unidades de jeringa'],
-      ['Revisa la fuente', 'Busca el estudio o ejemplo original y fíjate en la frecuencia que describe.']
+      ['Verifica el COA', 'Busca el lote de tu vial en el certificado de análisis. Revisa la identidad, la pureza y la cantidad.', '/es/como-leer-un-coa/', 'Cómo leer un COA']
     ]
   } : {
     title: 'How to Read a Dosage Chart',
@@ -142,7 +142,7 @@ function chartGuide(spanish: boolean, local: string) {
       ['Find your vial', 'Match the peptide name and the mg on the label to the chart.', `${local}peptide-dosage-chart/`, 'Open the chart'],
       ['Check the concentration', 'The mg/mL number tells you how much peptide is in each mL of liquid.', `${local}reconstitution-guide-peptides/`, 'Reconstitution guide'],
       ['Read the units', 'mg and mcg measure peptide amount. mL measures liquid volume.', `${local}syringe-measurement-guide/`, 'Syringe unit guide'],
-      ['Check the source', 'Look for the original study or example and check how often it reports a dose.']
+      ['Verify the COA', 'Match the lot on your vial to its certificate of analysis. Check the identity, purity and amount reported.', `${local}how-to-read-a-coa/`, 'How to read a COA']
     ]
   };
 

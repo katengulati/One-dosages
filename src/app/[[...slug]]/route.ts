@@ -1,3 +1,4 @@
+import { coaKey, renderCoaArticle } from '@/lib/coa-article';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { renderSearch } from '@/lib/search';
@@ -59,9 +60,10 @@ export async function GET(request: Request, context: { params: Promise<{ slug?: 
   }
   try {
     const lipo = slug.length === 1 && isLipoReference(route);
-    const segments = lipo ? ['beginners-guide-peptides'] : slug;
+    const coa = slug.length === 1 && route === coaKey;
+    const segments = lipo || coa ? ['beginners-guide-peptides'] : slug;
     const template = await readFile(join(site, ...segments, 'index.html'), 'utf8');
-    return page(lipo ? renderLipoReference(template, route, 'en', '/') : template, url);
+    return page(coa ? renderCoaArticle(template, 'en') : lipo ? renderLipoReference(template, route, 'en', '/') : template, url);
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
     return new Response('Page not found', { status: 404 });

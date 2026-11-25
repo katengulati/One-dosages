@@ -1,107 +1,53 @@
-:root {
-  color-scheme: light;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #111;
-  background: #fff;
-}
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-body { padding: 0 12px; }
+:root { color-scheme: light; font: 16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif; color: #151515; background: white; }
+* { box-sizing: border-box; }
+body { margin: 0; }
 [hidden] { display: none !important; }
+button,input,select { font: inherit; }
+button,select { cursor: pointer; }
+button:focus-visible,input:focus-visible,select:focus-visible { outline: 2px solid #161616; outline-offset: 2px; }
 .player {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
-  gap: 8px;
-  width: min(100%, 440px);
-  height: 100%;
-  margin-inline: auto;
-  padding: 12px 0;
-  text-align: center;
+  width: 100%; margin: auto; padding: clamp(12px,2vw,22px); display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(205px, .58fr);
+  grid-template-areas: "stage chapters" "caption chapters" "transport chapters";
+  gap: 16px 22px; align-items: start;
 }
-.caption {
-  min-height: 92px;
-  display: grid;
-  align-content: center;
-  gap: 3px;
-  padding: 2px 4px 0;
-}
-.caption strong { font-size: clamp(19px, 4.8vw, 22px); line-height: 1.15; }
-.caption span { font-size: 14px; line-height: 1.28; }
-#step-count { color: #525252; font-size: 12px; font-weight: 600; }
-.stage {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  border: 1px solid #d9d9dc;
-  border-radius: 12px;
-  background: #f0f0f1;
-}
-#board {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  filter: grayscale(1);
-}
-.reference {
-  z-index: 1;
-  width: min(84%, 286px);
-  border: 1px solid #d3d3d5;
-  border-radius: 9px;
-  background: #fff;
-  box-shadow: 0 10px 28px #0001;
-  padding: 16px;
-  text-align: left;
-}
-.reference h2 { margin: 0 0 4px; font-size: 18px; }
-.reference p { margin: 0 0 12px; font-size: 13px; }
+.stage { grid-area: stage; aspect-ratio: 1.48; position: relative; isolation: isolate; display: grid; place-items: center; overflow: hidden; border: 1px solid #ddd; border-radius: 12px; background: #f5f5f5; }
+#board { display: block; width: 100%; max-width: 430px; height: 100%; position: absolute; inset-block: 0; filter: grayscale(1); }
+.opening-photo { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity 300ms ease; pointer-events: none; }
+[data-step="prep"] .opening-photo { opacity: 1; }
+.caption { grid-area: caption; display: grid; align-content: start; gap: 3px; text-align: left; }
+#step-count { font-size: 12px; color: #565656; font-weight: 600; }
+#step-title { font-size: clamp(22px,3.2vw,30px); line-height: 1.1; letter-spacing: -.035em; }
+#step-detail { margin-top: 3px; font-size: 15px; }
+.transport { grid-area: transport; }
+.timeline,.controls,.speed { display: flex; align-items: center; }
+.timeline { gap: 12px; margin-bottom: 12px; }
+#progress { min-width: 0; flex: 1; accent-color: #111; cursor: pointer; margin: 0; }
+#clock { font-size: 12px; font-variant-numeric: tabular-nums; color: #525252; }
+.controls { gap: 8px; }
+.controls button,.speed { min-height: 42px; border: 1px solid #d2d2d2; background: #fff; color: #222; border-radius: 7px; padding: 7px 12px; font-size: 14px; }
+#toggle { min-width: 86px; color: white; background: #121212; border-color: #121212; font-weight: 650; }
+#replay { margin-left: auto; }
+.speed { gap: 4px; }
+.speed select { border: 0; background: transparent; color: #111; }
+#chapters { grid-area: chapters; padding-left: 18px; border-left: 1px solid #ddd; }
+#chapters h2 { margin: 0 0 10px; font-size: 18px; }
+#chapters ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 3px; }
+#chapters button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 6px; padding: 10px; background: #fff; color: #333; font-size: 14px; text-align: start; }
+#chapters button span { color: #666; font-size: 12px; font-variant-numeric: tabular-nums; }
+#chapters button:hover { background: #f6f6f6; }
+#chapters button[aria-current] { background: #eee; border-color: #d6d6d6; color: #111; font-weight: 700; }
+.reference { z-index: 2; width: min(85%,270px); border: 1px solid #ccc; border-radius: 10px; background: white; padding: 16px; }
+.reference h2,.reference p { margin: 0 0 7px; }
+.reference h2 { font-size: 18px; }
 .reference dl { margin: 0; }
-.reference dl > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 13px;
-}
-.reference.emphasize dl > div:first-child { background: #e5e5e7; }
+.reference dl div { display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid #ddd; padding: 7px 0; font-size: 14px; }
 .reference dd { margin: 0; font-weight: 700; }
-progress {
-  width: 100%;
-  height: 4px;
-  overflow: hidden;
-  border: 0;
-  border-radius: 2px;
-  appearance: none;
-  accent-color: #171717;
-  background: #e4e4e6;
+@media(max-width:620px) {
+  .player { grid-template-columns: 1fr; grid-template-areas: "stage" "caption" "transport" "chapters"; gap: 12px; }
+  .stage { aspect-ratio: 1.35; }
+  #chapters { border-left: 0; padding: 10px 0 0; border-top: 1px solid #ddd; }
+  #chapters ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
-progress::-webkit-progress-bar { background: #e4e4e6; }
-progress::-webkit-progress-value { background: #171717; }
-progress::-moz-progress-bar { background: #171717; }
-.controls { display: flex; justify-content: center; gap: 8px; }
-.controls button {
-  min-width: 86px;
-  min-height: 43px;
-  padding: 8px 14px;
-  line-height: 1.2;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 14px;
-  color: #141414;
-  background: #eeeef0;
-  border: 1px solid #d6d6d8;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.controls button:focus-visible { outline: 2px solid #141414; outline-offset: 2px; }
-.controls button:disabled { opacity: .5; cursor: default; }
-#toggle { background: #141414; border-color: #141414; color: #fff; }
-#toggle:hover { background: #363636; }
-#replay:hover { background: #dddde0; }
-.player:is([data-playback=waiting], [data-playback=complete]) #replay { display: none; }
-.note { margin: 0; color: #525252; font-size: 12px; }
+@media(prefers-reduced-motion:reduce) { .opening-photo { transition: none; } }
+#film-download { display: inline-block; margin: 12px 0 0 10px; color: #373737; font-size: 13px; text-underline-offset: 3px; }

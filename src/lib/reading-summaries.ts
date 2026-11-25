@@ -18,15 +18,13 @@ export const readingSummaries = {
       ['Know the units', 'mg and mcg measure how much compound is present. mL measures liquid volume. IU measures a compound’s biological activity.'],
       ['Check the syringe scale', 'U-100 means 100 units per mL. Barrel capacity and the printed scale are separate. Check both before comparing measurements.'],
       ['Read the markings', 'Use the numbers to find the value of each small line. Read the mark at the edge of the plunger nearest the tip.'],
-      ['Use the right conversion', '1 mg equals 1,000 mcg. On a U-100 scale, 1 mL equals 100 syringe units. Other scales use different conversions.'],
-      ['Check the chart', 'Match the vial strength, concentration, and units before using a number from a research chart. The full reference includes scale diagrams and conversion tables.']
+      ['Check the chart and conversions', 'Match the vial strength and concentration to the chart. 1 mg equals 1,000 mcg. On a U-100 syringe, 100 units equal 1 mL. Other syringe scales use different conversions.']
     ],
     es: [
       ['Conoce las unidades', 'Los mg y mcg miden la cantidad de compuesto. Los mL miden el volumen del líquido. Las UI miden la actividad biológica de un compuesto.'],
       ['Revisa la escala', 'U-100 significa 100 unidades por mL. La capacidad y la escala impresa son datos distintos. Revisa ambos antes de comparar medidas.'],
       ['Lee las marcas', 'Usa los números para saber cuánto representa cada línea pequeña. Lee la marca en el borde del émbolo más cercano a la punta.'],
-      ['Usa la conversión correcta', '1 mg equivale a 1.000 mcg. En una escala U-100, 1 mL equivale a 100 unidades de jeringa. Otras escalas usan conversiones distintas.'],
-      ['Revisa la tabla', 'Comprueba que coincidan la cantidad del vial, la concentración y las unidades. La referencia completa incluye diagramas y tablas de conversión.']
+      ['Revisa la tabla y las conversiones', 'Comprueba que la cantidad del vial y la concentración coincidan con la tabla. 1 mg equivale a 1.000 mcg. En una jeringa U-100, 100 unidades equivalen a 1 mL. Otras escalas usan conversiones distintas.']
     ]
   },
   'peptide-storage-guide': {

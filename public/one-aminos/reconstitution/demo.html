@@ -16,6 +16,7 @@
       <span id="step-detail"></span>
     </div>
     <div class="stage">
+      <img class="opening-photo" src="../article-covers/reconstitution.webp" alt="">
       <canvas id="board" aria-hidden="true"></canvas>
       <section class="reference" id="reference" hidden>
         <h2></h2>
@@ -26,12 +27,15 @@
         </dl>
       </section>
     </div>
-    <progress id="progress" value="0" max="1" aria-label="Playback progress"></progress>
+    <div class="transport">
+      <div class="timeline"><input id="progress" type="range" value="0" min="0" max="1" step=".05" aria-label="Playback position"><output id="clock" aria-hidden="true"></output></div>
     <div class="controls">
       <button type="button" id="toggle" disabled>Play</button>
+      <label class="speed"><span id="speed-label">Speed</span><select id="speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label>
       <button type="button" id="replay" disabled>Replay</button>
     </div>
-    <p class="note" id="note"></p>
+    </div>
+    <nav id="chapters"><h2 id="chapter-title">Chapters</h2><ol></ol><a id="film-download" href="./reconstitution-en.mp4" download>Download video</a></nav>
   </main>
 </body>
 </html>

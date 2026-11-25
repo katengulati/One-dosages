@@ -2,6 +2,8 @@ import { load } from 'cheerio/slim';
 import { applyHomePresentation, applyLearningFeatures } from './learning-features';
 import { applyCatalog } from './catalog';
 import { applySharePreview } from './share-preview';
+import { applyArticlePresentation } from './article-presentation';
+import { applyCalculatorPresentation } from './calculator-presentation';
 import { applyGuidePresentation } from './guide-presentation';
 
 const presentation = '<link rel="stylesheet" href="/one-aminos/design.css">';
@@ -89,6 +91,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
   const $ = load(themed);
+  $('link[href="/vendor/google-fonts.css"]').remove();
   $('script:not([src])').filter((_, element) => $(element).text().trim().startsWith('window.pdAuth=')).remove();
   $(':is(.pa-actual-controls, .pa-action-dock, .pa-actual-footer, .pa-return-card, .pa-dialog-host, .pa-share-dialog, .pa-share-trigger, .pa-google-button), [data-pd-google-source], #pd-page-actions-contexts, #pd-page-actions-js, a[href*="google.com/preferences/source"]').remove();
   $('.pa-meta-empty').remove();
@@ -105,9 +108,15 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     const copyright = $(element);
     copyright.html(copyright.html()?.replace('Peptide Dosages', 'One Aminos') ?? '');
   });
+  $('.pdmh-trigger-new-badge, .pdmh-new-badge, .pdh-disc, .pdc-disc, .section-head > .section-number, .section-head > .section-icon').remove();
+  applyCalculatorPresentation($, spanish);
   applyGuidePresentation($, pathname);
   applyCatalog($, pathname);
   applyHomePresentation($, pathname);
+  applyArticlePresentation($);
+  if ($('iframe.oa-reconstitution-demo, nav.toc, nav.toc-container').length) {
+    $('body').append('<script defer src="/one-aminos/reading-layout.js"></script>');
+  }
   const branded = $.html()
     .replace(/[a-z0-9._%+-]+@(?:www\.)?peptidedosages\.com\b/gi, 'support@oneaminos.com')
     .replace(/https?:\\?\/\\?\/(?:www\.)?peptidedosages\.com\b/gi, origin)

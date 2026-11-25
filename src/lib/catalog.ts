@@ -4,6 +4,7 @@ import locales from '../../site/manifest.json';
 import photoFiles from '../../site/product-photos.json';
 import blogCards from '../../site/blog-cards.json';
 import blogArtworkMarks from '../../site/blog-artwork-marks.json';
+import { improveProtocolReading } from './protocol-reading';
 import { isLipoReference } from './lipo-references';
 
 const oldOrigin = 'https://peptidedosages.com';
@@ -86,6 +87,7 @@ function applyCatalogDirectory($: CheerioAPI, key: string, spanish: boolean, pat
   $('.catalog-description, .catalog-intro, .catalog-title i[aria-hidden="true"]').remove();
   // The captured directory script writes to the hidden statistics.
   $('.catalog-stats').attr('hidden', '');
+  $('.toggle-buttons br.mobile-break').replaceWith(' ');
   if (key === 'peptide-blend-dosages') return;
 
   const to = pathname.startsWith('/en/') || spanish ? locales['lipo-c'][spanish ? 'es' : 'en'] : '/lipo-c/';
@@ -105,6 +107,23 @@ function applyCatalogDirectory($: CheerioAPI, key: string, spanish: boolean, pat
   else grid.append(card);
 }
 
+function populateBlogMenu($: CheerioAPI, spanish: boolean, pathname: string) {
+  const grid = $('#desktop-blog-submenu .mega-menu-grid').empty();
+  const mobile = $('#mobile-blog-submenu');
+  const viewAll = mobile.find('.mobile-view-all').closest('li').remove();
+  mobile.empty();
+  for (const post of blogCards.filter(post => !isArchivedCatalogPage(post.path)).slice(0, 3)) {
+    const key = pageKey(post.path) as keyof typeof locales;
+    const href = (spanish || pathname.startsWith('/en/')) ? locales[key]?.[spanish ? 'es' : 'en'] ?? post.path : post.path;
+    const link = $('<a class="mega-post-card"></a>').attr('href', href);
+    link.append($('<span class="mega-post-thumb"></span>').append('<img alt="" width="100" height="100" loading="lazy" src="/one-aminos/article-covers/new-to-peptides.webp">'),
+      $('<span class="mega-post-title"></span>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title));
+    grid.append($('<li></li>').append(link));
+    mobile.append($('<li></li>').append($('<a></a>').attr('href', href).text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title)));
+  }
+  mobile.append(viewAll);
+}
+
 function applyBlogDirectory($: CheerioAPI, spanish: boolean, pathname: string) {
   const list = $('.blog-post-list').first();
   if (!list.length) return;
@@ -119,8 +138,8 @@ function applyBlogDirectory($: CheerioAPI, spanish: boolean, pathname: string) {
     list.append($('<a class="blog-post-card"></a>').attr('href', localized ?? post.path).append(
       $('<div class="card-thumb"></div>').append(cover),
       $('<div class="card-body"></div>').append(
-        $('<h2 class="card-title"></h2>').text(post.title),
-        $('<p class="card-excerpt"></p>').text(post.excerpt),
+        $('<h2 class="card-title"></h2>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title),
+        $('<p class="card-excerpt"></p>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Comprueba el lote y aprende a interpretar la identidad, la pureza y el contenido neto.' : post.excerpt),
         $('<span class="card-cta"></span>').text(spanish ? 'Leer artículo' : 'Read Article')
       )
     ));
@@ -174,6 +193,10 @@ function applyStorePhotos($: CheerioAPI, key: string | undefined, handle: string
     const photo = reference && photos.get(reference);
     const image = card.find('img').first();
     if (!image.length) return;
+    if (reference === 'how-to-read-a-coa') {
+      image.replaceWith('<span aria-hidden="true" class="oa-coa-cover"><img alt="" src="/one-aminos/wordmark.png"><b>COA</b></span>');
+      return;
+    }
     if (photo) replaceImage(image, photo);
     else image.attr('src', '/one-aminos/article-covers/new-to-peptides.webp')
       .removeAttr('srcset sizes data-src data-srcset');
@@ -312,9 +335,12 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
     else $('main h1, #main-content h1').first().after(productLink);
   }
 
+  if (key && products.has(key)) improveProtocolReading($, key);
   if (key && directoryPages.has(key)) applyCatalogDirectory($, key, spanish, pathname);
   if (key === 'blog') applyBlogDirectory($, spanish, pathname);
+  populateBlogMenu($, spanish, pathname);
   applyStorePhotos($, key, handle, cta);
+  $('img[src*="bpc-tb-evidence"]').closest('figure').remove();
   brandBlogIllustrations($);
   for (const [id, value] of [
     ['pdh-stat-total', retainedProtocols.length], ['pdh-stat-single', singleCount], ['pdh-stat-blends', blendCount],
@@ -323,9 +349,7 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
   ] as const) {
     $(`#${id}`).text(String(value));
   }
-  $('.pdh-hero-desc, .pdh-intro').text(spanish
-    ? 'Busca por péptido o tamaño de vial y abre el protocolo para ver la referencia completa.'
-    : 'Search by peptide or vial size, then open a protocol for the full reference.');
+  $('.pdh-hero-desc, .pdh-intro').remove();
   $('.catalog-grid, .blog-post-list, .posts-grid').each((_, element) => {
     if (!$(element).find('a[href]').length) {
       $(element).append($('<p></p>').text(spanish

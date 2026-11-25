@@ -1,3 +1,4 @@
+import { coaKey, renderCoaArticle } from './coa-article';
 import fs from "node:fs";
 import path from "node:path";
 import { LOCALE_COOKIE, localeNames, locales, type Locale } from "@/i18n/config";
@@ -58,9 +59,9 @@ export function renderPage(locale: Locale, key: string): string {
   const alts = manifest()[key];
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
   const lipo = isLipoReference(key);
-  const contentKey = lipo ? "beginners-guide-peptides" : key;
+  const contentKey = lipo || key === coaKey ? "beginners-guide-peptides" : key;
   const template = fs.readFileSync(path.join(SITE_DIR, locale, `${contentKey}.html`), "utf8");
-  return (lipo ? renderLipoReference(template, key, locale) : template)
+  return (key === coaKey ? renderCoaArticle(template, locale) : lipo ? renderLipoReference(template, key, locale) : template)
     .replace("<!--@header-->", () => header(locale))
     .replace("<!--@lang-->", () => switcher(locale, alts, false))
     .replace("<!--@lang-mobile-->", () => switcher(locale, alts, true))
