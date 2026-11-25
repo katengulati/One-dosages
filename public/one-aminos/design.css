@@ -1533,6 +1533,8 @@ body.oa-library #main-content :is(.featured-hero-img, .card-thumb, .featured-ima
   object-position: center;
   background: var(--oa-soft);
 }
+body.oa-library #main-content .single-post-layout > article { min-width: 0; }
+body.oa-library #main-content .single-post-content .featured-image img { max-width: 100%; }
 body.oa-library #main-content .single-post-content .featured-image .oa-store-photo {
   display: block;
   width: 100%;

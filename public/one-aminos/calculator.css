@@ -76,4 +76,13 @@
 @media (max-width: 640px) {
   .pdmcalc-studio #main-content .pdc-grid { gap: 14px; }
   .pdmcalc-studio #main-content .pdc-syr { overflow-x: auto; }
+  .pdmcalc-studio #main-content :is(.pdc-field, .pdc-row, .pdc-draw, .pdc-stats) { position: relative; }
+  .pdmcalc-studio #main-content .pdc-tip { position: static; }
+  .pdmcalc-studio #main-content .pdc-tip .pdc-tipbox {
+    inset: auto 0;
+    width: auto;
+    max-width: none;
+    transform: translateY(calc(-100% - 6px));
+  }
+  .pdmcalc-studio #main-content .pdc-tipbox::after { content: none; }
 }
