@@ -61,7 +61,6 @@
 }
 .pdmcalc-studio #pdBarrel { fill: transparent; }
 .pdmcalc-studio #main-content .pdc-syr svg { max-width: 680px; margin-inline: auto; }
-.pdmcalc-studio #main-content .pdc-copy { background: var(--oa-ink); color: white; min-height: 44px; }
 .pdmcalc-studio #main-content .pdc-out .pdc-row { border-color: var(--oa-line); }
 .pdmcalc-studio #main-content .pdc-article { max-width: 76ch; margin: clamp(32px, 5vw, 60px) auto; }
 .pdmcalc-studio #main-content .pdc-article h2 {

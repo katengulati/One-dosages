@@ -63,7 +63,6 @@
   });
 
   /* ── Core math ── */
-  var last = {};
   function calc(){
     var pep = num('r-pep');          // mg in vial
     var water = num('r-water');      // mL added
@@ -122,10 +121,9 @@
     el('pdBarrel').classList.toggle('over', units > cfg.cap);
 
     /* guidance */
-    var mark = el('d-mark'), note = el('d-note'), rec = el('d-rec'), recBtn = el('d-recbtn');
+    var mark = el('d-mark'), note = el('d-note');
     mark.textContent = ''; mark.className = 'pdc-mark';
     note.textContent = ''; note.className = 'pdc-note';
-    rec.style.display = 'none';
 
     if (units > 0 && concMgMl > 0) {
       if (units > cfg.cap) {
@@ -133,9 +131,6 @@
         if (units <= 100) {
           var fits = units <= 30 ? 30 : (units <= 50 ? 50 : 100);
           note.textContent = 'That\u2019s ' + unitsTxt + ' units  -  more than a ' + cfg.cap + '-unit syringe holds. Switch to the ' + fits + '-unit barrel, or use less water for a higher concentration.';
-          recBtn.textContent = 'Switch to the ' + fits + '-unit syringe \u2192';
-          recBtn.setAttribute('data-apply', fits);
-          rec.style.display = 'block';
         } else {
           note.textContent = 'That\u2019s ' + unitsTxt + ' units  -  more than even a 100-unit (1 mL) syringe holds. Use less water for a higher concentration, or split the dose into two draws.';
         }
@@ -157,22 +152,11 @@
         if (units < 3) {
           note.textContent = 'A draw under 3 units is hard to measure accurately. Use less water for a higher concentration and a larger, easier draw.';
         }
-        var best = units <= 25 ? 30 : (units <= 45 ? 50 : 100);
-        if (best !== size) {
-          recBtn.textContent = 'Better fit: ' + best + '-unit syringe (' + (best === 30 ? '\u00bd-unit' : best === 50 ? '1-unit' : '2-unit') + ' marks) \u2192';
-          recBtn.setAttribute('data-apply', best);
-          rec.style.display = 'block';
-        }
       }
     }
 
-    last = { pep: pep, water: water, concMgMl: concMgMl, doseMcg: doseMcg, vol: vol, units: units, dosesPerVial: dosesPerVial, freq: freq };
     el('pdc-status').textContent=invalid.length?'':('Calculated draw: '+unitsTxt+' units, '+fmt(vol,3)+' mL, '+dosesPerVial+' full doses per vial.');
   }
-
-  el('d-recbtn').addEventListener('click', function(){
-    setSize(parseInt(this.getAttribute('data-apply'), 10));
-  });
 
   /* ── Quick chips ── */
   Array.prototype.forEach.call(document.querySelectorAll('.pdc-chips button[data-water]'), function(b){
@@ -210,45 +194,6 @@
   });
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') Array.prototype.forEach.call(document.querySelectorAll('.pdc-tip.open'), function(t){closeTip(t,true);});
-  });
-
-  /* ── Copy summary ── */
-  el('pdc-copy').addEventListener('click', function(){
-    var L = last, btn = this;
-    var sizeLbl = size + '-unit (' + (SIZES[size].cap / 100) + ' mL) U-100 insulin syringe';
-    var lines = [
-      'One Aminos Peptide Dosages',
-      'Reconstitution: ' + fmt(L.pep, 2) + ' mg + ' + fmt(L.water, 2) + ' mL BAC water = ' + fmt(L.concMgMl, 3) + ' mg/mL (' + fmtMcg(L.concMgMl * 10) + ' per unit)',
-      'Dose: ' + fmtMcg(L.doseMcg) + ' = ' + fmt(L.vol, 3) + ' mL  -  draw to ' + fmt(L.units, 2) + ' units on a ' + sizeLbl
-    ];
-    if (L.doseMcg > 0) {
-      var dur = '';
-      if (L.freq > 0 && L.dosesPerVial > 0) {
-        var days = L.dosesPerVial * 7 / L.freq;
-        dur = ' (lasts \u2248 ' + (days >= 21 ? fmt(days/7, 1) + ' weeks' : Math.round(days) + ' days') + ')';
-      }
-      lines.push('Doses per vial: ' + L.dosesPerVial + dur);
-    }
-    var text = lines.join('\n');
-    function done(){
-      btn.classList.add('done');
-      btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied';
-      setTimeout(function(){
-        btn.classList.remove('done');
-        btn.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i> Copy protocol summary';
-      }, 1800);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function(){ fallback(); });
-    } else { fallback(); }
-    function fallback(){
-      var ta = document.createElement('textarea');
-      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); } catch (err) {}
-      document.body.removeChild(ta);
-      done();
-    }
   });
 
   // The simulator passes its selected vial and liquid volume to this calculator.
