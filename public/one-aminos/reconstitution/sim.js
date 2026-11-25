@@ -361,16 +361,66 @@ if (root) {
   playBtn.addEventListener('click', play);
   resetBtn.addEventListener('click', reset);
 
-  // Vial row: drag, wheel and edge fades so it reads as scrollable
+  // Let the browser handle trackpad and touch gestures in their native directions.
   const rail = $('.sim-vials');
-  const edges = () => { rail.classList.toggle('at-start', rail.scrollLeft < 4); rail.classList.toggle('at-end', rail.scrollLeft + rail.clientWidth > rail.scrollWidth - 4); };
-  rail.addEventListener('scroll', edges, { passive: true });
-  rail.addEventListener('wheel', (e) => { if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && rail.scrollWidth > rail.clientWidth) { const before = rail.scrollLeft; rail.scrollLeft += e.deltaY; if (rail.scrollLeft !== before) e.preventDefault(); } }, { passive: false });
-  let drag = null;
-  rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; drag = { x: e.clientX, left: rail.scrollLeft, moved: false }; });
-  addEventListener('pointermove', (e) => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) { drag.moved = true; rail.classList.add('is-dragging'); } rail.scrollLeft = drag.left - dx; });
-  addEventListener('pointerup', () => { if (drag && drag.moved) rail.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); }, { capture: true, once: true }); drag = null; rail.classList.toggle('is-dragging', false); });
-  new ResizeObserver(edges).observe(rail); edges();
+  const back = $('#vials-back'), next = $('#vials-next');
+  const updatePaging = () => {
+    back.disabled = rail.scrollLeft <= 1;
+    next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
+  };
+  const page = (direction) => rail.scrollBy({
+    left: direction * Math.max(1, rail.clientWidth - rail.firstElementChild.offsetWidth),
+    behavior: reduce ? 'instant' : 'smooth'
+  });
+  back.addEventListener('click', () => page(-1));
+  next.addEventListener('click', () => page(1));
+  rail.addEventListener('scroll', updatePaging, { passive: true });
+  new ResizeObserver(updatePaging).observe(rail);
+  updatePaging();
+
+  rail.addEventListener('keydown', event => {
+    const card = event.target.closest('.sim-vial-pick');
+    if (!card) return;
+    const targets = { ArrowLeft: card.previousElementSibling, ArrowRight: card.nextElementSibling,
+      Home: rail.firstElementChild, End: rail.lastElementChild };
+    if (!Object.hasOwn(targets, event.key)) return;
+    event.preventDefault();
+    const target = targets[event.key];
+    if (!target) return;
+    target.focus({ preventScroll: true });
+    const r = target.getBoundingClientRect(), viewport = rail.getBoundingClientRect();
+    if (r.left < viewport.left) rail.scrollLeft += r.left - viewport.left;
+    else if (r.right > viewport.right) rail.scrollLeft += r.right - viewport.right;
+  });
+
+  let drag = null, suppressClick = false;
+  rail.addEventListener('pointerdown', event => {
+    suppressClick = false;
+    if (event.pointerType !== 'mouse' || event.button !== 0 || !event.target.closest('.sim-vial-pick')) return;
+    drag = { id: event.pointerId, x: event.clientX, left: rail.scrollLeft };
+  });
+  rail.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    const dx = event.clientX - drag.x;
+    if (!suppressClick && Math.abs(dx) < 6) return;
+    if (!suppressClick) {
+      rail.setPointerCapture(drag.id);
+      rail.classList.add('is-dragging');
+      suppressClick = true;
+    }
+    rail.scrollLeft = drag.left - dx;
+  });
+  const endDrag = () => { drag = null; rail.classList.remove('is-dragging'); };
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+  window.addEventListener('blur', endDrag);
+  rail.addEventListener('lostpointercapture', endDrag);
+  rail.addEventListener('click', event => {
+    if (!suppressClick || !event.detail) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressClick = false;
+  }, true);
 
   // Start from ?h= (peptide page link) when given
   const want = new URLSearchParams(location.search).get('h');

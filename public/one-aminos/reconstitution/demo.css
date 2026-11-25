@@ -12,3 +12,26 @@ html, body { margin: 0; min-width: 0; background: #fff; }
   text-align: center; border-radius: 3%;
 }
 .sim-model-label[hidden] { display: none; }
+
+.picker-heading { position: relative; display: grid; align-items: center; min-height: 44px; margin-bottom: 10px; }
+.picker-heading .sim-field-title { margin: 0; padding-inline: 102px; }
+.picker-paging { position: absolute; right: 0; display: flex; gap: 4px; }
+.picker-paging button {
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1px solid #ccc; border-radius: 8px; background: #fff; color: #141414; cursor: pointer;
+}
+.picker-paging button:disabled { opacity: .35; cursor: default; }
+.picker-paging svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.sim .sim-vials {
+  scroll-snap-type: none; scrollbar-width: thin; scrollbar-color: #9e9e9e #f2f2f2;
+  -webkit-mask-image: none; mask-image: none; padding-inline: 3px;
+}
+.sim .sim-vials::-webkit-scrollbar { display: block; height: 7px; }
+.sim .sim-vials::-webkit-scrollbar-thumb { background: #9e9e9e; border-radius: 8px; }
+.sim .sim-vials .sim-vial-pick { user-select: none; }
+.sim .sim-vials .sim-vial-pick:hover { transform: none; }
+.sim [hidden] { display: none !important; }
+.protocol-status { align-self: center; color: #555; font-size: 15px; }
+@media (max-width: 540px) {
+  .picker-heading .sim-field-title { padding-inline: 0 100px; text-align: left; }
+}

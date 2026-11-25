@@ -2,6 +2,7 @@
 const labels = new Map(Object.entries({
   '1. Pick your vial': '1. Elige el vial', '2. Vial size': '2. Cantidad por vial',
   '3. Water to add:': '3. Agua que se añadirá:', 'Use suggested:': 'Usar volumen sugerido:',
+  'Previous vials': 'Viales anteriores', 'Next vials': 'Más viales',
   'Peptide': 'Péptido', 'Vial size': 'Cantidad por vial', 'Water to add in mL': 'Agua que se añadirá en mL',
   'Animation of the selected vial being mixed': 'Simulación de la mezcla en el vial seleccionado',
   'Bacteriostatic water vial': 'Vial de agua bacteriostática', 'Syringe': 'Jeringa', 'Vial': 'Vial',
