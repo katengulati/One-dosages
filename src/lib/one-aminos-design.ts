@@ -6,6 +6,7 @@ import { applySharePreview } from './share-preview';
 import { applyArticlePresentation } from './article-presentation';
 import { applyCalculatorPresentation } from './calculator-presentation';
 import { applyGuideArticleLayout, applyGuidePresentation } from './guide-presentation';
+import { bundleAssets } from './asset-bundles';
 
 const assetVersion = process.env.OA_ASSET_VERSION ?? 'dev';
 const presentation = `<link rel="stylesheet" href="/one-aminos/design.css?v=${assetVersion}">`;
@@ -147,8 +148,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   $('.mobile-nav-brand').attr('aria-label', homeLabel)
     .html('<img class="oa-menu-wordmark" src="/one-aminos/wordmark.png" width="108" height="49" alt="">');
   $('.mobile-nav-header .mobile-close-btn').first().before(renderLanguageSwitch(pathname, spanish));
-  $('link[href="/vendor/google-fonts.css"]').remove();
-  $('script:not([src])').filter((_, element) => $(element).text().trim().startsWith('window.pdAuth=')).remove();
+    $('script:not([src])').filter((_, element) => $(element).text().trim().startsWith('window.pdAuth=')).remove();
   $(':is(.pa-actual-controls, .pa-action-dock, .pa-actual-footer, .pa-return-card, .pa-dialog-host, .pa-share-dialog, .pa-share-trigger, .pa-google-button), [data-pd-google-source], #pd-page-actions-contexts, #pd-page-actions-js, a[href*="google.com/preferences/source"]').remove();
   $('.pa-meta-empty').remove();
   $('.pa-head-details').filter((_, element) => !$(element).children().length).remove();
@@ -206,5 +206,7 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/https?:\\?\/\\?\/(?:www\.)?peptidedosages\.com\b/gi, origin)
     .replace(/https?%3a%2f%2f(?:www\.)?peptidedosages\.com\b/gi, encodeURIComponent(origin))
     .replace(/\b(?:www\.)?peptidedosages\.com\b/gi, 'One Aminos Peptide Dosages');
-  return applySharePreview(branded, pathname, origin);
+  const shared = applySharePreview(branded, pathname, origin);
+  // Former WordPress assets: new paths, then one bundle per run of files.
+  return bundleAssets(shared);
 }

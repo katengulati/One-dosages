@@ -22,8 +22,10 @@ const config: NextConfig = {
       ]
     },
     ...(process.env.NODE_ENV === 'production'
-      ? ['/wp-content/:path*', '/one-aminos/:path*', '/vendor/:path*', '/sim-vials/:path*', '/sim-thumbs/:path*', '/data/:path*', '/preview/forms.js']
+      ? ['/assets/:path*', '/one-aminos/:path*', '/sim-vials/:path*', '/sim-thumbs/:path*', '/data/:path*', '/preview/forms.js']
         .map((source) => ({ source, headers: assetCache }))
+        // Images are only ever replaced under a new file name, so they can stay cached for a week.
+        .concat([{ source: '/media/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }] }])
       : [])];
   }
 };

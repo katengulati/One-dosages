@@ -1,6 +1,6 @@
 import type { CheerioAPI } from 'cheerio/slim';
 
-const pilotAssets = '/wp-content/themes/my-blank-theme-a11y-stage/inc/permanent-design/modules/pd-molecular-pilot/assets/';
+const pilotAssets = '/assets/theme/inc/permanent-design/modules/pd-molecular-pilot/assets/';
 
 export function normalizeProtocolLayout($: CheerioAPI, spanish: boolean) {
   const old = $('main article.page-content');
