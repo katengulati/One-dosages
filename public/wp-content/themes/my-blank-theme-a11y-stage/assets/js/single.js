@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function getTitleFromDomain(e) {
-    var t = {"ncbi.nlm.nih.gov":"NCBI","pmc.ncbi.nlm.nih.gov":"PubMed Central","pubmed.ncbi.nlm.nih.gov":"PubMed","clevelandclinic.org":"Cleveland Clinic","webmd.com":"WebMD","medicalnewstoday.com":"Medical News Today","healthline.com":"Healthline","nature.com":"Nature","sciencedirect.com":"ScienceDirect","nejm.org":"NEJM","bmj.com":"The BMJ","thelancet.com":"The Lancet","nih.gov":"NIH","cdc.gov":"CDC","who.int":"WHO","mayoclinic.org":"Mayo Clinic","hopkinsmedicine.org":"Johns Hopkins Medicine","mdpi.com":"MDPI","wiley.com":"Wiley","wikipedia.org":"Wikipedia","en.wikipedia.org":"Wikipedia","peptidedosages.com":"Peptide Dosages","frontiersin.org":"Frontiers","researchgate.net":"ResearchGate","journals.physiology.org":"Journal of Applied Physiology","examine.com":"Examine.com","jofem.org":"Journal of Endocrinology and Metabolism","fda.gov":"U.S. Food and Drug Administration","accessdata.fda.gov":"FDA Drug Labels","wada-ama.org":"World Anti-Doping Agency","icc-cricket.com":"ICC","globalrph.com":"GlobalRPH","rupahealth.com":"Rupa Health","academic.oup.com":"Oxford Academic","law.cornell.edu":"Cornell Law Institute","pi.lilly.com":"Eli Lilly Prescribing Info","emdserono.com":"EMD Serono","opss.org":"Operation Supplement Safety","federalregister.gov":"Federal Register"};
+    var t = {"ncbi.nlm.nih.gov":"NCBI","pmc.ncbi.nlm.nih.gov":"PubMed Central","pubmed.ncbi.nlm.nih.gov":"PubMed","clevelandclinic.org":"Cleveland Clinic","webmd.com":"WebMD","medicalnewstoday.com":"Medical News Today","healthline.com":"Healthline","nature.com":"Nature","sciencedirect.com":"ScienceDirect","nejm.org":"NEJM","bmj.com":"The BMJ","thelancet.com":"The Lancet","nih.gov":"NIH","cdc.gov":"CDC","who.int":"WHO","mayoclinic.org":"Mayo Clinic","hopkinsmedicine.org":"Johns Hopkins Medicine","mdpi.com":"MDPI","wiley.com":"Wiley","wikipedia.org":"Wikipedia","en.wikipedia.org":"Wikipedia","frontiersin.org":"Frontiers","researchgate.net":"ResearchGate","journals.physiology.org":"Journal of Applied Physiology","examine.com":"Examine.com","jofem.org":"Journal of Endocrinology and Metabolism","fda.gov":"U.S. Food and Drug Administration","accessdata.fda.gov":"FDA Drug Labels","wada-ama.org":"World Anti-Doping Agency","icc-cricket.com":"ICC","globalrph.com":"GlobalRPH","rupahealth.com":"Rupa Health","academic.oup.com":"Oxford Academic","law.cornell.edu":"Cornell Law Institute","pi.lilly.com":"Eli Lilly Prescribing Info","emdserono.com":"EMD Serono","opss.org":"Operation Supplement Safety","federalregister.gov":"Federal Register"};
     var n = e.replace('www.','');
     return t[n] || n.charAt(0).toUpperCase() + n.slice(1).replace(/\.[a-z]+$/, '');
   }
@@ -1028,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dialog.innerHTML =
       '<div class="pd-image-lightbox__content">' +
         '<button type="button" class="pd-image-lightbox__close"><i class="fas fa-times" aria-hidden="true"></i> Close</button>' +
-        '<img class="pd-image-lightbox__image" alt="">' +
+        '<div class="oa-article-visual"><img class="pd-image-lightbox__image" alt=""></div>' +
         '<p class="pd-image-lightbox__caption" id="pd-image-lightbox-caption"></p>' +
       '</div>';
 
@@ -1059,6 +1059,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var source = image.getAttribute('data-large-file') || image.getAttribute('data-orig-file') || image.currentSrc || image.src;
     imageDialogPicture.src = source;
     imageDialogPicture.alt = description;
+    var illustration = image.closest('.oa-article-visual');
+    var display = imageDialogPicture.parentElement;
+    display.querySelectorAll('.oa-article-mark').forEach(function(mark) { mark.remove(); });
+    if (illustration) {
+      illustration.querySelectorAll('.oa-article-mark').forEach(function(mark) {
+        display.appendChild(mark.cloneNode(true));
+      });
+    }
     imageDialogCaption.textContent = description;
     imageBodyOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';

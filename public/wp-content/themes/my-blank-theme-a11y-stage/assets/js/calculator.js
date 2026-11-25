@@ -217,7 +217,7 @@
     var L = last, btn = this;
     var sizeLbl = size + '-unit (' + (SIZES[size].cap / 100) + ' mL) U-100 insulin syringe';
     var lines = [
-      'Peptide protocol  -  peptidedosages.com/calculator/',
+      'One Aminos Peptide Dosages',
       'Reconstitution: ' + fmt(L.pep, 2) + ' mg + ' + fmt(L.water, 2) + ' mL BAC water = ' + fmt(L.concMgMl, 3) + ' mg/mL (' + fmtMcg(L.concMgMl * 10) + ' per unit)',
       'Dose: ' + fmtMcg(L.doseMcg) + ' = ' + fmt(L.vol, 3) + ' mL  -  draw to ' + fmt(L.units, 2) + ' units on a ' + sizeLbl
     ];

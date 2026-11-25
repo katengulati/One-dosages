@@ -89,9 +89,14 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/<link\b[^>]*href="[^"]*\/home-reconstitution-v4-[^"]+"[^>]*>\s*/gi, '')
     .replace(/<script\b[^>]*id="pdhome-interactions-js"[^>]*>\s*<\/script>\s*/i, '');
   const $ = load(themed);
+  $('script:not([src])').filter((_, element) => $(element).text().trim().startsWith('window.pdAuth=')).remove();
   $(':is(.pa-actual-controls, .pa-action-dock, .pa-actual-footer, .pa-return-card, .pa-dialog-host, .pa-share-dialog, .pa-share-trigger, .pa-google-button), [data-pd-google-source], #pd-page-actions-contexts, #pd-page-actions-js, a[href*="google.com/preferences/source"]').remove();
   $('.pa-meta-empty').remove();
   $('.pa-head-details').filter((_, element) => !$(element).children().length).remove();
+  $('main p').filter((_, element) => {
+    const copy = $(element).text().trim();
+    return /^(?:Important:\s*All information on PeptideDosages\.com|Educational scope:\s*This page explains research calculations and general handling concepts)/i.test(copy);
+  }).remove();
   $('.site-footer :is(.footer-disclaimer, .footer-about p)').remove();
   const newsletterColumn = $('.site-footer .footer-newsletter-col');
   $('.site-footer .footer-about').append(newsletterColumn.children());
@@ -103,5 +108,10 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
   applyGuidePresentation($, pathname);
   applyCatalog($, pathname);
   applyHomePresentation($, pathname);
-  return applySharePreview($.html(), pathname, origin);
+  const branded = $.html()
+    .replace(/[a-z0-9._%+-]+@(?:www\.)?peptidedosages\.com\b/gi, 'support@oneaminos.com')
+    .replace(/https?:\\?\/\\?\/(?:www\.)?peptidedosages\.com\b/gi, origin)
+    .replace(/https?%3a%2f%2f(?:www\.)?peptidedosages\.com\b/gi, encodeURIComponent(origin))
+    .replace(/\b(?:www\.)?peptidedosages\.com\b/gi, 'One Aminos Peptide Dosages');
+  return applySharePreview(branded, pathname, origin);
 }

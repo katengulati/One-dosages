@@ -14,7 +14,7 @@ function escapeAttribute(value: string) {
 export function applySharePreview(html: string, pathname: string, origin: string) {
   const home = /^\/(?:en\/|es\/)?$/.test(pathname);
   const existingTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '';
-  const innerTitle = existingTitle.replace(/\s*(?:\||[-–])\s*(?:peptidedosages\.com|Peptide Dosages)\s*$/i, '');
+  const innerTitle = existingTitle.replace(/\s*(?:\||[-–])\s*(?:peptidedosages\.com|(?:One Aminos )?Peptide Dosages)\s*$/i, '');
   const pageTitle = home || !innerTitle ? title : `${innerTitle} | ${title}`;
   const canonical = escapeAttribute(new URL(pathname, origin).href);
   const image = escapeAttribute(new URL('/one-aminos/share-card.jpg', origin).href);

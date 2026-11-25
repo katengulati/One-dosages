@@ -1,6 +1,9 @@
 import type { CheerioAPI } from 'cheerio/slim';
 import policy from '../../site/catalog-policy.json';
 import locales from '../../site/manifest.json';
+import photoFiles from '../../site/product-photos.json';
+import blogCards from '../../site/blog-cards.json';
+import blogArtworkMarks from '../../site/blog-artwork-marks.json';
 import { isLipoReference } from './lipo-references';
 
 const oldOrigin = 'https://peptidedosages.com';
@@ -8,6 +11,8 @@ const productOrigin = 'https://oneaminos.com';
 const localOrigins = new Set(['peptidedosages.com', 'www.peptidedosages.com']);
 const archived = new Set(policy.archived);
 const products = new Map(Object.entries(policy.products));
+const photos = new Map(Object.entries(photoFiles));
+const artworkMarks = new Map(Object.entries(blogArtworkMarks));
 const keys = new Map(Object.entries(locales).flatMap(([key, paths]) => [
   [paths.en, key], [paths.es, key]
 ] as const));
@@ -72,7 +77,161 @@ const linkedLegacyProducts = new Map(Object.entries({
 }));
 
 const formerSupplier = /(?:purelabpeptides\.com|(?:^|[/.])amazon\.com(?:[/:]|$)|(?:^|\/)a\.co(?:[/:]|$))/i;
-const archivedCard = 'tr[data-protocol-id], article.catalog-card, article.post-card, .blog-post-card, .mega-post-card, li, .pdh-related-card';
+const archivedCard = 'tr[data-protocol-id], article.catalog-card, article.post-card, .blog-post-card, .featured-hero, .mega-post-card, li, .pdh-related-card';
+const directoryPages = new Set(['dosages', 'single-peptide-dosages', 'peptide-blend-dosages']);
+const retiredLinks = /^(?:sign in|log in|sign up|register|my account|account|request (?:a )?protocol|keep this chart close)$/i;
+
+function applyCatalogDirectory($: CheerioAPI, key: string, spanish: boolean, pathname: string) {
+  $('#main-content').addClass('oa-catalog-directory');
+  $('.catalog-description, .catalog-intro, .catalog-title i[aria-hidden="true"]').remove();
+  // The captured directory script writes to the hidden statistics.
+  $('.catalog-stats').attr('hidden', '');
+  if (key === 'peptide-blend-dosages') return;
+
+  const to = pathname.startsWith('/en/') || spanish ? locales['lipo-c'][spanish ? 'es' : 'en'] : '/lipo-c/';
+  const grid = $('.catalog-grid').first();
+  const card = $('<article class="catalog-card" data-letter="L"></article>');
+  const photoPair = $('<div class="catalog-card-image oa-lipo-photo-pair"></div>');
+  for (const [reference, name] of [['lipo-c-b12', 'Lipo C + B12'], ['lipo-c-fat-blaster', 'Lipo C Fat Blaster']]) {
+    photoPair.append($('<img loading="lazy" decoding="async">')
+      .attr({ src: `/one-aminos/product-photos/${photos.get(reference)}`, alt: name }));
+  }
+  const link = $('<a class="catalog-btn"></a>').attr('href', to).text(spanish ? 'Ver referencias' : 'View References');
+  card.append(photoPair, $('<div class="catalog-card-content"><h2>Lipo C</h2></div>').append(link));
+  const letter = grid.children('#letter-L');
+  const next = grid.children('.catalog-card[data-letter]').filter((_, el) => ($(el).attr('data-letter') ?? '') > 'L').first();
+  if (letter.length) letter.after(card);
+  else if (next.length) next.before(card);
+  else grid.append(card);
+}
+
+function applyBlogDirectory($: CheerioAPI, spanish: boolean, pathname: string) {
+  const list = $('.blog-post-list').first();
+  if (!list.length) return;
+  $('.blog-main > :is(.featured-hero, .blog-pagination)').remove();
+  list.empty();
+  for (const post of blogCards) {
+    if (isArchivedCatalogPage(post.path)) continue;
+    const key = pageKey(post.path) as keyof typeof locales | undefined;
+    const localized = pathname !== '/blog/' && key ? locales[key]?.[spanish ? 'es' : 'en'] : undefined;
+    const cover = $('<img alt="" loading="lazy" decoding="async" width="960" height="600">')
+      .attr('src', '/one-aminos/article-covers/new-to-peptides.webp');
+    list.append($('<a class="blog-post-card"></a>').attr('href', localized ?? post.path).append(
+      $('<div class="card-thumb"></div>').append(cover),
+      $('<div class="card-body"></div>').append(
+        $('<h2 class="card-title"></h2>').text(post.title),
+        $('<p class="card-excerpt"></p>').text(post.excerpt),
+        $('<span class="card-cta"></span>').text(spanish ? 'Leer artículo' : 'Read Article')
+      )
+    ));
+  }
+}
+
+function brandBlogIllustrations($: CheerioAPI) {
+  $('.post-content img[src]').each((_, element) => {
+    const image = $(element);
+    const source = image.attr('src') ?? '';
+    const marks = artworkMarks.get(source);
+    const graphic = image.closest('picture').length ? image.closest('picture') : image;
+    graphic.wrap('<span class="oa-article-visual"></span>');
+    const frame = graphic.parent();
+    for (const [x, y, width, height] of marks ?? []) {
+      const left = Math.max(0, x - 0.018);
+      const top = Math.max(0, y - 0.009);
+      const right = Math.min(1, x + width + 0.016);
+      const bottom = Math.min(1, y + height + 0.009);
+      const style = `left:${left * 100}%;top:${top * 100}%;width:${(right - left) * 100}%;height:${(bottom - top) * 100}%`;
+      frame.append($('<span class="oa-article-mark" aria-hidden="true"></span>').attr('style', style));
+    }
+    if (!marks?.length) frame.append('<span class="oa-article-mark oa-article-mark-footer" aria-hidden="true"></span>');
+  });
+}
+
+function applyStorePhotos($: CheerioAPI, key: string | undefined, handle: string | null | undefined, cta: string) {
+  $('main .catalog-card').each((_, element) => {
+    const card = $(element);
+    if (card.find('.oa-lipo-photo-pair').length) return;
+    const reference = pageKey(card.find('a.catalog-btn[href]').attr('href') ?? '');
+    const photo = reference && photos.get(reference);
+    const frame = card.find('.catalog-card-image');
+    if (!photo) {
+      frame.addClass('oa-catalog-image-empty').empty().attr('aria-hidden', 'true');
+      return;
+    }
+    const name = card.find('h2').text().trim();
+    frame.empty().append($('<img class="oa-store-photo" loading="lazy" decoding="async" width="720" height="720">')
+      .attr({ src: `/one-aminos/product-photos/${photo}`, alt: name }));
+  });
+
+  function replaceImage(image: ReturnType<CheerioAPI>, file: string) {
+    image.attr('src', `/one-aminos/product-photos/${file}`)
+      .removeAttr('srcset sizes data-src data-srcset style').addClass('oa-store-photo');
+  }
+  $('.featured-hero, .blog-post-card, article.post-card, .mega-post-card').each((_, element) => {
+    const card = $(element);
+    const link = card.is('a') ? card : card.find('a[href]').first();
+    const reference = pageKey(link.attr('href') ?? '');
+    const photo = reference && photos.get(reference);
+    const image = card.find('img').first();
+    if (!image.length) return;
+    if (photo) replaceImage(image, photo);
+    else image.attr('src', '/one-aminos/article-covers/new-to-peptides.webp')
+      .removeAttr('srcset sizes data-src data-srcset');
+    image.attr('alt', '');
+  });
+  const blogCover = $('main .single-post-layout .featured-image img').first();
+  if (blogCover.length && (!key || !photos.has(key))) {
+    blogCover.attr('src', '/one-aminos/article-covers/new-to-peptides.webp')
+      .removeAttr('srcset sizes data-src data-srcset').attr('alt', '');
+  }
+
+  if (!key || !products.has(key)) return;
+  const photo = photos.get(key);
+  const vial = $('main :is(.quick-photo, .intro-image img, .single-post-layout .featured-image img)').first();
+  const original = vial.attr('src')?.split('&')[0];
+  if (vial.length && photo && handle) {
+    replaceImage(vial, photo);
+    if (vial.closest('.featured-image').length) {
+      vial.attr('alt', `One Aminos vial for ${$('.oa-catalog-hero h1').text().split(':')[0]}`);
+    }
+    const link = vial.closest('a');
+    if (link.length) link.attr({ href: productUrl(handle), 'aria-label': cta, target: '_blank', rel: 'noopener' });
+    else if (!vial.closest('.single-post-layout').length) {
+      vial.wrap($('<a class="oa-store-photo-link"></a>')
+        .attr({ href: productUrl(handle), 'aria-label': cta, target: '_blank', rel: 'noopener' }));
+    }
+  } else if (vial.length && !photo && key.includes('__')) {
+    vial.closest('.quick-vial, .intro-image').remove();
+    vial.remove();
+  }
+
+  $('main :is(.products .product, .product-card) img').each((_, element) => {
+    const image = $(element);
+    const card = image.parent();
+    const water = /bacteriostatic water/i.test(image.attr('alt') ?? '');
+    const sameVial = original && image.attr('src')?.split('&')[0] === original;
+    if (!water && !sameVial) return;
+    const file = water ? photos.get('bacteriostatic-water') : photo;
+    const destination = water ? 'bacteriostatic-water' : handle;
+    if (!file || !destination) {
+      image.remove();
+      return;
+    }
+    replaceImage(image, file);
+    const href = productUrl(destination);
+    const link = card.find('a[href]').first();
+    if (link.length) link.attr({ href, 'aria-label': cta, target: '_blank', rel: 'noopener' });
+    else card.append($('<a class="oa-solid-link"></a>').attr({ href, target: '_blank', rel: 'noopener' }).text(cta));
+    if (!image.closest('a').length) image.wrap($('<a></a>').attr({ href, 'aria-label': cta, target: '_blank', rel: 'noopener' }));
+  });
+
+  if (isLipoReference(key) && photo && handle) {
+    $('.oa-lipo-reference > header').after($('<a class="oa-lipo-product-photo"></a>')
+      .attr({ href: productUrl(handle), 'aria-label': cta, target: '_blank', rel: 'noopener' })
+      .append($('<img class="oa-store-photo" decoding="async">')
+        .attr({ src: `/one-aminos/product-photos/${photo}`, alt: $('.oa-lipo-reference h1').text() })));
+  }
+}
 
 function simplifyCatalogHero($: CheerioAPI) {
   const hero = $('#main-content :is(#pdms-pilot > .hero-band, .page-hero, .post-hero, .oa-lipo-reference > header)').first();
@@ -88,6 +247,9 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
   const key = pageKey(pathname);
   const handle = key && products.get(key);
   const cta = spanish ? 'Ver producto en One Aminos' : 'View product at One Aminos';
+  $('.pdma-favorite-bar, .request-protocol-btn, .header-auth, .pdmh-mobile-account, .pdmh-account, .toggle-btn[data-target="stacks"], .toggle-section#stacks, [data-f="peptide-stack-dosages"], [data-type="peptide-stack-dosages"]').remove();
+  $('#pdh-stat-stacks').closest('.pdh-stat').remove();
+  $('.blog-hero :is(.blog-subtitle, .hero-accent-line, .blog-title i[aria-hidden="true"])').remove();
   if (key && (products.has(key) || isLipoReference(key))) simplifyCatalogHero($);
   if (handle === 'wolverine') {
     $('title, .oa-catalog-hero h1').each((_, element) => {
@@ -103,7 +265,8 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
     if (isArchivedCatalogPage(href)) {
       const card = a.closest(archivedCard);
       if (card.length) card.remove();
-      else if (a.closest('.dose-links, .strengths, .pdpb-variant-pills, nav, .oa-guide-grid').length) a.remove();
+      else if (a.closest('.dose-links, .strengths, .pdpb-variant-pills, nav, .oa-guide-grid').length ||
+        pageKey(href) === 'peptide-stack-dosages' || retiredLinks.test(a.text().trim())) a.remove();
       else a.replaceWith(a.contents());
       return;
     }
@@ -149,16 +312,10 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
     else $('main h1, #main-content h1').first().after(productLink);
   }
 
-  $('.catalog-intro').text(spanish
-    ? 'Consulta los protocolos del catálogo de One Aminos y las excepciones de investigación.'
-    : 'Browse protocols for the One Aminos catalog and selected research references.');
-  $('.catalog-description').text(spanish
-    ? 'Encuentra tablas y guías por compuesto y tamaño de vial.'
-    : 'Find charts and guides by compound and vial size.');
-  const cards = $('main .catalog-card').length;
-  $('.catalog-hero .stat-number').each((_, element) => {
-    if (!$(element).attr('id')) $(element).text(String(cards));
-  });
+  if (key && directoryPages.has(key)) applyCatalogDirectory($, key, spanish, pathname);
+  if (key === 'blog') applyBlogDirectory($, spanish, pathname);
+  applyStorePhotos($, key, handle, cta);
+  brandBlogIllustrations($);
   for (const [id, value] of [
     ['pdh-stat-total', retainedProtocols.length], ['pdh-stat-single', singleCount], ['pdh-stat-blends', blendCount],
     ['pdh-stat-stacks', 0], ['total-protocols', retainedProtocols.length], ['single-count', singleCount],
@@ -176,10 +333,4 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
         : 'There are no active entries in this section.'));
     }
   });
-  if (key === 'dosages' || key === 'single-peptide-dosages') {
-    const prefix = spanish ? '/es/' : pathname.startsWith('/en/') ? '/en/' : '/';
-    $('.catalog-intro').first().append(' ', $('<a></a>').attr('href', `${prefix}lipo-c/`).text(
-      spanish ? 'Ver referencias de Lipo C' : 'View Lipo C references'
-    ));
-  }
 }

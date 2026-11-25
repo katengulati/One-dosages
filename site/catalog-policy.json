@@ -82,6 +82,17 @@
     "lipo-c-fat-blaster": "lipo-c-fat-blaster"
   },
   "archived": [
+    "account",
+    "favorites",
+    "forgot-password",
+    "login",
+    "logout",
+    "peptide-stack-dosages",
+    "register",
+    "request-a-protocol",
+    "request-protocol",
+    "reset-password",
+    "wp-login.php",
     "abaloparatide-peptide",
     "adipotide-peptide",
     "aod-9604-cjc-1295-ipamorelin",

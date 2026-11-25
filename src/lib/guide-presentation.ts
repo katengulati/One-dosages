@@ -1,5 +1,6 @@
 import type { CheerioAPI } from 'cheerio/slim';
 import locales from '../../site/manifest.json';
+import { readingSummaries } from './reading-summaries';
 
 const guideKeys = [
   'beginners-guide-peptides',
@@ -9,6 +10,9 @@ const guideKeys = [
 ] as const;
 
 const guidePaths = new Map(guideKeys.flatMap((key) => [
+  [`/${key}/`, key], [locales[key].en, key], [locales[key].es, key]
+] as const));
+const featuredArticlePaths = new Map((['ghk-cu-peptide', 'retatrutide-peptide'] as const).flatMap((key) => [
   [`/${key}/`, key], [locales[key].en, key], [locales[key].es, key]
 ] as const));
 
@@ -119,21 +123,21 @@ function renderBeginner(copy: GuideCopy, language: 'en' | 'es', prefixed: boolea
   const nav = copy.sections.map(([heading], index) =>
     `<li><a href="#${sectionIds[index][0]}">${heading}</a></li>`).join('');
 
-  return `<div class="page-layout"><article class="page-content">
+  return `<div class="page-layout">
+    <nav class="oa-guide-contents" aria-label="${copy.contents}"><ul>${nav}</ul></nav>
+    <article class="page-content">
       <div class="oa-guide-intro"><p>${copy.lead}</p><p>${copy.purpose}</p></div>
-      <nav class="oa-guide-contents" aria-label="${copy.contents}"><ul>${nav}</ul></nav>
       ${chapters.join('')}
     </article></div>`;
 }
 
-function guideContents($: CheerioAPI, copy: GuideCopy) {
+function preserveGuideAnchors($: CheerioAPI) {
   const headings = $('.page-content').first().find('h2, h3');
   const used = new Set<string>();
   $('[id]').not(headings).each((_, element) => {
     const id = $(element).attr('id');
     if (id) used.add(id);
   });
-  const list = $('<ul></ul>');
   headings.each((index, element) => {
     const heading = $(element);
     const label = heading.text().trim();
@@ -144,17 +148,47 @@ function guideContents($: CheerioAPI, copy: GuideCopy) {
     for (let suffix = 2; used.has(id); suffix++) id = `${base}-${suffix}`;
     heading.attr('id', id);
     used.add(id);
-    if (heading.is('h2')) list.append($('<li></li>').append($('<a></a>').attr('href', `#${id}`).text(label)));
   });
-  const contents = $('<details class="oa-guide-contents"></details>')
-    .append($('<summary></summary>').text(copy.contents), list);
-  $('.page-layout > .toc-container').replaceWith(contents);
+}
+
+function addReadingSummary($: CheerioAPI, key: keyof typeof readingSummaries, language: 'en' | 'es', article: boolean) {
+  $('body').addClass('oa-reading-summary');
+  const copy = readingSummaries[key][language];
+  const label = language === 'es' ? 'Referencia completa' : 'Full reference';
+  const list = $('<ul></ul>');
+  const summary = $('<div class="oa-reading-summary-content"></div>');
+  copy.forEach(([heading, text], index) => {
+    const id = `summary-${index + 1}`;
+    list.append($('<li></li>').append($('<a></a>').attr('href', `#${id}`).text(heading)));
+    summary.append($('<section class="oa-guide-panel"></section>').attr('aria-labelledby', id).append(
+      $('<h2></h2>').attr('id', id).text(heading), $('<p></p>').text(text)
+    ));
+  });
+  list.append($('<li></li>').append($('<a href="#full-reference" onclick="document.getElementById(\'full-reference\').open = true"></a>').text(label)));
+  const navigation = $('<nav class="oa-guide-contents"></nav>').attr('aria-label', beginnerCopy[language].contents).append(list);
+  const details = $('<details class="oa-full-reference" id="full-reference"></details>')
+    .append($('<summary></summary>').text(label));
+
+  if (article) {
+    $('.single-post-layout > .toc-container').remove();
+    $('.post-hero-content').append(navigation);
+    const content = $('.single-post-content > .post-content');
+    content.before(summary, details);
+    details.append(content);
+  } else {
+    $('.page-layout > .toc-container').replaceWith(navigation);
+    const content = $('.page-content').first();
+    details.append(content.contents());
+    content.append(summary, details);
+  }
 }
 
 export function applyGuidePresentation($: CheerioAPI, pathname: string) {
   const guide = guidePaths.get(pathname);
-  if (!guide) return;
   const language = pathname.startsWith('/es/') ? 'es' : 'en';
+  const article = featuredArticlePaths.get(pathname);
+  if (article) addReadingSummary($, article, language, true);
+  if (!guide) return;
   const copy = beginnerCopy[language];
   $('body').addClass('oa-reading-guide');
   $('#pdmg-navigation-js').remove();
@@ -165,7 +199,7 @@ export function applyGuidePresentation($: CheerioAPI, pathname: string) {
     return;
   }
 
-  guideContents($, copy);
+  preserveGuideAnchors($);
   if (guide === 'peptide-storage-guide') {
     const chapters = $('.page-content > h2');
     const intro = chapters.first().prevAll().get().reverse();
@@ -187,4 +221,5 @@ export function applyGuidePresentation($: CheerioAPI, pathname: string) {
       figure.replaceWith(workspaceFigure(copy));
     }
   });
+  addReadingSummary($, guide, language, false);
 }

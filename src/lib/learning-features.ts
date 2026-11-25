@@ -15,16 +15,39 @@ export function isRetiredLearningPage(path: string) {
   }
 }
 
+const featuredTopics = {
+  metabolism: { en: 'Weight Loss and Metabolism Guide', es: 'Guía de pérdida de peso y metabolismo' },
+  recovery: { en: 'Healing and Recovery Peptide Guide', es: 'Guía de péptidos para reparación y recuperación' },
+  skinRecovery: { en: 'Skin and Recovery Research Guide', es: 'Guía de investigación sobre piel y recuperación' },
+  cellularEnergy: { en: 'Cellular Energy Research Guide', es: 'Guía de investigación sobre energía celular' },
+  growthHormone: { en: 'Growth Hormone Research Guide', es: 'Guía de investigación sobre la hormona del crecimiento' },
+  skin: { en: 'Skin Research Guide', es: 'Guía de investigación sobre la piel' }
+} as const;
+
+const existingFeaturedTopics = [
+  ['glow-peptide-', 'skinRecovery'],
+  ['klow-', 'recovery'],
+  ['mots-c-', 'cellularEnergy'],
+  ['tesamorelin-', 'growthHormone'],
+  ['nad-', 'cellularEnergy'],
+  ['ghk-cu-', 'skin']
+] as const;
+
 const featuredProtocols = [
   {
-    name: 'BPC-157 + TB-500',
-    alias: 'Wolverine',
-    caption: { en: 'Research reference for the 20 mg blend.', es: 'Referencia de investigación para la mezcla de 20 mg.' },
-    strengths: [[20, 'peptide-blend-dosages__bpc-157-tb-500-20mg-blend-dosage-protocol']]
+    name: 'Retatrutide',
+    alias: 'GLP3-RT',
+    topic: 'metabolism',
+    strengths: [
+      [10, 'single-peptide-dosages__retatrutide-10-mg-vial-dosage-protocol'],
+      [20, 'single-peptide-dosages__retatrutide-20-mg-vial-dosage-protocol'],
+      [30, 'single-peptide-dosages__retatrutide-30-mg-vial-dosage-protocol']
+    ]
   },
   {
     name: 'Tirzepatide',
     alias: 'GLP2-TZ',
+    topic: 'metabolism',
     strengths: [
       [10, 'single-peptide-dosages__tirzepatide-10-mg-vial-dosage-protocol'],
       [30, 'single-peptide-dosages__tirzepatide-30-mg-vial-dosage-protocol'],
@@ -32,13 +55,10 @@ const featuredProtocols = [
     ]
   },
   {
-    name: 'Retatrutide',
-    alias: 'GLP3-RT',
-    strengths: [
-      [10, 'single-peptide-dosages__retatrutide-10-mg-vial-dosage-protocol'],
-      [20, 'single-peptide-dosages__retatrutide-20-mg-vial-dosage-protocol'],
-      [30, 'single-peptide-dosages__retatrutide-30-mg-vial-dosage-protocol']
-    ]
+    name: 'BPC-157 + TB-500',
+    alias: 'Wolverine',
+    topic: 'recovery',
+    strengths: [[20, 'peptide-blend-dosages__bpc-157-tb-500-20mg-blend-dosage-protocol']]
   }
 ] as const;
 
@@ -52,17 +72,16 @@ export function applyHomePresentation($: CheerioAPI, pathname: string) {
   if (!grid.length) return;
   const lang = pathname.startsWith('/es/') ? 'es' : 'en';
   const prefixed = pathname !== '/';
-  const compare = lang === 'es' ? 'Compara las referencias por tamaño de vial.' : 'Compare research references by vial size.';
   grid.children('.home-card').each((_, element) => {
     const card = $(element);
     const links = card.find('.dose-links a');
-    if (/bpc-157-tb-500|retatrutide|tirzepatide|cjc-1295-no-dac-ipamorelin/.test(links.first().attr('href') ?? '')) {
+    const href = links.first().attr('href') ?? '';
+    if (/bpc-157-tb-500|retatrutide|tirzepatide|cjc-1295-no-dac-ipamorelin/.test(href)) {
       card.remove();
       return;
     }
-    card.children('p').text(links.length === 1
-      ? (lang === 'es' ? 'Detalles del vial y referencia de investigación.' : 'Vial details and a research reference.')
-      : compare);
+    const topic = existingFeaturedTopics.find(([slug]) => href.includes(slug))?.[1];
+    if (topic) card.children('p').text(featuredTopics[topic][lang]);
     links.each((_, link) => {
       const anchor = $(link);
       const strength = anchor.text().match(/\d+\s*mg/i)?.[0];
@@ -80,11 +99,14 @@ export function applyHomePresentation($: CheerioAPI, pathname: string) {
     });
     return $('<article class="home-card"></article>').append(
       $('<h3></h3>').text(title),
-      $('<p></p>').text('caption' in protocol ? protocol.caption[lang] : compare),
+      $('<p></p>').text(featuredTopics[protocol.topic][lang]),
       $('<div class="dose-links"></div>').append(...links)
     );
   });
   grid.prepend(...cards);
+  grid.children('.home-card').each((_, card) => {
+    $(card).children('h3, p').wrapAll('<div class="oa-featured-card-heading"></div>');
+  });
 }
 
 function demoTitle(spanish: boolean) {

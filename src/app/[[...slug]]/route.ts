@@ -10,8 +10,6 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const site = join(process.cwd(), 'site', 'replica');
-const liveSite = 'https://peptidedosages.com';
-const liveRoutes = new Set(['account', 'wp-login.php']);
 const policy = [
   "default-src 'self'",
   "form-action 'self'",
@@ -19,10 +17,10 @@ const policy = [
   "object-src 'none'",
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://peptidedosages.com",
+  "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "connect-src 'self'",
-  "frame-src 'self' https://peptidedosages.com",
+  "frame-src 'self'",
   "frame-ancestors 'self'",
   "worker-src 'self' blob:",
   "media-src 'self' data: blob:"
@@ -50,8 +48,8 @@ export async function GET(request: Request, context: { params: Promise<{ slug?: 
   if (isRetiredLearningPage(url.pathname) || isArchivedCatalogPage(url.pathname)) {
     return new Response('Page not found', { status: 404 });
   }
-  if (slug.length === 1 && liveRoutes.has(route)) {
-    return Response.redirect(liveSite + url.pathname + url.search, 302);
+  if (slug.length === 3 && route === 'blog' && slug[1] === 'page' && /^[2-8]$/.test(slug[2])) {
+    return new Response(null, { status: 302, headers: { Location: '/blog/' } });
   }
   if (slug.length === 1 && route === 'peptide-dosage-calculator') {
     return new Response(null, { status: 302, headers: { Location: '/calculator/' } });

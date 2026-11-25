@@ -45,7 +45,7 @@ Use Helvetica Neue, Helvetica, Arial, sans-serif. Display headings use weight 70
 
 ## Shared shell
 
-The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. Breadcrumb bars are omitted throughout the library. Protocol and Learn destinations retain the original navigation groups and searches. The existing expandable menu, quick search, member links and mobile navigation still use their original semantic controls. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
+The masthead shows the One Aminos wordmark. A silver research-use bar establishes the purpose. The navigation exposes single peptides, blends, the blog and tools. Guides & Tools opens as one compact column. The menu can scroll independently on phones and the bottom shortcut bar stays legible within safe-area insets.
 
 The footer uses the storefront’s silver background and black text. The One Aminos wordmark and newsletter share the first column, followed by Protocols, Learn, and Company. A thin rule separates the copyright and policy links. The footer link groups become accordions on phones. Page-level Google and Share controls are removed.
 
@@ -55,11 +55,11 @@ The footer uses the storefront’s silver background and black text. The One Ami
 
 Center the headline above one Browse Protocols link. The silver action has a traveling ink outline and 18 px type on desktop, 17 px on phones. Follow it with six static article cards in a three-column desktop grid and a two-column phone grid. The first card links to the beginner’s guide. Use monochrome editorial still lifes made with One Aminos vial photography, presented in 8:5 frames above HTML titles. Featured protocols, the reconstitution demo, chart guide, calculator, and FAQ follow the article grid.
 
-The featured row starts with BPC-157 + TB-500 (Wolverine), Tirzepatide (GLP2-TZ), and Retatrutide (GLP3-RT). Short captions sit above a row of vial-size links. Use the same gray surface, title spacing, and button height throughout the grid.
+The featured row starts with Retatrutide (GLP3-RT), Tirzepatide (GLP2-TZ), and BPC-157 + TB-500 (Wolverine). Each compound name is grouped with its research guide topic, and vial-size links line up across the row. Use the same gray surface and button height throughout the grid.
 
 ### Protocol directories and search
 
-Center the page heading and lead. Place tabs and search before a grid or results list. Tabs and strength choices use clear selected styling, independent of hover. Protocol cards use clean white surfaces and simple boundaries. Preserve titles, strength labels and taxonomy. Search suggestions remain visually distinct from the full result list. Page search and directory filters preserve the original result order or the baseline's local search ranking as applicable.
+Center each directory heading and put the type controls above the grid. The cards use a light gray surface and matching One Aminos storefront photos. Put Lipo C in the alphabetical list with the two catalog formulations. Tabs and strength choices use clear selected styling independent of hover.
 
 ### Protocol detail and dosage chart
 
@@ -69,7 +69,9 @@ Center the product reference title, quick links and vial choices on flat light g
 
 Center the title and lead with a controlled maximum width, followed by the original article body. Preserve citations, callouts, figures, table of contents, author and dates. Use ink links with underlines in reading copy and a neutral background for informational cards. Native disclosure elements retain their expand/collapse states. Constrain illustrations to their content column.
 
-The four core guides use a centered reading column with gray panels and black type. The Beginner’s Guide uses five short sections, a linked contents row, and a diagram of an amino-acid chain. The reconstitution and lab-workspace illustrations use One Aminos labels and neutral studio backgrounds.
+The six homepage guides and articles use a centered reading column with gray panels and black type. The navigation appears as gray links directly under the title. The Beginner’s Guide uses five short sections and a diagram of an amino-acid chain. The other featured pages introduce the essentials and keep detailed explanations and citations in an expandable full reference.
+
+The blog index brings the active articles together under a centered heading. Use matching storefront photos for product covers, monochrome One Aminos art for other covers, and a gray wordmark treatment for supporting diagrams.
 
 ### Calculator and reconstitution demo
 
