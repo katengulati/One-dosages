@@ -1,10 +1,12 @@
 (function(){
   'use strict';
   var X0 = 68, SPAN = 364;               // barrel interior in viewBox units
+  var es = /^es\b/i.test(document.documentElement.lang || '');
+  function t(en, sp){ return es ? sp : en; }
   var SIZES = {
-    30:  { cap: 30,  minor: 0.5, major: 5,  hint: '30-unit (0.3 mL): finest marks, every ½ unit. Most accurate choice for small draws, up to about 25 units.' },
-    50:  { cap: 50,  minor: 1,   major: 5,  hint: '50-unit (0.5 mL): 1-unit marks. A good middle ground for draws of roughly 15–45 units.' },
-    100: { cap: 100, minor: 2,   major: 10, hint: '100-unit (1 mL): marks every 2 units. Fits the largest draws, but is the least precise for very small ones.' }
+    30:  { cap: 30,  minor: 0.5, major: 5,  hint: t('30-unit (0.3 mL): finest marks, every ½ unit. Most accurate choice for small draws, up to about 25 units.', 'De 30 unidades (0.3 mL): marcas más finas, cada ½ unidad. La opción más precisa para cargas pequeñas, de hasta unas 25 unidades.') },
+    50:  { cap: 50,  minor: 1,   major: 5,  hint: t('50-unit (0.5 mL): 1-unit marks. A good middle ground for draws of roughly 15–45 units.', 'De 50 unidades (0.5 mL): marcas de 1 unidad. Un buen término medio para cargas de unas 15–45 unidades.') },
+    100: { cap: 100, minor: 2,   major: 10, hint: t('100-unit (1 mL): marks every 2 units. Fits the largest draws, but is the least precise for very small ones.', 'De 100 unidades (1 mL): marcas cada 2 unidades. Admite las cargas más grandes, pero es la menos precisa para las muy pequeñas.') }
   };
   var size = 100;
 
@@ -77,7 +79,7 @@
     var doseMcg = el('d-doseunit').value === 'mg' ? dose * 1000 : dose;
     var doseMg = doseMcg / 1000;
     var invalid=[];
-    [['r-pep',pep,'vial amount'],['r-water',water,'water volume'],['d-dose',dose,'target dose']].forEach(function(item){
+    [['r-pep',pep,t('vial amount','cantidad del vial')],['r-water',water,t('water volume','volumen de agua')],['d-dose',dose,t('target dose','dosis objetivo')]].forEach(function(item){
       var field=el(item[0]);
       var isInvalid=!(item[1]>0);
       field.setAttribute('aria-invalid',String(isInvalid));
@@ -85,7 +87,7 @@
     });
     var validation=el('pdc-validation');
     validation.hidden=invalid.length===0;
-    validation.textContent=invalid.length?'Enter a value greater than zero for '+invalid.join(', ')+'.':'';
+    validation.textContent=invalid.length?t('Enter a value greater than zero for ','Introduce un valor mayor que cero para: ')+invalid.join(', ')+'.':'';
     var vol = concMgMl > 0 ? doseMg / concMgMl : 0;   // mL
     var units = vol * 100;                             // U-100 scale
     var cfg = SIZES[size];
@@ -98,14 +100,14 @@
     el('d-vol').textContent = fmt(vol, 3) + ' mL';
 
     var dosesPerVial = doseMg > 0 ? Math.floor(pep / doseMg) : 0;
-    el('d-perv').textContent = doseMg > 0 ? String(dosesPerVial) : 'Not set';
+    el('d-perv').textContent = doseMg > 0 ? String(dosesPerVial) : t('Not set', 'Sin definir');
 
     var freq = parseFloat(el('d-freq').value);
     if (doseMg > 0 && freq > 0 && dosesPerVial > 0) {
       var days = dosesPerVial * 7 / freq;
-      el('d-dur').textContent = days >= 21 ? ('≈ ' + fmt(days/7, 1) + ' wks') : ('≈ ' + Math.round(days) + ' days');
+      el('d-dur').textContent = days >= 21 ? ('≈ ' + fmt(days/7, 1) + t(' wks', ' sem.')) : ('≈ ' + Math.round(days) + t(' days', ' días'));
     } else {
-      el('d-dur').textContent = 'Not set';
+      el('d-dur').textContent = t('Not set', 'Sin definir');
     }
 
     /* syringe drawing */
@@ -130,9 +132,11 @@
         note.className = 'pdc-note alert';
         if (units <= 100) {
           var fits = units <= 30 ? 30 : (units <= 50 ? 50 : 100);
-          note.textContent = 'That\u2019s ' + unitsTxt + ' units  -  more than a ' + cfg.cap + '-unit syringe holds. Switch to the ' + fits + '-unit barrel, or use less water for a higher concentration.';
+          note.textContent = t('That\u2019s ' + unitsTxt + ' units  -  more than a ' + cfg.cap + '-unit syringe holds. Switch to the ' + fits + '-unit barrel, or use less water for a higher concentration.',
+            'Son ' + unitsTxt + ' unidades: más de lo que cabe en una jeringa de ' + cfg.cap + ' unidades. Cambia a la de ' + fits + ' unidades o usa menos agua para obtener una concentración mayor.');
         } else {
-          note.textContent = 'That\u2019s ' + unitsTxt + ' units  -  more than even a 100-unit (1 mL) syringe holds. Use less water for a higher concentration, or split the dose into two draws.';
+          note.textContent = t('That\u2019s ' + unitsTxt + ' units  -  more than even a 100-unit (1 mL) syringe holds. Use less water for a higher concentration, or split the dose into two draws.',
+            'Son ' + unitsTxt + ' unidades: más de lo que cabe incluso en una jeringa de 100 unidades (1 mL). Usa menos agua para obtener una concentración mayor o divide la dosis en dos cargas.');
         }
       } else {
         var nearest = Math.round(units / cfg.minor) * cfg.minor;
@@ -141,21 +145,21 @@
         var dev = doseMcg > 0 ? (doseAtMark - doseMcg) / doseMcg * 100 : 0;
         if (Math.abs(dev) < 0.5) {
           mark.className = 'pdc-mark ok';
-          mark.textContent = '\u2713 Lands exactly on the ' + fmt(nearest, 2) + '-unit mark.';
+          mark.textContent = t('\u2713 Lands exactly on the ' + fmt(nearest, 2) + '-unit mark.', '\u2713 Coincide exactamente con la marca de ' + fmt(nearest, 2) + ' unidades.');
         } else {
           mark.className = 'pdc-mark off';
-          mark.textContent = 'Nearest mark: ' + fmt(nearest, 2) + ' units = ' + fmtMcg(doseAtMark) + ' (' + (dev > 0 ? '+' : '\u2212') + fmt(Math.abs(dev), 1) + '% vs target).';
+          mark.textContent = t('Nearest mark: ', 'Marca más cercana: ') + fmt(nearest, 2) + t(' units = ', ' unidades = ') + fmtMcg(doseAtMark) + ' (' + (dev > 0 ? '+' : '\u2212') + fmt(Math.abs(dev), 1) + t('% vs target).', '% respecto al objetivo).');
           if (Math.abs(dev) > 4) {
-            note.textContent = 'Tip: adjust the water volume slightly so your dose lands on a mark. Marks are much easier to hit consistently than the space between them.';
+            note.textContent = t('Tip: adjust the water volume slightly so your dose lands on a mark. Marks are much easier to hit consistently than the space between them.', 'Consejo: ajusta ligeramente el volumen de agua para que tu dosis coincida con una marca. Es mucho más fácil acertar de forma constante en una marca que en el espacio entre marcas.');
           }
         }
         if (units < 3) {
-          note.textContent = 'A draw under 3 units is hard to measure accurately. Use less water for a higher concentration and a larger, easier draw.';
+          note.textContent = t('A draw under 3 units is hard to measure accurately. Use less water for a higher concentration and a larger, easier draw.', 'Una carga de menos de 3 unidades es difícil de medir con precisión. Usa menos agua para obtener una concentración mayor y una carga más grande y fácil.');
         }
       }
     }
 
-    el('pdc-status').textContent=invalid.length?'':('Calculated draw: '+unitsTxt+' units, '+fmt(vol,3)+' mL, '+dosesPerVial+' full doses per vial.');
+    el('pdc-status').textContent=invalid.length?'':(t('Calculated draw: ','Carga calculada: ')+unitsTxt+t(' units, ',' unidades, ')+fmt(vol,3)+' mL, '+dosesPerVial+t(' full doses per vial.',' dosis completas por vial.'));
   }
 
   /* ── Quick chips ── */

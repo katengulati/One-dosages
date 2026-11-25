@@ -165,6 +165,13 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     copyright.html(copyright.html()?.replace('Peptide Dosages', 'One Aminos') ?? '');
   });
   $('.pdmh-trigger-new-badge, .pdmh-new-badge, .pdh-disc, .pdc-disc, .section-head > .section-number, .section-head > .section-icon').remove();
+  // Spanish search forms go to the shared results page with lang=es (the /es/ routes are static).
+  if (spanish) {
+    $('form[role="search"]').filter((_, form) => /^\/(?:es\/)?$/.test($(form).attr('action') ?? '')).each((_, element) => {
+      const form = $(element).attr('action', '/');
+      if (!form.find('input[name="lang"]').length) form.prepend('<input type="hidden" name="lang" value="es">');
+    });
+  }
   applyCalculatorPresentation($, spanish);
   applyGuidePresentation($, pathname);
   applyCatalog($, pathname);
@@ -206,7 +213,8 @@ export function applyOneAminosDesign(html: string, pathname: string, origin: str
     .replace(/https?:\\?\/\\?\/(?:www\.)?peptidedosages\.com\b/gi, origin)
     .replace(/https?%3a%2f%2f(?:www\.)?peptidedosages\.com\b/gi, encodeURIComponent(origin))
     .replace(/\b(?:www\.)?peptidedosages\.com\b/gi, 'One Aminos Peptide Dosages');
-  const shared = applySharePreview(branded, pathname, origin);
+  const localized = spanish ? branded.replaceAll('<small>Certificate of Analysis</small>', '<small>Certificado de análisis</small>') : branded;
+  const shared = applySharePreview(localized, pathname, origin);
   // Former WordPress assets: new paths, then one bundle per run of files.
   return bundleAssets(shared);
 }

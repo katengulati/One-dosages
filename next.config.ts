@@ -9,7 +9,7 @@ const config: NextConfig = {
   trailingSlash: true,
   poweredByHeader: false,
   devIndicators: false,
-  outputFileTracingIncludes: { '/*': ['./site/**/*', './search-template.html', './search-corpus.json', './capture.json'] },
+  outputFileTracingIncludes: { '/*': ['./site/**/*', './search-template.html', './search-corpus.json', './search-corpus.es.json', './capture.json'] },
   async headers() {
     // Static theme and design files: a short browser cache instead of re-checking every
     // file on every navigation. Ten minutes keeps post-deploy staleness small.

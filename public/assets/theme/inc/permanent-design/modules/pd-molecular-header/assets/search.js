@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 (() => {
   'use strict';
   const normalize = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -73,7 +74,7 @@
       wrap.querySelector('[data-count="' + group + '"]').textContent = String(count);
       if (!count) {
         const empty = document.createElement('p'); empty.className = 'pdmh-search-empty';
-        empty.textContent = group === 'protocols' ? 'No matching dosage titles. Try another peptide or view all search results.' : 'No matching article titles. View all results to search article text too.';
+        empty.textContent = group === 'protocols' ? (oaES ? 'No hay títulos de dosificación que coincidan. Prueba con otro péptido o mira todos los resultados.' : 'No matching dosage titles. Try another peptide or view all search results.') : (oaES ? 'No hay títulos de artículos que coincidan. Mira todos los resultados para buscar también en el texto.' : 'No matching article titles. View all results to search article text too.');
         container.append(empty);
       }
       groups[group].slice(0, 5).forEach(item => {
@@ -87,18 +88,18 @@
         link.append(title, kind); options.push(link); container.append(link);
       });
     }
-    status.textContent = groups.protocols.length + ' dosage matches and ' + groups.articles.length + ' article matches. Showing up to five per group. Use the arrow keys to explore, Enter to open, or Escape to close.';
+    status.textContent = (oaES ? groups.protocols.length + ' coincidencias de dosificación y ' + groups.articles.length + ' de artículos. Se muestran hasta cinco por grupo. Usa las flechas para explorar, Intro para abrir o Escape para cerrar.' : groups.protocols.length + ' dosage matches and ' + groups.articles.length + ' article matches. Showing up to five per group. Use the arrow keys to explore, Enter to open, or Escape to close.');
   }
   async function update() {
     const query = input.value.trim(), id = ++revision;
     if (!desktop.matches || normalize(query).replace(/ /g, '').length < 2 || document.activeElement !== input) { close(); return; }
-    open(); message('Finding matches...'); listbox.setAttribute('aria-busy', 'true');
+    open(); message(oaES ? 'Buscando coincidencias...' : 'Finding matches...'); listbox.setAttribute('aria-busy', 'true');
     try {
       const items = await loadIndex();
       if (id !== revision || !desktop.matches || document.activeElement !== input || input.value.trim() !== query) return;
       render(rank(items, query));
     } catch {
-      if (id === revision) message('Suggestions are temporarily unavailable. Press Enter or use See all results.');
+      if (id === revision) message(oaES ? 'Las sugerencias no están disponibles por ahora. Pulsa Intro o usa Ver todos los resultados.' : 'Suggestions are temporarily unavailable. Press Enter or use See all results.');
     } finally { if (id === revision) listbox.removeAttribute('aria-busy'); }
   }
   input.addEventListener('input', () => { revision++; resetActive(); clearTimeout(timer); timer = setTimeout(update, 100); });

@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 (function () {
   'use strict';
 
@@ -167,7 +168,7 @@
     function setOpen(open) {
       tocNav.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', (open ? 'Hide' : 'Show') + ' on this page links');
+      toggle.setAttribute('aria-label', (oaES ? (open ? 'Ocultar' : 'Mostrar') + ' los enlaces de esta página' : (open ? 'Hide' : 'Show') + ' on this page links'));
       panel.setAttribute('aria-hidden', open ? 'false' : 'true');
       panel.toggleAttribute('inert', !open);
     }
@@ -271,7 +272,7 @@
       var caption = table.querySelector('caption');
       var label = caption && caption.textContent.trim()
         ? caption.textContent.trim()
-        : 'Data table ' + (index + 1);
+        : (oaES ? 'Tabla de datos ' : 'Data table ') + (index + 1);
 
       wrapper.setAttribute('role', 'region');
       wrapper.setAttribute('aria-label', label);

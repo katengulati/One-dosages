@@ -5,6 +5,14 @@ import policy from '../../site/catalog-policy.json';
 import locales from '../../site/manifest.json';
 import photoFiles from '../../site/product-photos.json';
 import blogCards from '../../site/blog-cards.json';
+import blogCardsEs from '../../site/blog-cards.es.json';
+
+// Spanish card text (title + excerpt) by English path; the COA card is handled inline.
+const spanishCards = new Map(blogCardsEs.map((card) => [card.path, card]));
+const cardTitle = (post: { path: string; title: string }, spanish: boolean) =>
+  spanish ? (post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : spanishCards.get(post.path)?.title ?? post.title) : post.title;
+const cardExcerpt = (post: { path: string; excerpt: string }, spanish: boolean) =>
+  spanish ? (post.path === '/how-to-read-a-coa/' ? 'Comprueba el lote y aprende a interpretar la identidad, la pureza y el contenido neto.' : spanishCards.get(post.path)?.excerpt ?? post.excerpt) : post.excerpt;
 import blogArtworkMarks from '../../site/blog-artwork-marks.json';
 import { improveProtocolReading } from './protocol-reading';
 import { isLipoReference } from './lipo-references';
@@ -128,9 +136,9 @@ function populateBlogMenu($: CheerioAPI, spanish: boolean, pathname: string) {
     const href = (spanish || pathname.startsWith('/en/')) ? locales[key]?.[spanish ? 'es' : 'en'] ?? post.path : post.path;
     const link = $('<a class="mega-post-card"></a>').attr('href', href);
     link.append($('<span class="mega-post-thumb"></span>').append('<img alt="" width="100" height="100" loading="lazy" src="/one-aminos/article-covers/new-to-peptides.webp">'),
-      $('<span class="mega-post-title"></span>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title));
+      $('<span class="mega-post-title"></span>').text(cardTitle(post, spanish)));
     grid.append($('<li></li>').append(link));
-    mobile.append($('<li></li>').append($('<a></a>').attr('href', href).text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title)));
+    mobile.append($('<li></li>').append($('<a></a>').attr('href', href).text(cardTitle(post, spanish))));
   }
   mobile.append(viewAll);
 }
@@ -149,8 +157,8 @@ function applyBlogDirectory($: CheerioAPI, spanish: boolean, pathname: string) {
     list.append($('<a class="blog-post-card"></a>').attr('href', localized ?? post.path).append(
       $('<div class="card-thumb"></div>').append(cover),
       $('<div class="card-body"></div>').append(
-        $('<h2 class="card-title"></h2>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Cómo leer un certificado de análisis (COA)' : post.title),
-        $('<p class="card-excerpt"></p>').text(spanish && post.path === '/how-to-read-a-coa/' ? 'Comprueba el lote y aprende a interpretar la identidad, la pureza y el contenido neto.' : post.excerpt),
+        $('<h2 class="card-title"></h2>').text(cardTitle(post, spanish)),
+        $('<p class="card-excerpt"></p>').text(cardExcerpt(post, spanish)),
         $('<span class="card-cta"></span>').text(spanish ? 'Leer artículo' : 'Read Article')
       )
     ));

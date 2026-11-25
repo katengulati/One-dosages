@@ -6,6 +6,8 @@ Reads translations/es/units/*.json and translations/es/slugs.json, writes
 <out_dir>/<locale>/<key>.html plus <out_dir>/<locale>/_header.html (the site
 header shared by every page, stored once and referenced by <!--@header-->).
 """
+from __future__ import annotations
+
 import glob
 import html as htmlmod
 import json

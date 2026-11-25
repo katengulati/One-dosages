@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 (function(){
   var table=document.getElementById('pdh-table');
   var body=document.getElementById('pdh-body');
@@ -6,7 +7,7 @@
   var filterBtns=document.querySelectorAll('.pdh-filters button');
   var rows=Array.prototype.slice.call(body.querySelectorAll('tr'));
   var curFilter='all';
-  var columnLabels=['Peptide','Vial size','Type','Protocol concentration','Protocol dose range','Frequency'];
+  var columnLabels=(oaES ? ['Péptido','Tamaño del vial','Tipo','Concentración del protocolo','Rango de dosis del protocolo','Frecuencia'] : ['Peptide','Vial size','Type','Protocol concentration','Protocol dose range','Frequency']);
   var naturalSort=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
   var measurementColumns={1:true,3:true,4:true};
 
@@ -70,7 +71,7 @@
     });
     var ex=body.querySelector('.pdh-empty-row');
     if(shown===0){
-      if(!ex){var tr=document.createElement('tr');tr.className='pdh-empty-row';tr.innerHTML='<td class="pdh-empty" colspan="6">No peptides match your search.</td>';body.appendChild(tr);}
+      if(!ex){var tr=document.createElement('tr');tr.className='pdh-empty-row';tr.innerHTML='<td class="pdh-empty" colspan="6">'+(oaES?'Ningún péptido coincide con tu búsqueda.':'No peptides match your search.')+'</td>';body.appendChild(tr);}
     }else if(ex){ex.remove();}
     countEl.textContent='Showing '+shown+' of '+rows.length+' peptides';
   }
@@ -122,7 +123,7 @@
     visible.forEach(function(r){body.appendChild(r);});
     if(mobileSort)mobileSort.value=String(idx);
     if(mobileDirection){
-      mobileDirection.setAttribute('aria-label',sortAscending?'Sort descending':'Sort ascending');
+      mobileDirection.setAttribute('aria-label',sortAscending?(oaES?'Orden descendente':'Sort descending'):(oaES?'Orden ascendente':'Sort ascending'));
       if(mobileDirectionIcon)mobileDirectionIcon.textContent=sortAscending?'↑':'↓';
       if(mobileDirectionText)mobileDirectionText.textContent=sortAscending?'Ascending':'Descending';
     }
@@ -141,7 +142,7 @@
     var isMobile=mobileQuery.matches;
     if(scrollRegion){
       scrollRegion.tabIndex=isMobile?-1:0;
-      scrollRegion.setAttribute('aria-label',isMobile?'Peptide dosage chart displayed as cards.':'Peptide dosage chart with sortable columns.');
+      scrollRegion.setAttribute('aria-label',isMobile?(oaES?'Tabla de dosificación de péptidos mostrada como tarjetas.':'Peptide dosage chart displayed as cards.'):(oaES?'Tabla de dosificación de péptidos con columnas ordenables.':'Peptide dosage chart with sortable columns.'));
     }
     sortButtons.forEach(function(button,index){
       if(isMobile){

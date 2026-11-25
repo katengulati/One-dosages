@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 (function () {
   "use strict";
 
@@ -66,11 +67,11 @@
       }
 
       if (restriction.mode === "blur") {
-        var label = (link.textContent || "Restricted page").trim();
+        var label = (link.textContent || (oaES ? "Página restringida" : "Restricted page")).trim();
         item.classList.add("nav-item-blurred");
         item.setAttribute("data-restricted-mode", "blur");
         link.href = buildLoginRedirect(auth.loginUrl || config.loginUrl, originalUrl, config);
-        link.setAttribute("aria-label", label + ". Sign in to access this page.");
+        link.setAttribute("aria-label", label + (oaES ? ". Inicia sesión para acceder a esta página." : ". Sign in to access this page."));
       }
     });
 
@@ -396,7 +397,7 @@
 
       clearButton.hidden = false;
       empty.hidden = matches !== 0;
-      status.textContent = matches === 1 ? "1 matching menu link." : matches + " matching menu links.";
+      status.textContent = matches === 1 ? (oaES ? "1 enlace del menú coincide." : "1 matching menu link.") : matches + (oaES ? " enlaces del menú coinciden." : " matching menu links.");
     }
 
     input.addEventListener("input", updateResults);
@@ -461,7 +462,7 @@
       panel.inert = false;
       panel.setAttribute("aria-hidden", "false");
       button.setAttribute("aria-expanded", "true");
-      button.setAttribute("aria-label", "Close navigation menu");
+      button.setAttribute("aria-label", oaES ? "Cerrar el menú de navegación" : "Close navigation menu");
       button.classList.add("active");
       document.body.classList.add("mobile-menu-open");
       setBackgroundInert(true);
@@ -494,7 +495,7 @@
       panel.setAttribute("aria-hidden", "true");
       button.classList.remove("active");
       button.setAttribute("aria-expanded", "false");
-      button.setAttribute("aria-label", "Open navigation menu");
+      button.setAttribute("aria-label", oaES ? "Abrir el menú de navegación" : "Open navigation menu");
       document.body.classList.remove("mobile-menu-open");
 
       if (options.immediate || reducedMotion.matches) {

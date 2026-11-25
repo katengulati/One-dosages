@@ -2356,10 +2356,11 @@ body.oa-library #main-content .oa-result__body {
   flex-direction: column;
   gap: 8px;
   padding: 16px 16px 18px;
+  text-align: center;
 }
 
 body.oa-library #main-content .oa-result__badge {
-  align-self: flex-start;
+  align-self: center;
   color: var(--oa-muted);
   font-size: 12px;
   font-weight: 700;

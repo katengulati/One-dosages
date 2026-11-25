@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 /* A progressive mobile writing view. The original textarea and form own the draft. */
 (() => {
   'use strict';
@@ -12,7 +13,7 @@
   const dialog = document.createElement('dialog');
   dialog.className = 'pdmc-composer';
   dialog.setAttribute('aria-labelledby', 'pdmc-composer-title');
-  dialog.innerHTML = '<div class="pdmc-composer-bar"><h2 id="pdmc-composer-title">Your Message</h2><button type="button" class="pdmc-composer-done">Done <span aria-hidden="true">&#10003;</span></button></div><div class="pdmc-composer-editor"></div><p class="pdmc-composer-hint">Tap Done to return to the form. Your message stays here.</p>';
+  dialog.innerHTML = (oaES ? '<div class="pdmc-composer-bar"><h2 id="pdmc-composer-title">Tu mensaje</h2><button type="button" class="pdmc-composer-done">Listo <span aria-hidden="true">&#10003;</span></button></div><div class="pdmc-composer-editor"></div><p class="pdmc-composer-hint">Toca Listo para volver al formulario. Tu mensaje se conserva aquí.</p>' : '<div class="pdmc-composer-bar"><h2 id="pdmc-composer-title">Your Message</h2><button type="button" class="pdmc-composer-done">Done <span aria-hidden="true">&#10003;</span></button></div><div class="pdmc-composer-editor"></div><p class="pdmc-composer-hint">Tap Done to return to the form. Your message stays here.</p>');
   document.body.append(dialog);
   const editor = dialog.querySelector('.pdmc-composer-editor');
   const done = dialog.querySelector('.pdmc-composer-done');

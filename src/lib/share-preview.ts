@@ -1,5 +1,8 @@
 const title = 'One Aminos Peptide Dosages';
-const description = 'Research guides, dosage charts, and a reconstitution calculator from One Aminos.';
+const descriptions = {
+  en: 'Research guides, dosage charts, and a reconstitution calculator from One Aminos.',
+  es: 'Guías de investigación, tablas de dosificación y una calculadora de reconstitución de One Aminos.'
+};
 const defaultOrigin = 'http://localhost:4322';
 
 export function localizedPreviewOrigin() {
@@ -13,6 +16,7 @@ function escapeAttribute(value: string) {
 
 export function applySharePreview(html: string, pathname: string, origin: string) {
   const home = /^\/(?:en\/|es\/)?$/.test(pathname);
+  const description = pathname.startsWith('/es/') ? descriptions.es : descriptions.en;
   const existingTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '';
   const innerTitle = existingTitle.replace(/\s*(?:\||[-–])\s*(?:peptidedosages\.com|(?:One Aminos )?Peptide Dosages)\s*$/i, '');
   const pageTitle = home || !innerTitle ? title : `${innerTitle} | ${title}`;

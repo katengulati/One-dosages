@@ -49,7 +49,7 @@ export async function GET(request: Request, context: { params: Promise<{ slug?: 
   if (slug.length === 0 && url.searchParams.has('s')) {
     const query = (url.searchParams.get('s') ?? '').trim().slice(0, 160);
     const requestedPage = Number.parseInt(url.searchParams.get('page') ?? '1', 10);
-    return page(await renderSearch(query, Math.max(1, Math.min(100, requestedPage || 1)), url.searchParams.get('type') ?? 'all'), url);
+    return page(await renderSearch(query, Math.max(1, Math.min(100, requestedPage || 1)), url.searchParams.get('type') ?? 'all', url.searchParams.get('lang') === 'es'), url);
   }
   const [route] = slug;
   if (isRetiredLearningPage(url.pathname) || isArchivedCatalogPage(url.pathname)) {

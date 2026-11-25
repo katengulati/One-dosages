@@ -1,3 +1,4 @@
+var oaES = /^es\b/i.test(document.documentElement.lang || '');
 document.addEventListener('DOMContentLoaded', function() {
 
   function normalizeExternalHost(host) {
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.href = '#ref-' + item.num;
       link.className = 'inline-citation';
       link.textContent = item.num;
-      link.title = 'Jump to reference ' + item.num;
+      link.title = (oaES ? 'Ir a la referencia ' : 'Jump to reference ') + item.num;
       attachCitationScroll(link, item.num);
       item.span.parentNode.replaceChild(link, item.span);
     });
@@ -279,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.href = '#ref-' + num;
       link.className = 'inline-citation';
       link.textContent = num;
-      link.title = 'Jump to reference ' + num;
+      link.title = (oaES ? 'Ir a la referencia ' : 'Jump to reference ') + num;
       link.removeAttribute('target');
       link.removeAttribute('rel');
       attachCitationScroll(link, num);
@@ -403,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!document.getElementById('ref-' + num)) return;
       link.href = '#ref-' + num;
       link.className = 'inline-citation';
-      link.title = 'Jump to reference ' + num;
+      link.title = (oaES ? 'Ir a la referencia ' : 'Jump to reference ') + num;
       link.removeAttribute('target');
       link.removeAttribute('rel');
       attachCitationScroll(link, num);
@@ -438,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
           a.href = '#ref-' + num;
           a.className = 'inline-citation';
           a.textContent = num;
-          a.title = 'Jump to reference ' + num;
+          a.title = (oaES ? 'Ir a la referencia ' : 'Jump to reference ') + num;
           attachCitationScroll(a, num);
           frag.appendChild(a);
         } else if (part) {
@@ -662,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setOpen(open) {
       tocNav.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', (open ? 'Hide' : 'Show') + ' on this page links');
+      toggle.setAttribute('aria-label', (oaES ? (open ? 'Ocultar' : 'Mostrar') + ' los enlaces de esta página' : (open ? 'Hide' : 'Show') + ' on this page links'));
       panel.setAttribute('aria-hidden', open ? 'false' : 'true');
       panel.toggleAttribute('inert', !open);
     }
@@ -733,7 +734,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (caption && caption.textContent.trim()) return caption.textContent.trim();
     var heading = closestHeadingForTable(table);
     if (heading && heading.textContent.trim()) return heading.textContent.trim() + ' table';
-    return 'Data table ' + (index + 1);
+    return (oaES ? 'Tabla de datos ' : 'Data table ') + (index + 1);
   }
 
   function prepareMobileCardTable(table, scrollRegion) {
@@ -911,7 +912,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var clone = cloneTableWithUniqueIds(table, index);
     dialogTitle.textContent = label;
     dialogDimensions.textContent = table.rows.length + ' rows × ' + (table.rows[0] ? table.rows[0].cells.length : 0) + ' columns';
-    dialogTableContainer.setAttribute('aria-label', label + ', full view');
+    dialogTableContainer.setAttribute('aria-label', label + (oaES ? ', vista completa' : ', full view'));
     dialogTableContainer.replaceChildren(clone);
     previousBodyOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -983,7 +984,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.className = 'table-expand-btn';
       button.setAttribute('aria-haspopup', 'dialog');
       button.setAttribute('aria-controls', 'pd-table-dialog');
-      button.setAttribute('aria-label', 'Open full view of ' + label);
+      button.setAttribute('aria-label', (oaES ? 'Abrir vista completa de ' : 'Open full view of ') + label);
       button.innerHTML = '<i class="fas fa-expand" aria-hidden="true"></i> Full View';
       button.addEventListener('click', function() {
         openTableDialog(table, index, button);
@@ -1040,7 +1041,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dialog.className = 'pd-image-lightbox';
     dialog.setAttribute('role', 'dialog');
     dialog.setAttribute('aria-modal', 'true');
-    dialog.setAttribute('aria-label', 'Expanded article image');
+    dialog.setAttribute('aria-label', (oaES ? 'Imagen ampliada del artículo' : 'Expanded article image'));
     dialog.setAttribute('aria-describedby', 'pd-image-lightbox-caption');
     dialog.setAttribute('tabindex', '-1');
     dialog.hidden = true;
@@ -1116,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var description = (image.getAttribute('alt') || '').trim();
       trigger.type = 'button';
       trigger.className = 'pd-image-zoom-trigger';
-      trigger.setAttribute('aria-label', description ? 'Enlarge image: ' + description : 'Enlarge article image');
+      trigger.setAttribute('aria-label', description ? (oaES ? 'Ampliar imagen: ' : 'Enlarge image: ') + description : (oaES ? 'Ampliar imagen del artículo' : 'Enlarge article image'));
       image.parentNode.insertBefore(trigger, image);
       trigger.appendChild(image);
       trigger.addEventListener('click', function() {
