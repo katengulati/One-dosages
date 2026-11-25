@@ -370,12 +370,13 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
       }
       const address = target + '?product=' + encodeURIComponent(demo.slug);
       const link = $('main .oa-protocol-demo a, main a[href="' + target + '"]').attr('href', address);
-      if (!link.length && $('.oa-migrated-protocol').length) {
+      if (!link.length && $('#supplies-needed').length) {
         const label = spanish ? 'Demostración de reconstitución' : 'Peptide Reconstitution Demo';
         $('#supplies-needed').after($('<section class="section oa-protocol-demo" id="peptide-prep"><header class="section-head"></header><div class="section-body"></div></section>'));
         $('#peptide-prep .section-head').append($('<h2></h2>').text(label));
         $('#peptide-prep .section-body').append($('<a class="oa-solid-link"></a>').attr('href',address).text(label));
         $('.jump-links').append($('<a href="#peptide-prep"></a>').text(label));
+        $('nav.toc .toc-scroll a[href="#supplies-needed"]').closest('li').after($('<li></li>').append($('<a href="#peptide-prep"></a>').text(label)));
       }
     } else {
       // Intranasal actuator and topical formulation references have distinct preparation instructions.
