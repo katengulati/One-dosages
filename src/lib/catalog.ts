@@ -387,9 +387,22 @@ export function applyCatalog($: CheerioAPI, pathname: string) {
         $('.jump-links').append($('<a href="#peptide-prep"></a>').text(label));
         $('nav.toc .toc-scroll a[href="#supplies-needed"]').closest('li').after($('<li></li>').append($('<a href="#peptide-prep"></a>').text(label)));
       }
+      // Owner direction (Nov 25): one centered demo button at the end of the dosage
+      // chart card instead of a separate section or the vial-family note.
+      const chartBody = $('section.chart#dosing-schedule > .section-body').first();
+      if (chartBody.length) {
+        $('.oa-demo-row, section.oa-protocol-demo').remove();
+        $('a[href="#peptide-prep"]').each((_, el) => {
+          const anchor = $(el);
+          (anchor.parent('li').length ? anchor.parent() : anchor).remove();
+        });
+        const row = $('<p class="oa-demo-row"><a class="oa-solid-link"></a></p>');
+        row.find('a').attr('href', address).text(spanish ? 'Ver la demostración de reconstitución' : 'Watch the reconstitution demo');
+        chartBody.append(row);
+      }
     } else {
       // Intranasal actuator and topical formulation references have distinct preparation instructions.
-      $('main .oa-protocol-demo, main a[href="#peptide-prep"]').remove();
+      $('main .oa-protocol-demo, main .oa-demo-row, main a[href="#peptide-prep"]').remove();
     }
     $('main .product img, main .product-card img').each((_, el) => {
       const image = $(el);
